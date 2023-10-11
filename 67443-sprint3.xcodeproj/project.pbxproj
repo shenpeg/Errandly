@@ -13,6 +13,12 @@
 		A3B99B692AD62B0D000822EE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */; };
 		A3B99B712AD63057000822EE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B702AD63057000822EE /* GoogleSignIn */; };
 		A3B99B732AD63057000822EE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B722AD63057000822EE /* GoogleSignInSwift */; };
+		A3FF43612AD6E04600E1DDA6 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */; };
+		A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */; };
+		A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF436E2AD6E37D00E1DDA6 /* SignInView.swift */; };
+		A3FF43712AD6E3A500E1DDA6 /* UserProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43702AD6E3A500E1DDA6 /* UserProfileImageView.swift */; };
+		A3FF43732AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43722AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift */; };
+		A3FF43772AD6E45A00E1DDA6 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43762AD6E45A00E1DDA6 /* UserProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +27,13 @@
 		A3B99B632AD62B0B000822EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A3B99B652AD62B0D000822EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3FF435F2AD67BDB00E1DDA6 /* -7443-sprint3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-7443-sprint3-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInAuthenticator.swift; sourceTree = "<group>"; };
+		A3FF436E2AD6E37D00E1DDA6 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		A3FF43702AD6E3A500E1DDA6 /* UserProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileImageView.swift; sourceTree = "<group>"; };
+		A3FF43722AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileImageLoader.swift; sourceTree = "<group>"; };
+		A3FF43762AD6E45A00E1DDA6 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +68,12 @@
 		A3B99B602AD62B0B000822EE /* 67443-sprint3 */ = {
 			isa = PBXGroup;
 			children = (
+				A3FF436B2AD6E31300E1DDA6 /* Views */,
+				A3FF436A2AD6E2F800E1DDA6 /* ViewModels */,
+				A3FF43692AD6E2E700E1DDA6 /* Models */,
+				A3FF43682AD6E29E00E1DDA6 /* Services */,
+				A3FF435F2AD67BDB00E1DDA6 /* -7443-sprint3-Info.plist */,
 				A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */,
-				A3B99B632AD62B0B000822EE /* ContentView.swift */,
 				A3B99B652AD62B0D000822EE /* Assets.xcassets */,
 				A3B99B672AD62B0D000822EE /* Preview Content */,
 			);
@@ -69,6 +86,41 @@
 				A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A3FF43682AD6E29E00E1DDA6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */,
+				A3FF43722AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A3FF43692AD6E2E700E1DDA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A3FF436A2AD6E2F800E1DDA6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A3FF436B2AD6E31300E1DDA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A3B99B632AD62B0B000822EE /* ContentView.swift */,
+				A3FF436E2AD6E37D00E1DDA6 /* SignInView.swift */,
+				A3FF43702AD6E3A500E1DDA6 /* UserProfileImageView.swift */,
+				A3FF43762AD6E45A00E1DDA6 /* UserProfileView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +200,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3FF43612AD6E04600E1DDA6 /* AuthenticationViewModel.swift in Sources */,
 				A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */,
+				A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */,
+				A3FF43772AD6E45A00E1DDA6 /* UserProfileView.swift in Sources */,
+				A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */,
+				A3FF43732AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift in Sources */,
+				A3FF43712AD6E3A500E1DDA6 /* UserProfileImageView.swift in Sources */,
 				A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +343,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"67443-sprint3/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-7443-sprint3-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -313,6 +372,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"67443-sprint3/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-7443-sprint3-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
