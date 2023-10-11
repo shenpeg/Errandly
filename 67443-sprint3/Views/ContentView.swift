@@ -13,13 +13,8 @@ import CoreLocation
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   
-  @StateObject var manager = LocationManager()
-
   var body: some View {
     return Group {
-     
-      Map(coordinateRegion: $manager.region, showsUserLocation: true)
-                  .edgesIgnoringSafeArea(.all)
       
       NavigationView {
         switch authViewModel.state {
