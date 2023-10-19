@@ -7,14 +7,43 @@ import SwiftUI
 
 import GoogleSignIn
 
-import MapKit
-import CoreLocation
-
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   
+  @StateObject private var locationPermission:LocationViewModel=LocationViewModel()
+  
   var body: some View {
     return Group {
+      
+      VStack {
+          switch locationPermission.authorizationStatus{
+            case .notDetermined:
+              Text("not determied")
+            case .restricted:
+              Text("restricted")
+            case .denied:
+              Text("denied")
+            case .authorizedAlways:
+              VStack {
+                Text(locationPermission.cordinates?.latitude.description ?? "N/A")
+                Text(locationPermission.cordinates?.longitude.description ?? "N/A")
+              }
+            case .authorizedWhenInUse:
+              VStack {
+                Text(locationPermission.cordinates?.latitude.description ?? "N/A")
+                Text(locationPermission.cordinates?.longitude.description ?? "N/A")
+              }
+            default:
+              Text("no")
+          }
+          Button {
+            locationPermission.requestLocationPermission()
+          } label: {
+            Text("Ask Location Permission")
+              .padding()
+          }
+      }
+      .buttonStyle(.bordered)
       
       NavigationView {
         switch authViewModel.state {
