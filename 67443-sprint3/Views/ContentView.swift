@@ -37,14 +37,7 @@ struct ContentView: View {
               Text("no")
           }
           Button {
-<<<<<<< HEAD
             locationPermission.requestLocationPermission()
-=======
-            let _ = print("beginning btn")
-            locationPermission.requestLocationPermission()
-            let _ = print(locationPermission.authorizationStatus.rawValue)
-            let _ = print("end btn")
->>>>>>> 1efb4f1b325a0edae86f98628a30ebbb62650450
           } label: {
             Text("Ask Location Permission")
               .padding()
