@@ -25,7 +25,8 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func requestLocationPermission()  {
       locationManager.requestWhenInUseAuthorization()
-    
+    }
+  
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorizationStatus = manager.authorizationStatus
     }
