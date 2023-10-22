@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LocationPermissionView: View {
-  @StateObject private var locationPermission:LocationViewModel=LocationViewModel()
+  @StateObject var locationPermission: LocationViewModel
 
   var body: some View {
     VStack {
