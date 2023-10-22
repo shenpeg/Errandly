@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A3AB12A42AE1A600002D0914 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB12A32AE1A600002D0914 /* LocationViewModel.swift */; };
 		A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */; };
 		A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B632AD62B0B000822EE /* ContentView.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A3AB12A32AE1A600002D0914 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		A3B99B5E2AD62B0B000822EE /* 67443-sprint3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "67443-sprint3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3App.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */,
 				A3B99B652AD62B0D000822EE /* Assets.xcassets */,
 				A3B99B672AD62B0D000822EE /* Preview Content */,
+				A33726062AE5B00300D4A698 /* Settings.bundle */,
 			);
 			path = "67443-sprint3";
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B99B692AD62B0D000822EE /* Preview Assets.xcassets in Resources */,
+				A33726072AE5B00300D4A698 /* Settings.bundle in Resources */,
 				A3B99B662AD62B0D000822EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
