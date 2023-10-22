@@ -14,6 +14,8 @@ struct ContentView: View {
     return Group {
       LocationPermissionView()
 
+      LocationSearchView(locationSearchService: LocationSearchService())
+
       NavigationView {
         switch authViewModel.state {
         case .signedIn:
