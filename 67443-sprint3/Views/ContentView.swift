@@ -41,17 +41,12 @@ struct ContentView: View {
               case .notDetermined:
                 locationPermission.requestLocationPermission()
               default:
-                // note: in XCode 15, opening settings on an iPhone 15 Pro (simulator) will cause a crash
+                // note: in XCode 15 on an iPhone 15 Pro (simulator), opening settings with cause it to crash
                 // Create the URL that deep links to your app's custom settings.
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     // Ask the system to open that URL.
                     UIApplication.shared.open(url)
                 }
-//                if let url = URL(string:UIApplication.openSettingsURLString) {
-//                   if UIApplication.shared.canOpenURL(url) {
-//                      UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//                   }
-//                }
             }
           } label: {
             Text("Ask Location Permission")
