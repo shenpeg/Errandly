@@ -21,7 +21,9 @@ final class GoogleSignInAuthenticator: ObservableObject {
   /// Signs in the user based upon the selected account.'
   /// - note: Successful calls to this will set the `authViewModel`'s `state` property.
   func signIn() {
-    guard let rootViewController = UIApplication.shared.windows.first?.rootViewController else {
+    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+    let window = windowScene?.windows.first
+    guard let rootViewController = window?.rootViewController else {
       print("There is no root view controller!")
       return
     }
