@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
+		A33726092AE5B28300D4A698 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33726082AE5B28300D4A698 /* LocationPermissionView.swift */; };
 		A3AB12A42AE1A600002D0914 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB12A32AE1A600002D0914 /* LocationViewModel.swift */; };
 		A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */; };
 		A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B632AD62B0B000822EE /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A33726082AE5B28300D4A698 /* LocationPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionView.swift; sourceTree = "<group>"; };
 		A3AB12A32AE1A600002D0914 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		A3B99B5E2AD62B0B000822EE /* 67443-sprint3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "67443-sprint3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3App.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				A3FF436E2AD6E37D00E1DDA6 /* SignInView.swift */,
 				A3FF43702AD6E3A500E1DDA6 /* UserProfileImageView.swift */,
 				A3FF43762AD6E45A00E1DDA6 /* UserProfileView.swift */,
+				A33726082AE5B28300D4A698 /* LocationPermissionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			files = (
 				A3FF43612AD6E04600E1DDA6 /* AuthenticationViewModel.swift in Sources */,
 				A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */,
+				A33726092AE5B28300D4A698 /* LocationPermissionView.swift in Sources */,
 				A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */,
 				A3FF43772AD6E45A00E1DDA6 /* UserProfileView.swift in Sources */,
 				A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */,
