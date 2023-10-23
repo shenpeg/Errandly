@@ -11,9 +11,20 @@ import CoreLocation
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @StateObject var locationPermission:LocationViewModel=LocationViewModel()
+    
+  @State var phoneNumber = ""
   
   var body: some View {
     return Group {
+      TextField("Enter phone number", text: $phoneNumber)
+      Button(
+        action: {
+          MessagesService().sendMessage(phoneNumber)
+        },
+        label: {
+          Text("Send message")
+        }).buttonStyle(.bordered)
+      
       LocationPermissionView(locationPermission: locationPermission)
       
       VStack {
