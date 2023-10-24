@@ -11,7 +11,7 @@ import CoreLocation
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @StateObject var locationPermission:LocationViewModel=LocationViewModel()
-    
+  
   @State var phoneNumber = ""
   
   var body: some View {
