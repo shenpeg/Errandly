@@ -12,6 +12,10 @@ struct ContentView: View {
   
   var body: some View {
     return Group {
+      ErrandListView()
+      
+      UserView()
+
       NavigationView {
         switch authViewModel.state {
         case .signedIn:
