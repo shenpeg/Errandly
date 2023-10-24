@@ -4,7 +4,30 @@ This GitHub repo has 2 branches: **main** and **extra**
 
 ## main
 
-This branch contains all relevant structs, shows ability to push/pull data to/from Firebase, and demonstrates log in functionality with Google OAuth.
+This branch contains all relevant structs, shows ability to pull data from Firestore, and demonstrates log in functionality with Google OAuth.
+
+Structs:
+- Errand
+  - ErrandOwner
+- User
+  - PickedUpErrand
+    - PickedUpErrandOwner
+  - PostedErrand
+    - PostedErrandOwner
+
+Pulling data from Firestore:
+- The ErrandRepository/UserRepository contain the logic for pulling errands/users from Firestore and storing them an an array as [Errand]/[User]
+- The ErrandDetailsView and UserView display the data that was pulled from Firestore
+
+Google Oauth:
+- Google Oauth is used for authentication. Most of this code codes from the [offical example code](https://github.com/google/GoogleSignIn-iOS/tree/main/Samples/Swift/DaysUntilBirthday#google-sign-in-swift-sample-app). The following files contain at least some logic necessary for Google Oauth:
+  - _7443_sprint3App 
+  - ContentView
+  - SignInView
+  - UserProfileImageView
+  - UserProfileView
+  - AuthenticationViewModel
+
 
 
 ## extra
