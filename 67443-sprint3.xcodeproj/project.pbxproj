@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A38C78742AE6DEE600CE736C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3B99B5E2AD62B0B000822EE /* 67443-sprint3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "67443-sprint3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3App.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 				A3B99B652AD62B0D000822EE /* Assets.xcassets */,
 				A3B99B672AD62B0D000822EE /* Preview Content */,
 				A33726062AE5B00300D4A698 /* Settings.bundle */,
+				A382489A2AE80B3400EFF0D1 /* README.md */,
 			);
 			path = "67443-sprint3";
 			sourceTree = "<group>";
