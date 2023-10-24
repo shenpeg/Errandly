@@ -1,15 +1,15 @@
 #  Team 4 Sprint 3
 
-This GitHub repo has 2 branches: main and extra
+This GitHub repo has 2 branches: **main** and **extra**
 
 ## main
 
-This branch contains all relevant structs, shows ability to push/pull data to/from Firebase, and allows users to sign in with Google OAuth.
+This branch contains all relevant structs, shows ability to push/pull data to/from Firebase, and demonstrates log in functionality with Google OAuth.
 
 
 ## extra
 
-This branch contains extra functionality that our team will need for our project. This includes:
+This branch demonstrates extra functionality that our team will need for our project. Location functionality utilizes Apple's [CoreLocation Framework](https://developer.apple.com/documentation/corelocation). This includes:
 - Redirecting to iMessages with a custom message that can be sent to a given phone number
   - Note that sending messages does NOT work on the simulator  
 - Getting the user's current location
