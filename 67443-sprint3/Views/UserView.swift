@@ -24,7 +24,3 @@ struct UserView: View {
     }
   }
 }
-
-#Preview {
-    UserView()
-}

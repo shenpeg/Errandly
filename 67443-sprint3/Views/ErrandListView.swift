@@ -22,7 +22,3 @@ struct ErrandListView: View {
       }
     }
 }
-
-#Preview {
-    ErrandListView()
-}
