@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ErrandListView: View {
+struct MarketplaceView: View {
   @ObservedObject var errandRepository = ErrandRepository()
 
     var body: some View {
@@ -24,5 +24,5 @@ struct ErrandListView: View {
 }
 
 #Preview {
-    ErrandListView()
+  MarketplaceView()
 }

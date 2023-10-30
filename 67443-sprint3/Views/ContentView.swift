@@ -11,30 +11,24 @@ struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   
   var body: some View {
-    return Group {
-      ErrandListView()
+    TabView {
+      MarketplaceView()
+        .tabItem {
+          Image(systemName: "books.vertical")
+          Text("Marketplace")
+        }
+      
+      NewErrandView()
+        .tabItem {
+          Image(systemName: "rectangle.stack.badge.plus")
+          Text("New Errand")
+        }
       
       UserView()
-
-      NavigationView {
-        switch authViewModel.state {
-        case .signedIn:
-          UserProfileView()
-            .navigationTitle(
-              NSLocalizedString(
-                "User Profile",
-                comment: "User profile navigation title"
-              ))
-        case .signedOut:
-          SignInView()
-            .navigationTitle(
-              NSLocalizedString(
-                "Sign-in with Google",
-                comment: "Sign-in navigation title"
-              ))
+        .tabItem {
+          Image(systemName: "chart.bar.xaxis")
+          Text("Profile")
         }
-      }
-      .navigationViewStyle(StackNavigationViewStyle())
     }
   }
 }
