@@ -1,8 +1,8 @@
 #  Team 4 Sprint 3
 
-This GitHub repo has 2 branches: **main** and **extra**
+This GitHub repo has 2 branches: **sprint3** and **extra**
 
-## main
+## sprint3
 
 This branch contains all relevant structs, shows ability to pull data from Firestore, and demonstrates log in functionality with Google OAuth.
 
