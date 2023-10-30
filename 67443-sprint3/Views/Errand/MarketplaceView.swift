@@ -22,7 +22,3 @@ struct MarketplaceView: View {
       }
     }
 }
-
-#Preview {
-  MarketplaceView()
-}
