@@ -32,7 +32,7 @@ struct ErrandView: View {
             Text("\(errand.location.latitude), \(errand.location.longitude)")
           }
           Spacer()
-          Text("Pay: $\(errand.pay) ")
+          Text("Pay: $\(String(format: "%.2f", errand.pay)) ")
 
         }).padding()
       })
