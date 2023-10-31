@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A7913E32AF1C33400017F03 /* MarketplaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7913E22AF1C33400017F03 /* MarketplaceViewModel.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A38B52012AF0191700D3B8E5 /* NewErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38B52002AF0191700D3B8E5 /* NewErrandView.swift */; };
 		A38C78752AE6DEE600CE736C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38C78742AE6DEE600CE736C /* GoogleService-Info.plist */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A7913E22AF1C33400017F03 /* MarketplaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewModel.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A38B52002AF0191700D3B8E5 /* NewErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewErrandView.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */,
+				8A7913E22AF1C33400017F03 /* MarketplaceViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				A3FF43712AD6E3A500E1DDA6 /* UserProfileImageView.swift in Sources */,
 				A3EAE96F2AE8832E0079481D /* ErrandDetailsView.swift in Sources */,
 				A3EAE9312AE862D70079481D /* ErrandView.swift in Sources */,
+				8A7913E32AF1C33400017F03 /* MarketplaceViewModel.swift in Sources */,
 				A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */,
 				A3EAE97B2AE8889C0079481D /* UserRepository.swift in Sources */,
 				A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */,

@@ -12,7 +12,7 @@ struct ErrandDetailsView: View {
 
   var body: some View {
     let dateFormat = DateFormatter()
-    dateFormat.dateFormat = "YY/MM/dd"
+    dateFormat.dateFormat = "MM/dd/YY"
     
     return VStack(alignment: .leading) {
       Text("Name: \(errand.name)")

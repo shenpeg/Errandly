@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MarketplaceView: View {
   @ObservedObject var errandRepository = ErrandRepository()
+  var searchField: String = ""
+  var displayedErrands = [Errand]()
 
     var body: some View {
       let errands = errandRepository.errands
@@ -20,5 +22,11 @@ struct MarketplaceView: View {
           }
         }.navigationBarTitle("Errands")
       }
+    }
+}
+
+struct MarketplaceView_Previews: PreviewProvider {
+    static var previews: some View {
+      MarketplaceView()
     }
 }
