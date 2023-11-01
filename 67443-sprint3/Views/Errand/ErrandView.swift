@@ -24,6 +24,18 @@ struct ErrandView: View {
             Spacer()
             Text("due by \(dateFormat.string(from: errand.date_due))")
           }
+            HStack {
+                Text("tags:")
+                  .font(.callout)
+                
+                ForEach(errand.tags, id: \.self) {tag in
+                  Text(tag)
+                    .font(.callout)
+//                    .padding(.horizontal, 15)
+//                    .foregroundColor(darkGray)
+//                    .background(Capsule().fill(mint))
+                }
+            }
           Spacer()
           HStack {
             Text("\(errand.owner.first_name) \(errand.owner.last_name) |")
