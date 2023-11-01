@@ -14,10 +14,10 @@ struct ErrandDetailsPickUpView: View {
     let payFormat = String(format: "$%.2f", errand.pay)
     
     VStack {
-      // Add a horizontal separator line above the text and button
+      // Horizontal separator line
       Rectangle()
-        .frame(height: 1) // Adjust the height as needed
-        .foregroundColor(darkBlue) // Color of the separator
+        .frame(height: 1)
+        .foregroundColor(darkBlue)
       
       HStack {
         Text("Pay:")

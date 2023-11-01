@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ErrandDetailsInfoView: View {
+struct ErrandDetailsProfileView: View {
     var errand: Errand
 
     var body: some View {
@@ -15,8 +15,13 @@ struct ErrandDetailsInfoView: View {
         dateFormat.dateFormat = "MM/dd/YY"
         let timeDifference = calculateTimeDifference(from: errand.date_posted)
 
-        return VStack {
+        return VStack(alignment: .leading) {
             HStack {
+              Ellipse()
+                .foregroundColor(.clear)
+                .frame(width: 34, height: 34)
+                .background(AsyncImage(url: URL(string: "https://via.placeholder.com/34x34")))
+              
                 Text("Owner:")
                 Text("\(errand.owner.first_name) \(errand.owner.last_name)")
                     .font(.headline)
@@ -24,12 +29,9 @@ struct ErrandDetailsInfoView: View {
             }
 
             HStack {
-                Text("Location:")
+                // edit to calculate how far errand's location is from currUser location
                 Text("\(errand.location.latitude), \(errand.location.longitude)")
-            }
-
-            HStack {
-                Text("Date Posted:")
+                Text(" | ")
                 Text(formatTimeDifference(timeDifference))
             }
         }
