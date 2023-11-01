@@ -22,16 +22,28 @@ struct ErrandDetailsView: View {
         return VStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
+                    HStack {
+                        Text(errand.status)
+                            .font(.headline)
+                            .foregroundColor(darkBlue)
+                            .italic()
+                            .bold()
+                    }
                     Text(errand.name)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                   
-                    // Horizontal separator line
-                    Rectangle()
-                      .frame(height: 1)
-                      .foregroundColor(darkBlue)
-                    
+                    HStack() {
+                      ForEach(errand.tags, id: \.self) {tag in
+                        Text(tag)
+                          .font(.callout)
+                          .padding(.horizontal, 15)
+                          .foregroundColor(darkGray)
+                          .background(Capsule().fill(mint))
+                      }
+                    }
+
                     ErrandDetailsProfileView(errand: errand)
                     
                     // Horizontal separator line
@@ -41,17 +53,7 @@ struct ErrandDetailsView: View {
                   
                     HStack {
                         Text(errand.description)
-                            .font(.body)
-                            .foregroundColor(.secondary)
                     }
-                  
-                    // replacement description text to test formatting
-                    Text("I have a cute cat that needs petsitting this weekend. Preferably you are a cat owner yourself otherwise I can teach u the basics.")
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    Text("I live at One on Centre. Please reach out to me before u pick up this errand and we can discuss details!!")
-                    .font(.body)
-                    .foregroundColor(.secondary)
                     
                     // Horizontal separator line
                     Rectangle()
@@ -62,18 +64,14 @@ struct ErrandDetailsView: View {
                         Text("Date Due:")
                         Text(dateFormat.string(from: errand.date_due))
                     }
-                    
-                    HStack {
-                        Text("Status:")
-                        Text(errand.status)
-                    }
                 }
                 .padding(20)
                 .navigationBarTitle("Errand Details", displayMode: .inline)
             }
-            
-            // Include the ErrandDetailsPickUpView here
-            ErrandDetailsPickUpView(errand: errand)
+          
+          ErrandDetailsPickUpView(errand: errand, errandStatusChanged:  {
+            // Handle errand.status change in the parent view if needed
+          })
         }
     }
 }

@@ -16,24 +16,39 @@ struct ErrandDetailsProfileView: View {
         let timeDifference = calculateTimeDifference(from: errand.date_posted)
 
         return VStack(alignment: .leading) {
+            Spacer()
             HStack {
-              Ellipse()
-                .foregroundColor(.clear)
-                .frame(width: 34, height: 34)
-                .background(AsyncImage(url: URL(string: "https://via.placeholder.com/34x34")))
+                AsyncImage(url: URL(string: "https://via.placeholder.com/34x34")) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 34, height: 34)
+                            .clipShape(Circle())
+                    case .empty:
+                        EmptyView()
+                    case .failure:
+                        Image(systemName: "xmark.octagon")
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
               
-                Text("Owner:")
                 Text("\(errand.owner.first_name) \(errand.owner.last_name)")
                     .font(.headline)
                     .foregroundColor(.primary)
-            }
+              }
 
-            HStack {
-                // edit to calculate how far errand's location is from currUser location
-                Text("\(errand.location.latitude), \(errand.location.longitude)")
-                Text(" | ")
-                Text(formatTimeDifference(timeDifference))
-            }
+              HStack {
+                  // edit to calculate how far errand's location is from currUser location
+                  Text("\(errand.location.latitude), \(errand.location.longitude)")
+                  .font(.body)
+                  .foregroundColor(.secondary)
+                  Text(" | ").font(.body).foregroundColor(.secondary)
+                  Text(formatTimeDifference(timeDifference)).font(.body)
+                  .foregroundColor(.secondary)
+              }
         }
     }
 
