@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */; };
+		15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A38B52012AF0191700D3B8E5 /* NewErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38B52002AF0191700D3B8E5 /* NewErrandView.swift */; };
 		A38C78752AE6DEE600CE736C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38C78742AE6DEE600CE736C /* GoogleService-Info.plist */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsPickUpView.swift; sourceTree = "<group>"; };
+		15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsProfileView.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A38B52002AF0191700D3B8E5 /* NewErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewErrandView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				A3EAE9302AE862D70079481D /* ErrandView.swift */,
 				A3EAE92D2AE862510079481D /* MarketplaceView.swift */,
 				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
+				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
 				A38B52002AF0191700D3B8E5 /* NewErrandView.swift */,
 				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
 			);
@@ -407,6 +410,7 @@
 				A3EAE92C2AE861860079481D /* ErrandRepository.swift in Sources */,
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
 				A3EAE9792AE8881B0079481D /* PostedErrandRunner.swift in Sources */,
+				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
 				A3EAE9772AE888010079481D /* PickedUpErrandOwner.swift in Sources */,
 				A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */,
 				A3FF43772AD6E45A00E1DDA6 /* UserProfileView.swift in Sources */,
