@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A38B52012AF0191700D3B8E5 /* NewErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38B52002AF0191700D3B8E5 /* NewErrandView.swift */; };
 		A38C78752AE6DEE600CE736C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38C78742AE6DEE600CE736C /* GoogleService-Info.plist */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsPickUpView.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A38B52002AF0191700D3B8E5 /* NewErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewErrandView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				A3EAE92D2AE862510079481D /* MarketplaceView.swift */,
 				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
 				A38B52002AF0191700D3B8E5 /* NewErrandView.swift */,
+				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */,
 				A3EAE97B2AE8889C0079481D /* UserRepository.swift in Sources */,
 				A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */,
+				15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
