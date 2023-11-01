@@ -12,6 +12,7 @@ struct MarketplaceView: View {
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
   @State var searchField: String = ""
   @State var displayedErrands = [Errand]()
+  var tags: [String] = ["car", "pet", "laundry"]
   
 //  func loadData() {
 //    Parser().fetchRepositories { (errands) in
@@ -38,9 +39,39 @@ struct MarketplaceView: View {
     })
     let errands = errandRepository.errands
     
+    
     return NavigationView {
       VStack() {
-        TextField("Search", text: binding).padding()
+        HStack {
+          Circle()
+            .fill(Color.blue)
+            .frame(height:30)
+            .padding()
+          TextField("search", text: binding)
+            .overlay(
+              RoundedRectangle(cornerRadius: 14)
+                .stroke(Color.black, lineWidth: 2)
+                .padding()
+            )
+          Circle()
+            .fill(Color.blue)
+            .frame(height:30)
+            .padding()
+        }
+        HStack {
+          Text("sort by")
+            .font(.callout)
+            .padding(.horizontal, 15)
+            .foregroundColor(Color.white)
+            .background(Capsule().fill(Color.blue))
+          ForEach(tags, id: \.self) {tag in
+            Text(tag)
+              .font(.callout)
+              .padding(.horizontal, 15)
+              .foregroundColor(Color.white)
+              .background(Capsule().fill(Color.blue))
+          }
+        }
         List {
           ForEach(errands) { errand in
             ErrandView(errand: errand)

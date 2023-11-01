@@ -39,8 +39,6 @@ struct ErrandView: View {
           Spacer()
           HStack {
             Text("\(errand.owner.first_name) \(errand.owner.last_name) |")
-//            ForEach(errand.tags) { tag in
-//            }
             Text("\(errand.location.latitude), \(errand.location.longitude)")
           }
           Spacer()
