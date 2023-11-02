@@ -16,9 +16,11 @@ struct MarketplaceView: View {
       return NavigationView {
         List {
           ForEach(errands) { errand in
-            ErrandView(errand: errand)
+            ErrandView(errand: errand, isCurUser: false)
+              .padding(.bottom, 10)
           }
         }.navigationBarTitle("Errands")
+          .listStyle(.plain)
       }
     }
 }
