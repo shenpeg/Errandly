@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-// custom colors
-let darkBlue = Color(red: 0.09, green: 0.34, blue: 0.95)
-let mint = Color(red: 0.84, green: 0.99, blue: 0.96)
-let darkGray = Color(red: 0.25, green: 0.25, blue: 0.25)
-
 struct ErrandDetailsView: View {
     var errand: Errand
 
