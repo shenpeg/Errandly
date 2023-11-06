@@ -10,7 +10,8 @@ import FirebaseFirestoreSwift
 
 struct ErrandOwner: Identifiable, Codable {
   
-  @DocumentID var id: String?
+  @DocumentID var errandId: String?
+  var id: String
   var first_name: String
   var last_name: String
   var pfp: String
@@ -19,6 +20,7 @@ struct ErrandOwner: Identifiable, Codable {
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
+    case errandId
     case id
     case first_name
     case last_name
