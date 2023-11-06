@@ -15,6 +15,8 @@ let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
+  // temporary - will pass in the current user's id into ContentView after they log in
+  var curUserId: String = ""
   
   var body: some View {
     TabView {
@@ -30,9 +32,9 @@ struct ContentView: View {
           Text("New Errand")
         }
       
-      UserView()
+      UserProfileView(userId: curUserId, isCurUser: true)
         .tabItem {
-          Image(systemName: "chart.bar.xaxis")
+          Image(systemName: "person")
           Text("Profile")
         }
     }

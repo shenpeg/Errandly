@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct MarketplaceView: View {
-  @ObservedObject var errandRepository = ErrandRepository()
+//  @ObservedObject var errandRepository = ErrandRepository()
+  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
 
     var body: some View {
-      let errands = errandRepository.errands
+//      let errands = errandRepository.errands
+      let errandsVM = marketplaceViewModel.errandViewModels
       
       return NavigationView {
         List {
-          ForEach(errands) { errand in
-            ErrandView(errand: errand, isCurUser: false)
+          ForEach(errandsVM) { errandVM in
+            ErrandView(errand: errandVM.errand, isCurUser: false)
               .padding(.bottom, 10)
           }
         }.navigationBarTitle("Errands")

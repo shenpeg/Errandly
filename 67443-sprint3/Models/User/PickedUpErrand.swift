@@ -10,7 +10,8 @@ import FirebaseFirestoreSwift
 
 struct PickedUpErrand: Identifiable, Codable {
   
-  @DocumentID var id: String?
+  @DocumentID var userId: String?
+  var id: String
   var date_due: Date
   var date_posted: Date
   var name: String
@@ -21,6 +22,7 @@ struct PickedUpErrand: Identifiable, Codable {
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
+    case userId
     case id
     case date_due
     case date_posted
