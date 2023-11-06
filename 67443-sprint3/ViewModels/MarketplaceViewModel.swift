@@ -8,9 +8,9 @@ class MarketplaceViewModel: ObservableObject {
   
   @Published var errandRepository = ErrandRepository()
 //  @Published var errands: [Errand] = []
-  
-  @Published var searchText: String = ""
 //  @Published var filteredErrands: [Errand] = []
+
+  @Published var searchText: String = ""
   @Published var filteredErrands: [ErrandViewModel] = []
   
   init() {
