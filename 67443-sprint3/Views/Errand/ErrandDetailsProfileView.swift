@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ErrandDetailsProfileView: View {
     var errand: Errand
+    @State private var locationName: String = ""
 
     var body: some View {
         let dateFormat = DateFormatter()
@@ -41,14 +43,16 @@ struct ErrandDetailsProfileView: View {
               }
 
               HStack {
-                  // edit to calculate how far errand's location is from currUser location
-                  Text("\(errand.location.latitude), \(errand.location.longitude)")
-                  .font(.body)
-                  .foregroundColor(.secondary)
+                  Text(locationName)
+                      .font(.body)
+                      .foregroundColor(.secondary)
                   Text(" | ").font(.body).foregroundColor(.secondary)
                   Text(formatTimeDifference(timeDifference)).font(.body)
-                  .foregroundColor(.secondary)
+                      .foregroundColor(.secondary)
               }
+        }
+        .onAppear {
+            getLocationName(for: CLLocation(latitude: errand.location.latitude, longitude: errand.location.longitude))
         }
     }
 
@@ -67,6 +71,19 @@ struct ErrandDetailsProfileView: View {
             return formattedString + " ago"
         } else {
             return "Unknown"
+        }
+    }
+    
+    // Fetch location name using reverse geocoding
+    func getLocationName(for location: CLLocation) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Error in reverse geocoding: \(error.localizedDescription)")
+            } else if let placemark = placemarks?.first {
+                // Display state name with placemark.administrativeArea
+                self.locationName = placemark.administrativeArea ?? "Unknown State"
+            }
         }
     }
 }
