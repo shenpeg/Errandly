@@ -74,10 +74,12 @@ struct MarketplaceView: View {
         }
         List {
           ForEach(errands) { errand in
-            ErrandView(errand: errand)
+            ErrandView(errand: errand, isCurUser: false)
+              .padding(.bottom, 10)
           }
         }.navigationBarTitle("Errands")
-      } // .onAppear(perform: loadData)
+          .listStyle(.plain)
+      }
       
     }
   }
