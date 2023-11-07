@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */; };
 		15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */; };
-		157B423A2AF96B9B003E71DE /* NewErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157B42392AF96B9B003E71DE /* NewErrandView.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */; };
 		A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */; };
@@ -80,7 +79,6 @@
 /* Begin PBXFileReference section */
 		15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsPickUpView.swift; sourceTree = "<group>"; };
 		15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsProfileView.swift; sourceTree = "<group>"; };
-		157B42392AF96B9B003E71DE /* NewErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewErrandView.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrandTabs.swift; sourceTree = "<group>"; };
 		A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewModel.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
 				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
 				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
-				157B42392AF96B9B003E71DE /* NewErrandView.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -434,7 +431,6 @@
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
 				A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */,
 				A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */,
-				157B423A2AF96B9B003E71DE /* NewErrandView.swift in Sources */,
 				A3FF43772AD6E45A00E1DDA6 /* UserGoogleProfileView.swift in Sources */,
 				A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */,
 				A3EAE96D2AE881160079481D /* ErrandOwner.swift in Sources */,
