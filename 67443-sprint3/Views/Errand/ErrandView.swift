@@ -38,7 +38,7 @@ struct ErrandView: View {
           
           VStack(alignment: .trailing) {
             Text("due by")
-            Text("\(dateFormat.string(from: errand.date_due))")
+            Text("\(dateFormat.string(from: errand.dateDue))")
           }
           .padding(.top, 5)
           .font(.footnote)

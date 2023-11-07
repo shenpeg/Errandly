@@ -44,7 +44,7 @@ class UserRepository: ObservableObject {
     guard let errandId = errand.id else { return }
     
     let pickedUpErrandOwner = PickedUpErrandOwner(id: errand.owner.id, first_name: errand.owner.first_name, last_name: errand.owner.last_name)
-    let pickedUpErrand = PickedUpErrand(id: errandId, date_due: errand.date_due, date_posted: errand.date_posted, name: errand.name, owner: pickedUpErrandOwner, pay: errand.pay, status: errand.status)
+    let pickedUpErrand = PickedUpErrand(id: errandId, dateDue: errand.dateDue, datePosted: errand.datePosted, name: errand.name, owner: pickedUpErrandOwner, pay: errand.pay, status: errand.status)
     
     var pickedUpErrandEncoded: (Any)? = nil
     do {
@@ -63,7 +63,7 @@ class UserRepository: ObservableObject {
     guard let userId = user.id else { return }
     guard let errandId = errand.id else { return }
     
-    let postedErrand = PostedErrand(id: errandId, date_due: errand.date_due, date_posted: errand.date_posted, name: errand.name, runner: nil, pay: errand.pay, status: errand.status)
+    let postedErrand = PostedErrand(id: errandId, dateDue: errand.dateDue, datePosted: errand.datePosted, name: errand.name, runner: nil, pay: errand.pay, status: errand.status)
     
     var postedErrandEncoded: (Any)? = nil
     do {

@@ -57,7 +57,7 @@ struct ErrandDetailsView: View {
                   
                     HStack {
                         Text("Date Due:")
-                        Text(dateFormat.string(from: errand.date_due))
+                        Text(dateFormat.string(from: errand.dateDue))
                     }
                 }
                 .padding(20)
