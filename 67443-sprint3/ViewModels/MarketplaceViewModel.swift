@@ -1,3 +1,4 @@
+
 import Foundation
 import Combine
 
@@ -35,4 +36,10 @@ class MarketplaceViewModel: ObservableObject {
       fatalError("Unable to find the corresponding errand.")
     }
   }
+  
+  //from BookManager_Firebase: LibraryViewModel
+  func add(_ errand: Errand) {
+    errandRepository.create(errand)
+  }
+
 }

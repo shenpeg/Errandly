@@ -12,8 +12,8 @@ struct PostedErrand: Identifiable, Codable {
   
   @DocumentID var userId: String?
   var id: String
-  var date_due: Date
-  var date_posted: Date
+  var dateDue: Date
+  var datePosted: Date
   var name: String
   var runner: PostedErrandRunner?
   var pay: Double
@@ -24,8 +24,8 @@ struct PostedErrand: Identifiable, Codable {
   enum CodingKeys: String, CodingKey {
     case userId
     case id
-    case date_due
-    case date_posted
+    case dateDue = "date_due"
+    case datePosted = "date_posted"
     case name
     case runner
     case pay

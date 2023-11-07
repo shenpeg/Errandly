@@ -13,7 +13,7 @@ struct ErrandDetailsProfileView: View {
     var body: some View {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "MM/dd/YY"
-        let timeDifference = calculateTimeDifference(from: errand.date_posted)
+        let timeDifference = calculateTimeDifference(from: errand.datePosted)
 
         return VStack(alignment: .leading) {
             Spacer()

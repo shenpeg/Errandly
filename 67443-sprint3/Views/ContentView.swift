@@ -26,10 +26,10 @@ struct ContentView: View {
           Text("Marketplace")
         }
       
-      NewErrandView()
+      PostErrandView()
         .tabItem {
           Image(systemName: "rectangle.stack.badge.plus")
-          Text("New Errand")
+          Text("Post Errand")
         }
       
       UserProfileView(userId: curUserId, isCurUser: true)
