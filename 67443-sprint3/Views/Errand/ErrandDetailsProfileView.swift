@@ -1,66 +1,62 @@
+//
+//  ErrandDetailsProfileView.swift
+//  67443-sprint3
+//
+//  Created by /peggy on 11/1/23.
+//
+// This view is for displaying the author of an errand post
+
 import SwiftUI
+import CoreLocation
 
 struct ErrandDetailsProfileView: View {
   @ObservedObject var usersViewModel: UsersViewModel = UsersViewModel()
   var errand: Errand
+  @StateObject private var viewModel = LocationTimeFormatViewModel()
+
 
   var body: some View {
     let errandOwnerUser = usersViewModel.getUser(errand.owner.id)
 
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
-    let timeDifference = calculateTimeDifference(from: errand.datePosted)
+    let timeDifference = viewModel.calculateTimeDifference(from: errand.datePosted)
 
-    return VStack(alignment: .leading) {
-      Spacer()
-      HStack {
-        UserProfileImageView(pfp: errand.owner.pfp, size: 20)
-  
-        if (errandOwnerUser != nil) {
-          NavigationLink(destination:
-            UserProfileView(user: errandOwnerUser, isCurUser: false)
-          ) {
+    return HStack {
+      
+      VStack{
+          UserProfileImageView(pfp: errand.owner.pfp, size: 32)
+      }
+    
+      VStack(alignment: .leading){
+          if (errandOwnerUser != nil) {
+            NavigationLink(destination:
+                            UserProfileView(user: errandOwnerUser, isCurUser: false)
+            ) {
+              Text("\(errand.owner.first_name) \(errand.owner.last_name)")
+                .font(.headline)
+            }
+            .accentColor(.black)
+          }
+          else {
             Text("\(errand.owner.first_name) \(errand.owner.last_name)")
               .font(.headline)
+              .foregroundColor(.primary)
           }
-          .accentColor(.black)
-        }
-        else {
-          Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-          .font(.headline)
-          .foregroundColor(.primary)
+          
+          HStack{
+            Text(viewModel.locationName)
+                .font(.footnote)
+                .foregroundColor(.secondary)
+            Text("|").font(.footnote).foregroundColor(.secondary)
+            Text(viewModel.formatTimeDifference(timeDifference))
+                .font(.footnote)
+                .foregroundColor(.secondary)
+          }
         }
       }
-
-      HStack {
-        // edit to calculate how far errand's location is from currUser location
-        Text("\(errand.location.latitude), \(errand.location.longitude)")
-        .font(.body)
-        .foregroundColor(.secondary)
-        Text(" | ").font(.body).foregroundColor(.secondary)
-        Text(formatTimeDifference(timeDifference)).font(.body)
-        .foregroundColor(.secondary)
-    }
-      
+      .onAppear {
+        viewModel.getLocationName(for: CLLocation(latitude: errand.location.latitude, longitude: errand.location.longitude))
+      }
   }
-}
-
-  func calculateTimeDifference(from date: Date) -> TimeInterval {
-    let currentTime = Date()
-    return currentTime.timeIntervalSince(date)
-  }
-
-  func formatTimeDifference(_ timeDifference: TimeInterval) -> String {
-    let formatter = DateComponentsFormatter()
-    formatter.allowedUnits = [.second, .minute, .hour, .day, .weekOfMonth, .month, .year]
-    formatter.maximumUnitCount = 1
-    formatter.unitsStyle = .abbreviated
-
-    if let formattedString = formatter.string(from: timeDifference) {
-      return formattedString + " ago"
-    } else {
-      return "Unknown"
-    }
-  }
-  
 }

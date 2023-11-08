@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ErrandDetailsPickUpView: View {
-  var errand: Errand
-  @State private var isAlertPresented = false
-  var errandStatusChanged: () -> Void // Callback to handle the status change
+  @ObservedObject var viewModel: ErrandDetailsViewModel
+  @State private var isPickUpAlertPresented = false
+  @State private var isCompletionAlertPresented = false
 
+  init(errand: Errand) {
+      viewModel = ErrandDetailsViewModel(errand: errand)
+  }
 
   var body: some View {
-    let payFormat = String(format: "$%.2f", errand.pay)
+    let payFormat = String(format: "$%.2f", viewModel.errand.pay)
     
     VStack {
       // Horizontal separator line
@@ -23,17 +26,16 @@ struct ErrandDetailsPickUpView: View {
         .foregroundColor(darkBlue)
       
       HStack {
-        Text("Pay:")
         Text(payFormat)
           .font(.headline)
           .foregroundColor(.black)
         
         Spacer()
         
-        if errand.status == "new" {
+        if viewModel.errand.status == "new" {
             Button(action: {
                 // Show the pop-up
-                isAlertPresented = true
+                isPickUpAlertPresented = true
             }) {
                 Text("Pick up errand")
                     .font(.headline)
@@ -43,21 +45,21 @@ struct ErrandDetailsPickUpView: View {
                     .background(darkBlue)
                     .cornerRadius(40)
             }
-            .alert(isPresented: $isAlertPresented) {
+            .alert(isPresented: $isPickUpAlertPresented) {
                 Alert(
                     title: Text("Are you sure you want to pick up this errand?"),
                     primaryButton: .default(Text("Yes, I'm sure")) {
-                        // Handle the user's confirmation action
-                        // need to change errand.status to in progress
-                        errandStatusChanged()
+                      // change status to in progress:
+                      viewModel.markAsInProgress()
+                      // add a new PickedUpErrand to the current user
+                      // in the new PickedUpErrand, var owner: PickedUpErrandOwner should be the errand owner (viewModel.errand.owner)
                     },
                     secondaryButton: .cancel(Text("Cancel"))
                 )
             }
-        } else if errand.status == "in progress" {
+        } else if viewModel.errand.status == "in progress" {
             Button(action: {
-              // handle the "Mark completed" action
-              // basically change errand.status to completed
+              isCompletionAlertPresented = true
             }) {
               Text("Mark completed")
                 .font(.headline)
@@ -67,7 +69,17 @@ struct ErrandDetailsPickUpView: View {
                 .background(mint)
                 .cornerRadius(40)
             }
-        } else if errand.status == "completed" {
+            .alert(isPresented: $isCompletionAlertPresented) {
+                Alert(
+                    title: Text("Mark this errand as complete?"),
+                    primaryButton: .default(Text("Yes, I've completed it!")) {
+                        // Change status to completed
+                        viewModel.markAsCompleted()
+                    },
+                    secondaryButton: .cancel(Text("No, Cancel"))
+                )
+            }
+        } else if viewModel.errand.status == "completed" {
             // technically completed ones should only show up in profile not marketplace
             Text("Completed")
                 .font(.headline)

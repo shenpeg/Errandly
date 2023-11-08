@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ErrandDetailsView: View {
-    var errand: Errand
+    @ObservedObject var viewModel: ErrandDetailsViewModel
+
+    init(errand: Errand) {
+        viewModel = ErrandDetailsViewModel(errand: errand)
+    }
 
     var body: some View {
         let dateFormat = DateFormatter()
@@ -18,28 +22,28 @@ struct ErrandDetailsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Text(errand.status)
+                        Text(viewModel.errand.status)
                             .font(.headline)
                             .foregroundColor(darkBlue)
                             .italic()
                             .bold()
                     }
-                    Text(errand.name)
+                    Text(viewModel.errand.name)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                   
                     HStack() {
-                      ForEach(errand.tags, id: \.self) {tag in
+                      ForEach(viewModel.errand.tags, id: \.self) {tag in
                         Text(tag)
                           .font(.callout)
                           .padding(.horizontal, 15)
-                          .foregroundColor(darkGray)
-                          .background(Capsule().fill(mint))
+                          .foregroundColor(darkBlue)
+                          .background(Capsule().fill(lightGray))
                       }
                     }
 
-                    ErrandDetailsProfileView(errand: errand)
+                    ErrandDetailsProfileView(errand: viewModel.errand)
                     
                     // Horizontal separator line
                     Rectangle()
@@ -47,7 +51,7 @@ struct ErrandDetailsView: View {
                       .foregroundColor(darkBlue)
                   
                     HStack {
-                        Text(errand.description)
+                      Text(viewModel.errand.description)
                     }
                     
                     // Horizontal separator line
@@ -57,15 +61,14 @@ struct ErrandDetailsView: View {
                   
                     HStack {
                         Text("Date Due:")
-                        Text(dateFormat.string(from: errand.dateDue))
+                        Text(dateFormat.string(from: viewModel.errand.dateDue))
                     }
                 }
                 .padding(20)
             }
           
-          ErrandDetailsPickUpView(errand: errand, errandStatusChanged:  {
-            // Handle errand.status change in the parent view if needed
-          })
+          ErrandDetailsPickUpView(errand: viewModel.errand)
         }
     }
+  
 }
