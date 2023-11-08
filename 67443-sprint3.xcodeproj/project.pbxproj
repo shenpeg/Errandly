@@ -10,6 +10,7 @@
 		15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */; };
 		15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */; };
 		1554F9FE2AFB321200A13D85 /* ErrandDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */; };
+		1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */; };
@@ -82,6 +83,7 @@
 		15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsPickUpView.swift; sourceTree = "<group>"; };
 		15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsProfileView.swift; sourceTree = "<group>"; };
 		1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsViewModel.swift; sourceTree = "<group>"; };
+		1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTimeFormatViewModel.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrandTabs.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */,
 				A3679F082AF7211700A3C2DA /* ErrandViewModel.swift */,
 				1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */,
+				1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
 				A3EAE9792AE8881B0079481D /* PostedErrandRunner.swift in Sources */,
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
+				1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */,
 				A3EAE9772AE888010079481D /* PickedUpErrandOwner.swift in Sources */,
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
 				A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */,
