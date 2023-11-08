@@ -9,67 +9,37 @@ import SwiftUI
 
 struct MarketplaceView: View {
   @ObservedObject var errandRepository = ErrandRepository()
-  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
+  @ObservedObject var marketplaceVM = MarketplaceViewModel()
   @State var searchField: String = ""
-  @State var displayedErrands = [Errand]()
   var tags: [String] = ["car", "pet", "laundry"]
   
-//  func loadData() {
-//    Parser().fetchRepositories { (errands) in
-//      self.marketplaceViewModel.errands = errands
-//      self.displayedErrands = errands
-//    }
-//  }
-    
-  func displayErrands() {
-    if searchField == "" {
-        displayedErrands = marketplaceViewModel.errands
-    } else {
-      displayedErrands = marketplaceViewModel.filteredErrands
-    }
-  }
-
   var body: some View {
-    let binding = Binding<String>(get: {
-        self.searchField
-      }, set: {
-        self.searchField = $0
-        self.marketplaceViewModel.search(searchText: self.searchField)
-        self.displayErrands()
-    })
     let errands = errandRepository.errands
-    
-    
     return NavigationView {
       VStack() {
         HStack {
-          Circle()
-            .fill(Color.blue)
-            .frame(height:30)
-            .padding()
-          TextField("search", text: binding)
-            .overlay(
-              RoundedRectangle(cornerRadius: 14)
-                .stroke(Color.black, lineWidth: 2)
-                .padding()
-            )
-          Circle()
-            .fill(Color.blue)
-            .frame(height:30)
-            .padding()
-        }
-        HStack {
+          // location icon
+//          Circle()
+//            .fill(Color.blue)
+//            .frame(height:30)
+//            .padding()
+          // information icon
+//          Circle()
+//            .fill(Color.blue)
+//            .frame(height:30)
+//            .padding()
           Text("sort by")
-            .font(.callout)
-            .padding(.horizontal, 15)
-            .foregroundColor(Color.white)
-            .background(Capsule().fill(Color.blue))
+            .font(.footnote)
+            .padding(.horizontal, 10)
+            .foregroundColor(darkBlue)
+            .background(Capsule().fill(lightGray))
+          Text("|")
           ForEach(tags, id: \.self) {tag in
             Text(tag)
-              .font(.callout)
-              .padding(.horizontal, 15)
-              .foregroundColor(Color.white)
-              .background(Capsule().fill(Color.blue))
+              .font(.footnote)
+              .padding(.horizontal, 10)
+              .foregroundColor(darkBlue)
+              .background(Capsule().fill(lightGray))
           }
         }
         List {
@@ -79,14 +49,15 @@ struct MarketplaceView: View {
           }
         }.navigationBarTitle("Errands")
           .listStyle(.plain)
+          .searchable(text: $marketplaceVM.searchText)
       }
       
     }
   }
 }
-
-struct MarketplaceView_Previews: PreviewProvider {
-    static var previews: some View {
-      MarketplaceView()
-    }
-}
+//
+//struct MarketplaceView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      MarketplaceView()
+//    }
+//}
