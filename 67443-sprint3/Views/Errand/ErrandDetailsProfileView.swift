@@ -13,49 +13,48 @@ struct ErrandDetailsProfileView: View {
     var errand: Errand
     @State private var locationName: String = ""
 
-    var body: some View {
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/YY"
-        let timeDifference = calculateTimeDifference(from: errand.datePosted)
+  var body: some View {
+      let dateFormat = DateFormatter()
+      dateFormat.dateFormat = "MM/dd/YY"
+      let timeDifference = calculateTimeDifference(from: errand.datePosted)
 
-        return VStack(alignment: .leading) {
-            Spacer()
-            HStack {
-                AsyncImage(url: URL(string: "https://via.placeholder.com/34x34")) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 34, height: 34)
-                            .clipShape(Circle())
-                    case .empty:
-                        EmptyView()
-                    case .failure:
-                        Image(systemName: "xmark.octagon")
-                    @unknown default:
-                        EmptyView()
-                    }
-                }
-              
-                Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+      return HStack {
+          AsyncImage(url: URL(string: "https://via.placeholder.com/34x34")) { phase in
+              switch phase {
+              case .success(let image):
+                  image
+                      .resizable()
+                      .aspectRatio(contentMode: .fill)
+                      .frame(width: 34, height: 34)
+                      .clipShape(Circle())
+              case .empty:
+                  EmptyView()
+              case .failure:
+                  Image(systemName: "xmark.octagon")
+              @unknown default:
+                  EmptyView()
               }
-
+          }
+          
+          VStack(alignment: .leading) {
+              Text("\(errand.owner.first_name) \(errand.owner.last_name)")
+                  .font(.headline)
+                  .foregroundColor(.primary)
               HStack {
                   Text(locationName)
-                      .font(.body)
+                      .font(.footnote)
                       .foregroundColor(.secondary)
-                  Text(" | ").font(.body).foregroundColor(.secondary)
-                  Text(formatTimeDifference(timeDifference)).font(.body)
+                  Text("|").font(.footnote).foregroundColor(.secondary)
+                  Text(formatTimeDifference(timeDifference))
+                      .font(.footnote)
                       .foregroundColor(.secondary)
               }
-        }
-        .onAppear {
-            getLocationName(for: CLLocation(latitude: errand.location.latitude, longitude: errand.location.longitude))
-        }
-    }
+          }
+      }
+      .onAppear {
+          getLocationName(for: CLLocation(latitude: errand.location.latitude, longitude: errand.location.longitude))
+      }
+  }
 
     func calculateTimeDifference(from date: Date) -> TimeInterval {
         let currentTime = Date()

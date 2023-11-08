@@ -38,8 +38,8 @@ struct ErrandDetailsView: View {
                         Text(tag)
                           .font(.callout)
                           .padding(.horizontal, 15)
-                          .foregroundColor(darkGray)
-                          .background(Capsule().fill(mint))
+                          .foregroundColor(darkBlue)
+                          .background(Capsule().fill(lightGray))
                       }
                     }
 

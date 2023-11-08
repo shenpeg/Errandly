@@ -26,7 +26,6 @@ struct ErrandDetailsPickUpView: View {
         .foregroundColor(darkBlue)
       
       HStack {
-        Text("Pay:")
         Text(payFormat)
           .font(.headline)
           .foregroundColor(.black)
