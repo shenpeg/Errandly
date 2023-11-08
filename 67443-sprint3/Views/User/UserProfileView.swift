@@ -7,7 +7,7 @@ struct UserProfileView: View {
   var isCurUser: Bool
 
   var body: some View {
-    return NavigationView {
+    return NavigationStack {
       VStack(alignment: .leading, spacing: 0) {
         if (user != nil) {
           UserProfileInfoView(user: user!, isCurUser: isCurUser)
@@ -17,5 +17,6 @@ struct UserProfileView: View {
         }
       }
     }
+    .accentColor(.black)
   }
 }

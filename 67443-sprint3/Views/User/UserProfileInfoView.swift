@@ -38,9 +38,7 @@ struct UserProfileInfoView: View {
         HStack() {
           
           VStack(alignment: .leading) {
-            if let userProfile = GIDSignIn.sharedInstance.currentUser?.profile {
-              UserProfileImageView(userProfile: userProfile)
-            }
+            UserProfileImageView(pfp: user.pfp, size: 80)
           }
           .padding(.trailing, 5)
           
