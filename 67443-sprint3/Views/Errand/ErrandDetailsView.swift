@@ -61,7 +61,6 @@ struct ErrandDetailsView: View {
                     }
                 }
                 .padding(20)
-                .navigationBarTitle("Errand Details", displayMode: .inline)
             }
           
           ErrandDetailsPickUpView(errand: errand, errandStatusChanged:  {

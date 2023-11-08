@@ -24,7 +24,7 @@ struct ErrandView: View {
       .opacity(0.0)
       
       VStack(alignment: .leading, spacing: 0, content: {
-        HStack {
+        HStack(alignment: .top) {
           Text(errand.name)
             .font(.title2)
           
@@ -40,7 +40,6 @@ struct ErrandView: View {
             Text("due by")
             Text("\(dateFormat.string(from: errand.dateDue))")
           }
-          .padding(.top, 5)
           .font(.footnote)
           
         }

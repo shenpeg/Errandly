@@ -1,8 +1,3 @@
-//
-//  ContentView.swift
-//  67443-sprint3
-//
-
 import SwiftUI
 
 import GoogleSignIn
@@ -23,13 +18,13 @@ struct ContentView: View {
     return TabView {
       MarketplaceView()
         .tabItem {
-          Image(systemName: "books.vertical")
+          Image(systemName: "house")
           Text("Marketplace")
         }
       
       PostErrandView()
         .tabItem {
-          Image(systemName: "rectangle.stack.badge.plus")
+          Image(systemName: "plus.app")
           Text("Post Errand")
         }
       

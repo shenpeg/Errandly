@@ -16,12 +16,13 @@ class UsersViewModel: ObservableObject {
     .store(in: &cancellables)
   }
   
-  func getUser(_ id: String) -> User {
+  func getUser(_ id: String) -> User? {
     if let userVM = userViewModels.first(where: {$0.id == id}) {
       return userVM.user
     }
     else {
-      fatalError("Unable to find the corresponding user.")
+      return nil
+      // fatalError("Unable to find the corresponding user.")
     }
   }
   
@@ -33,7 +34,6 @@ class UsersViewModel: ObservableObject {
       return userVM.user
     }
     else {
-      // returning an Optional User so this function can also get if a user with a given uid exists
       return nil
     }
   }
