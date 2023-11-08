@@ -2,20 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationDefaultAccuracyReduced</key>
-	<false/>
-	<key>NSLocationUsageDescription</key>
-	<string>Location description.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location always description.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location when in use description.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location always and when in use description.</string>
-	<key>GIDClientID</key>
-	<string>411291759513-v4t38dvn2spiurjhs2nlh6j1qrjvb73d.apps.googleusercontent.com</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.team04.app</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -26,6 +12,18 @@
 				<string>com.googleusercontent.apps.411291759513-v4t38dvn2spiurjhs2nlh6j1qrjvb73d</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1048501913146-c42gbpof55hcb4qpbd79cvgv99s4bh2i</string>
+			</array>
+		</dict>
 	</array>
+	<key>GIDClientID</key>
+	<string>411291759513-v4t38dvn2spiurjhs2nlh6j1qrjvb73d.apps.googleusercontent.com</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<false/>
 </dict>
 </plist>

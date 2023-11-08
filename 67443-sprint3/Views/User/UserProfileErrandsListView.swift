@@ -7,7 +7,6 @@ struct UserProfileErrandsListView: View {
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
 
   var body: some View {
-    NavigationView {
       List {
         
         // note: need to ensure that the errandViewModels have been initialized
@@ -61,7 +60,6 @@ struct UserProfileErrandsListView: View {
         
       }
       .listStyle(.plain)
-    }
     
   }
 }

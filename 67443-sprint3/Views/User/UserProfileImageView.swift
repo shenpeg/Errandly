@@ -1,10 +1,3 @@
-//
-//  UserProfileImageView.swift
-//  67443-sprint3
-//
-//  Created by Julia Graham on 10/11/23.
-//
-
 import GoogleSignIn
 import SwiftUI
 
@@ -19,7 +12,7 @@ struct UserProfileImageView: View {
     Image(uiImage: userProfileImageLoader.image)
       .resizable()
       .aspectRatio(contentMode: .fill)
-      .frame(width: 45, height: 45, alignment: .center)
+      .frame(width: 80, height: 80, alignment: .center)
       .scaledToFit()
       .clipShape(Circle())
       .accessibilityLabel(Text("User profile image."))

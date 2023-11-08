@@ -30,7 +30,7 @@ struct _7443_sprint3App: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      WelcomeView()
         .environmentObject(authViewModel)
         .onAppear {
           GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
