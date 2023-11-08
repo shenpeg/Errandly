@@ -4,6 +4,7 @@
 //
 //  Created by /peggy on 11/1/23.
 //
+// This view is for displaying the author of an errand post
 
 import SwiftUI
 import CoreLocation

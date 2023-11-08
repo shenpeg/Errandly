@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MarketplaceView: View {
-//  @ObservedObject var errandRepository = ErrandRepository()
+  @ObservedObject var errandRepository = ErrandRepository()
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
 
     var body: some View {
