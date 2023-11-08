@@ -10,19 +10,22 @@ import SwiftUI
 
 class ErrandDetailsViewModel: ObservableObject {
     @Published var errand: Errand
+    private let errandRepository = ErrandRepository()
+    private let userRepository = UserRepository()
+    private let authenticationViewModel = AuthenticationViewModel()
 
     init(errand: Errand) {
         self.errand = errand
     }
-
+    
     func markAsCompleted() {
-        errand.status = "completed"
-        // update in firestore?
+        errandRepository.updateErrandStatus(errandID: errand.id!, newStatus: "completed")
     }
   
     func markAsInProgress() {
-      errand.status = "in progress"
-      // update in firestore?
+        errandRepository.updateErrandStatus(errandID: errand.id!, newStatus: "in progress")
+        
+        //userRepository.addPickedUpErrand(user, errand)
     }
 }
 

@@ -62,6 +62,15 @@ class ErrandRepository: ObservableObject {
 //    return self.errands.sorted(by: ErrandDate)
 //  }
   
+  // for status updates in errand detail page:
+  func updateErrandStatus(errandID: String, newStatus: String) {
+      let errandRef = store.collection(path).document(errandID)
+      errandRef.updateData(["status": newStatus]) { error in
+          if let error = error {
+              print("Error updating errand status: \(error.localizedDescription)")
+          }
+      }
+  }
 
 }
 

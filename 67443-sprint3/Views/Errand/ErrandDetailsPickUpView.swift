@@ -49,8 +49,10 @@ struct ErrandDetailsPickUpView: View {
                 Alert(
                     title: Text("Are you sure you want to pick up this errand?"),
                     primaryButton: .default(Text("Yes, I'm sure")) {
-                      // change status to in progress
+                      // change status to in progress:
                       viewModel.markAsInProgress()
+                      // add a new PickedUpErrand to the current user
+                      // in the new PickedUpErrand, var owner: PickedUpErrandOwner should be the errand owner (viewModel.errand.owner)
                     },
                     secondaryButton: .cancel(Text("Cancel"))
                 )
