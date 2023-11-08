@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct User: Identifiable, Codable {
   
   @DocumentID var id: String?
+  var uid: String
   var bio: String
   var can_help_with: [String]
   var first_name: String
@@ -25,6 +26,7 @@ struct User: Identifiable, Codable {
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
     case id
+    case uid
     case bio
     case can_help_with
     case first_name

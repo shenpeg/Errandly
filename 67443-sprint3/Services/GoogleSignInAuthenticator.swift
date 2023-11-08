@@ -1,16 +1,12 @@
-//
-//  GoogleSignInAuthenticator.swift
-//  67443-sprint3
-//
-//  Created by Julia Graham on 10/11/23.
-//
-
 import Foundation
+import FirebaseAuth
+import FirebaseCore
 import GoogleSignIn
 
 /// An observable class for authenticating via Google.
 final class GoogleSignInAuthenticator: ObservableObject {
   private var authViewModel: AuthenticationViewModel
+  var usersViewModel: UsersViewModel = UsersViewModel()
 
   /// Creates an instance of this authenticator.
   /// - parameter authViewModel: The view model this authenticator will set logged in status on.
@@ -27,20 +23,47 @@ final class GoogleSignInAuthenticator: ObservableObject {
       print("There is no root view controller!")
       return
     }
+    
+    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+    
+    let config = GIDConfiguration(clientID: clientID)
+    GIDSignIn.sharedInstance.configuration = config
 
     GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { signInResult, error in
       guard let signInResult = signInResult else {
         print("Error! \(String(describing: error))")
         return
       }
-      self.authViewModel.state = .signedIn(signInResult.user)
+      
+      guard let idToken = signInResult.user.idToken?.tokenString else {
+        print("Error! with getting the idToken")
+        return
+      }
+      
+      let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: signInResult.user.accessToken.tokenString)
+      
+      Auth.auth().signIn(with: credential) { result, error in
+        guard let googleUser = GIDSignIn.sharedInstance.currentUser else {
+          print("Error! \(String(describing: error))")
+          return
+        }
+        
+        if let profile = googleUser.profile {
+          if (self.usersViewModel.getUserByUid(uid: googleUser.userID) == nil) {
+            self.usersViewModel.createNewUser(googleUser.userID, profile.givenName, profile.familyName, profile.imageURL(withDimension: 45)?.absoluteString)
+          }
+        }
+        
+        self.authViewModel.state = .signedIn(signInResult.user)
+      }
+        
     }
   }
 
   /// Signs out the current user.
   func signOut() {
     GIDSignIn.sharedInstance.signOut()
-    authViewModel.state = .signedOut
+    authViewModel.state = .signedOutBtn
   }
 
   /// Disconnects the previously granted scope and signs the user out.

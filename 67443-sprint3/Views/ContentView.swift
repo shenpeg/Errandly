@@ -15,11 +15,12 @@ let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
-  // temporary - will pass in the current user's id into ContentView after they log in
-  var curUserId: String = ""
-  
+  @ObservedObject var usersViewModel: UsersViewModel = UsersViewModel()
+
   var body: some View {
-    TabView {
+    let curUser = usersViewModel.getUserByUid(uid: GIDSignIn.sharedInstance.currentUser?.userID)
+
+    return TabView {
       MarketplaceView()
         .tabItem {
           Image(systemName: "books.vertical")
@@ -32,7 +33,8 @@ struct ContentView: View {
           Text("Post Errand")
         }
       
-      UserProfileView(userId: curUserId, isCurUser: true)
+      UserProfileView(user: curUser, isCurUser: true)
+        .environmentObject(authViewModel)
         .tabItem {
           Image(systemName: "person")
           Text("Profile")

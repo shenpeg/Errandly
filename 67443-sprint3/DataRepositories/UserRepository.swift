@@ -37,6 +37,18 @@ class UserRepository: ObservableObject {
       }
   }
   
+  func createNewUser(_ uid: String?, _ first_name: String?, _ last_name: String?, _ imageUrl: String?) {
+    do {
+      guard let uid = uid else { return }
+
+      let newUser = User(uid: uid, bio: "", can_help_with: [], first_name: first_name ?? "", last_name: last_name ?? "", pfp: imageUrl ?? "", phone_number: 0000000000, picked_up_errands: [], posted_errands: [], school_year: "")
+      _ = try store.collection(path).addDocument(from: newUser)
+    }
+    catch {
+      fatalError("Unable to add book: \(error.localizedDescription).")
+    }
+  }
+  
   // note: these functions also need to update the other users involved
   
   func addPickedUpErrand(_ user: User, _ errand: Errand) {

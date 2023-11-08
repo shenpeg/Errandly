@@ -1,10 +1,3 @@
-//
-//  AuthenticationViewModel.swift
-//  67443-sprint3
-//
-//  Created by Julia Graham on 10/11/23.
-//
-
 import SwiftUI
 import GoogleSignIn
 
@@ -23,6 +16,8 @@ final class AuthenticationViewModel: ObservableObject {
     case .signedIn(let user):
       return user.grantedScopes ?? []
     case .signedOut:
+      return []
+    case .signedOutBtn:
       return []
     }
   }
@@ -60,6 +55,8 @@ extension AuthenticationViewModel {
     case signedIn(GIDGoogleUser)
     /// The user is logged out.
     case signedOut
+    /// The user clicked in the sign out button
+    case signedOutBtn
   }
 }
 

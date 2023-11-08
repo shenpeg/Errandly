@@ -28,12 +28,12 @@ struct ErrandView: View {
           Text(errand.name)
             .font(.title2)
           
-          if (isCurUser) {
-            // still need to get edit errand working
-            Image(systemName: "pencil")
-              .foregroundColor(.black)
-              .font(.system(size: 20))
-          }
+//          if (isCurUser) {
+//            // still need to get edit errand working
+//            Image(systemName: "pencil")
+//              .foregroundColor(.black)
+//              .font(.system(size: 20))
+//          }
           Spacer()
           
           VStack(alignment: .trailing) {
@@ -48,15 +48,15 @@ struct ErrandView: View {
         
         HStack {
           if (isCurUser) {
-            Text("your post |")
+            Text("your post")
           }
           else {
-            Text("\(errand.owner.first_name) \(errand.owner.last_name.first!). |" as String)
+            Text("\(errand.owner.first_name) \(errand.owner.last_name.first!)" as String)
           }
-          Text("\(errand.location.latitude), \(errand.location.longitude)")
+//          Text(" | \(errand.location.latitude), \(errand.location.longitude)")
         }
         .font(.footnote)
-        .padding(.bottom, 5)
+        .padding(.bottom, 10)
         
         HStack() {
           ForEach(errand.tags, id: \.self) {tag in
