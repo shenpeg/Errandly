@@ -22,7 +22,7 @@ struct ContentView: View {
           Text("Marketplace")
         }
       
-      PostErrandView()
+      PostErrandView(user: curUser, isCurUser: true)
         .tabItem {
           Image(systemName: "plus.app")
           Text("Post Errand")
