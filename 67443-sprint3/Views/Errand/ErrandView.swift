@@ -10,6 +10,7 @@ import SwiftUI
 struct ErrandView: View {
   let errand: Errand
   let isCurUser: Bool
+  var user: User
   
   var body: some View {
     @ObservedObject var viewModel = LocationTimeFormatViewModel()
@@ -20,7 +21,7 @@ struct ErrandView: View {
     
     return ZStack {
       NavigationLink(destination:
-        ErrandDetailsView(errand: errand)
+        ErrandDetailsView(errand: errand, user: user)
       ) {
         EmptyView()
       }

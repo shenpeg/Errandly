@@ -10,8 +10,8 @@ import SwiftUI
 struct ErrandDetailsView: View {
     @ObservedObject var viewModel: ErrandDetailsViewModel
 
-    init(errand: Errand) {
-        viewModel = ErrandDetailsViewModel(errand: errand)
+    init(errand: Errand, user: User) {
+        viewModel = ErrandDetailsViewModel(errand: errand, user: user)
     }
 
     var body: some View {
@@ -67,7 +67,7 @@ struct ErrandDetailsView: View {
                 .padding(20)
             }
           
-          ErrandDetailsPickUpView(errand: viewModel.errand)
+          ErrandDetailsPickUpView(errand: viewModel.errand, user: viewModel.user)
         }
     }
   

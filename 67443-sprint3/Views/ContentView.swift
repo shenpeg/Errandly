@@ -16,24 +16,26 @@ struct ContentView: View {
     let curUser = usersViewModel.getUserByUid(uid: GIDSignIn.sharedInstance.currentUser?.userID)
 
     return TabView {
-      MarketplaceView()
-        .tabItem {
-          Image(systemName: "house")
-          Text("Marketplace")
-        }
-      
-      PostErrandView()
-        .tabItem {
-          Image(systemName: "plus.app")
-          Text("Post Errand")
-        }
-      
-      UserProfileView(user: curUser, isCurUser: true)
-        .environmentObject(authViewModel)
-        .tabItem {
-          Image(systemName: "person")
-          Text("Profile")
-        }
+      if (curUser != nil) {
+        MarketplaceView(user: curUser!)
+          .tabItem {
+            Image(systemName: "house")
+            Text("Marketplace")
+          }
+        
+        PostErrandView()
+          .tabItem {
+            Image(systemName: "plus.app")
+            Text("Post Errand")
+          }
+        
+        UserProfileView(user: curUser, isCurUser: true)
+          .environmentObject(authViewModel)
+          .tabItem {
+            Image(systemName: "person")
+            Text("Profile")
+          }
+      }
     }
   }
 }

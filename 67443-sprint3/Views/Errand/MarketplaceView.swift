@@ -10,6 +10,7 @@ import SwiftUI
 struct MarketplaceView: View {
   @ObservedObject var errandRepository = ErrandRepository()
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
+  var user: User
 
     var body: some View {
       let errandsVM = marketplaceViewModel.errandViewModels
@@ -17,7 +18,7 @@ struct MarketplaceView: View {
       return NavigationStack {
         List {
           ForEach(errandsVM) { errandVM in
-            ErrandView(errand: errandVM.errand, isCurUser: false)
+            ErrandView(errand: errandVM.errand, isCurUser: false, user: user)
               .padding(.bottom, 10)
           }
         }

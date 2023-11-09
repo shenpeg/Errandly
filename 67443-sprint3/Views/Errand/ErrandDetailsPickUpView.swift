@@ -12,8 +12,8 @@ struct ErrandDetailsPickUpView: View {
   @State private var isPickUpAlertPresented = false
   @State private var isCompletionAlertPresented = false
 
-  init(errand: Errand) {
-      viewModel = ErrandDetailsViewModel(errand: errand)
+  init(errand: Errand, user: User) {
+    viewModel = ErrandDetailsViewModel(errand: errand, user: user)
   }
 
   var body: some View {
@@ -49,10 +49,8 @@ struct ErrandDetailsPickUpView: View {
                 Alert(
                     title: Text("Are you sure you want to pick up this errand?"),
                     primaryButton: .default(Text("Yes, I'm sure")) {
-                      // change status to in progress:
+                      // Change status to in progress and add runner user info
                       viewModel.markAsInProgress()
-                      // add a new PickedUpErrand to the current user
-                      // in the new PickedUpErrand, var owner: PickedUpErrandOwner should be the errand owner (viewModel.errand.owner)
                     },
                     secondaryButton: .cancel(Text("Cancel"))
                 )
@@ -80,7 +78,7 @@ struct ErrandDetailsPickUpView: View {
                 )
             }
         } else if viewModel.errand.status == "completed" {
-            // technically completed ones should only show up in profile not marketplace
+            // technically completed ones should only show up in profile not marketplace?
             Text("Completed")
                 .font(.headline)
                 .foregroundColor(darkBlue)
