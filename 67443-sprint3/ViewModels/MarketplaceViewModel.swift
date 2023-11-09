@@ -41,5 +41,25 @@ class MarketplaceViewModel: ObservableObject {
   func add(_ errand: Errand) {
     errandRepository.create(errand)
   }
+  
+  func getPickedUpErrandsByStatus(user: User, statuses: [String]) -> [Errand] {
+    var pickedUpErrands: [Errand] = []
+    errandViewModels.forEach { errandVM in
+      if (statuses.contains(errandVM.errand.status) && errandVM.errand.runner != nil && errandVM.errand.runner!.id == user.id) {
+          pickedUpErrands.append(errandVM.errand)
+        }
+    }
+      return pickedUpErrands
+    }
+  
+    func getPostedErrandsByStatus(user: User, statuses: [String]) -> [Errand] {
+      var postedErrands: [Errand] = []
+      errandViewModels.forEach { errandVM in
+        if (statuses.contains(errandVM.errand.status) && errandVM.errand.owner.id == user.id) {
+          postedErrands.append(errandVM.errand)
+        }
+      }
+      return postedErrands
+    }
 
 }

@@ -56,11 +56,27 @@ class ErrandRepository: ObservableObject {
 //    }
 //  }
   
-  
   //SORT METHODS
 //  func sortByDate() -> [Errand] {
 //    return self.errands.sorted(by: ErrandDate)
 //  }
+  
+  
+  // after picking up errand
+  func addRunnerToErrand(errandId: String, runner: ErrandRunner) {
+      let errandRef = store.collection(path).document(errandId)
+      let runnerData: [String: Any] = [
+          "errandId": runner.errandId ?? "",
+          "id": runner.id,
+          "first_name": runner.first_name,
+          "last_name": runner.last_name
+      ]
+      errandRef.updateData(["runner": runnerData]) { error in
+          if let error = error {
+              print("Error adding runner to errand: \(error.localizedDescription)")
+          }
+      }
+  }
   
   // for status updates in errand detail page:
   func updateErrandStatus(errandID: String, newStatus: String) {
