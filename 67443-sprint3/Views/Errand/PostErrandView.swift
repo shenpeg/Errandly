@@ -29,7 +29,7 @@ struct PostErrandView: View {
   @State private var isErrandPosted = false
   
   //functions
-    private func clearFields() {
+    private func clearFields(){
       title = ""
       description = ""
       dateDue = Date()
@@ -37,7 +37,6 @@ struct PostErrandView: View {
       payBool = true
       payString = ""
       pay = 0.0
-      return
     }
   
   private func isValidErrand() -> Bool {
@@ -45,20 +44,17 @@ struct PostErrandView: View {
     if description.isEmpty { return false}
     if pay < 0.0 { return false }
     
-    // from: riptutorial.com/ios/example/4884/date-comparison
+    //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
     let calendar = Calendar.current
     let today = Date()
     let result = calendar.compare(dateDue, to: today, toGranularity: .day)
-    if result == .orderedAscending {
-        return false
-    }
-    print("not a valid errand!")
+    if result == .orderedAscending { return false }
     return true
   }
 
   private func addErrand() {
     //currently hardcoded: location, owner, tag
-    let errandOwner = ErrandOwner(id: "id", first_name: "Jane", last_name: "Doe", pfp: "string", phone_number: 11122233333)
+    let errandOwner = ErrandOwner(id: user!.id!, first_name: user!.first_name, last_name: user!.last_name, pfp: user!.pfp, phone_number: user!.phone_number)
     let newErrand = Errand(
       dateDue: dateDue,
       datePosted: Date(),
