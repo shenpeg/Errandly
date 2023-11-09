@@ -61,15 +61,15 @@ struct PostedErrandList: View {
       .italic()
       .foregroundColor(darkGray)
     ) {
-      ForEach(user.getPostedErrandsByStatus(status)) { errand in
-        if (status.contains("completed")) {
-          ErrandView(errand: marketplaceViewModel.getErrand(errand.id), isCurUser: true)
-            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
-            .padding(.bottom, 10)
-        }
-        else {
-          ErrandView(errand: marketplaceViewModel.getErrand(errand.id), isCurUser: true)
-            .padding(.bottom, 10)
+      ForEach(user.getPostedErrandsByStatus(status), id: \.self) { errandID in
+        let errand = marketplaceViewModel.getErrand(errandID)
+        if status.contains("completed") {
+            ErrandView(errand: errand, isCurUser: true)
+                .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
+                .padding(.bottom, 10)
+        } else {
+            ErrandView(errand: errand, isCurUser: true)
+                .padding(.bottom, 10)
         }
       }
     }
@@ -88,15 +88,15 @@ struct PickedUpErrandList: View {
       .italic()
       .foregroundColor(darkGray)
     ) {
-      ForEach(user.getPickedUpErrandsByStatus(status)) { errand in
-        if (status.contains("completed")) {
-          ErrandView(errand: marketplaceViewModel.getErrand(errand.id), isCurUser: false)
-            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
-            .padding(.bottom, 10)
-        }
-        else {
-          ErrandView(errand: marketplaceViewModel.getErrand(errand.id), isCurUser: false)
-            .padding(.bottom, 10)
+      ForEach(user.getPickedUpErrandsByStatus(status), id: \.self) { errandID in
+        let errand = marketplaceViewModel.getErrand(errandID)
+        if status.contains("completed") {
+            ErrandView(errand: errand, isCurUser: false)
+                .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
+                .padding(.bottom, 10)
+        } else {
+            ErrandView(errand: errand, isCurUser: false)
+                .padding(.bottom, 10)
         }
       }
     }

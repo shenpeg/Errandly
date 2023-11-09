@@ -11,6 +11,7 @@
 		15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */; };
 		1554F9FE2AFB321200A13D85 /* ErrandDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */; };
 		1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */; };
+		15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A33FBBE52AF9910A00CE9FE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */; };
@@ -73,10 +74,6 @@
 		A3EAE96D2AE881160079481D /* ErrandOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE96C2AE881160079481D /* ErrandOwner.swift */; };
 		A3EAE96F2AE8832E0079481D /* ErrandDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */; };
 		A3EAE9712AE885E60079481D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9702AE885E60079481D /* User.swift */; };
-		A3EAE9732AE887460079481D /* PickedUpErrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9722AE887460079481D /* PickedUpErrand.swift */; };
-		A3EAE9752AE887D10079481D /* PostedErrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9742AE887D10079481D /* PostedErrand.swift */; };
-		A3EAE9772AE888010079481D /* PickedUpErrandOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9762AE888010079481D /* PickedUpErrandOwner.swift */; };
-		A3EAE9792AE8881B0079481D /* PostedErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9782AE8881B0079481D /* PostedErrandRunner.swift */; };
 		A3EAE97B2AE8889C0079481D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE97A2AE8889C0079481D /* UserRepository.swift */; };
 		A3EAE97D2AE889580079481D /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE97C2AE889580079481D /* UserProfileView.swift */; };
 		A3FF43612AD6E04600E1DDA6 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */; };
@@ -91,6 +88,7 @@
 		15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsProfileView.swift; sourceTree = "<group>"; };
 		1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsViewModel.swift; sourceTree = "<group>"; };
 		1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTimeFormatViewModel.swift; sourceTree = "<group>"; };
+		15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRunner.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -116,10 +114,6 @@
 		A3EAE96C2AE881160079481D /* ErrandOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandOwner.swift; sourceTree = "<group>"; };
 		A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsView.swift; sourceTree = "<group>"; };
 		A3EAE9702AE885E60079481D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A3EAE9722AE887460079481D /* PickedUpErrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedUpErrand.swift; sourceTree = "<group>"; };
-		A3EAE9742AE887D10079481D /* PostedErrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedErrand.swift; sourceTree = "<group>"; };
-		A3EAE9762AE888010079481D /* PickedUpErrandOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedUpErrandOwner.swift; sourceTree = "<group>"; };
-		A3EAE9782AE8881B0079481D /* PostedErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedErrandRunner.swift; sourceTree = "<group>"; };
 		A3EAE97A2AE8889C0079481D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		A3EAE97C2AE889580079481D /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		A3FF435F2AD67BDB00E1DDA6 /* -7443-sprint3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-7443-sprint3-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -185,6 +179,7 @@
 			children = (
 				A3EAE9262AE85D880079481D /* Errand.swift */,
 				A3EAE96C2AE881160079481D /* ErrandOwner.swift */,
+				15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -193,10 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				A3EAE9702AE885E60079481D /* User.swift */,
-				A3EAE9722AE887460079481D /* PickedUpErrand.swift */,
-				A3EAE9742AE887D10079481D /* PostedErrand.swift */,
-				A3EAE9762AE888010079481D /* PickedUpErrandOwner.swift */,
-				A3EAE9782AE8881B0079481D /* PostedErrandRunner.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -448,10 +439,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3EAE9732AE887460079481D /* PickedUpErrand.swift in Sources */,
 				A33FBBE92AF9B59100CE9FE8 /* UserViewModel.swift in Sources */,
-				A3EAE9752AE887D10079481D /* PostedErrand.swift in Sources */,
 				A3FF43612AD6E04600E1DDA6 /* AuthenticationViewModel.swift in Sources */,
+				15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */,
 				6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */,
 				A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */,
 				A3EAE92C2AE861860079481D /* ErrandRepository.swift in Sources */,
@@ -459,10 +449,8 @@
 				A35EF8E92AF943DF00E23558 /* WelcomeView.swift in Sources */,
 				A3679F092AF7211700A3C2DA /* ErrandViewModel.swift in Sources */,
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
-				A3EAE9792AE8881B0079481D /* PostedErrandRunner.swift in Sources */,
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
 				1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */,
-				A3EAE9772AE888010079481D /* PickedUpErrandOwner.swift in Sources */,
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
 				A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */,
 				A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */,

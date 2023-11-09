@@ -12,8 +12,11 @@ struct ErrandView: View {
   let isCurUser: Bool
   
   var body: some View {
+    @ObservedObject var viewModel = LocationTimeFormatViewModel()
+    
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
+    let timeDifference = viewModel.calculateTimeDifference(from: errand.datePosted)
     
     return ZStack {
       NavigationLink(destination:
@@ -52,7 +55,9 @@ struct ErrandView: View {
           else {
             Text("\(errand.owner.first_name) \(errand.owner.last_name.first!)" as String)
           }
-//          Text(" | \(errand.location.latitude), \(errand.location.longitude)")
+//        Text(viewModel.locationName)
+          Text("|")
+          Text("Posted \(viewModel.formatTimeDifference(timeDifference))")
         }
         .font(.footnote)
         .padding(.bottom, 10)
