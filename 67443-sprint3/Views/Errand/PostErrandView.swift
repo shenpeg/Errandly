@@ -13,31 +13,48 @@ import SwiftUI
 
 struct PostErrandView: View {
   
+  // variables
+  
+  var user: User?
+  var isCurUser: Bool
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
-  @ObservedObject var userRepository = UserRepository()
   
   @State private var title = ""
   @State private var description =  ""
   @State private var dateDue = Date()
   @State private var location = ""
   @State private var pay = 0.0
-  
+  @State private var payBool = true
+  @State private var payString = ""
   @State private var isErrandPosted = false
   
-  private func clearFields() {
-    return
-  }
+  //functions
+    private func clearFields(){
+      title = ""
+      description = ""
+      dateDue = Date()
+      //location = GeoPoint() stays in pgh for now
+      payBool = true
+      payString = ""
+      pay = 0.0
+    }
   
   private func isValidErrand() -> Bool {
     if title.isEmpty { return false }
     if description.isEmpty { return false}
-    if dateDue < Date() { return false }
+    if pay < 0.0 { return false }
+    
+    //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
+    let calendar = Calendar.current
+    let today = Date()
+    let result = calendar.compare(dateDue, to: today, toGranularity: .day)
+    if result == .orderedAscending { return false }
     return true
   }
 
   private func addErrand() {
     //currently hardcoded: location, owner, tag
-    let errandOwner = ErrandOwner(id: "id", first_name: "Jane", last_name: "Doe", pfp: "string", phone_number: 11122233333)
+    let errandOwner = ErrandOwner(id: user!.id!, first_name: user!.first_name, last_name: user!.last_name, pfp: user!.pfp, phone_number: user!.phone_number)
     let newErrand = Errand(
       dateDue: dateDue,
       datePosted: Date(),
@@ -45,6 +62,7 @@ struct PostErrandView: View {
       location: GeoPoint(latitude: 10.20, longitude: 40.67),
       name: title,
       owner: errandOwner,
+      runner: nil,
       pay: pay,
       status: "new",
       tags: ["tag1", "tag2"])
