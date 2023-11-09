@@ -18,6 +18,7 @@ struct Errand: Identifiable, Codable {
   var location: GeoPoint
   var name: String
   var owner: ErrandOwner
+  var runner: ErrandRunner?
   var pay: Double
   var status: String
   var tags: [String]
@@ -32,6 +33,7 @@ struct Errand: Identifiable, Codable {
     case location
     case name
     case owner
+    case runner
     case pay
     case status
     case tags

@@ -1,14 +1,14 @@
 //
-//  PickedUpErrandOwner.swift
+//  ErrandRunner.swift
 //  67443-sprint3
 //
-//  Created by Julia Graham on 10/24/23.
+//  Created by /peggy on 11/9/23.
 //
 
 import Foundation
 import FirebaseFirestoreSwift
 
-struct PickedUpErrandOwner: Identifiable, Codable {
+struct ErrandRunner: Identifiable, Codable {
   
   @DocumentID var userId: String?
   var id: String
@@ -25,4 +25,3 @@ struct PickedUpErrandOwner: Identifiable, Codable {
 
   }
 }
-

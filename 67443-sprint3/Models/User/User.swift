@@ -18,8 +18,8 @@ struct User: Identifiable, Codable {
   var last_name: String
   var pfp: String
   var phone_number: Int
-  var picked_up_errands: [PickedUpErrand]
-  var posted_errands: [PostedErrand]
+  var picked_up_errands: [String]
+  var posted_errands: [String]
   var school_year: String
   
   
@@ -38,11 +38,11 @@ struct User: Identifiable, Codable {
     case school_year
   }
   
-  func getPickedUpErrandsByStatus(_ statuses: [String]) -> [PickedUpErrand] {
-    return picked_up_errands.filter{statuses.contains($0.status)}
+  func getPickedUpErrandsByStatus(_ statuses: [String]) -> [String] {
+    return picked_up_errands.filter{statuses.contains($0)}
   }
   
-  func getPostedErrandsByStatus(_ statuses: [String]) -> [PostedErrand] {
-    return posted_errands.filter{statuses.contains($0.status)}
+  func getPostedErrandsByStatus(_ statuses: [String]) -> [String] {
+    return posted_errands.filter{statuses.contains($0)}
   }
 }
