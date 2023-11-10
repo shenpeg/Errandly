@@ -146,10 +146,10 @@ struct ErrandView: View {
   
   func deleteErrand() {
     if (!marketplaceViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
-      if (errand.runner != nil) {
-        let runner = usersViewModel.getUser(errand.runner!.id)!
-        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
-      }
+//      if (errand.runner != nil) {
+//        let runner = usersViewModel.getUser(errand.runner!.id)!
+//        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
+//      }
       let owner = usersViewModel.getUser(errand.owner.id)!
       usersViewModel.destroyPostedErrand(owner: owner, errand: errand)
       marketplaceViewModel.destroy(errand)
