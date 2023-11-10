@@ -22,11 +22,13 @@ struct ContentView: View {
           Text("Marketplace")
         }
       
-      PostErrandView(user: curUser, isCurUser: true)
-        .tabItem {
-          Image(systemName: "plus.app")
-          Text("Post Errand")
-        }
+      if (curUser != nil) {
+        PostErrandView(user: curUser!, isCurUser: true)
+          .tabItem {
+            Image(systemName: "plus.app")
+            Text("Post Errand")
+          }
+      }
       
       UserProfileView(user: curUser, isCurUser: true)
         .environmentObject(authViewModel)

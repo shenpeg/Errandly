@@ -15,10 +15,9 @@ struct PostErrandView: View {
   
   // variables
   
-  var user: User?
+  var user: User
   var isCurUser: Bool
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
-  
   @State private var title = ""
   @State private var description =  ""
   @State private var dateDue = Date()
@@ -26,7 +25,13 @@ struct PostErrandView: View {
   @State private var pay = 0.0
   @State private var payBool = true
   @State private var payString = ""
-  @State private var isErrandPosted = false
+  @State private var showMarketplaceView: Bool = false
+  
+  init(user: User, isCurUser: Bool) {
+    self.user = user
+    self.isCurUser = isCurUser
+    self.showMarketplaceView = false
+  }
   
   //functions
     private func clearFields(){
@@ -52,14 +57,22 @@ struct PostErrandView: View {
     return true
   }
 
+  private func payStringToDouble() {
+    if let payNum = Double(payString) {
+      pay = payNum
+    }
+  }
   private func addErrand() {
-    //currently hardcoded: location, owner, tag
-    let errandOwner = ErrandOwner(id: user!.id!, first_name: user!.first_name, last_name: user!.last_name, pfp: user!.pfp, phone_number: user!.phone_number)
+    //currently hardcoded: location, tags
+    
+    payStringToDouble()
+    let errandOwner = ErrandOwner(id: user.id!, first_name: user.first_name, last_name: user.last_name, pfp: user.pfp, phone_number: user.phone_number)
+    
     let newErrand = Errand(
       dateDue: dateDue,
       datePosted: Date(),
       description: description,
-      location: GeoPoint(latitude: 10.20, longitude: 40.67),
+      location: GeoPoint(latitude: 40.443336, longitude: -79.944023),
       name: title,
       owner: errandOwner,
       runner: nil,
@@ -72,103 +85,109 @@ struct PostErrandView: View {
   }
   
   var body: some View {
-    NavigationView {
-      Form {
-        Section {
-          TextField("Errand Title", text: $title)
-        }
-        
-        Section {
-          TextField("What do you need help with?", text: $description)
-            .frame(minHeight: 200)
-            .background(Color.white)
-            .cornerRadius(10) //Add rounded corners
-            .overlay(RoundedRectangle(cornerRadius: 0)
-                    .stroke(Color.blue, lineWidth: 1)
-            )
-        }
-        
-//        Section {
-//          TextField("Tags", text: $description)
-//        }
-        
-        Section {
-          DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
-        }
-        
-        Section {
-          TextField("Location", text: $location)
-        }
-        
-        VStack{
-          Text("Compensation?")
-          HStack{
-            Button(action: {
-              pay = 20
-            }) {
-              Text(" ")
-            }
-            .frame(width: 20, height: 20)
-//              .background(pay ? Color.white : Color.blue)
-            .cornerRadius(100)
-            .foregroundColor(Color.black)
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 100)
-              .stroke(Color.blue, lineWidth: 2)
-              .scaleEffect(0.5))
-            Text("Yes")
-          }
-          
-          HStack{
-            Button(action: {pay = 0}) {
-              Text(" ")
-            }
-            .frame(width: 20, height: 20)
-            //              .background(pay ? Color.blue : Color.white)
-            .cornerRadius(100)
-            .foregroundColor(Color.black)
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 100)
-              .stroke(Color.blue, lineWidth: 2)
-              .scaleEffect(0.5))
-            Text("No")
-          }
-        }
-        
-        Section {
-//          NavigationLink(destination: MarketplaceView()) {
-//            Button(action: {
-//              addErrand()
-//            }) {
-//              Text("Post")
-//            }
-//            .foregroundColor(Color.white)
-//            .font(.headline)
-//            .foregroundColor(.white)
-//            .padding()
-//            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
-//          }
-          
-          Button("Post") {
-            addErrand()
-            clearFields()
-            isErrandPosted = true
-            //go to marketplaceView
-          }
-          .foregroundColor(Color.white)
-          .font(.headline)
-          .foregroundColor(.white)
-          .padding()
-          .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
-          
-        } //end of button section
-        
-      } //end of form
-      .background(Color.white)
-      .scrollContentBackground(.hidden)
+    switch showMarketplaceView {
       
+    case true: ContentView()
       
-    } // end of NavView
+    case false:
+      NavigationView {
+        VStack(alignment: .leading) {
+          Form {
+            TextField("Errand Title", text: $title)
+              .font(.system(size: 38))
+              .underline(true)
+              .foregroundColor(darkBlue)
+              .listRowSeparator(.hidden)
+          
+            TextField("What do you need help with?", text: $description, axis: .vertical)
+              .lineLimit(8, reservesSpace: true)
+              .background(Color.white)
+              .padding(5)
+              .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+              .listRowSeparator(.hidden)
+            
+         
+            //        Section {
+            //          TextField("Tags", text: $description)
+            //        }
+          
+            DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
+            //            .datePickerStyle(.compact)
+            //            .background(Color.white)
+            //            .overlay(RoundedRectangle(cornerRadius: 0)
+            //              .stroke(Color.blue, lineWidth: 1))
+          
+            
+            
+            VStack(alignment: .leading) {
+              Text("Location:")
+              TextField("", text: $location)
+                .padding(5)
+                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+            }.listRowSeparator(.hidden)
+      
+            
+            
+            VStack(alignment: .leading) {
+              Text("Compensation?")
+              HStack{
+                Button(action: {payBool = true}) {
+                  Text(" ")
+                }
+                .frame(width: 20, height: 20)
+                .background(payBool ? darkBlue : Color.white)
+                .cornerRadius(100)
+                .foregroundColor(Color.black)
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 100)
+                  .stroke(darkBlue, lineWidth: 2)
+                  .scaleEffect(0.5))
+                Text("Yes     ")
+                TextField("how much?", text: $payString)
+                  .padding(5)
+                  .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+                  .keyboardType(.decimalPad)
+              }
+              HStack{
+                Button(action: {payString = "0"; payBool = false}) {
+                  Text(" ")
+                }
+                .frame(width: 20, height: 20)
+                .background(payBool ? Color.white : darkBlue)
+                .cornerRadius(100)
+                .foregroundColor(darkBlue)
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 100)
+                  .stroke(darkBlue, lineWidth: 2)
+                  .scaleEffect(0.5))
+                Text("No      ")
+              }
+            }.listRowSeparator(.hidden)
+            
+            Section {
+              Button("Post") {
+                addErrand()
+                clearFields()
+                
+                self.showMarketplaceView = true
+              }
+              .foregroundColor(.white)
+              .font(.headline)
+              .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+              .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+              
+            } //end of button section
+          } //end of form
+          .background(Color.white)
+          .accentColor(darkBlue)
+          .scrollContentBackground(.hidden)
+      
+        } //end vstack
+        .listRowSeparator(.hidden)
+        
+        
+      } // end of NavView
+    } // end of switch
   } //end of body
   
 } //end of struct PostErrandView
