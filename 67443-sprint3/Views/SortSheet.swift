@@ -16,8 +16,6 @@ struct SortSheet: View {
   var user: User
 
     var body: some View {
-      let errandsVM = marketplaceViewModel.errandViewModels
-
       VStack {
         Text("Sort Errands By:")
           .font(.title2)

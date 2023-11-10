@@ -5,6 +5,7 @@ import GoogleSignIn
 // custom colors
 let darkBlue = Color(red: 0.09, green: 0.34, blue: 0.95)
 let mint = Color(red: 0.84, green: 0.99, blue: 0.96)
+let lightPurple = Color(red: 0.91, green: 0.60, blue: 0.98)
 let darkGray = Color(red: 0.25, green: 0.25, blue: 0.25)
 let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 

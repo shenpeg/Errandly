@@ -25,5 +25,14 @@
 	<string>411291759513-v4t38dvn2spiurjhs2nlh6j1qrjvb73d.apps.googleusercontent.com</string>
 	<key>NSLocationDefaultAccuracyReduced</key>
 	<false/>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchScreenBG</string>
+		<key>UIImageName</key>
+		<string>LaunchIcon</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

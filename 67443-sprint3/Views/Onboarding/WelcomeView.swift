@@ -24,7 +24,7 @@ struct WelcomeView: View {
         ZStack() {
           LinearGradient(
             gradient: Gradient(
-              colors: [darkBlue, Color(red: 0.87, green: 0.67, blue: 0.18)]),
+              colors: [darkBlue, lightPurple]),
             startPoint: .topLeading,
             endPoint: .bottomTrailing
           )
@@ -37,7 +37,7 @@ struct WelcomeView: View {
               .foregroundColor(mint)
               .padding(.bottom, 10)
             
-            Text("NexTask is a marketplace where students to help out each other with overwhelming daily tasks, and earn a little cash along the way.")
+            Text("Errandly is a marketplace where students help each other with daily errands, and earn a little cash along the way.")
               .font(.title3)
               .foregroundColor(.white)
               .padding(.bottom, 20)

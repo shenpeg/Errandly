@@ -454,7 +454,6 @@
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
 				1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */,
-				A3EAE9772AE888010079481D /* PickedUpErrandOwner.swift in Sources */,
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
 				A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */,
 				A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */,
@@ -618,7 +617,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location when in use description.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -653,7 +651,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location when in use description.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
