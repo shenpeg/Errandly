@@ -6,18 +6,24 @@
 //
 
 import SwiftUI
+import CoreLocation
+//import GoogleSignIn
 
 struct ErrandView: View {
   let errand: Errand
   let isCurUser: Bool
   var user: User
   
-  var body: some View {
-    @ObservedObject var viewModel = LocationTimeFormatViewModel()
-    
+  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
+  @ObservedObject var usersViewModel = UsersViewModel()
+  @StateObject var locTimeViewModel = LocationTimeFormatViewModel()
+  @State private var isAppeared: Bool = false
+  @State private var isDeleteAlertPresented = false
+  
+  var body: some View {    
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
-    let timeDifference = viewModel.calculateTimeDifference(from: errand.datePosted)
+    let timeDifference = locTimeViewModel.calculateTimeDifference(from: errand.datePosted)
     
     return ZStack {
       NavigationLink(destination:
@@ -38,6 +44,25 @@ struct ErrandView: View {
 //              .foregroundColor(.black)
 //              .font(.system(size: 20))
 //          }
+          
+          if (isCurUser && errand.status == "new") {
+            Image(systemName: "trash")
+              .foregroundColor(.black)
+              .font(.system(size: 15))
+              .padding(.top, 3)
+              .onTapGesture {
+                isDeleteAlertPresented = true
+              }
+              .alert(isPresented: $isDeleteAlertPresented) {
+                Alert(
+                  title: Text("Delete this errand permanently?"),
+                  primaryButton: .default(Text("Yes, delete this errand")) {
+                    self.deleteErrand()
+                  },
+                  secondaryButton: .cancel(Text("No, cancel"))
+                )
+              }
+          }
           Spacer()
           
           VStack(alignment: .trailing) {
@@ -54,11 +79,14 @@ struct ErrandView: View {
             Text("your post")
           }
           else {
-            Text("\(errand.owner.first_name) \(errand.owner.last_name.first!)" as String)
+            Text("\(errand.owner.first_name) \(errand.owner.last_name.first!)." as String)
           }
-//        Text(viewModel.locationName)
           Text("|")
-          Text("Posted \(viewModel.formatTimeDifference(timeDifference))")
+          if (locTimeViewModel.locationName != "") {
+            Text(locTimeViewModel.locationName)
+            Text("|")
+          }
+          Text(locTimeViewModel.formatTimeDifference(timeDifference))
         }
         .font(.footnote)
         .padding(.bottom, 10)
@@ -105,5 +133,26 @@ struct ErrandView: View {
     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(darkBlue, lineWidth: 1))
     .listRowSeparator(.hidden)
+    .onAppear {
+      if (!isAppeared) {
+        isAppeared = true
+        locTimeViewModel.getLocationName(for: CLLocation(latitude: errand.location.latitude, longitude: errand.location.longitude))
+      }
+    }
+    .onDisappear() {
+      isAppeared = false
+    }
+  }
+  
+  func deleteErrand() {
+    if (!marketplaceViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
+      if (errand.runner != nil) {
+        let runner = usersViewModel.getUser(errand.runner!.id)!
+        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
+      }
+      let owner = usersViewModel.getUser(errand.owner.id)!
+      usersViewModel.destroyPostedErrand(owner: owner, errand: errand)
+      marketplaceViewModel.destroy(errand)
+    }
   }
 }

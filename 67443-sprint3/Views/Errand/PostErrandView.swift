@@ -59,7 +59,7 @@ struct PostErrandView: View {
       dateDue: dateDue,
       datePosted: Date(),
       description: description,
-      location: GeoPoint(latitude: 10.20, longitude: 40.67),
+      location: GeoPoint(latitude: 40.443336, longitude: -79.944023),
       name: title,
       owner: errandOwner,
       runner: nil,

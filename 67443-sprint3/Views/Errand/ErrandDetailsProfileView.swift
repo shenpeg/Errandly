@@ -45,10 +45,12 @@ struct ErrandDetailsProfileView: View {
           }
           
           HStack{
-            Text(viewModel.locationName)
-                .font(.footnote)
-                .foregroundColor(.secondary)
-            Text("|").font(.footnote).foregroundColor(.secondary)
+            if (viewModel.locationName != "") {
+                Text(viewModel.locationName)
+                    .font(.footnote)
+                      .foregroundColor(.secondary)
+                Text("|").font(.footnote).foregroundColor(.secondary)
+            }
             Text(viewModel.formatTimeDifference(timeDifference))
                 .font(.footnote)
                 .foregroundColor(.secondary)

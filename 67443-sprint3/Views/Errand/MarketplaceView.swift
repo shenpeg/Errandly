@@ -89,7 +89,7 @@ struct MarketplaceView: View {
     }
     .accentColor(.black)
     .sheet(isPresented: $showingSheet) {
-      SortSheet(filteredErrands: filteredErrands)
+      SortSheet(filteredErrands: filteredErrands, user: user)
     }
   }
 }

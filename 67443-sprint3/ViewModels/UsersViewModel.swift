@@ -16,6 +16,14 @@ class UsersViewModel: ObservableObject {
     .store(in: &cancellables)
   }
   
+  func destroyPostedErrand(owner: User, errand: Errand) {
+    userRepository.deletePostedErrand(owner: owner, errand: errand)
+  }
+  
+  func destroyPickedUpErrand(runner: User, errand: Errand) {
+    userRepository.deletePickedUpErrand(runner: runner, errand: errand)
+  }
+  
   func getUser(_ id: String) -> User? {
     if let userVM = userViewModels.first(where: {$0.id == id}) {
       return userVM.user
