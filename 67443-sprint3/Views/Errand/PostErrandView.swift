@@ -21,13 +21,31 @@ struct PostErrandView: View {
   
   @State private var title = ""
   @State private var description =  ""
+  @State private var selectedTags: [String] = []
   @State private var dateDue = Date()
   @State private var location = ""
   @State private var pay = 0.0
   @State private var payBool = true
   @State private var payString = ""
-  @State private var showMarketplaceView: Bool = false
+  @State private var showMarketplaceView = false
+  @State private var numOfTags = 0
   
+  // tags: ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
+  @State private var tagsList = [
+    Tag(tid: 0, label: "on-campus"),
+    Tag(tid: 1, label: "off-campus"),
+    Tag(tid: 2, label: "house/dorm"),
+    Tag(tid: 3, label: "food/drink"),
+    Tag(tid: 4, label: "cleaning"),
+    Tag(tid: 5, label: "animals"),
+    Tag(tid: 6, label: "plants"),
+    Tag(tid: 7, label: "car"),
+    Tag(tid: 8, label: "laundry"),
+    Tag(tid: 9, label: "moving in/out"),
+    ]
+
+
+
   init(user: User, isCurUser: Bool) {
     self.user = user
     self.isCurUser = isCurUser
@@ -43,18 +61,34 @@ struct PostErrandView: View {
       payBool = true
       payString = ""
       pay = 0.0
+//      for var tag in tagsList {
+//        tag.isSelected = false
+//      }
+      tagsList = [
+        Tag(tid: 0, label: "on-campus"),
+        Tag(tid: 1, label: "off-campus"),
+        Tag(tid: 2, label: "house/dorm"),
+        Tag(tid: 3, label: "food/drink"),
+        Tag(tid: 4, label: "cleaning"),
+        Tag(tid: 5, label: "animals"),
+        Tag(tid: 6, label: "plants"),
+        Tag(tid: 7, label: "car"),
+        Tag(tid: 8, label: "laundry"),
+        Tag(tid: 9, label: "moving in/out"),
+        ]
+      selectedTags = []
+      
     }
   
   private func isValidErrand() -> Bool {
-    if title.isEmpty { return false }
-    if description.isEmpty { return false}
-    if pay < 0.0 { return false }
-    
+    if title.isEmpty { print("title cannot be empty!");return false}
+    if description.isEmpty { print("description cannot be empty!"); return false}
+    if pay > 10000.00 && pay <= 0.0 { print("please enter amount between 0 and 10,000"); return false }
     //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
     let calendar = Calendar.current
     let today = Date()
     let result = calendar.compare(dateDue, to: today, toGranularity: .day)
-    if result == .orderedAscending { return false }
+    if result == .orderedAscending { print("pls enter a date not passed!"); return false }
     return true
   }
 
@@ -63,10 +97,30 @@ struct PostErrandView: View {
       pay = payNum
     }
   }
+  
+  private func getSelectedTags() {
+    self.tagsList.forEach { tag in
+      if tag.isSelected {
+        selectedTags.append(tag.label)
+        print(tag.label)
+      }
+    }
+  }
+
+  private func countSelectedTags() {
+    self.numOfTags = 0
+    self.tagsList.forEach { tag in
+      if tag.isSelected {
+        self.numOfTags += 1
+      }
+    }
+  }
+  
   private func addErrand() {
     //currently hardcoded: location, tags
     
     payStringToDouble()
+    getSelectedTags()
     let errandOwner = ErrandOwner(id: user.id!, first_name: user.first_name, last_name: user.last_name, pfp: user.pfp, phone_number: user.phone_number)
     
     let newErrand = Errand(
@@ -79,18 +133,19 @@ struct PostErrandView: View {
       runner: nil,
       pay: pay,
       status: "new",
-      tags: ["tag1", "tag2"])
+      tags: selectedTags)
     if isValidErrand() {
       marketplaceViewModel.add(newErrand)
+      clearFields()
     }
   }
   
   var body: some View {
-    switch showMarketplaceView {
+//    switch showMarketplaceView {
       
-    case true: ContentView()
+//    case true: ContentView()
       
-    case false:
+//    case false:
       NavigationView {
         VStack(alignment: .leading) {
           Form {
@@ -99,33 +154,95 @@ struct PostErrandView: View {
               .underline(true)
               .foregroundColor(darkBlue)
               .listRowSeparator(.hidden)
-          
+            
+            
             TextField("What do you need help with?", text: $description, axis: .vertical)
-              .lineLimit(8, reservesSpace: true)
+              .lineLimit(10, reservesSpace: true)
               .background(Color.white)
               .padding(5)
               .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
               .listRowSeparator(.hidden)
-            
          
-            //        Section {
-            //          TextField("Tags", text: $description)
-            //        }
-          
             DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
             //            .datePickerStyle(.compact)
             //            .background(Color.white)
             //            .overlay(RoundedRectangle(cornerRadius: 0)
             //              .stroke(Color.blue, lineWidth: 1))
           
-            
-            
+      
+  
             VStack(alignment: .leading) {
-              Text("Location:")
-              TextField("", text: $location)
-                .padding(5)
-                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
-            }.listRowSeparator(.hidden)
+              Text("Tags (select up to five):")
+              HStack {
+                ForEach(0 ... 2, id: \.self ) { index in
+                  Button(tagsList[index].label) {
+//                  TagButtonView(tag: tagsList[index], selectedBtn: self.$selectedTag)
+                    countSelectedTags()
+                    if numOfTags < 5 || tagsList[index].isSelected {
+                      tagsList[index].isSelected = !tagsList[index].isSelected
+                    }
+                  }
+                  .font(.footnote)
+                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+                  .background(tagsList[index].isSelected ? mint : lightGray)
+                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
+                  .cornerRadius(10)
+                  .buttonStyle(BorderlessButtonStyle())
+                }
+              } //Hstack 1
+              HStack {
+                ForEach(3 ... 6, id: \.self ) { index in
+                  Button(tagsList[index].label) {
+                    countSelectedTags()
+                    if numOfTags < 5 || tagsList[index].isSelected {
+                      tagsList[index].isSelected = !tagsList[index].isSelected
+                    }
+                  }
+                  .font(.footnote)
+                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+                  .background(tagsList[index].isSelected ? mint : lightGray)
+                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
+                  .cornerRadius(10)
+                  .buttonStyle(BorderlessButtonStyle())
+                }
+              }
+//              .contentShape(Rectangle())
+              HStack {
+                ForEach(7 ... 9, id: \.self ) { index in
+                  Button(tagsList[index].label) {
+                    countSelectedTags()
+                    if numOfTags < 5 || tagsList[index].isSelected {
+                      tagsList[index].isSelected = !tagsList[index].isSelected
+                    }
+//                    print("---------------------------------")
+//                    print(tagsList[index].label)
+//                    print(String(tagsList[index].isSelected))
+//
+//                    print("---------------------------------")
+                  }
+                  .font(.footnote)
+                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+                  .background(tagsList[index].isSelected ? mint : lightGray)
+                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
+                  .cornerRadius(10)
+                  .buttonStyle(BorderlessButtonStyle())
+                }
+              }
+            } //Vstack
+            .listRowSeparator(.hidden)
+
+            
+      
+            
+            
+            
+//            VStack(alignment: .leading) {
+//              Text("Location:")
+//              TextField("", text: $location)
+//                .padding(5)
+//                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+//            }
+//            .listRowSeparator(.hidden)
       
             
             
@@ -167,10 +284,10 @@ struct PostErrandView: View {
             
             Section {
               Button("Post") {
-                addErrand()
-                clearFields()
-                
-                self.showMarketplaceView = true
+                if isValidErrand() {
+                  addErrand()
+                  self.showMarketplaceView = true
+                }
               }
               .foregroundColor(.white)
               .font(.headline)
@@ -178,6 +295,15 @@ struct PostErrandView: View {
               .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
               
             } //end of button section
+            .alert(isPresented: $showMarketplaceView) {
+                Alert(
+                    title: Text("Your errand has been posted!"),
+                    primaryButton: .default(Text("Got it")) {
+                      clearFields()
+                    },
+                    secondaryButton: .default(Text("So excited"))
+                )
+            }
           } //end of form
           .background(Color.white)
           .accentColor(darkBlue)
@@ -188,18 +314,8 @@ struct PostErrandView: View {
         
         
       } // end of NavView
-    } // end of switch
+//    } // end of switch
   } //end of body
   
 } //end of struct PostErrandView
   
-
-
-
-
-//struct PostErrandView_Previews: PreviewProvider {
-//    static var previews: some View {
-//
-//        PostErrandView()
-//    }
-//}
