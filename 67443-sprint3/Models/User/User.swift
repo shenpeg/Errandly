@@ -37,12 +37,4 @@ struct User: Identifiable, Codable {
     case posted_errands
     case school_year
   }
-  
-  func getPickedUpErrandsByStatus(_ statuses: [String]) -> [String] {
-    return picked_up_errands.filter{statuses.contains($0)}
-  }
-  
-  func getPostedErrandsByStatus(_ statuses: [String]) -> [String] {
-    return posted_errands.filter{statuses.contains($0)}
-  }
 }

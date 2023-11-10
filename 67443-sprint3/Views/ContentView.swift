@@ -28,6 +28,13 @@ struct ContentView: View {
             Image(systemName: "plus.app")
             Text("Post Errand")
           }
+        
+        UserProfileView(user: curUser, isCurUser: true)
+          .environmentObject(authViewModel)
+          .tabItem {
+            Image(systemName: "person")
+            Text("Profile")
+          }
       }
       
       UserProfileView(user: curUser, isCurUser: true)

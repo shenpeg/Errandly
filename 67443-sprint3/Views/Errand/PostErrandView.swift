@@ -18,6 +18,7 @@ struct PostErrandView: View {
   var user: User
   var isCurUser: Bool
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
+  
   @State private var title = ""
   @State private var description =  ""
   @State private var dateDue = Date()
