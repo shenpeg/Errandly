@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreLocation
+import GoogleSignIn
 //import GoogleSignIn
 
 struct ErrandView: View {
@@ -45,7 +46,7 @@ struct ErrandView: View {
 //              .font(.system(size: 20))
 //          }
           
-          if (isCurUser && errand.status == "new") {
+          if (isCurUser && user.uid == GIDSignIn.sharedInstance.currentUser?.userID && errand.status == "new") {
             Image(systemName: "trash")
               .foregroundColor(.black)
               .font(.system(size: 15))
@@ -75,7 +76,7 @@ struct ErrandView: View {
         .padding(.bottom, 3)
         
         HStack {
-          if (isCurUser) {
+          if (isCurUser && user.uid == GIDSignIn.sharedInstance.currentUser?.userID) {
             Text("your post")
           }
           else {
