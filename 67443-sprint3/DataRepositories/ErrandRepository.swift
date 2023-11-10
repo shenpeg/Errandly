@@ -56,6 +56,16 @@ class ErrandRepository: ObservableObject {
 //    }
 //  }
   
+  func delete(_ errand: Errand) {
+    guard let errandId = errand.id else { return }
+    
+    store.collection(path).document(errandId).delete { error in
+      if let error = error {
+        fatalError("Unable to delete errand: \(error.localizedDescription).")
+      }
+    }
+  }
+
   //SORT METHODS
 //  func sortByDate() -> [Errand] {
 //    return self.errands.sorted(by: ErrandDate)

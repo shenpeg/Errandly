@@ -37,6 +37,25 @@ class UserRepository: ObservableObject {
       }
   }
   
+  func deletePostedErrand(owner: User, errand: Errand) {
+    guard let userId = owner.id else { return }
+    guard let errandId = errand.id else { return }
+    
+    store.collection(path).document(userId).updateData([
+      "posted_errands": FieldValue.arrayRemove([errandId])
+    ])
+  }
+  
+  func deletePickedUpErrand(runner: User, errand: Errand) {
+    guard let userId = runner.id else { return }
+    guard let errandId = errand.id else { return }
+    
+    store.collection(path).document(userId).updateData([
+      "picked_up_errands": FieldValue.arrayRemove([errandId])
+    ])
+  }
+  
+  
   func createNewUser(_ uid: String?, _ first_name: String?, _ last_name: String?, _ imageUrl: String?) {
     do {
       guard let uid = uid else { return }

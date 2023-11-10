@@ -33,6 +33,10 @@ class MarketplaceViewModel: ObservableObject {
     errandRepository.create(errand)
   }
   
+  func destroy(_ errand: Errand) {
+    errandRepository.delete(errand)
+  }
+
   func getPickedUpErrandsByStatus(user: User, statuses: [String]) -> [Errand] {
     var pickedUpErrands: [Errand] = []
     errandViewModels.forEach { errandVM in
@@ -52,6 +56,5 @@ class MarketplaceViewModel: ObservableObject {
       }
       return postedErrands
     }
-
 
 }

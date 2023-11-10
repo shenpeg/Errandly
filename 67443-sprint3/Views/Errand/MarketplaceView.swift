@@ -33,7 +33,6 @@ struct MarketplaceView: View {
           Button {
             showingSheet.toggle()
 
-            print("hello")
           } label: {
             Text("sort by")
               .font(.footnote)
