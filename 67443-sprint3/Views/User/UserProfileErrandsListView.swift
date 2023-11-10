@@ -53,7 +53,7 @@ struct UserProfileErrandsListView: View {
 }
 
 struct PostedErrandList: View {
-  var marketplaceViewModel: MarketplaceViewModel
+  @ObservedObject var marketplaceViewModel: MarketplaceViewModel
   var user: User
   var status: [String]
   var header: String
@@ -83,7 +83,7 @@ struct PostedErrandList: View {
 }
 
 struct PickedUpErrandList: View {
-  var marketplaceViewModel: MarketplaceViewModel
+  @ObservedObject var marketplaceViewModel: MarketplaceViewModel
   var user: User
   var status: [String]
   var header: String
