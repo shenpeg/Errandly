@@ -13,6 +13,7 @@ struct SortSheet: View {
   @State var filteredErrands: [ErrandViewModel]
   @Environment(\.dismiss) var dismiss
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
+  var user: User
 
     var body: some View {
       let errandsVM = marketplaceViewModel.errandViewModels
@@ -41,7 +42,7 @@ struct SortSheet: View {
 //      .presentationDetents([.height(300)])
       List {
         ForEach(filteredErrands) { errandVM in
-          ErrandView(errand: errandVM.errand, isCurUser: false)
+          ErrandView(errand: errandVM.errand, isCurUser: false, user: user)
             .padding(.bottom, 10)
         }
       }
