@@ -33,6 +33,10 @@ class MarketplaceViewModel: ObservableObject {
     errandRepository.create(errand)
   }
   
+  func editUser(owner: ErrandOwner, runner: ErrandRunner) {
+    errandRepository.updateUser(owner: owner, runner: runner)
+  }
+ 
   func destroy(_ errand: Errand) {
     errandRepository.delete(errand)
   }

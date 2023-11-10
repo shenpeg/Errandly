@@ -68,6 +68,16 @@ class UserRepository: ObservableObject {
     }
   }
   
+  func updateUser(user: User, updatedUser: User) {
+    guard let userId = user.id else { return }
+    do {
+      try store.collection(path).document(userId).setData(from: updatedUser)
+    }
+    catch {
+      fatalError("Unable to update user: \(error.localizedDescription).")
+    }
+  }
+  
   func addErrandToUser(userId: String, errandId: String) {
       let userRef = store.collection(path).document(userId)
       userRef.updateData(["picked_up_errands": FieldValue.arrayUnion([errandId])]) { error in

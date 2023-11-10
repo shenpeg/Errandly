@@ -50,4 +50,8 @@ class UsersViewModel: ObservableObject {
     userRepository.createNewUser(uid, first_name, last_name, imageUrl)
   }
   
+  func editUser(user: User, updatedUser: User) {
+    userRepository.updateUser(user: user, updatedUser: updatedUser)
+  }
+  
 }

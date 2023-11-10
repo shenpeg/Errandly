@@ -97,6 +97,28 @@ class ErrandRepository: ObservableObject {
           }
       }
   }
+  
+  // refactor?
+  func updateUser(owner: ErrandOwner, runner: ErrandRunner) {
+    errands.forEach { errand in
+      if (errand.owner.id == owner.id) {
+        let updatedErrand = Errand(dateDue: errand.dateDue, datePosted: errand.datePosted, description: errand.description, location: errand.location, name: errand.name, owner: owner, runner: errand.runner, pay: errand.pay, status: errand.status, tags: errand.tags)
+        do {
+          try store.collection(path).document(errand.id!).setData(from: updatedErrand)
+        } catch {
+          fatalError("Unable to update errand owner: \(error.localizedDescription).")
+        }
+      }
+      else if (errand.runner != nil && errand.runner!.id == runner.id) {
+        let updatedErrand = Errand(dateDue: errand.dateDue, datePosted: errand.datePosted, description: errand.description, location: errand.location, name: errand.name, owner: errand.owner, runner: runner, pay: errand.pay, status: errand.status, tags: errand.tags)
+        do {
+          try store.collection(path).document(errand.id!).setData(from: updatedErrand)
+        } catch {
+          fatalError("Unable to update errand runner: \(error.localizedDescription).")
+        }
+      }
+    }
+  }
 
 }
 
