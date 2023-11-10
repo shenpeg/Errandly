@@ -6,8 +6,7 @@
 //
 
 import SwiftUI
-let tags: [String] = ["tag", "tag1", "tag2", "car", "plant", "groceries", "laundry"]
-
+let tags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
 struct MarketplaceView: View {
   @ObservedObject var errandRepository = ErrandRepository()
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
