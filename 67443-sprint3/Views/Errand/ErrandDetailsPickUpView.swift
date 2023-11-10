@@ -33,49 +33,63 @@ struct ErrandDetailsPickUpView: View {
         Spacer()
         
         if viewModel.errand.status == "new" {
+          if viewModel.errand.owner.id == viewModel.user.id {
+            Text("Can't pick up own errand!")
+              .font(.headline)
+              .foregroundColor(darkBlue)
+              .italic()
+          } else {
             Button(action: {
-                // Show the pop-up
-                isPickUpAlertPresented = true
+              // Show the pop-up
+              isPickUpAlertPresented = true
             }) {
-                Text("Pick up errand")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 16)
-                    .background(darkBlue)
-                    .cornerRadius(40)
-            }
-            .alert(isPresented: $isPickUpAlertPresented) {
-                Alert(
-                    title: Text("Are you sure you want to pick up this errand?"),
-                    primaryButton: .default(Text("Yes, I'm sure")) {
-                      // Change status to in progress and add runner user info
-                      viewModel.markAsInProgress()
-                    },
-                    secondaryButton: .cancel(Text("Cancel"))
-                )
-            }
-        } else if viewModel.errand.status == "in progress" {
-            Button(action: {
-              isCompletionAlertPresented = true
-            }) {
-              Text("Mark completed")
+              Text("Pick up errand")
                 .font(.headline)
-                .foregroundColor(darkBlue)
+                .foregroundColor(.white)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 16)
-                .background(mint)
+                .background(darkBlue)
                 .cornerRadius(40)
             }
-            .alert(isPresented: $isCompletionAlertPresented) {
-                Alert(
-                    title: Text("Mark this errand as complete?"),
-                    primaryButton: .default(Text("Yes, I've completed it!")) {
-                        // Change status to completed
-                        viewModel.markAsCompleted()
-                    },
-                    secondaryButton: .cancel(Text("No, Cancel"))
-                )
+            .alert(isPresented: $isPickUpAlertPresented) {
+              Alert(
+                title: Text("Are you sure you want to pick up this errand?"),
+                primaryButton: .default(Text("Yes, I'm sure")) {
+                  // change status to in progress and assign runner
+                  viewModel.markAsInProgress()
+                },
+                secondaryButton: .cancel(Text("Cancel"))
+              )
+            }
+          }
+        } else if viewModel.errand.status == "in progress" {
+            if viewModel.errand.owner.id == viewModel.user.id {
+              Button(action: {
+                  isCompletionAlertPresented = true
+              }) {
+                    Text("Mark completed")
+                      .font(.headline)
+                      .foregroundColor(darkBlue)
+                      .padding(.vertical, 8)
+                      .padding(.horizontal, 16)
+                      .background(mint)
+                      .cornerRadius(40)
+                  }
+                  .alert(isPresented: $isCompletionAlertPresented) {
+                      Alert(
+                          title: Text("Mark this errand as complete?"),
+                          primaryButton: .default(Text("Yes, it's completed!")) {
+                              // Change status to completed
+                              viewModel.markAsCompleted()
+                          },
+                          secondaryButton: .cancel(Text("No, Cancel"))
+                      )
+                  }
+            } else {
+               Text("In progress")
+                   .font(.headline)
+                   .foregroundColor(darkBlue)
+                   .italic()
             }
         } else if viewModel.errand.status == "completed" {
             // technically completed ones should only show up in profile not marketplace?
