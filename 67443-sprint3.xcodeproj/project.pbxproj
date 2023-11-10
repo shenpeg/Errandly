@@ -13,6 +13,7 @@
 		1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */; };
 		15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
+		8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEFF852AFD714A0094C83F /* SortSheet.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A33FBBE52AF9910A00CE9FE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */; };
 		A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */; };
@@ -90,6 +91,7 @@
 		1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTimeFormatViewModel.swift; sourceTree = "<group>"; };
 		15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRunner.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
+		8ADEFF852AFD714A0094C83F /* SortSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSheet.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				A38B51FD2AF016EF00D3B8E5 /* Onboarding */,
 				A38B51FC2AF016E900D3B8E5 /* User */,
 				A38B51FA2AF016D400D3B8E5 /* Errand */,
+				8ADEFF852AFD714A0094C83F /* SortSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */,
 				A3EAE96D2AE881160079481D /* ErrandOwner.swift in Sources */,
 				A3EAE9712AE885E60079481D /* User.swift in Sources */,
+				8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */,
 				A3EAE97D2AE889580079481D /* UserProfileView.swift in Sources */,
 				A3FF43732AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift in Sources */,
 				A3A0327D2AF1C9A20037548C /* UserProfileErrandsView.swift in Sources */,

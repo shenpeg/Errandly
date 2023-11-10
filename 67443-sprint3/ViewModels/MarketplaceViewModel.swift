@@ -2,17 +2,13 @@
 import Foundation
 import Combine
 
-// from Swift Repos Lab
 class MarketplaceViewModel: ObservableObject {
   @Published var errandViewModels: [ErrandViewModel] = []
   private var cancellables: Set<AnyCancellable> = []
   
-  @Published var errandRepository = ErrandRepository()
-//  @Published var errands: [Errand] = []
-//  @Published var filteredErrands: [Errand] = []
+  @Published var errandRepository = ErrandRepository()  
+  @Published var errands: [ErrandViewModel] = []
 
-  @Published var searchText: String = ""
-  @Published var filteredErrands: [ErrandViewModel] = []
   
   init() {
     errandRepository.$errands.map { errands in
@@ -22,11 +18,6 @@ class MarketplaceViewModel: ObservableObject {
     .store(in: &cancellables)
   }
   
-  func search(searchText: String) {
-    self.filteredErrands = self.errandViewModels.filter { errandVM in
-      return errandVM.errand.name.lowercased().contains(searchText.lowercased())
-    }
-  }
   
   func getErrand(_ id: String) -> Errand {
     if let errandVM = errandViewModels.first(where: {$0.id == id}) {
@@ -61,5 +52,6 @@ class MarketplaceViewModel: ObservableObject {
       }
       return postedErrands
     }
+
 
 }
