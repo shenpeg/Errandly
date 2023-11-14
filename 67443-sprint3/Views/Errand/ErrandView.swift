@@ -132,7 +132,7 @@ struct ErrandView: View {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.white)
             )
-            .frame(width: 345)
+            .frame(width: 340)
             .offset(y: -5)
             .padding(8)
     )

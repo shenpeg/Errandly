@@ -44,8 +44,6 @@ struct PostErrandView: View {
     Tag(tid: 9, label: "moving in/out"),
     ]
 
-
-
   init(user: User, isCurUser: Bool) {
     self.user = user
     self.isCurUser = isCurUser
@@ -160,7 +158,7 @@ struct PostErrandView: View {
               .lineLimit(10, reservesSpace: true)
               .background(Color.white)
               .padding(5)
-              .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+              .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
               .listRowSeparator(.hidden)
          
             DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
@@ -168,7 +166,6 @@ struct PostErrandView: View {
             //            .background(Color.white)
             //            .overlay(RoundedRectangle(cornerRadius: 0)
             //              .stroke(Color.blue, lineWidth: 1))
-          
       
   
             VStack(alignment: .leading) {
@@ -230,11 +227,6 @@ struct PostErrandView: View {
               }
             } //Vstack
             .listRowSeparator(.hidden)
-
-            
-      
-            
-            
             
 //            VStack(alignment: .leading) {
 //              Text("Location:")
@@ -243,8 +235,7 @@ struct PostErrandView: View {
 //                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
 //            }
 //            .listRowSeparator(.hidden)
-      
-            
+
             
             VStack(alignment: .leading) {
               Text("Compensation?")
@@ -261,9 +252,9 @@ struct PostErrandView: View {
                   .stroke(darkBlue, lineWidth: 2)
                   .scaleEffect(0.5))
                 Text("Yes     ")
-                TextField("how much?", text: $payString)
+                TextField("How much?", text: $payString)
                   .padding(5)
-                  .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+                  .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
                   .keyboardType(.decimalPad)
               }
               HStack{
@@ -298,16 +289,18 @@ struct PostErrandView: View {
             .alert(isPresented: $showMarketplaceView) {
                 Alert(
                     title: Text("Your errand has been posted!"),
-                    primaryButton: .default(Text("Got it")) {
-                      clearFields()
-                    },
-                    secondaryButton: .default(Text("So excited"))
+                    dismissButton: .default(Text("Got it")) {
+                        clearFields()
+                    }
                 )
             }
           } //end of form
           .background(Color.white)
           .accentColor(darkBlue)
           .scrollContentBackground(.hidden)
+          .gesture(DragGesture().onChanged({ _ in
+                              UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+          }))
       
         } //end vstack
         .listRowSeparator(.hidden)
