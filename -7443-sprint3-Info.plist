@@ -28,9 +28,9 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
-		<string>LaunchScreenBG</string>
+		<string>LaunchBG</string>
 		<key>UIImageName</key>
-		<string>LaunchIcon</string>
+		<string>LaunchAppIcon</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
