@@ -96,7 +96,7 @@ struct ErrandView: View {
           ForEach(errand.tags, id: \.self) {tag in
             Text(tag)
               .font(.footnote)
-              .padding(.horizontal, 10)
+              .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
               .foregroundColor(darkBlue)
               .background(Capsule().fill(lightGray))
           }

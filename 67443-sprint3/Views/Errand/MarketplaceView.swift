@@ -49,7 +49,7 @@ struct MarketplaceView: View {
                 } label: {
                   Text(selectedTags)
                     .font(.footnote)
-                    .padding(.horizontal, 10)
+                    .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                     .foregroundColor(darkBlue)
                     .background(Capsule().fill(mint))
                 }
@@ -65,7 +65,7 @@ struct MarketplaceView: View {
                 } label: {
                   Text(tag)
                     .font(.footnote)
-                    .padding(.horizontal, 10)
+                    .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                     .foregroundColor(darkBlue)
                     .background(Capsule().fill(lightGray))
                 }
