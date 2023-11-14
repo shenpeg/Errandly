@@ -54,6 +54,10 @@ class MarketplaceViewModel: ObservableObject {
     func getPostedErrandsByStatus(user: User, statuses: [String]) -> [Errand] {
       var postedErrands: [Errand] = []
       errandViewModels.forEach { errandVM in
+        guard statuses.contains(errandVM.errand.status) && errandVM.errand.owner.id == user.id else {
+            return // Skip if either status or ownerId is nil
+        }
+
         if (statuses.contains(errandVM.errand.status) && errandVM.errand.owner.id == user.id) {
           postedErrands.append(errandVM.errand)
         }

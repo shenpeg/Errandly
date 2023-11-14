@@ -20,20 +20,20 @@ struct ContentView: View {
       if (curUser != nil) {
         MarketplaceView(user: curUser!)
           .tabItem {
-            Image(systemName: "house")
+            Image(systemName: "house").padding(.bottom, 10)
             Text("Marketplace")
           }
         
         PostErrandView(user: curUser!, isCurUser: true)
           .tabItem {
-            Image(systemName: "plus.app")
+            Image(systemName: "plus.app").padding(.bottom, 10)
             Text("Post Errand")
           }
         
         UserProfileView(user: curUser, isCurUser: true)
           .environmentObject(authViewModel)
           .tabItem {
-            Image(systemName: "person")
+            Image(systemName: "person").padding(.bottom, 10)
             Text("Profile")
           }
       }

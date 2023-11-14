@@ -7,49 +7,77 @@ struct UserProfileErrandsListView: View {
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
 
   var body: some View {
-      List {
-        
-        // note: need to ensure that the errandViewModels have been initialized
-        if (!marketplaceViewModel.errandViewModels.isEmpty) {
-          if (isPostedErrands) {
-            if (marketplaceViewModel.getPostedErrandsByStatus(user: user, statuses: ["new", "in progress", "completed"])
-                  .isEmpty) {
-              Section(header: Text("No posted errands").padding(.top, 30)) {EmptyView()}
-            }
-            else {
-              if (!marketplaceViewModel.getPostedErrandsByStatus(user: user, statuses: ["new"]).isEmpty) {
-                PostedErrandList(marketplaceViewModel: marketplaceViewModel, user: user, status: ["new"], header: "Waiting for Runners")
-              }
-              if (!marketplaceViewModel.getPostedErrandsByStatus(user: user, statuses: ["in progress"]).isEmpty) {
-                PostedErrandList(marketplaceViewModel: marketplaceViewModel, user: user, status: ["in progress"], header: "In Progress")
-              }
-              if (!marketplaceViewModel.getPostedErrandsByStatus(user: user, statuses: ["completed"]).isEmpty) {
-                PostedErrandList(marketplaceViewModel: marketplaceViewModel, user: user, status: ["completed"], header: "Completed")
-              }
-            }
-          }
-          else {
-          // picked up errands
-            if (marketplaceViewModel.getPickedUpErrandsByStatus(user: user, statuses: ["new", "in progress", "completed"])
-                  .isEmpty) {
-              Section(header: Text("No picked up errands").padding(.top, 30)) {EmptyView()}
-            }
-            else {
-              if (!marketplaceViewModel.getPickedUpErrandsByStatus(user: user, statuses: ["new", "in progress"])
-                    .isEmpty) {
-                PickedUpErrandList(marketplaceViewModel: marketplaceViewModel, user: user, status: ["new", "in progress"], header: "In Progress")
-              }
-              if (!marketplaceViewModel.getPickedUpErrandsByStatus(user: user, statuses: ["completed"]).isEmpty) {
-                PickedUpErrandList(marketplaceViewModel: marketplaceViewModel, user: user, status: ["completed"], header: "Completed")
-              }
-            }
-          }
+    List {
+      if !marketplaceViewModel.errandViewModels.isEmpty {
+        if isPostedErrands {
+          postedErrandsSection(user: user)
+        } else {
+          pickedUpErrandsSection(user: user)
         }
-        
       }
-      .listStyle(.plain)
-    
+    }
+    .listStyle(.plain)
   }
+  
+  // UserProfileErrandsListView
+  private func postedErrandsSection(user: User) -> some View {
+    let newPostedErrands = marketplaceViewModel.getPostedErrandsByStatus(user: user, statuses: ["new"])
+    let inProgressPostedErrands = marketplaceViewModel.getPostedErrandsByStatus(user: user, statuses: ["in progress"])
+    let completedPostedErrands = marketplaceViewModel.getPostedErrandsByStatus(user: user, statuses: ["completed"])
+
+      return Group {
+          if !newPostedErrands.isEmpty {
+              AnyView(PostedErrandList(
+                  marketplaceViewModel: marketplaceViewModel,
+                  user: user,
+                  status: ["new"],
+                  header: "Waiting for Runners"
+              ))
+          }
+          if !inProgressPostedErrands.isEmpty {
+              AnyView(PostedErrandList(
+                  marketplaceViewModel: marketplaceViewModel,
+                  user: user,
+                  status: ["in progress"],
+                  header: "In Progress"
+              ))
+          }
+          if !completedPostedErrands.isEmpty {
+              AnyView(PostedErrandList(
+                  marketplaceViewModel: marketplaceViewModel,
+                  user: user,
+                  status: ["completed"],
+                  header: "Completed"
+              ))
+          }
+      }
+  }
+
+  // UserProfileErrandsListView
+  private func pickedUpErrandsSection(user: User) -> some View {
+      let newInProgressErrands = marketplaceViewModel.getPickedUpErrandsByStatus(user: user, statuses: ["new", "in progress"])
+      let completedPickedUpErrands = marketplaceViewModel.getPickedUpErrandsByStatus(user: user, statuses: ["completed"])
+
+      return Group {
+          if !newInProgressErrands.isEmpty {
+              AnyView(PickedUpErrandList(
+                  marketplaceViewModel: marketplaceViewModel,
+                  user: user,
+                  status: ["new", "in progress"],
+                  header: "In Progress"
+              ))
+          }
+          if !completedPickedUpErrands.isEmpty {
+              AnyView(PickedUpErrandList(
+                  marketplaceViewModel: marketplaceViewModel,
+                  user: user,
+                  status: ["completed"],
+                  header: "Completed"
+              ))
+          }
+      }
+  }
+  
 }
 
 struct PostedErrandList: View {
