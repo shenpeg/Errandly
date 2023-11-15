@@ -1,10 +1,3 @@
-//
-//  ErrandRepository.swift
-//  67443-sprint3
-//
-//  Created by Julia Graham on 10/24/23.
-//
-
 import Combine
 
 import Firebase
@@ -37,24 +30,13 @@ class ErrandRepository: ObservableObject {
       }
   }
   
-  //CRUD Methods
-  func create(_ errand: Errand){
+  func create(_ errand: Errand) async -> Errand {
     do {
-      _ = try store.collection(path).addDocument(from: errand)
+      return try await store.collection(path).addDocument(from: errand).getDocument().data(as: Errand.self)
     } catch {
       fatalError("Unable to add book: \(error.localizedDescription).")
     }
   }
-  
-//  func update(_ errand: Errand) {
-//    guard let errandId = errand.id else {return}
-//
-//    do {
-//      try store.collection(path).document(errand.id).setData(from: errand)
-//    } catch {
-//      fatalError("Unable to update book: \(error.localizedDescription)")
-//    }
-//  }
   
   func delete(_ errand: Errand) {
     guard let errandId = errand.id else { return }
@@ -97,28 +79,33 @@ class ErrandRepository: ObservableObject {
           }
       }
   }
-  
-  // refactor?
-  func updateUser(owner: ErrandOwner, runner: ErrandRunner) {
-    errands.forEach { errand in
-      if (errand.owner.id == owner.id) {
-        let updatedErrand = Errand(dateDue: errand.dateDue, datePosted: errand.datePosted, description: errand.description, location: errand.location, name: errand.name, owner: owner, runner: errand.runner, pay: errand.pay, status: errand.status, tags: errand.tags)
-        do {
-          try store.collection(path).document(errand.id!).setData(from: updatedErrand)
-        } catch {
-          fatalError("Unable to update errand owner: \(error.localizedDescription).")
+
+  func updateUser(user: User, userId: String, postedErrandsIds: [String], pickedUpErrandsIds: [String]) {
+    postedErrandsIds.forEach {id in
+      let errandRef = store.collection(path).document(id)
+      errandRef.setData(["owner": [
+        "first_name": user.first_name,
+        "id": userId,
+        "last_name": user.last_name,
+        "pfp": user.pfp,
+        "phone_number": user.phone_number
+      ]], merge: true) { error in
+        if let error = error {
+          print("Error updating errand owner: \(error.localizedDescription)")
         }
       }
-      else if (errand.runner != nil && errand.runner!.id == runner.id) {
-        let updatedErrand = Errand(dateDue: errand.dateDue, datePosted: errand.datePosted, description: errand.description, location: errand.location, name: errand.name, owner: errand.owner, runner: runner, pay: errand.pay, status: errand.status, tags: errand.tags)
-        do {
-          try store.collection(path).document(errand.id!).setData(from: updatedErrand)
-        } catch {
-          fatalError("Unable to update errand runner: \(error.localizedDescription).")
+    }
+    pickedUpErrandsIds.forEach {id in
+      let errandRef = store.collection(path).document(id)
+      errandRef.setData(["runner": [
+        "first_name": user.first_name,
+        "id": userId,
+        "last_name": user.last_name
+      ]], merge: true) { error in
+        if let error = error {
+          print("Error updating errand runner: \(error.localizedDescription)")
         }
       }
     }
   }
-
 }
-

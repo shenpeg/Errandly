@@ -27,38 +27,27 @@ class MarketplaceViewModel: ObservableObject {
       fatalError("Unable to find the corresponding errand.")
     }
   }
-  
-  //from BookManager_Firebase: LibraryViewModel
-  func add(_ errand: Errand) {
-    errandRepository.create(errand)
+
+  func getErrandsByStatus(_ ids: [String]) -> [String: [Errand]] {
+    var errands: [String: [Errand]] = ["new": [], "in progress": [], "completed": []]
+    ids.forEach {id in
+      if let errandVM = errandViewModels.first(where: {$0.id == id}) {
+        errands[errandVM.errand.status]!.append(errandVM.errand)
+      }
+    }
+    return errands
   }
   
-  func editUser(owner: ErrandOwner, runner: ErrandRunner) {
-    errandRepository.updateUser(owner: owner, runner: runner)
+  func add(_ errand: Errand) async -> Errand {
+    return await errandRepository.create(errand)
   }
- 
+  
+  func editUser(user: User, userId: String, postedErrandsIds: [String], pickedUpErrandsIds: [String]) {
+    errandRepository.updateUser(user: user, userId: userId, postedErrandsIds: postedErrandsIds, pickedUpErrandsIds: pickedUpErrandsIds)
+  }
+  
   func destroy(_ errand: Errand) {
     errandRepository.delete(errand)
   }
-
-  func getPickedUpErrandsByStatus(user: User, statuses: [String]) -> [Errand] {
-    var pickedUpErrands: [Errand] = []
-    errandViewModels.forEach { errandVM in
-      if (statuses.contains(errandVM.errand.status) && errandVM.errand.runner != nil && errandVM.errand.runner!.id == user.id) {
-          pickedUpErrands.append(errandVM.errand)
-        }
-    }
-      return pickedUpErrands
-    }
-  
-    func getPostedErrandsByStatus(user: User, statuses: [String]) -> [Errand] {
-      var postedErrands: [Errand] = []
-      errandViewModels.forEach { errandVM in
-        if (statuses.contains(errandVM.errand.status) && errandVM.errand.owner.id == user.id) {
-          postedErrands.append(errandVM.errand)
-        }
-      }
-      return postedErrands
-    }
 
 }

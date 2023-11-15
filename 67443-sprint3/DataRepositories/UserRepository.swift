@@ -1,10 +1,3 @@
-//
-//  ErrandRepository.swift
-//  67443-sprint3
-//
-//  Created by Julia Graham on 10/24/23.
-//
-
 import Combine
 
 import Firebase
@@ -78,9 +71,9 @@ class UserRepository: ObservableObject {
     }
   }
   
-  func addErrandToUser(userId: String, errandId: String) {
-      let userRef = store.collection(path).document(userId)
-      userRef.updateData(["picked_up_errands": FieldValue.arrayUnion([errandId])]) { error in
+  func addErrandToUser(userId: String, errandId: String, type: String) {
+    let userRef = store.collection(path).document(userId)
+      userRef.updateData([type: FieldValue.arrayUnion([errandId])]) { error in
           if let error = error {
               print("Unable to add errand to user: \(error.localizedDescription)")
           }

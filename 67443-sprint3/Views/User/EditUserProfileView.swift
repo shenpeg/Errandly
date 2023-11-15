@@ -3,10 +3,11 @@ import SwiftUI
 struct EditUserProfileView: View {
   var user: User
 
+  @Environment(\.dismiss) var dismiss
+  
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @ObservedObject var usersViewModel = UsersViewModel()
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
-  @State var showUserProfile: Bool = false
 
   @State private var firstName = ""
   @State private var lastName = ""
@@ -30,87 +31,79 @@ struct EditUserProfileView: View {
 
   var body: some View {
     
-    switch showUserProfile {
-    case true:
-      UserProfileView(user: user, isCurUser: true)
-        .environmentObject(authViewModel)
-        .navigationBarBackButtonHidden(true)
+    ZStack (alignment: .topLeading) {
+      darkBlue
+        .ignoresSafeArea()
       
-    case false:
-      ZStack (alignment: .topLeading) {
-        darkBlue
-          .ignoresSafeArea()
+      VStack (spacing: 0) {
+        Text("Edit Profile")
+          .font(.title)
+          .foregroundColor(.white)
+          .padding(.bottom, 5)
         
-        VStack (spacing: 0) {
-          Text("Edit Profile")
-            .font(.title)
-            .foregroundColor(.white)
-            .padding(.bottom, 5)
+        Form {
+          FormTextSection(text: "First name", input: $firstName)
+          FormTextSection(text: "Last name", input: $lastName)
+          FormTextSection(text: "Bio", input: $bio)
+          FormTextSection(text: "School year", input: $schoolYear)
           
-          Form {
-            FormTextSection(text: "First name", input: $firstName)
-            FormTextSection(text: "Last name", input: $lastName)
-            FormTextSection(text: "Bio", input: $bio)
-            FormTextSection(text: "School year", input: $schoolYear)
-            
-            // phone number
-            VStack (alignment: .leading, spacing: 0) {
-              Text("Phone number:")
-                .padding(.bottom, 5)
-              TextField("###-###-####", text: $phoneNumber)
-                .padding(5)
-                .overlay(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
-            }
-            .listRowSeparator(.hidden)
-            
-            // can help with tags
-            VStack (alignment: .leading, spacing: 0) {
-              Text("Can help with (select up to 3):")
-                .padding(.bottom, 5)
-              ForEach(0..<4) { row in
-                HStack {
-                  ForEach(0..<3) { column in
-                    if ((row * 3 + column) < 10) {
-                      let tag = canHelpWithTags[row * 3 + column]
-                        MultiSelectTag(
-                          tag: tag,
-                          isSelected: self.canHelpWith.contains(tag)
-                        )
-                      {
-                        if self.canHelpWith.contains(tag) {
-                          self.canHelpWith.removeAll(where: { $0 == tag })
-                        }
-                        else {
-                          self.canHelpWith.append(tag)
-                        }
+          // phone number
+          VStack (alignment: .leading, spacing: 0) {
+            Text("Phone number:")
+              .padding(.bottom, 5)
+            TextField("###-###-####", text: $phoneNumber)
+              .padding(5)
+              .overlay(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+          }
+          .listRowSeparator(.hidden)
+          
+          // can help with tags
+          VStack (alignment: .leading, spacing: 0) {
+            Text("Can help with (select up to 3):")
+              .padding(.bottom, 5)
+            ForEach(0..<4) { row in
+              HStack {
+                ForEach(0..<3) { column in
+                  if ((row * 3 + column) < 10) {
+                    let tag = canHelpWithTags[row * 3 + column]
+                      MultiSelectTag(
+                        tag: tag,
+                        isSelected: self.canHelpWith.contains(tag)
+                      )
+                    {
+                      if self.canHelpWith.contains(tag) {
+                        self.canHelpWith.removeAll(where: { $0 == tag })
+                      }
+                      else {
+                        self.canHelpWith.append(tag)
                       }
                     }
                   }
                 }
-                .padding(.bottom, 10)
               }
-            }
-            .listRowSeparator(.hidden)
-            
-            if self.isValidUser() {
-              HStack {
-                Spacer()
-                Button("Save") {
-                  editUser()
-                  clearFields()
-                  showUserProfile = true
-                }
-                .foregroundColor(.white)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(RoundedRectangle(cornerRadius: 10).fill(darkBlue))
-                Spacer()
-              }
+              .padding(.bottom, 10)
             }
           }
-          .background(.white)
-          .scrollContentBackground(.hidden)
+          .listRowSeparator(.hidden)
+          
+          if self.isValidUser() {
+            HStack {
+              Spacer()
+              Button("Save") {
+                editUser()
+                clearFields()
+                dismiss()
+              }
+              .foregroundColor(.white)
+              .padding(.horizontal, 10)
+              .padding(.vertical, 5)
+              .background(RoundedRectangle(cornerRadius: 10).fill(darkBlue))
+              Spacer()
+            }
+          }
         }
+        .background(.white)
+        .scrollContentBackground(.hidden)
       }
     }
   }
@@ -142,11 +135,9 @@ struct EditUserProfileView: View {
     if (!marketplaceViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
       let updatedUser = User(uid: user.uid, bio: bio, can_help_with: canHelpWith, first_name: firstName, last_name: lastName, pfp: user.pfp, phone_number: intPhoneNumber, picked_up_errands: user.picked_up_errands, posted_errands: user.posted_errands, school_year: schoolYear)
       usersViewModel.editUser(user: user, updatedUser: updatedUser)
-      
+            
       if (user.first_name != firstName || user.last_name != lastName || user.phone_number != intPhoneNumber) {
-        let updatedErrandOwner = ErrandOwner(id: user.id!, first_name: firstName, last_name: lastName, pfp: user.pfp, phone_number: intPhoneNumber)
-        let updatedErrandRunner = ErrandRunner(id: user.id!, first_name: firstName, last_name: lastName)
-        marketplaceViewModel.editUser(owner: updatedErrandOwner, runner: updatedErrandRunner)
+        marketplaceViewModel.editUser(user: updatedUser, userId: user.id!, postedErrandsIds: user.posted_errands, pickedUpErrandsIds: user.picked_up_errands)
       }
     }
   }

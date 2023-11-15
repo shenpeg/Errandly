@@ -22,7 +22,7 @@ class ErrandDetailsViewModel: ObservableObject {
   
     func assignErrandToUser() {
         // Add the errand id to the user's picked_up_errands
-        userRepository.addErrandToUser(userId: user.id!, errandId: errand.id!)
+      userRepository.addErrandToUser(userId: user.id!, errandId: errand.id!, type: "picked_up_errands")
     }
 
     func addUserAsRunner() {

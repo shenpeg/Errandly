@@ -18,6 +18,7 @@ struct PostErrandView: View {
   var user: User
   var isCurUser: Bool
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
+  private var userRepository = UserRepository()
   
   @State private var title = ""
   @State private var description =  ""
@@ -116,8 +117,8 @@ struct PostErrandView: View {
     }
   }
   
-  private func addErrand() {
-    //currently hardcoded: location, tags
+  private func addErrand() async {
+    //currently hardcoded: location
     
     payStringToDouble()
     getSelectedTags()
@@ -134,8 +135,13 @@ struct PostErrandView: View {
       pay: pay,
       status: "new",
       tags: selectedTags)
+    
     if isValidErrand() {
-      marketplaceViewModel.add(newErrand)
+      let postedErrand = await marketplaceViewModel.add(newErrand)
+      print(postedErrand.id ?? "n/a")
+      if (postedErrand.id != nil) {
+        userRepository.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
+      }
       clearFields()
     }
   }
@@ -284,8 +290,9 @@ struct PostErrandView: View {
             
             Section {
               Button("Post") {
-                if isValidErrand() {
-                  addErrand()
+                Task {
+                  await addErrand()
+                  clearFields()
                   self.showMarketplaceView = true
                 }
               }
