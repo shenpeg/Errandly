@@ -25,6 +25,7 @@ struct UserProfileErrandsView: View {
             }
           }
       }
+      .background(darkBlue)
       
       UserProfileErrandsListView(user: user, isCurUser: isCurUser, isPostedErrands: (selectedTab == "Posted Errands"))
     }

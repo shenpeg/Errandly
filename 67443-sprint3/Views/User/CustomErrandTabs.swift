@@ -1,10 +1,10 @@
 import SwiftUI
 
-public struct CustomErrandTabs<Data, Content> : View where Data: Hashable, Content: View {
+public struct CustomErrandTabs<Data, Content>: View where Data: Hashable, Content: View {
     public let sources: [Data]
     public let selection: Data?
     private let itemBuilder: (Data) -> Content
-        
+
     public init(
         _ sources: [Data],
         selection: Data?,
@@ -14,20 +14,47 @@ public struct CustomErrandTabs<Data, Content> : View where Data: Hashable, Conte
         self.selection = selection
         self.itemBuilder = itemBuilder
     }
-    
-    public var body: some View {
-        ZStack(alignment: .center) {
-            
-            HStack(spacing: 0) {
-                ForEach(sources, id: \.self) { item in
-                    itemBuilder(item)
-                    .border(.white, width: 2)
-                    .background(item == selection ? .white : darkBlue)
-                }
-            }
+
+  public var body: some View {
+      ZStack(alignment: .top) {
+          HStack(spacing: 0) {
+              ForEach(sources, id: \.self) { item in
+                  itemBuilder(item)
+                      .background(item == selection ? .white : darkBlue)
+              }
+          }
+          .clipShape(
+              RoundedRectangle(cornerRadius: 15)
+                  .corners([.topLeft, .topRight], radius: 15)
+          )
+          .overlay(
+              RoundedRectangle(cornerRadius: 15)
+                  .corners([.topLeft, .topRight], radius: 15)
+                  .stroke(Color.white, lineWidth: 2)
+          )
+      }
+  }
+}
+
+extension RoundedRectangle {
+    func corners(_ corners: UIRectCorner, radius: CGFloat) -> some Shape {
+        return AnyShape { rect in
+            var path = Path()
+            let bezierPath = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            path.addPath(Path(bezierPath.cgPath))
+            return path
         }
-        .background(
-          Rectangle().fill(darkBlue)
-        )
+    }
+}
+
+struct AnyShape: Shape {
+    private var path: (CGRect) -> Path
+
+    init(_ path: @escaping (CGRect) -> Path) {
+        self.path = path
+    }
+
+    func path(in rect: CGRect) -> Path {
+        path(rect)
     }
 }
