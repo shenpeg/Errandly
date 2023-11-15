@@ -12,23 +12,26 @@ let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @ObservedObject var usersViewModel: UsersViewModel = UsersViewModel()
+  @State private var tabSelection = 1
 
   var body: some View {
     let curUser = usersViewModel.getUserByUid(uid: GIDSignIn.sharedInstance.currentUser?.userID)
 
-    return TabView {
+    return TabView(selection: $tabSelection) {
       if (curUser != nil) {
         MarketplaceView(user: curUser!)
           .tabItem {
             Image(systemName: "house")
             Text("Marketplace")
           }
+          .tag(1)
         
-        PostErrandView(user: curUser!, isCurUser: true)
+        PostErrandView(user: curUser!, isCurUser: true, tabSelection: $tabSelection)
           .tabItem {
             Image(systemName: "plus.app")
             Text("Post Errand")
           }
+          .tag(2)
         
         UserProfileView(user: curUser, isCurUser: true)
           .environmentObject(authViewModel)
@@ -36,6 +39,7 @@ struct ContentView: View {
             Image(systemName: "person")
             Text("Profile")
           }
+          .tag(3)
       }
     }
   }

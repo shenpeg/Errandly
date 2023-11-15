@@ -17,6 +17,7 @@ struct PostErrandView: View {
   
   var user: User
   var isCurUser: Bool
+  @Binding var tabSelection: Int
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
   
   @State private var title = ""
@@ -27,7 +28,6 @@ struct PostErrandView: View {
   @State private var pay = 0.0
   @State private var payBool = true
   @State private var payString = ""
-  @State private var showMarketplaceView = false
   @State private var numOfTags = 0
   
   // tags: ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
@@ -44,12 +44,10 @@ struct PostErrandView: View {
     Tag(tid: 9, label: "moving in/out"),
     ]
 
-
-
-  init(user: User, isCurUser: Bool) {
+  init(user: User, isCurUser: Bool, tabSelection: Binding<Int>) {
     self.user = user
     self.isCurUser = isCurUser
-    self.showMarketplaceView = false
+    self._tabSelection = tabSelection
   }
   
   //functions
@@ -117,7 +115,7 @@ struct PostErrandView: View {
   }
   
   private func addErrand() {
-    //currently hardcoded: location, tags
+    //currently hardcoded: location
     
     payStringToDouble()
     getSelectedTags()
@@ -133,19 +131,13 @@ struct PostErrandView: View {
       runner: nil,
       pay: pay,
       status: "new",
-      tags: selectedTags)
-    if isValidErrand() {
-      marketplaceViewModel.add(newErrand)
-      clearFields()
-    }
+      tags: selectedTags
+    )
+    
+    marketplaceViewModel.add(newErrand)
   }
   
   var body: some View {
-//    switch showMarketplaceView {
-      
-//    case true: ContentView()
-      
-//    case false:
       NavigationView {
         VStack(alignment: .leading) {
           Form {
@@ -286,7 +278,8 @@ struct PostErrandView: View {
               Button("Post") {
                 if isValidErrand() {
                   addErrand()
-                  self.showMarketplaceView = true
+                  clearFields()
+                  self.tabSelection = 1
                 }
               }
               .foregroundColor(.white)
@@ -295,15 +288,15 @@ struct PostErrandView: View {
               .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
               
             } //end of button section
-            .alert(isPresented: $showMarketplaceView) {
-                Alert(
-                    title: Text("Your errand has been posted!"),
-                    primaryButton: .default(Text("Got it")) {
-                      clearFields()
-                    },
-                    secondaryButton: .default(Text("So excited"))
-                )
-            }
+//            .alert(isPresented: $showMarketplaceView) {
+//                Alert(
+//                    title: Text("Your errand has been posted!"),
+//                    primaryButton: .default(Text("Got it")) {
+//                      clearFields()
+//                    },
+//                    secondaryButton: .default(Text("So excited"))
+//                )
+//            }
           } //end of form
           .background(Color.white)
           .accentColor(darkBlue)
@@ -314,7 +307,6 @@ struct PostErrandView: View {
         
         
       } // end of NavView
-//    } // end of switch
   } //end of body
   
 } //end of struct PostErrandView
