@@ -59,7 +59,7 @@ struct EditUserProfileView: View {
                 .padding(.bottom, 5)
               TextField("###-###-####", text: $phoneNumber)
                 .padding(5)
-                .overlay(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(darkBlue, lineWidth: 1))
             }
             .listRowSeparator(.hidden)
             
@@ -101,9 +101,9 @@ struct EditUserProfileView: View {
                   showUserProfile = true
                 }
                 .foregroundColor(.white)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(RoundedRectangle(cornerRadius: 10).fill(darkBlue))
+                .padding(.horizontal, 20)
+                .padding(.vertical, 8)
+                .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
                 Spacer()
               }
             }
@@ -193,7 +193,7 @@ struct FormTextSection: View {
         .padding(.bottom, 5)
       TextField(text, text: input)
         .padding(5)
-        .overlay(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(darkBlue, lineWidth: 1))
     }
     .listRowSeparator(.hidden)
   }
@@ -209,14 +209,14 @@ struct MultiSelectTag: View {
           if self.isSelected {
             Text(self.tag)
               .font(.caption)
-              .padding(.horizontal, 15)
-              .foregroundColor(darkGray)
+              .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+              .foregroundColor(darkBlue)
               .background(Capsule().fill(mint))
           }
           else {
             Text(self.tag)
               .font(.caption)
-              .padding(.horizontal, 15)
+              .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
               .foregroundColor(darkBlue)
               .background(Capsule().fill(lightGray))
           }
