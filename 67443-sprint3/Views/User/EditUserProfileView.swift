@@ -20,7 +20,6 @@ struct EditUserProfileView: View {
   
   init(user: User) {
     self.user = user
-    self.showUserProfile = false
     self._firstName = State(wrappedValue: user.first_name)
     self._lastName = State(wrappedValue: user.last_name)
     self._bio = State(wrappedValue: user.bio)
