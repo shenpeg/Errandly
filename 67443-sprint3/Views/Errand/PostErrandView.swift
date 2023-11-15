@@ -18,7 +18,7 @@ struct PostErrandView: View {
   var user: User
   var isCurUser: Bool
   @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
-  private var userRepository = UserRepository()
+  @ObservedObject var usersViewModel = UsersViewModel()
   
   @State private var title = ""
   @State private var description =  ""
@@ -140,7 +140,7 @@ struct PostErrandView: View {
       let postedErrand = await marketplaceViewModel.add(newErrand)
       print(postedErrand.id ?? "n/a")
       if (postedErrand.id != nil) {
-        userRepository.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
+        usersViewModel.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
       }
       clearFields()
     }

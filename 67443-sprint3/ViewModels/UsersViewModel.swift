@@ -54,4 +54,8 @@ class UsersViewModel: ObservableObject {
     userRepository.updateUser(user: user, updatedUser: updatedUser)
   }
   
+  func addErrandToUser(userId: String, errandId: String, type: String) {
+    userRepository.addErrandToUser(userId: userId, errandId: errandId, type: "posted_errands")
+  }
+  
 }
