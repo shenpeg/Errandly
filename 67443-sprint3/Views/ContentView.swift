@@ -12,7 +12,12 @@ let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @ObservedObject var usersViewModel: UsersViewModel = UsersViewModel()
-
+  
+  init() {
+    UITabBar.appearance().backgroundColor = .white
+    UITabBar.appearance().barTintColor = .white
+  }
+  
   var body: some View {
     let curUser = usersViewModel.getUserByUid(uid: GIDSignIn.sharedInstance.currentUser?.userID)
 
