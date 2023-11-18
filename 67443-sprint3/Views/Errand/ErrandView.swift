@@ -126,15 +126,12 @@ struct ErrandView: View {
       
     }
     .listRowBackground(
-        RoundedRectangle(cornerRadius: 20)
-            .stroke(darkBlue, lineWidth: 1)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.white)
-            )
-            .frame(width: 340)
-            .offset(y: -5)
-            .padding(8)
+       RoundedRectangle(cornerRadius: 20)
+         .stroke(darkBlue, lineWidth: 1)
+         .background(RoundedRectangle(cornerRadius: 20).fill(.white))
+         .offset(y: -5)
+         .padding(.vertical, 10)
+         .padding(.horizontal, 20)
     )
     .listRowSeparator(.hidden)
     .onAppear {

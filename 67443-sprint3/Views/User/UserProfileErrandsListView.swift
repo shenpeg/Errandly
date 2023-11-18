@@ -98,12 +98,12 @@ struct PostedErrandList: View {
         let errand = marketplaceViewModel.getErrand(e.id!)
         if status.contains("completed") {
           ErrandView(errand: errand, isCurUser: true, user: user)
-                .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
-                .padding(.bottom, 10)
+            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
+            .padding(.bottom, 10)
         }
          else {
            ErrandView(errand: errand, isCurUser: true, user: user)
-                .padding(.bottom, 10)
+            .padding(.bottom, 10)
         }
       }
     }
@@ -128,15 +128,11 @@ struct PickedUpErrandList: View {
         let errand = marketplaceViewModel.getErrand(e.id!)
         if status.contains("completed") {
           ErrandView(errand: errand, isCurUser: false, user: user)
-                .background(RoundedRectangle(cornerRadius: 20, style: .continuous)
-                  .fill(darkGray.opacity(0.2)))
-                .frame(width: 340)
-                .offset(y: -5)
-                .padding(8)
-                .padding(.bottom, 10)
+            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
+            .padding(.bottom, 10)
         } else {
           ErrandView(errand: errand, isCurUser: false, user: user)
-                .padding(.bottom, 10)
+            .padding(.bottom, 10)
         }
       }
     }
