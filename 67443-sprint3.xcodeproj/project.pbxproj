@@ -43,6 +43,7 @@
 		A3B99B692AD62B0D000822EE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */; };
 		A3B99B712AD63057000822EE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B702AD63057000822EE /* GoogleSignIn */; };
 		A3B99B732AD63057000822EE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B722AD63057000822EE /* GoogleSignInSwift */; };
+		A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4564C2B09584F000678E6 /* FormTags.swift */; };
 		A3EAE9272AE85D880079481D /* Errand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9262AE85D880079481D /* Errand.swift */; };
 		A3EAE92C2AE861860079481D /* ErrandRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE92B2AE861860079481D /* ErrandRepository.swift */; };
 		A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE92D2AE862510079481D /* MarketplaceView.swift */; };
@@ -113,6 +114,7 @@
 		A3B99B632AD62B0B000822EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A3B99B652AD62B0D000822EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3C4564C2B09584F000678E6 /* FormTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTags.swift; sourceTree = "<group>"; };
 		A3EAE9262AE85D880079481D /* Errand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errand.swift; sourceTree = "<group>"; };
 		A3EAE92B2AE861860079481D /* ErrandRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRepository.swift; sourceTree = "<group>"; };
 		A3EAE92D2AE862510079481D /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				A38B51FC2AF016E900D3B8E5 /* User */,
 				A38B51FA2AF016D400D3B8E5 /* Errand */,
 				8ADEFF852AFD714A0094C83F /* SortSheet.swift */,
+				A3C4564C2B09584F000678E6 /* FormTags.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				A3EAE97B2AE8889C0079481D /* UserRepository.swift in Sources */,
 				A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */,
 				A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */,
+				A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */,
 				15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,7 +619,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"67443-sprint3/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 95RHN9PF89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-7443-sprint3-Info.plist";
@@ -649,7 +653,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"67443-sprint3/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 95RHN9PF89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-7443-sprint3-Info.plist";

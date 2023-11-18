@@ -37,7 +37,7 @@ struct ErrandDetailsView: View {
                       ForEach(viewModel.errand.tags, id: \.self) {tag in
                         Text(tag)
                           .font(.callout)
-                          .padding(.horizontal, 15)
+                          .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                           .foregroundColor(darkBlue)
                           .background(Capsule().fill(lightGray))
                       }

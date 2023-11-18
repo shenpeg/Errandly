@@ -14,9 +14,7 @@ struct EditUserProfileView: View {
   @State private var schoolYear = ""
   @State private var phoneNumber = ""
   @State private var canHelpWith: [String] = []
-  
-  @State private var canHelpWithTags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
-  
+    
   init(user: User) {
     self.user = user
     self.showUserProfile = false
@@ -59,7 +57,7 @@ struct EditUserProfileView: View {
                 .padding(.bottom, 5)
               TextField("###-###-####", text: $phoneNumber)
                 .padding(5)
-                .overlay(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(darkBlue, lineWidth: 1))
             }
             .listRowSeparator(.hidden)
             
@@ -67,28 +65,7 @@ struct EditUserProfileView: View {
             VStack (alignment: .leading, spacing: 0) {
               Text("Can help with (select up to 3):")
                 .padding(.bottom, 5)
-              ForEach(0..<4) { row in
-                HStack {
-                  ForEach(0..<3) { column in
-                    if ((row * 3 + column) < 10) {
-                      let tag = canHelpWithTags[row * 3 + column]
-                        MultiSelectTag(
-                          tag: tag,
-                          isSelected: self.canHelpWith.contains(tag)
-                        )
-                      {
-                        if self.canHelpWith.contains(tag) {
-                          self.canHelpWith.removeAll(where: { $0 == tag })
-                        }
-                        else {
-                          self.canHelpWith.append(tag)
-                        }
-                      }
-                    }
-                  }
-                }
-                .padding(.bottom, 10)
-              }
+              FormTags(formTags: $canHelpWith)
             }
             .listRowSeparator(.hidden)
             
@@ -101,9 +78,9 @@ struct EditUserProfileView: View {
                   showUserProfile = true
                 }
                 .foregroundColor(.white)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(RoundedRectangle(cornerRadius: 10).fill(darkBlue))
+                .padding(.horizontal, 20)
+                .padding(.vertical, 8)
+                .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
                 Spacer()
               }
             }
@@ -193,36 +170,8 @@ struct FormTextSection: View {
         .padding(.bottom, 5)
       TextField(text, text: input)
         .padding(5)
-        .overlay(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(darkBlue, lineWidth: 1))
     }
     .listRowSeparator(.hidden)
   }
-}
-
-struct MultiSelectTag: View {
-    var tag: String
-    var isSelected: Bool
-    var action: () -> Void
-
-    var body: some View {
-        Button(action: self.action) {
-          if self.isSelected {
-            Text(self.tag)
-              .font(.caption)
-              .padding(.horizontal, 15)
-              .foregroundColor(darkGray)
-              .background(Capsule().fill(mint))
-          }
-          else {
-            Text(self.tag)
-              .font(.caption)
-              .padding(.horizontal, 15)
-              .foregroundColor(darkBlue)
-              .background(Capsule().fill(lightGray))
-          }
-        }
-        // https://www.hackingwithswift.com/forums/swiftui/tap-button-in-hstack-activates-all-button-actions-ios-14-swiftui-2/2952
-        // why does work though??
-          .buttonStyle(BorderlessButtonStyle())
-    }
 }
