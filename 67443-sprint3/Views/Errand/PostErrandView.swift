@@ -146,96 +146,87 @@ struct PostErrandView: View {
   }
   
   var body: some View {
-      NavigationView {
+    VStack(alignment: .leading) {
+      Form {
+        TextField("Errand Title", text: $title)
+          .font(.system(size: 38))
+          .underline(true)
+          .foregroundColor(darkBlue)
+          .listRowSeparator(.hidden)
+        
+        TextField("What do you need help with?", text: $description, axis: .vertical)
+          .lineLimit(10, reservesSpace: true)
+          .background(Color.white)
+          .padding(5)
+          .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+          .listRowSeparator(.hidden)
+     
+        DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
+        //            .datePickerStyle(.compact)
+        //            .background(Color.white)
+        //            .overlay(RoundedRectangle(cornerRadius: 0)
+        //              .stroke(Color.blue, lineWidth: 1))
+
         VStack(alignment: .leading) {
-          Form {
-            TextField("Errand Title", text: $title)
-              .font(.system(size: 38))
-              .underline(true)
-              .foregroundColor(darkBlue)
-              .listRowSeparator(.hidden)
-            
-            
-            TextField("What do you need help with?", text: $description, axis: .vertical)
-              .lineLimit(10, reservesSpace: true)
-              .background(Color.white)
-              .padding(5)
-              .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
-              .listRowSeparator(.hidden)
-         
-            DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
-            //            .datePickerStyle(.compact)
-            //            .background(Color.white)
-            //            .overlay(RoundedRectangle(cornerRadius: 0)
-            //              .stroke(Color.blue, lineWidth: 1))
-          
-      
-  
-            VStack(alignment: .leading) {
-              Text("Tags (select up to five):")
-              HStack {
-                ForEach(0 ... 2, id: \.self ) { index in
-                  Button(tagsList[index].label) {
+          Text("Tags (select up to five):")
+          HStack {
+            ForEach(0 ... 2, id: \.self ) { index in
+              Button(tagsList[index].label) {
 //                  TagButtonView(tag: tagsList[index], selectedBtn: self.$selectedTag)
-                    countSelectedTags()
-                    if numOfTags < 5 || tagsList[index].isSelected {
-                      tagsList[index].isSelected = !tagsList[index].isSelected
-                    }
-                  }
-                  .font(.footnote)
-                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                  .background(tagsList[index].isSelected ? mint : lightGray)
-                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
-                  .cornerRadius(10)
-                  .buttonStyle(BorderlessButtonStyle())
-                }
-              } //Hstack 1
-              HStack {
-                ForEach(3 ... 6, id: \.self ) { index in
-                  Button(tagsList[index].label) {
-                    countSelectedTags()
-                    if numOfTags < 5 || tagsList[index].isSelected {
-                      tagsList[index].isSelected = !tagsList[index].isSelected
-                    }
-                  }
-                  .font(.footnote)
-                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                  .background(tagsList[index].isSelected ? mint : lightGray)
-                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
-                  .cornerRadius(10)
-                  .buttonStyle(BorderlessButtonStyle())
+                countSelectedTags()
+                if numOfTags < 5 || tagsList[index].isSelected {
+                  tagsList[index].isSelected = !tagsList[index].isSelected
                 }
               }
+              .font(.footnote)
+              .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+              .background(tagsList[index].isSelected ? mint : lightGray)
+              .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
+              .cornerRadius(10)
+              .buttonStyle(BorderlessButtonStyle())
+            }
+          } //Hstack 1
+          HStack {
+            ForEach(3 ... 6, id: \.self ) { index in
+              Button(tagsList[index].label) {
+                countSelectedTags()
+                if numOfTags < 5 || tagsList[index].isSelected {
+                  tagsList[index].isSelected = !tagsList[index].isSelected
+                }
+              }
+              .font(.footnote)
+              .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+              .background(tagsList[index].isSelected ? mint : lightGray)
+              .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
+              .cornerRadius(10)
+              .buttonStyle(BorderlessButtonStyle())
+            }
+          }
 //              .contentShape(Rectangle())
-              HStack {
-                ForEach(7 ... 9, id: \.self ) { index in
-                  Button(tagsList[index].label) {
-                    countSelectedTags()
-                    if numOfTags < 5 || tagsList[index].isSelected {
-                      tagsList[index].isSelected = !tagsList[index].isSelected
-                    }
+          HStack {
+            ForEach(7 ... 9, id: \.self ) { index in
+              Button(tagsList[index].label) {
+                countSelectedTags()
+                if numOfTags < 5 || tagsList[index].isSelected {
+                  tagsList[index].isSelected = !tagsList[index].isSelected
+                }
 //                    print("---------------------------------")
 //                    print(tagsList[index].label)
 //                    print(String(tagsList[index].isSelected))
 //
 //                    print("---------------------------------")
-                  }
-                  .font(.footnote)
-                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                  .background(tagsList[index].isSelected ? mint : lightGray)
-                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
-                  .cornerRadius(10)
-                  .buttonStyle(BorderlessButtonStyle())
-                }
               }
-            } //Vstack
-            .listRowSeparator(.hidden)
+              .font(.footnote)
+              .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+              .background(tagsList[index].isSelected ? mint : lightGray)
+              .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
+              .cornerRadius(10)
+              .buttonStyle(BorderlessButtonStyle())
+            }
+          }
+        } //Vstack
+        .listRowSeparator(.hidden)
 
-            
-      
-            
-            
-            
 //            VStack(alignment: .leading) {
 //              Text("Location:")
 //              TextField("", text: $location)
@@ -243,72 +234,67 @@ struct PostErrandView: View {
 //                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
 //            }
 //            .listRowSeparator(.hidden)
-      
-            
-            
-            VStack(alignment: .leading) {
-              Text("Compensation?")
-              HStack{
-                Button(action: {payBool = true}) {
-                  Text(" ")
-                }
-                .frame(width: 20, height: 20)
-                .background(payBool ? darkBlue : Color.white)
-                .cornerRadius(100)
-                .foregroundColor(Color.black)
-                .padding()
-                .overlay(RoundedRectangle(cornerRadius: 100)
-                  .stroke(darkBlue, lineWidth: 2)
-                  .scaleEffect(0.5))
-                Text("Yes     ")
-                TextField("how much?", text: $payString)
-                  .padding(5)
-                  .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
-                  .keyboardType(.decimalPad)
-              }
-              HStack{
-                Button(action: {payString = "0"; payBool = false}) {
-                  Text(" ")
-                }
-                .frame(width: 20, height: 20)
-                .background(payBool ? Color.white : darkBlue)
-                .cornerRadius(100)
-                .foregroundColor(darkBlue)
-                .padding()
-                .overlay(RoundedRectangle(cornerRadius: 100)
-                  .stroke(darkBlue, lineWidth: 2)
-                  .scaleEffect(0.5))
-                Text("No      ")
-              }
-            }.listRowSeparator(.hidden)
-            
-            Section {
-              if isValidErrand() {
-                Button("Post") {
-                  Task {
-                    await addErrand()
-                    clearFields()
-                    self.tabSelection = 1
-                  }
-                }
-                .foregroundColor(.white)
-                .font(.headline)
-                .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
-                .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
-              }
-              
-            } //end of button section
-          } //end of form
-          .background(Color.white)
-          .accentColor(darkBlue)
-          .scrollContentBackground(.hidden)
-      
-        } //end vstack
-        .listRowSeparator(.hidden)
+
+        VStack(alignment: .leading) {
+          Text("Compensation?")
+          HStack{
+            Button(action: {payBool = true}) {
+              Text(" ")
+            }
+            .frame(width: 20, height: 20)
+            .background(payBool ? darkBlue : Color.white)
+            .cornerRadius(100)
+            .foregroundColor(Color.black)
+            .padding()
+            .overlay(RoundedRectangle(cornerRadius: 100)
+              .stroke(darkBlue, lineWidth: 2)
+              .scaleEffect(0.5))
+            Text("Yes     ")
+            TextField("how much?", text: $payString)
+              .padding(5)
+              .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
+              .keyboardType(.decimalPad)
+          }
+          HStack{
+            Button(action: {payString = "0"; payBool = false}) {
+              Text(" ")
+            }
+            .frame(width: 20, height: 20)
+            .background(payBool ? Color.white : darkBlue)
+            .cornerRadius(100)
+            .foregroundColor(darkBlue)
+            .padding()
+            .overlay(RoundedRectangle(cornerRadius: 100)
+              .stroke(darkBlue, lineWidth: 2)
+              .scaleEffect(0.5))
+            Text("No      ")
+          }
+        }.listRowSeparator(.hidden)
         
+        Section {
+          if isValidErrand() {
+            Button("Post") {
+              Task {
+                await addErrand()
+                clearFields()
+                self.tabSelection = 1
+              }
+            }
+            .foregroundColor(.white)
+            .font(.headline)
+            .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+            .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+          }
+        } //end of button section
         
-      } // end of NavView
-//    } // end of switch
+      } //end of form
+      .background(Color.white)
+      .accentColor(darkBlue)
+      .scrollContentBackground(.hidden)
+  
+    } //end vstack
+    .listRowSeparator(.hidden)
+
   } //end of body
   
 } //end of struct PostErrandView

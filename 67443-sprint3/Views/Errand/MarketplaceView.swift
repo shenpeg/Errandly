@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+
 let tags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
+
 struct MarketplaceView: View {
   @EnvironmentObject var errandRepository: ErrandRepository
-//  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
   @State private var searchField = ""
   @State private var selectedTags = "" // : [String] = []
   @State private var tagIsClicked: Bool = false
