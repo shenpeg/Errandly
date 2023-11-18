@@ -1,4 +1,5 @@
 import Combine
+import GoogleSignIn
 
 import Firebase
 import FirebaseFirestoreSwift
@@ -12,7 +13,11 @@ class UserRepository: ObservableObject {
   @Published var users: [User] = []
   private var cancellables: Set<AnyCancellable> = []
   
+  var curUserUid: String = GIDSignIn.sharedInstance.currentUser?.userID ?? "n/a"
+
+  
   init() {
+    print("user repository init")
     self.get()
   }
   
@@ -28,6 +33,30 @@ class UserRepository: ObservableObject {
           try? document.data(as: User.self)
         } ?? []
       }
+  }
+  
+  func getUser(userId: String) -> User? {
+    if (curUserUid == "n/a") {
+      return nil
+    }
+    else if let user = users.first(where: {$0.id == userId}) {
+      return user
+    }
+    else {
+      return nil
+    }
+  }
+  
+  func getCurUser() -> User? {
+    if (curUserUid == "n/a") {
+      return nil
+    }
+    else if let user = users.first(where: {$0.uid == curUserUid}) {
+      return user
+    }
+    else {
+      return nil
+    }
   }
   
   func deletePostedErrand(owner: User, errand: Errand) {
@@ -62,6 +91,7 @@ class UserRepository: ObservableObject {
   }
   
   func updateUser(user: User, updatedUser: User) {
+    print("user repository update user")
     guard let userId = user.id else { return }
     do {
       try store.collection(path).document(userId).setData(from: updatedUser)

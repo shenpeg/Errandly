@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct ErrandDetailsPickUpView: View {
-  @ObservedObject var viewModel: ErrandDetailsViewModel
+  var errand: Errand
+  var user: User
+  @EnvironmentObject var errandRepository: ErrandRepository
+  @EnvironmentObject var userRepository: UserRepository
   @State private var isPickUpAlertPresented = false
   @State private var isCompletionAlertPresented = false
 
-  init(errand: Errand, user: User) {
-    viewModel = ErrandDetailsViewModel(errand: errand, user: user)
-  }
-
   var body: some View {
-    let payFormat = String(format: "$%.2f", viewModel.errand.pay)
+    let payFormat = String(format: "$%.2f", errand.pay)
     
     VStack {
       // Horizontal separator line
@@ -32,8 +31,8 @@ struct ErrandDetailsPickUpView: View {
         
         Spacer()
         
-        if viewModel.errand.status == "new" {
-          if viewModel.errand.owner.id == viewModel.user.id {
+        if (errand.status == "new") {
+          if (errand.owner.id == user.id) {
             Text("Can't pick up own errand!")
               .font(.headline)
               .foregroundColor(darkBlue)
@@ -56,14 +55,16 @@ struct ErrandDetailsPickUpView: View {
                 title: Text("Are you sure you want to pick up this errand?"),
                 primaryButton: .default(Text("Yes, I'm sure")) {
                   // change status to in progress and assign runner
-                  viewModel.markAsInProgress()
+                  errandRepository.updateErrandStatus(errandID: errand.id!, newStatus: "in progress")
+                  userRepository.addErrandToUser(userId: user.id!, errandId: errand.id!, type: "picked_up_errands")
+                  errandRepository.addUserAsRunner(user: user, errand: errand)
                 },
                 secondaryButton: .cancel(Text("Cancel"))
               )
             }
           }
-        } else if viewModel.errand.status == "in progress" {
-            if viewModel.errand.owner.id == viewModel.user.id {
+        } else if (errand.status == "in progress") {
+            if (errand.owner.id == user.id) {
               Button(action: {
                   isCompletionAlertPresented = true
               }) {
@@ -80,7 +81,7 @@ struct ErrandDetailsPickUpView: View {
                           title: Text("Mark this errand as complete?"),
                           primaryButton: .default(Text("Yes, it's completed!")) {
                               // Change status to completed
-                              viewModel.markAsCompleted()
+                            errandRepository.updateErrandStatus(errandID: errand.id!, newStatus: "completed")
                           },
                           secondaryButton: .cancel(Text("No, Cancel"))
                       )
@@ -91,7 +92,7 @@ struct ErrandDetailsPickUpView: View {
                    .foregroundColor(darkBlue)
                    .italic()
             }
-        } else if viewModel.errand.status == "completed" {
+        } else if (errand.status == "completed") {
             // technically completed ones should only show up in profile not marketplace?
             Text("Completed")
                 .font(.headline)

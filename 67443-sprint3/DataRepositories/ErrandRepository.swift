@@ -17,6 +17,7 @@ class ErrandRepository: ObservableObject {
   }
   
   func get() {
+    print("errand repository init")
     store.collection(path)
       .addSnapshotListener{querySnapshot, error in
         if let error = error {
@@ -108,4 +109,30 @@ class ErrandRepository: ObservableObject {
       }
     }
   }
+  
+  func getErrand(_ id: String) -> Errand {
+    if let errand = errands.first(where: {$0.id == id}) {
+      return errand
+    }
+    else {
+      fatalError("Unable to find the corresponding errand.")
+    }
+  }
+
+  func getErrandsByStatus(_ ids: [String]) -> [String: [Errand]] {
+    var errandsByStatus: [String: [Errand]] = ["new": [], "in progress": [], "completed": []]
+    ids.forEach {id in
+      if let errand = errands.first(where: {$0.id == id}) {
+        errandsByStatus[errand.status]!.append(errand)
+      }
+    }
+    return errandsByStatus
+  }
+  
+  func addUserAsRunner(user: User, errand: Errand) {
+      let runner = ErrandRunner(id: user.id!, first_name: user.first_name, last_name: user.last_name)
+      // Add user as runner of errand
+      self.addRunnerToErrand(errandId: errand.id!, runner: runner)
+  }
+
 }

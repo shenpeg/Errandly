@@ -11,7 +11,11 @@ let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
-  @ObservedObject var usersViewModel: UsersViewModel = UsersViewModel()
+  // note: put all stuff in usersViewModel/MarketplaceViewModel!!!!!
+  // - rename marketplaceviewmodel to errandsviewmodel?
+  // just for now using userRepository/errandRepository
+  @StateObject var userRepository: UserRepository = UserRepository()
+  @StateObject var errandRepository: ErrandRepository = ErrandRepository()
   
   init() {
     UITabBar.appearance().backgroundColor = .white
@@ -19,10 +23,10 @@ struct ContentView: View {
   }
   
   var body: some View {
-    let curUser = usersViewModel.getUserByUid(uid: GIDSignIn.sharedInstance.currentUser?.userID)
-
     return TabView {
-      if (curUser != nil) {
+      if (userRepository.getCurUser() != nil) {
+        let curUser = userRepository.getCurUser()
+
         MarketplaceView(user: curUser!)
           .tabItem {
             Image(systemName: "house")
@@ -35,7 +39,7 @@ struct ContentView: View {
             Text("Post Errand")
           }
         
-        UserProfileView(user: curUser, isCurUser: true)
+        UserProfileView(user: curUser!, isCurUser: true)
           .environmentObject(authViewModel)
           .tabItem {
             Image(systemName: "person")
@@ -43,5 +47,7 @@ struct ContentView: View {
           }
       }
     }
+    .environmentObject(userRepository)
+    .environmentObject(errandRepository)
   }
 }

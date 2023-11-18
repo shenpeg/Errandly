@@ -1,11 +1,9 @@
 import SwiftUI
 import GoogleSignIn
 
-// note: commented all user profile features
-// that rely on the ability to edit a user
-
 struct UserProfileInfoView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
+  @EnvironmentObject var userRepository: UserRepository
   var user: User
   var isCurUser: Bool
   
@@ -48,12 +46,10 @@ struct UserProfileInfoView: View {
               Text("\(user.first_name) \(user.last_name)")
                 .font(.title)
               
-              // this edit icon will need to become a button
-              // that redirects to an edit user page
               if (isCurUser) {
                 NavigationLink(destination:
                     EditUserProfileView(user: user)
-                    .environmentObject(authViewModel)
+                     .environmentObject(authViewModel)
                 ) {
                   Image(systemName: "pencil")
                     .foregroundColor(Color.white)

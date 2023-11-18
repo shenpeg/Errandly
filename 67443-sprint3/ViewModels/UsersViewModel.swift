@@ -1,4 +1,5 @@
 import Foundation
+import GoogleSignIn
 import Combine
 
 // from Swift Repos Lab
@@ -7,8 +8,10 @@ class UsersViewModel: ObservableObject {
   private var cancellables: Set<AnyCancellable> = []
   
   @Published var userRepository = UserRepository()
+  var curUserUid: String = GIDSignIn.sharedInstance.currentUser?.userID ?? "n/a"
   
   init() {
+    print("users view model init")
     userRepository.$users.map { users in
       return users.map(UserViewModel.init)
     }
@@ -46,11 +49,25 @@ class UsersViewModel: ObservableObject {
     }
   }
   
+  func getCurUser() -> User? {
+    print("users view model get cur user")
+    if (curUserUid == "n/a") {
+      return nil
+    }
+    else if let userVM = userViewModels.first(where: {$0.user.uid == curUserUid}) {
+      return userVM.user
+    }
+    else {
+      return nil
+    }
+  }
+  
   func createNewUser(_ uid: String?, _ first_name: String?, _ last_name: String?, _ imageUrl: String?) {
     userRepository.createNewUser(uid, first_name, last_name, imageUrl)
   }
   
   func editUser(user: User, updatedUser: User) {
+    print("users view model edit user")
     userRepository.updateUser(user: user, updatedUser: updatedUser)
   }
   

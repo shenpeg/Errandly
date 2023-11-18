@@ -16,6 +16,7 @@ class ErrandDetailsViewModel: ObservableObject {
     private let authenticationViewModel = AuthenticationViewModel()
 
     init(errand: Errand, user: User) {
+      print("errand details view model init")
         self.errand = errand
         self.user = user
     }

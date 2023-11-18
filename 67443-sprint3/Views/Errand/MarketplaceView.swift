@@ -8,8 +8,8 @@
 import SwiftUI
 let tags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
 struct MarketplaceView: View {
-  @ObservedObject var errandRepository = ErrandRepository()
-  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
+  @EnvironmentObject var errandRepository: ErrandRepository
+//  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
   @State private var searchField = ""
   @State private var selectedTags = "" // : [String] = []
   @State private var tagIsClicked: Bool = false
@@ -18,11 +18,13 @@ struct MarketplaceView: View {
   var user: User
   
   var body: some View {
-    let errandsVM = marketplaceViewModel.errandViewModels
+    let _ = print("marketplace view??")
+//    let errandsVM = marketplaceViewModel.errandViewModels
+    let errands = errandRepository.errands
     // code reference: https://www.youtube.com/watch?v=iTqwa0DCIMA&ab_channel=SeanAllen
-    var filteredErrands: [ErrandViewModel] {
-      guard !searchField.isEmpty || selectedTags != "" else { return errandsVM }
-      return errandsVM.filter { $0.errand.name.lowercased().contains(searchField.lowercased()) || $0.errand.tags.contains(selectedTags)}
+    var filteredErrands: [Errand] {
+      guard !searchField.isEmpty || selectedTags != "" else { return errands }
+      return errands.filter { $0.name.lowercased().contains(searchField.lowercased()) || $0.tags.contains(selectedTags)}
     }
     
     return NavigationStack {
@@ -76,8 +78,8 @@ struct MarketplaceView: View {
         }
       }
       List {
-        ForEach(filteredErrands) { errandVM in
-          ErrandView(errand: errandVM.errand, isCurUser: false, user: user)
+        ForEach(filteredErrands) { errand in
+          ErrandView(errand: errand, isCurUser: false, user: user)
             .padding(.bottom, 10)
         }
       }
@@ -86,8 +88,8 @@ struct MarketplaceView: View {
       .searchable(text: $searchField)
     }
     .accentColor(.black)
-    .sheet(isPresented: $showingSheet) {
-      SortSheet(filteredErrands: filteredErrands, user: user)
-    }
+//    .sheet(isPresented: $showingSheet) {
+//      SortSheet(filteredErrands: filteredErrands, user: user)
+//    }
   }
 }

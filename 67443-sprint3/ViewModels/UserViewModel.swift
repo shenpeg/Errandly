@@ -9,6 +9,8 @@ class UserViewModel: ObservableObject, Identifiable {
   var id = ""
 
   init(user: User) {
+    print("user view model init")
+    print(user.first_name)
     self.user = user
     $user
       .compactMap { $0.id }
