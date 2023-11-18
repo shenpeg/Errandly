@@ -16,6 +16,7 @@ struct ContentView: View {
   // just for now using userRepository/errandRepository
   @StateObject var userRepository: UserRepository = UserRepository()
   @StateObject var errandRepository: ErrandRepository = ErrandRepository()
+  @State private var tabSelection = 1
   
   init() {
     UITabBar.appearance().backgroundColor = .white
@@ -23,7 +24,7 @@ struct ContentView: View {
   }
   
   var body: some View {
-    return TabView {
+    return TabView(selection: $tabSelection) {
       if (userRepository.getCurUser() != nil) {
         let curUser = userRepository.getCurUser()
 
@@ -32,12 +33,14 @@ struct ContentView: View {
             Image(systemName: "house")
             Text("Marketplace")
           }
+          .tag(1)
         
-        PostErrandView(user: curUser!, isCurUser: true)
+        PostErrandView(user: curUser!, isCurUser: true, tabSelection: $tabSelection)
           .tabItem {
             Image(systemName: "plus.app")
             Text("Post Errand")
           }
+          .tag(2)
         
         UserProfileView(user: curUser!, isCurUser: true)
           .environmentObject(authViewModel)
@@ -45,6 +48,7 @@ struct ContentView: View {
             Image(systemName: "person")
             Text("Profile")
           }
+          .tag(3)
       }
     }
     .environmentObject(userRepository)

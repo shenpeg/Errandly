@@ -17,6 +17,8 @@ struct PostErrandView: View {
   
   var user: User
   var isCurUser: Bool
+  @Binding var tabSelection: Int
+  
   @EnvironmentObject var userRepository: UserRepository
   @EnvironmentObject var errandRepository: ErrandRepository
   
@@ -28,7 +30,6 @@ struct PostErrandView: View {
   @State private var pay = 0.0
   @State private var payBool = true
   @State private var payString = ""
-  @State private var showMarketplaceView = false
   @State private var numOfTags = 0
   
   // tags: ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
@@ -47,10 +48,10 @@ struct PostErrandView: View {
 
 
 
-  init(user: User, isCurUser: Bool) {
+  init(user: User, isCurUser: Bool, tabSelection: Binding<Int>) {
     self.user = user
     self.isCurUser = isCurUser
-    self.showMarketplaceView = false
+    self._tabSelection = tabSelection
   }
   
   //functions
@@ -134,24 +135,17 @@ struct PostErrandView: View {
       runner: nil,
       pay: pay,
       status: "new",
-      tags: selectedTags)
+      tags: selectedTags
+    )
     
-    if isValidErrand() {
-      let postedErrand = await errandRepository.create(newErrand)
-      print(postedErrand.id ?? "n/a")
-      if (postedErrand.id != nil) {
-        userRepository.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
-      }
-      clearFields()
+    let postedErrand = await errandRepository.create(newErrand)
+    print(postedErrand.id ?? "n/a")
+    if (postedErrand.id != nil) {
+      userRepository.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
     }
   }
   
   var body: some View {
-//    switch showMarketplaceView {
-      
-//    case true: ContentView()
-      
-//    case false:
       NavigationView {
         VStack(alignment: .leading) {
           Form {
@@ -289,28 +283,21 @@ struct PostErrandView: View {
             }.listRowSeparator(.hidden)
             
             Section {
-              Button("Post") {
-                Task {
-                  await addErrand()
-                  clearFields()
-                  self.showMarketplaceView = true
+              if isValidErrand() {
+                Button("Post") {
+                  Task {
+                    await addErrand()
+                    clearFields()
+                    self.tabSelection = 1
+                  }
                 }
+                .foregroundColor(.white)
+                .font(.headline)
+                .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+                .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
               }
-              .foregroundColor(.white)
-              .font(.headline)
-              .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
-              .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
               
             } //end of button section
-            .alert(isPresented: $showMarketplaceView) {
-                Alert(
-                    title: Text("Your errand has been posted!"),
-                    primaryButton: .default(Text("Got it")) {
-                      clearFields()
-                    },
-                    secondaryButton: .default(Text("So excited"))
-                )
-            }
           } //end of form
           .background(Color.white)
           .accentColor(darkBlue)
