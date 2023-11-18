@@ -28,21 +28,6 @@ struct PostErrandView: View {
   @State private var payBool = true
   @State private var payString = ""
   @State private var showMarketplaceView = false
-  @State private var numOfTags = 0
-  
-  // tags: ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
-  @State private var tagsList = [
-    Tag(tid: 0, label: "on-campus"),
-    Tag(tid: 1, label: "off-campus"),
-    Tag(tid: 2, label: "house/dorm"),
-    Tag(tid: 3, label: "food/drink"),
-    Tag(tid: 4, label: "cleaning"),
-    Tag(tid: 5, label: "animals"),
-    Tag(tid: 6, label: "plants"),
-    Tag(tid: 7, label: "car"),
-    Tag(tid: 8, label: "laundry"),
-    Tag(tid: 9, label: "moving in/out"),
-    ]
 
   init(user: User, isCurUser: Bool) {
     self.user = user
@@ -59,21 +44,6 @@ struct PostErrandView: View {
       payBool = true
       payString = ""
       pay = 0.0
-//      for var tag in tagsList {
-//        tag.isSelected = false
-//      }
-      tagsList = [
-        Tag(tid: 0, label: "on-campus"),
-        Tag(tid: 1, label: "off-campus"),
-        Tag(tid: 2, label: "house/dorm"),
-        Tag(tid: 3, label: "food/drink"),
-        Tag(tid: 4, label: "cleaning"),
-        Tag(tid: 5, label: "animals"),
-        Tag(tid: 6, label: "plants"),
-        Tag(tid: 7, label: "car"),
-        Tag(tid: 8, label: "laundry"),
-        Tag(tid: 9, label: "moving in/out"),
-        ]
       selectedTags = []
       
     }
@@ -82,6 +52,7 @@ struct PostErrandView: View {
     if title.isEmpty { print("title cannot be empty!");return false}
     if description.isEmpty { print("description cannot be empty!"); return false}
     if pay > 10000.00 && pay <= 0.0 { print("please enter amount between 0 and 10,000"); return false }
+    if selectedTags.count > 5 { print("can only select up to 5 tags!"); return false }
     //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
     let calendar = Calendar.current
     let today = Date()
@@ -96,29 +67,10 @@ struct PostErrandView: View {
     }
   }
   
-  private func getSelectedTags() {
-    self.tagsList.forEach { tag in
-      if tag.isSelected {
-        selectedTags.append(tag.label)
-        print(tag.label)
-      }
-    }
-  }
-
-  private func countSelectedTags() {
-    self.numOfTags = 0
-    self.tagsList.forEach { tag in
-      if tag.isSelected {
-        self.numOfTags += 1
-      }
-    }
-  }
-  
   private func addErrand() {
     //currently hardcoded: location, tags
     
     payStringToDouble()
-    getSelectedTags()
     let errandOwner = ErrandOwner(id: user.id!, first_name: user.first_name, last_name: user.last_name, pfp: user.pfp, phone_number: user.phone_number)
     
     let newErrand = Errand(
@@ -139,11 +91,6 @@ struct PostErrandView: View {
   }
   
   var body: some View {
-//    switch showMarketplaceView {
-      
-//    case true: ContentView()
-      
-//    case false:
       NavigationView {
         VStack(alignment: .leading) {
           Form {
@@ -168,64 +115,11 @@ struct PostErrandView: View {
             //              .stroke(Color.blue, lineWidth: 1))
       
   
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
               Text("Tags (select up to five):")
-              HStack {
-                ForEach(0 ... 2, id: \.self ) { index in
-                  Button(tagsList[index].label) {
-//                  TagButtonView(tag: tagsList[index], selectedBtn: self.$selectedTag)
-                    countSelectedTags()
-                    if numOfTags < 5 || tagsList[index].isSelected {
-                      tagsList[index].isSelected = !tagsList[index].isSelected
-                    }
-                  }
-                  .font(.footnote)
-                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                  .background(tagsList[index].isSelected ? mint : lightGray)
-                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
-                  .cornerRadius(10)
-                  .buttonStyle(BorderlessButtonStyle())
-                }
-              } //Hstack 1
-              HStack {
-                ForEach(3 ... 6, id: \.self ) { index in
-                  Button(tagsList[index].label) {
-                    countSelectedTags()
-                    if numOfTags < 5 || tagsList[index].isSelected {
-                      tagsList[index].isSelected = !tagsList[index].isSelected
-                    }
-                  }
-                  .font(.footnote)
-                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                  .background(tagsList[index].isSelected ? mint : lightGray)
-                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
-                  .cornerRadius(10)
-                  .buttonStyle(BorderlessButtonStyle())
-                }
-              }
-//              .contentShape(Rectangle())
-              HStack {
-                ForEach(7 ... 9, id: \.self ) { index in
-                  Button(tagsList[index].label) {
-                    countSelectedTags()
-                    if numOfTags < 5 || tagsList[index].isSelected {
-                      tagsList[index].isSelected = !tagsList[index].isSelected
-                    }
-//                    print("---------------------------------")
-//                    print(tagsList[index].label)
-//                    print(String(tagsList[index].isSelected))
-//
-//                    print("---------------------------------")
-                  }
-                  .font(.footnote)
-                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                  .background(tagsList[index].isSelected ? mint : lightGray)
-                  .foregroundColor(tagsList[index].isSelected ? darkBlue : Color.black)
-                  .cornerRadius(10)
-                  .buttonStyle(BorderlessButtonStyle())
-                }
-              }
-            } //Vstack
+                .padding(.bottom, 10)
+              FormTags(formTags: $selectedTags)
+            }
             .listRowSeparator(.hidden)
             
 //            VStack(alignment: .leading) {
@@ -307,7 +201,6 @@ struct PostErrandView: View {
         
         
       } // end of NavView
-//    } // end of switch
   } //end of body
   
 } //end of struct PostErrandView
