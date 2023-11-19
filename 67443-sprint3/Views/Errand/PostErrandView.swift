@@ -96,7 +96,6 @@ struct PostErrandView: View {
     self.tagsList.forEach { tag in
       if tag.isSelected {
         selectedTags.append(tag.label)
-        print(tag.label)
       }
     }
   }
@@ -131,7 +130,6 @@ struct PostErrandView: View {
     )
     
     let postedErrand = await errandsViewModel.create(newErrand)
-    print(postedErrand.id ?? "n/a")
     if (postedErrand.id != nil) {
       usersViewModel.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
     }

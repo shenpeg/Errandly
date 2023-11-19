@@ -18,7 +18,6 @@ class ErrandsViewModel: ObservableObject {
   }
   
   func get() {
-    print("errand repository init")
     store.collection(path)
       .addSnapshotListener{querySnapshot, error in
         if let error = error {

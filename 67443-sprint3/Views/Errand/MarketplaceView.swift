@@ -19,8 +19,6 @@ struct MarketplaceView: View {
   var user: User
   
   var body: some View {
-    let _ = print("marketplace view??")
-    
     let searchFieldBinding = Binding<String>(get: {
       self.searchField
     }, set: {

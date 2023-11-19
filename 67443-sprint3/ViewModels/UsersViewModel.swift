@@ -17,7 +17,6 @@ class UsersViewModel: ObservableObject {
 
   
   init() {
-    print("user repository init")
     self.get()
   }
   
@@ -104,7 +103,6 @@ class UsersViewModel: ObservableObject {
   }
   
   func updateUser(user: User, updatedUser: User) {
-    print("user repository update user")
     guard let userId = user.id else { return }
     do {
       try store.collection(path).document(userId).setData(from: updatedUser)
