@@ -60,16 +60,47 @@ class UsersViewModel: ObservableObject {
   
   // necessary for GoogleSignInAuthenticator, as there is no current user at that point
   func getUserByUid(uid: String?) -> User? {
-      if (uid == nil) {
-        return nil
-      }
-      else if let user = users.first(where: {$0.uid == uid}) {
-        return user
-      }
-      else {
-        return nil
+    if (uid == nil) {
+      return nil
+    }
+    else if let user = users.first(where: {$0.uid == uid}) {
+      return user
+    }
+    else {
+      return nil
+    }
+  }
+  
+  func updateUser(user: User, updatedUser: User) {
+    guard let userId = user.id else { return }
+    do {
+      try store.collection(path).document(userId).setData(from: updatedUser)
+    }
+    catch {
+      fatalError("Unable to update user: \(error.localizedDescription).")
+    }
+  }
+  
+  func createNewUser(_ uid: String?, _ first_name: String?, _ last_name: String?, _ imageUrl: String?) {
+    do {
+      guard let uid = uid else { return }
+
+      let newUser = User(uid: uid, bio: "", can_help_with: [], first_name: first_name ?? "", last_name: last_name ?? "", pfp: imageUrl ?? "", phone_number: 0000000000, picked_up_errands: [], posted_errands: [], school_year: "")
+      _ = try store.collection(path).addDocument(from: newUser)
+    }
+    catch {
+      fatalError("Unable to add book: \(error.localizedDescription).")
+    }
+  }
+  
+  func addErrandToUser(userId: String, errandId: String, type: String) {
+    let userRef = store.collection(path).document(userId)
+    userRef.updateData([type: FieldValue.arrayUnion([errandId])]) { error in
+      if let error = error {
+        print("Unable to add errand to user: \(error.localizedDescription)")
       }
     }
+  }
   
   func deletePostedErrand(owner: User, errand: Errand) {
     guard let userId = owner.id else { return }
@@ -87,38 +118,6 @@ class UsersViewModel: ObservableObject {
     store.collection(path).document(userId).updateData([
       "picked_up_errands": FieldValue.arrayRemove([errandId])
     ])
-  }
-  
-  
-  func createNewUser(_ uid: String?, _ first_name: String?, _ last_name: String?, _ imageUrl: String?) {
-    do {
-      guard let uid = uid else { return }
-
-      let newUser = User(uid: uid, bio: "", can_help_with: [], first_name: first_name ?? "", last_name: last_name ?? "", pfp: imageUrl ?? "", phone_number: 0000000000, picked_up_errands: [], posted_errands: [], school_year: "")
-      _ = try store.collection(path).addDocument(from: newUser)
-    }
-    catch {
-      fatalError("Unable to add book: \(error.localizedDescription).")
-    }
-  }
-  
-  func updateUser(user: User, updatedUser: User) {
-    guard let userId = user.id else { return }
-    do {
-      try store.collection(path).document(userId).setData(from: updatedUser)
-    }
-    catch {
-      fatalError("Unable to update user: \(error.localizedDescription).")
-    }
-  }
-  
-  func addErrandToUser(userId: String, errandId: String, type: String) {
-    let userRef = store.collection(path).document(userId)
-      userRef.updateData([type: FieldValue.arrayUnion([errandId])]) { error in
-          if let error = error {
-              print("Unable to add errand to user: \(error.localizedDescription)")
-          }
-      }
   }
   
 }
