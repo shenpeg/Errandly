@@ -10,7 +10,7 @@ import SwiftUI
 struct ErrandDetailsPickUpView: View {
   var errand: Errand
   var user: User
-  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @EnvironmentObject var usersViewModel: UsersViewModel
   @State private var isPickUpAlertPresented = false
   @State private var isCompletionAlertPresented = false
@@ -55,9 +55,9 @@ struct ErrandDetailsPickUpView: View {
                 title: Text("Are you sure you want to pick up this errand?"),
                 primaryButton: .default(Text("Yes, I'm sure")) {
                   // change status to in progress and assign runner
-                  marketplaceViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "in progress")
+                  errandsViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "in progress")
                   usersViewModel.addErrandToUser(userId: user.id!, errandId: errand.id!, type: "picked_up_errands")
-                  marketplaceViewModel.addUserAsRunner(user: user, errand: errand)
+                  errandsViewModel.addUserAsRunner(user: user, errand: errand)
                 },
                 secondaryButton: .cancel(Text("Cancel"))
               )
@@ -81,7 +81,7 @@ struct ErrandDetailsPickUpView: View {
                           title: Text("Mark this errand as complete?"),
                           primaryButton: .default(Text("Yes, it's completed!")) {
                               // Change status to completed
-                            marketplaceViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "completed")
+                            errandsViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "completed")
                           },
                           secondaryButton: .cancel(Text("No, Cancel"))
                       )

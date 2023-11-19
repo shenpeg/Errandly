@@ -12,7 +12,7 @@ let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @StateObject var usersViewModel: UsersViewModel = UsersViewModel()
-  @StateObject var marketplaceViewModel: MarketplaceViewModel = MarketplaceViewModel()
+  @StateObject var errandsViewModel: ErrandsViewModel = ErrandsViewModel()
   @State private var tabSelection = 1
   
   init() {
@@ -49,6 +49,6 @@ struct ContentView: View {
       }
     }
     .environmentObject(usersViewModel)
-    .environmentObject(marketplaceViewModel)
+    .environmentObject(errandsViewModel)
   }
 }

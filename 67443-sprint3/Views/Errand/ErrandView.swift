@@ -16,7 +16,7 @@ struct ErrandView: View {
   var user: User
   
   @EnvironmentObject var usersViewModel: UsersViewModel
-  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @StateObject var locTimeViewModel = LocationTimeFormatViewModel()
   
   @State private var isAppeared: Bool = false
@@ -147,14 +147,14 @@ struct ErrandView: View {
   }
   
   func deleteErrand() {
-//    if (!marketplaceViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
+//    if (!errandsViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
 //      if (errand.runner != nil) {
 //        let runner = usersViewModel.getUser(errand.runner!.id)!
 //        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
 //      }
     let owner = usersViewModel.getUser(userId: errand.owner.id)!
     usersViewModel.deletePostedErrand(owner: owner, errand: errand)
-    marketplaceViewModel.delete(errand)
+    errandsViewModel.delete(errand)
 //    }
   }
 }

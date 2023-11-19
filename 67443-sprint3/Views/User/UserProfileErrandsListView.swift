@@ -4,13 +4,13 @@ struct UserProfileErrandsListView: View {
   var user: User
   var isCurUser: Bool
   var isPostedErrands: Bool
-  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
 
   var body: some View {
       List {
         
           if (isPostedErrands) {
-            let postedErrands = marketplaceViewModel.getErrandsByStatus(user.posted_errands)
+            let postedErrands = errandsViewModel.getErrandsByStatus(user.posted_errands)
             if (postedErrands["new"]!.isEmpty && postedErrands["in progress"]!.isEmpty && postedErrands["completed"]!.isEmpty) {
               Section(header: Text("No posted errands").padding(.top, 30)) {EmptyView()}
             }
@@ -29,7 +29,7 @@ struct UserProfileErrandsListView: View {
           else {
           // picked up errands
           // note: picked up errands never have a status of new
-            let pickedUpErrands = marketplaceViewModel.getErrandsByStatus(user.picked_up_errands)
+            let pickedUpErrands = errandsViewModel.getErrandsByStatus(user.picked_up_errands)
             if (pickedUpErrands["in progress"]!.isEmpty && pickedUpErrands["completed"]!.isEmpty) {
               Section(header: Text("No picked up errands").padding(.top, 30)) {EmptyView()}
             }

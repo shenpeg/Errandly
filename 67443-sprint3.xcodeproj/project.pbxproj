@@ -25,7 +25,7 @@
 		A33FBBF32AFC1D0F00CE9FE8 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = A33FBBF22AFC1D0F00CE9FE8 /* FirebaseAppCheck */; };
 		A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */; };
 		A35EF8E92AF943DF00E23558 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35EF8E82AF943DF00E23558 /* WelcomeView.swift */; };
-		A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */; };
+		A3679F072AF71D9800A3C2DA /* ErrandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */; };
 		A38C78782AE6DF6500CE736C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A38C78772AE6DF6500CE736C /* FirebaseAnalytics */; };
 		A38C787A2AE6DF6500CE736C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = A38C78792AE6DF6500CE736C /* FirebaseAnalyticsOnDeviceConversion */; };
 		A38C787C2AE6DF6500CE736C /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A38C787B2AE6DF6500CE736C /* FirebaseAnalyticsSwift */; };
@@ -95,7 +95,7 @@
 		A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrandTabs.swift; sourceTree = "<group>"; };
 		A35EF8E82AF943DF00E23558 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewModel.swift; sourceTree = "<group>"; };
+		A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandsViewModel.swift; sourceTree = "<group>"; };
 		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A3A0327A2AF1C9920037548C /* UserProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoView.swift; sourceTree = "<group>"; };
 		A3A0327C2AF1C9A20037548C /* UserProfileErrandsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileErrandsView.swift; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */,
-				A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */,
+				A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */,
 				1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */,
 				A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */,
 			);
@@ -436,7 +436,7 @@
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
 				1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */,
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
-				A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */,
+				A3679F072AF71D9800A3C2DA /* ErrandsViewModel.swift in Sources */,
 				A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */,
 				A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */,
 				A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */,

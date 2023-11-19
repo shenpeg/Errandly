@@ -10,7 +10,7 @@ import SwiftUI
 let tags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
 
 struct MarketplaceView: View {
-  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @State private var searchField = ""
   @State private var selectedTags = "" // : [String] = []
   @State private var tagIsClicked: Bool = false
@@ -25,7 +25,7 @@ struct MarketplaceView: View {
       self.searchField
     }, set: {
       self.searchField = $0
-      marketplaceViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+      errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
     })
     
     return NavigationStack {
@@ -48,7 +48,7 @@ struct MarketplaceView: View {
               Button {
                 tagIsClicked = !tagIsClicked
                 selectedTags = ""
-                marketplaceViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+                errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
               } label: {
                 Text(selectedTags)
                   .font(.footnote)
@@ -65,7 +65,7 @@ struct MarketplaceView: View {
                 } else {
                   selectedTags = ""
                 }
-                marketplaceViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+                errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
               } label: {
                 Text(tag)
                   .font(.footnote)
@@ -79,7 +79,7 @@ struct MarketplaceView: View {
         Spacer()
       }
       List {
-        ForEach(marketplaceViewModel.filteredErrands) { errand in
+        ForEach(errandsViewModel.filteredErrands) { errand in
           ErrandView(errand: errand, isCurUser: false, user: user)
             .padding(.bottom, 10)
         }

@@ -10,14 +10,14 @@ import SwiftUI
 import UIKit
 
 struct SortSheet: View {
-  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @Environment(\.dismiss) var dismiss
   
   @Binding var searchField: String
   @Binding var selectedTags: String // : [String] = []
 
     var body: some View {
-      let errands = marketplaceViewModel.errands
+      let errands = errandsViewModel.errands
       
       VStack {
         Text("Sort Errands By:")
@@ -25,20 +25,20 @@ struct SortSheet: View {
           .padding()
         Divider()
         Button {
-          marketplaceViewModel.errands = errands.sorted(by: {$0.datePosted > $1.datePosted} )
-          marketplaceViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+          errandsViewModel.errands = errands.sorted(by: {$0.datePosted > $1.datePosted} )
+          errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
         } label: {
           Text("Recent")
         }.padding()
         Button {
-          marketplaceViewModel.errands = errands.sorted(by: {$0.dateDue < $1.dateDue} )
-          marketplaceViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+          errandsViewModel.errands = errands.sorted(by: {$0.dateDue < $1.dateDue} )
+          errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
         } label: {
           Text("Due Date")
         }.padding()
         Button {
-          marketplaceViewModel.errands = errands.sorted(by: {$0.pay > $1.pay} )
-          marketplaceViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+          errandsViewModel.errands = errands.sorted(by: {$0.pay > $1.pay} )
+          errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
         } label: {
           Text("Compensation")
         }.padding()

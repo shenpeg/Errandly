@@ -20,7 +20,7 @@ struct PostErrandView: View {
   @Binding var tabSelection: Int
   
   @EnvironmentObject var usersViewModel: UsersViewModel
-  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
   
   @State private var title = ""
   @State private var description =  ""
@@ -130,7 +130,7 @@ struct PostErrandView: View {
       tags: selectedTags
     )
     
-    let postedErrand = await marketplaceViewModel.create(newErrand)
+    let postedErrand = await errandsViewModel.create(newErrand)
     print(postedErrand.id ?? "n/a")
     if (postedErrand.id != nil) {
       usersViewModel.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")

@@ -4,7 +4,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-class MarketplaceViewModel: ObservableObject {
+class ErrandsViewModel: ObservableObject {
   // Set up properties here
   private let path: String = "errands"
   private let store = Firestore.firestore()
