@@ -10,8 +10,9 @@ class ErrandRepository: ObservableObject {
   private let store = Firestore.firestore()
   
   @Published var errands: [Errand] = []
+  @Published var filteredErrands: [Errand] = []
   private var cancellables: Set<AnyCancellable> = []
-  
+    
   init() {
     self.get()
   }
@@ -28,6 +29,8 @@ class ErrandRepository: ObservableObject {
         self.errands = querySnapshot?.documents.compactMap { document in
           try? document.data(as: Errand.self)
         } ?? []
+        
+        self.filteredErrands = self.errands
       }
   }
   
@@ -134,5 +137,23 @@ class ErrandRepository: ObservableObject {
       // Add user as runner of errand
       self.addRunnerToErrand(errandId: errand.id!, runner: runner)
   }
-
+  
+  func filterErrands(searchText: String, selectedTags: String) {
+    self.filteredErrands = self.errands.filter { errand in return
+      if (!searchText.isEmpty && selectedTags != "") {
+        errand.name.lowercased().contains(searchText.lowercased()) &&
+        errand.tags.contains(selectedTags)
+      }
+      else if (!searchText.isEmpty) {
+        errand.name.lowercased().contains(searchText.lowercased())
+      }
+      else if (selectedTags != "") {
+        errand.tags.contains(selectedTags)
+      }
+      else {
+        true
+      }
+    }
+  }
+  
 }

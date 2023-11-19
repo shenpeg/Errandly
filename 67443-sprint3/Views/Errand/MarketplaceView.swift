@@ -20,77 +20,77 @@ struct MarketplaceView: View {
   
   var body: some View {
     let _ = print("marketplace view??")
-//    let errandsVM = marketplaceViewModel.errandViewModels
-    let errands = errandRepository.errands
-    // code reference: https://www.youtube.com/watch?v=iTqwa0DCIMA&ab_channel=SeanAllen
-    var filteredErrands: [Errand] {
-      guard !searchField.isEmpty || selectedTags != "" else { return errands }
-      return errands.filter { $0.name.lowercased().contains(searchField.lowercased()) || $0.tags.contains(selectedTags)}
-    }
+    
+    let searchFieldBinding = Binding<String>(get: {
+      self.searchField
+    }, set: {
+      self.searchField = $0
+      errandRepository.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+    })
     
     return NavigationStack {
-      if (searchField == "") {
-        HStack {
-          Spacer()
-          Button {
-            showingSheet.toggle()
+      HStack {
+        Spacer()
+        Button {
+          showingSheet.toggle()
 
-          } label: {
-            Text("sort by")
-              .font(.footnote)
-              .padding(.horizontal, 10)
-              .foregroundColor(darkBlue)
-              .background(Capsule().fill(lightGray))
-          }
-          Text("|")
-          ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-              if (selectedTags != "") {
-                Button {
-                  tagIsClicked = !tagIsClicked
-                  selectedTags = ""
-                } label: {
-                  Text(selectedTags)
-                    .font(.footnote)
-                    .padding(.horizontal, 10)
-                    .foregroundColor(darkBlue)
-                    .background(Capsule().fill(mint))
-                }
+        } label: {
+          Text("sort by")
+            .font(.footnote)
+            .padding(.horizontal, 10)
+            .foregroundColor(darkBlue)
+            .background(Capsule().fill(lightGray))
+        }
+        Text("|")
+        ScrollView(.horizontal, showsIndicators: false) {
+          HStack {
+            if (selectedTags != "") {
+              Button {
+                tagIsClicked = !tagIsClicked
+                selectedTags = ""
+                errandRepository.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+              } label: {
+                Text(selectedTags)
+                  .font(.footnote)
+                  .padding(.horizontal, 10)
+                  .foregroundColor(darkBlue)
+                  .background(Capsule().fill(mint))
               }
-              ForEach(tags.filter { $0 != selectedTags }, id: \.self) { tag in
-                Button {
-                  tagIsClicked = !tagIsClicked
-                  if (tagIsClicked || selectedTags != "") {
-                    selectedTags = tag
-                  } else {
-                    selectedTags = ""
-                  }
-                } label: {
-                  Text(tag)
-                    .font(.footnote)
-                    .padding(.horizontal, 10)
-                    .foregroundColor(darkBlue)
-                    .background(Capsule().fill(lightGray))
+            }
+            ForEach(tags.filter { $0 != selectedTags }, id: \.self) { tag in
+              Button {
+                tagIsClicked = !tagIsClicked
+                if (tagIsClicked || selectedTags != "") {
+                  selectedTags = tag
+                } else {
+                  selectedTags = ""
                 }
+                errandRepository.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+              } label: {
+                Text(tag)
+                  .font(.footnote)
+                  .padding(.horizontal, 10)
+                  .foregroundColor(darkBlue)
+                  .background(Capsule().fill(lightGray))
               }
             }
           }
-          Spacer()
         }
+        Spacer()
       }
       List {
-        ForEach(filteredErrands) { errand in
+        ForEach(errandRepository.filteredErrands) { errand in
           ErrandView(errand: errand, isCurUser: false, user: user)
             .padding(.bottom, 10)
         }
       }
       .navigationBarTitle("Marketplace", displayMode: .inline)
       .listStyle(.plain)
-      .searchable(text: $searchField)
+      .searchable(text: searchFieldBinding)
     }
     .accentColor(.black)
-//    .sheet(isPresented: $showingSheet) {
-//      SortSheet(filteredErrands: filteredErrands, user: user)
-//    }
+    .sheet(isPresented: $showingSheet) {
+      SortSheet(searchField: $searchField, selectedTags: $selectedTags)
+    }
   }
 }
