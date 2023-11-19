@@ -61,7 +61,7 @@ struct PostedErrandList: View {
       .italic()
       .foregroundColor(darkGray)
     ) {
-      ForEach(postedErrands) { errand in
+      ForEach(postedErrands.sorted(by: {$0.datePosted > $1.datePosted})) { errand in
         if (isCompleted) {
           ErrandView(errand: errand, isCurUser: true, user: user)
                 .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
@@ -88,7 +88,7 @@ struct PickedUpErrandList: View {
       .italic()
       .foregroundColor(darkGray)
     ) {
-      ForEach(pickedUpErrands) { errand in
+      ForEach(pickedUpErrands.sorted(by: {$0.datePosted > $1.datePosted})) { errand in
         if (isCompleted) {
           ErrandView(errand: errand, isCurUser: false, user: user)
                 .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
