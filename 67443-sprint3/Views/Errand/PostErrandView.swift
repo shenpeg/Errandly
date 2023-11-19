@@ -46,14 +46,6 @@ struct PostErrandView: View {
     Tag(tid: 9, label: "moving in/out"),
     ]
 
-
-
-  init(user: User, isCurUser: Bool, tabSelection: Binding<Int>) {
-    self.user = user
-    self.isCurUser = isCurUser
-    self._tabSelection = tabSelection
-  }
-  
   //functions
     private func clearFields(){
       title = ""
@@ -83,14 +75,14 @@ struct PostErrandView: View {
     }
   
   private func isValidErrand() -> Bool {
-    if title.isEmpty { print("title cannot be empty!");return false}
-    if description.isEmpty { print("description cannot be empty!"); return false}
-    if pay > 10000.00 && pay <= 0.0 { print("please enter amount between 0 and 10,000"); return false }
+    if title.isEmpty { return false}
+    if description.isEmpty { return false}
+    if pay > 10000.00 && pay <= 0.0 { return false }
     //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
     let calendar = Calendar.current
     let today = Date()
     let result = calendar.compare(dateDue, to: today, toGranularity: .day)
-    if result == .orderedAscending { print("pls enter a date not passed!"); return false }
+    if result == .orderedAscending { return false }
     return true
   }
 
@@ -275,6 +267,10 @@ struct PostErrandView: View {
           if isValidErrand() {
             Button("Post") {
               Task {
+                // necessary to avoid the following errors, as this will resign the text fields:
+                // - AttributeGraph: cycle detected through attribute
+                // - Modifying state during view update, this will cause undefined behavior.
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 await addErrand()
                 clearFields()
                 self.tabSelection = 1
@@ -299,3 +295,175 @@ struct PostErrandView: View {
   
 } //end of struct PostErrandView
   
+
+
+//struct PostErrandButton: View {
+//  @Binding var tabSelection: Int
+//  
+//  var body: some View {
+//    Section {
+//      if isValidErrand() {
+//        Button("Post") {
+//          Task {
+//            await addErrand()
+//            clearFields()
+//            self.tabSelection = 1
+//          }
+//        }
+//        .foregroundColor(.white)
+//        .font(.headline)
+//        .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+//        .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+//      }
+//    } //end of button section
+//  }
+//}
+
+
+////
+////  PostErrandView.swift
+////  67443-sprint3
+////
+////  Created by cd on 11/1/23.
+////
+//
+//import Combine
+//import Foundation
+//import FirebaseFirestoreSwift
+//import FirebaseFirestore
+//import SwiftUI
+//
+//struct PostErrandView: View {
+//  var user: User
+//  var isCurUser: Bool
+//  @Binding var tabSelection: Int
+//  
+//  var body: some View {
+//    //    VStack(alignment: .leading) {
+//    let _ = print("post errand view")
+//    let _ = print(tabSelection)
+//    Form {
+//      if (tabSelection == 2) {
+//        PostErrandViewStuff(user: user, isCurUser: isCurUser)
+//      }
+//      // AttributeGraph: cycle detected through attribute
+//      // and Modifying state during view update, this will cause undefined behavior.
+////      PostButton(tabSelection: $tabSelection)
+//      Section {
+//        //          if isValidErrand() {
+//        Text("Post")
+//          .onTapGesture {
+//            closeKeyboard()
+//            //              Task {
+//            //                await addErrand()
+//            //                clearFields()
+//            tabSelection = 1
+//            //              }
+//          }
+//  //        .foregroundColor(.white)
+//  //        .font(.headline)
+//  //        .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+//  //        .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+//        //          }
+//      } //end of button section
+//    }
+//    .scrollContentBackground(.hidden)
+//              .gesture(DragGesture().onChanged({ _ in
+//                                  UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//              }))
+//          
+//  }
+//  
+//  func closeKeyboard() {
+//      UIApplication.shared.sendAction(
+//        #selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil
+//      )
+//    }
+//  
+//}
+//
+//struct PostErrandViewStuff: View {
+//  
+//  // variables
+//  
+//  var user: User
+//  var isCurUser: Bool
+//  
+//  @EnvironmentObject var userRepository: UserRepository
+//  @EnvironmentObject var errandRepository: ErrandRepository
+//  
+//  @State private var title = ""
+////  @State private var description =  ""
+////  @State private var selectedTags: [String] = []
+////  @State private var dateDue = Date()
+////  @State private var location = ""
+////  @State private var pay = 0.0
+////  @State private var payBool = true
+////  @State private var payString = ""
+////  @State private var numOfTags = 0
+//  
+//  //functions
+//    private func clearFields(){
+//      title = ""
+////      description = ""
+////      dateDue = Date()
+////      //location = GeoPoint() stays in pgh for now
+////      payBool = true
+////      payString = ""
+////      pay = 0.0
+////      selectedTags = []
+//      
+//    }
+//  
+//  private func isValidErrand() -> Bool {
+//    if title.isEmpty { print("title cannot be empty!");return false}
+//    return true
+//  }
+//  
+//  var body: some View {
+//    let _ = print("post errand stuff view")
+//
+////    VStack(alignment: .leading) {
+////      Form {
+//        TextField("Errand Title", text: $title)
+//        
+//                
+////      } //end of form
+////      .background(Color.white)
+////      .accentColor(darkBlue)
+////      .scrollContentBackground(.hidden)
+////
+////    } //end vstack
+////    .listRowSeparator(.hidden)
+//
+//  } //end of body
+//  
+//} //end of struct PostErrandView
+//
+//
+//
+//struct PostButton: View {
+//  @Binding var tabSelection: Int
+//  
+//  var body: some View {
+//    let _ = print("post errand button view")
+//
+//    return Section {
+//      //          if isValidErrand() {
+//      Text("Post")
+//        .onTapGesture {
+//          //              Task {
+//          //                await addErrand()
+//          //                clearFields()
+//          tabSelection = 1
+//          //              }
+//        }
+////        .foregroundColor(.white)
+////        .font(.headline)
+////        .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+////        .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+//      //          }
+//    } //end of button section
+//  }
+//}
+//  
