@@ -35,7 +35,7 @@ struct ContentView: View {
           }
           .tag(1)
         
-        PostErrandView(user: curUser!, isCurUser: true, tabSelection: $tabSelection)
+        PostErrandView(user: curUser!, tabSelection: $tabSelection)
           .tabItem {
             Image(systemName: "plus.app").padding(.bottom, 10)
             Text("Post Errand")

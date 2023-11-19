@@ -16,7 +16,6 @@ struct PostErrandView: View {
   // variables
   
   var user: User
-  var isCurUser: Bool
   @Binding var tabSelection: Int
   
   @EnvironmentObject var usersViewModel: UsersViewModel

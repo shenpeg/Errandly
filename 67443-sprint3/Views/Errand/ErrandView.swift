@@ -46,7 +46,7 @@ struct ErrandView: View {
 //              .font(.system(size: 20))
 //          }
           
-          if (isCurUser && user.uid == GIDSignIn.sharedInstance.currentUser?.userID && errand.status == "new") {
+          if (isCurUser && errand.status == "new") {
             Image(systemName: "trash")
               .foregroundColor(.black)
               .font(.system(size: 15))
@@ -76,7 +76,7 @@ struct ErrandView: View {
         .padding(.bottom, 3)
         
         HStack {
-          if (isCurUser && user.uid == GIDSignIn.sharedInstance.currentUser?.userID) {
+          if (isCurUser) {
             Text("your post")
           }
           else {
