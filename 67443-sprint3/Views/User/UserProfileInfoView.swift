@@ -3,7 +3,7 @@ import GoogleSignIn
 
 struct UserProfileInfoView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
-  @EnvironmentObject var userRepository: UserRepository
+  @EnvironmentObject var usersViewModel: UsersViewModel
   var user: User
   var isCurUser: Bool
   

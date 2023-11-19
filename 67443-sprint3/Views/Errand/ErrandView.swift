@@ -15,8 +15,8 @@ struct ErrandView: View {
   let isCurUser: Bool
   var user: User
   
-  @EnvironmentObject var userRepository: UserRepository
-  @EnvironmentObject var errandRepository: ErrandRepository
+  @EnvironmentObject var usersViewModel: UsersViewModel
+  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
   @StateObject var locTimeViewModel = LocationTimeFormatViewModel()
   
   @State private var isAppeared: Bool = false
@@ -152,9 +152,9 @@ struct ErrandView: View {
 //        let runner = usersViewModel.getUser(errand.runner!.id)!
 //        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
 //      }
-    let owner = userRepository.getUser(userId: errand.owner.id)!
-    userRepository.deletePostedErrand(owner: owner, errand: errand)
-    errandRepository.delete(errand)
+    let owner = usersViewModel.getUser(userId: errand.owner.id)!
+    usersViewModel.deletePostedErrand(owner: owner, errand: errand)
+    marketplaceViewModel.delete(errand)
 //    }
   }
 }

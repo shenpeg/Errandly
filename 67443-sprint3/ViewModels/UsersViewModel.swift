@@ -1,48 +1,46 @@
-import Foundation
-import GoogleSignIn
 import Combine
+import GoogleSignIn
 
-// from Swift Repos Lab
+import Firebase
+import FirebaseFirestoreSwift
+import FirebaseFirestore
+
 class UsersViewModel: ObservableObject {
-  @Published var userViewModels: [UserViewModel] = []
+  // Set up properties here
+  private let path: String = "users"
+  private let store = Firestore.firestore()
+  
+  @Published var users: [User] = []
   private var cancellables: Set<AnyCancellable> = []
   
-  @Published var userRepository = UserRepository()
   var curUserUid: String = GIDSignIn.sharedInstance.currentUser?.userID ?? "n/a"
+
   
   init() {
-    print("users view model init")
-    userRepository.$users.map { users in
-      return users.map(UserViewModel.init)
-    }
-    .assign(to: \.userViewModels, on: self)
-    .store(in: &cancellables)
+    print("user repository init")
+    self.get()
   }
   
-  func destroyPostedErrand(owner: User, errand: Errand) {
-    userRepository.deletePostedErrand(owner: owner, errand: errand)
+  func get() {
+    store.collection(path)
+      .addSnapshotListener{querySnapshot, error in
+        if let error = error {
+          print("Error getting users: \(error.localizedDescription)")
+          return
+        }
+        
+        self.users = querySnapshot?.documents.compactMap { document in
+          try? document.data(as: User.self)
+        } ?? []
+      }
   }
   
-  func destroyPickedUpErrand(runner: User, errand: Errand) {
-    userRepository.deletePickedUpErrand(runner: runner, errand: errand)
-  }
-  
-  func getUser(_ id: String) -> User? {
-    if let userVM = userViewModels.first(where: {$0.id == id}) {
-      return userVM.user
-    }
-    else {
-      return nil
-      // fatalError("Unable to find the corresponding user.")
-    }
-  }
-  
-  func getUserByUid(uid: String?) -> User? {
-    if (uid == nil) {
+  func getUser(userId: String) -> User? {
+    if (curUserUid == "n/a") {
       return nil
     }
-    else if let userVM = userViewModels.first(where: {$0.user.uid == uid}) {
-      return userVM.user
+    else if let user = users.first(where: {$0.id == userId}) {
+      return user
     }
     else {
       return nil
@@ -50,29 +48,79 @@ class UsersViewModel: ObservableObject {
   }
   
   func getCurUser() -> User? {
-    print("users view model get cur user")
     if (curUserUid == "n/a") {
       return nil
     }
-    else if let userVM = userViewModels.first(where: {$0.user.uid == curUserUid}) {
-      return userVM.user
+    else if let user = users.first(where: {$0.uid == curUserUid}) {
+      return user
     }
     else {
       return nil
     }
   }
   
-  func createNewUser(_ uid: String?, _ first_name: String?, _ last_name: String?, _ imageUrl: String?) {
-    userRepository.createNewUser(uid, first_name, last_name, imageUrl)
+  // necessary for GoogleSignInAuthenticator, as there is no current user at that point
+  func getUserByUid(uid: String?) -> User? {
+      if (uid == nil) {
+        return nil
+      }
+      else if let user = users.first(where: {$0.uid == uid}) {
+        return user
+      }
+      else {
+        return nil
+      }
+    }
+  
+  func deletePostedErrand(owner: User, errand: Errand) {
+    guard let userId = owner.id else { return }
+    guard let errandId = errand.id else { return }
+    
+    store.collection(path).document(userId).updateData([
+      "posted_errands": FieldValue.arrayRemove([errandId])
+    ])
   }
   
-  func editUser(user: User, updatedUser: User) {
-    print("users view model edit user")
-    userRepository.updateUser(user: user, updatedUser: updatedUser)
+  func deletePickedUpErrand(runner: User, errand: Errand) {
+    guard let userId = runner.id else { return }
+    guard let errandId = errand.id else { return }
+    
+    store.collection(path).document(userId).updateData([
+      "picked_up_errands": FieldValue.arrayRemove([errandId])
+    ])
+  }
+  
+  
+  func createNewUser(_ uid: String?, _ first_name: String?, _ last_name: String?, _ imageUrl: String?) {
+    do {
+      guard let uid = uid else { return }
+
+      let newUser = User(uid: uid, bio: "", can_help_with: [], first_name: first_name ?? "", last_name: last_name ?? "", pfp: imageUrl ?? "", phone_number: 0000000000, picked_up_errands: [], posted_errands: [], school_year: "")
+      _ = try store.collection(path).addDocument(from: newUser)
+    }
+    catch {
+      fatalError("Unable to add book: \(error.localizedDescription).")
+    }
+  }
+  
+  func updateUser(user: User, updatedUser: User) {
+    print("user repository update user")
+    guard let userId = user.id else { return }
+    do {
+      try store.collection(path).document(userId).setData(from: updatedUser)
+    }
+    catch {
+      fatalError("Unable to update user: \(error.localizedDescription).")
+    }
   }
   
   func addErrandToUser(userId: String, errandId: String, type: String) {
-    userRepository.addErrandToUser(userId: userId, errandId: errandId, type: "posted_errands")
+    let userRef = store.collection(path).document(userId)
+      userRef.updateData([type: FieldValue.arrayUnion([errandId])]) { error in
+          if let error = error {
+              print("Unable to add errand to user: \(error.localizedDescription)")
+          }
+      }
   }
   
 }

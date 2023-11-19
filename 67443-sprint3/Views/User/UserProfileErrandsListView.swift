@@ -4,14 +4,13 @@ struct UserProfileErrandsListView: View {
   var user: User
   var isCurUser: Bool
   var isPostedErrands: Bool
-  @EnvironmentObject var errandRepository: ErrandRepository
+  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
 
   var body: some View {
       List {
         
-//        if (!errandRepository.errands.isEmpty) {
           if (isPostedErrands) {
-            let postedErrands = errandRepository.getErrandsByStatus(user.posted_errands)
+            let postedErrands = marketplaceViewModel.getErrandsByStatus(user.posted_errands)
             if (postedErrands["new"]!.isEmpty && postedErrands["in progress"]!.isEmpty && postedErrands["completed"]!.isEmpty) {
               Section(header: Text("No posted errands").padding(.top, 30)) {EmptyView()}
             }
@@ -30,7 +29,7 @@ struct UserProfileErrandsListView: View {
           else {
           // picked up errands
           // note: picked up errands never have a status of new
-            let pickedUpErrands = errandRepository.getErrandsByStatus(user.picked_up_errands)
+            let pickedUpErrands = marketplaceViewModel.getErrandsByStatus(user.picked_up_errands)
             if (pickedUpErrands["in progress"]!.isEmpty && pickedUpErrands["completed"]!.isEmpty) {
               Section(header: Text("No picked up errands").padding(.top, 30)) {EmptyView()}
             }
@@ -42,7 +41,6 @@ struct UserProfileErrandsListView: View {
                 PickedUpErrandList(user: user, pickedUpErrands: pickedUpErrands["completed"]!, isCompleted: true, header: "Completed")
               }
             }
-//          }
         }
         
       }

@@ -6,8 +6,8 @@ struct EditUserProfileView: View {
   @Environment(\.dismiss) var dismiss
   
   @EnvironmentObject var authViewModel: AuthenticationViewModel
-  @EnvironmentObject var userRepository: UserRepository
-  @EnvironmentObject var errandRepository: ErrandRepository
+  @EnvironmentObject var usersViewModel: UsersViewModel
+  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
 
   @State private var firstName = ""
   @State private var lastName = ""
@@ -131,12 +131,12 @@ struct EditUserProfileView: View {
   private func editUser() {
     let intPhoneNumber = Int(phoneNumber.filter("0123456789".contains)) ?? 0
     
-    if (!errandRepository.errands.isEmpty && !userRepository.users.isEmpty) {
+    if (!marketplaceViewModel.errands.isEmpty && !usersViewModel.users.isEmpty) {
       let updatedUser = User(uid: user.uid, bio: bio, can_help_with: canHelpWith, first_name: firstName, last_name: lastName, pfp: user.pfp, phone_number: intPhoneNumber, picked_up_errands: user.picked_up_errands, posted_errands: user.posted_errands, school_year: schoolYear)
-      userRepository.updateUser(user: user, updatedUser: updatedUser)
+      usersViewModel.updateUser(user: user, updatedUser: updatedUser)
             
       if (user.first_name != firstName || user.last_name != lastName || user.phone_number != intPhoneNumber) {
-        errandRepository.updateUser(user: updatedUser, userId: user.id!, postedErrandsIds: user.posted_errands, pickedUpErrandsIds: user.picked_up_errands)
+        marketplaceViewModel.updateUser(user: updatedUser, userId: user.id!, postedErrandsIds: user.posted_errands, pickedUpErrandsIds: user.picked_up_errands)
       }
     }
   }

@@ -10,8 +10,8 @@ import SwiftUI
 struct ErrandDetailsPickUpView: View {
   var errand: Errand
   var user: User
-  @EnvironmentObject var errandRepository: ErrandRepository
-  @EnvironmentObject var userRepository: UserRepository
+  @EnvironmentObject var marketplaceViewModel: MarketplaceViewModel
+  @EnvironmentObject var usersViewModel: UsersViewModel
   @State private var isPickUpAlertPresented = false
   @State private var isCompletionAlertPresented = false
 
@@ -55,9 +55,9 @@ struct ErrandDetailsPickUpView: View {
                 title: Text("Are you sure you want to pick up this errand?"),
                 primaryButton: .default(Text("Yes, I'm sure")) {
                   // change status to in progress and assign runner
-                  errandRepository.updateErrandStatus(errandID: errand.id!, newStatus: "in progress")
-                  userRepository.addErrandToUser(userId: user.id!, errandId: errand.id!, type: "picked_up_errands")
-                  errandRepository.addUserAsRunner(user: user, errand: errand)
+                  marketplaceViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "in progress")
+                  usersViewModel.addErrandToUser(userId: user.id!, errandId: errand.id!, type: "picked_up_errands")
+                  marketplaceViewModel.addUserAsRunner(user: user, errand: errand)
                 },
                 secondaryButton: .cancel(Text("Cancel"))
               )
@@ -81,7 +81,7 @@ struct ErrandDetailsPickUpView: View {
                           title: Text("Mark this errand as complete?"),
                           primaryButton: .default(Text("Yes, it's completed!")) {
                               // Change status to completed
-                            errandRepository.updateErrandStatus(errandID: errand.id!, newStatus: "completed")
+                            marketplaceViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "completed")
                           },
                           secondaryButton: .cancel(Text("No, Cancel"))
                       )

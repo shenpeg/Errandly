@@ -10,13 +10,13 @@ import SwiftUI
 import CoreLocation
 
 struct ErrandDetailsProfileView: View {
-  @EnvironmentObject var userRepository: UserRepository
+  @EnvironmentObject var usersViewModel: UsersViewModel
   var errand: Errand
   // change???
   @StateObject private var viewModel = LocationTimeFormatViewModel()
 
   var body: some View {
-    let errandOwnerUser = userRepository.getUser(userId: errand.owner.id)
+    let errandOwnerUser = usersViewModel.getUser(userId: errand.owner.id)
 
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
