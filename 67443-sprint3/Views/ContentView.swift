@@ -9,6 +9,9 @@ let lightPurple = Color(red: 0.91, green: 0.60, blue: 0.98)
 let darkGray = Color(red: 0.25, green: 0.25, blue: 0.25)
 let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
 
+// tags
+let tags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
+
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @StateObject var usersViewModel: UsersViewModel = UsersViewModel()
@@ -27,14 +30,14 @@ struct ContentView: View {
 
         MarketplaceView(user: curUser!)
           .tabItem {
-            Image(systemName: "house")
+            Image(systemName: "house").padding(.bottom, 10)
             Text("Marketplace")
           }
           .tag(1)
         
         PostErrandView(user: curUser!, isCurUser: true, tabSelection: $tabSelection)
           .tabItem {
-            Image(systemName: "plus.app")
+            Image(systemName: "plus.app").padding(.bottom, 10)
             Text("Post Errand")
           }
           .tag(2)
@@ -42,7 +45,7 @@ struct ContentView: View {
         UserProfileView(user: curUser!, isCurUser: true)
           .environmentObject(authViewModel)
           .tabItem {
-            Image(systemName: "person")
+            Image(systemName: "person").padding(.bottom, 10)
             Text("Profile")
           }
           .tag(3)

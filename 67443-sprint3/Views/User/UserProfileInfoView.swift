@@ -87,7 +87,7 @@ struct UserProfileInfoView: View {
             ForEach(user.can_help_with, id: \.self) {tag in
               Text(tag)
                 .font(.caption)
-                .padding(.horizontal, 15)
+                .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                 .foregroundColor(darkGray)
                 .background(Capsule().fill(mint))
             }

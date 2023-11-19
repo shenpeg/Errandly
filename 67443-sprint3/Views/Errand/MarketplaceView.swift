@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-let tags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cleaning", "animals", "plants", "car", "laundry", "moving in/out"]
-
 struct MarketplaceView: View {
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @State private var searchField = ""
@@ -35,7 +33,7 @@ struct MarketplaceView: View {
         } label: {
           Text("sort by")
             .font(.footnote)
-            .padding(.horizontal, 10)
+            .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
             .foregroundColor(darkBlue)
             .background(Capsule().fill(lightGray))
         }
@@ -50,7 +48,7 @@ struct MarketplaceView: View {
               } label: {
                 Text(selectedTags)
                   .font(.footnote)
-                  .padding(.horizontal, 10)
+                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                   .foregroundColor(darkBlue)
                   .background(Capsule().fill(mint))
               }
@@ -67,7 +65,7 @@ struct MarketplaceView: View {
               } label: {
                 Text(tag)
                   .font(.footnote)
-                  .padding(.horizontal, 10)
+                  .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                   .foregroundColor(darkBlue)
                   .background(Capsule().fill(lightGray))
               }
