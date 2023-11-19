@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import FirebaseFirestoreSwift
 import FirebaseFirestore
 import SwiftUI
 

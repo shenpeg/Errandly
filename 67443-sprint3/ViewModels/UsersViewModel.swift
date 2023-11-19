@@ -1,8 +1,6 @@
 import Combine
 import GoogleSignIn
 
-import Firebase
-import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 class UsersViewModel: ObservableObject {
