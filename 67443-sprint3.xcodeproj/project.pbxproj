@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */; };
 		15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */; };
-		1554F9FE2AFB321200A13D85 /* ErrandDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */; };
 		1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */; };
 		15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
@@ -19,7 +18,6 @@
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
 		A33FBBE52AF9910A00CE9FE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */; };
 		A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */; };
-		A33FBBE92AF9B59100CE9FE8 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33FBBE82AF9B59100CE9FE8 /* UserViewModel.swift */; };
 		A33FBBEB2AFC1D0F00CE9FE8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A33FBBEA2AFC1D0F00CE9FE8 /* FirebaseAnalytics */; };
 		A33FBBED2AFC1D0F00CE9FE8 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = A33FBBEC2AFC1D0F00CE9FE8 /* FirebaseAnalyticsOnDeviceConversion */; };
 		A33FBBEF2AFC1D0F00CE9FE8 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A33FBBEE2AFC1D0F00CE9FE8 /* FirebaseAnalyticsSwift */; };
@@ -27,8 +25,7 @@
 		A33FBBF32AFC1D0F00CE9FE8 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = A33FBBF22AFC1D0F00CE9FE8 /* FirebaseAppCheck */; };
 		A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */; };
 		A35EF8E92AF943DF00E23558 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35EF8E82AF943DF00E23558 /* WelcomeView.swift */; };
-		A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */; };
-		A3679F092AF7211700A3C2DA /* ErrandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3679F082AF7211700A3C2DA /* ErrandViewModel.swift */; };
+		A3679F072AF71D9800A3C2DA /* ErrandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */; };
 		A38C78782AE6DF6500CE736C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A38C78772AE6DF6500CE736C /* FirebaseAnalytics */; };
 		A38C787A2AE6DF6500CE736C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = A38C78792AE6DF6500CE736C /* FirebaseAnalyticsOnDeviceConversion */; };
 		A38C787C2AE6DF6500CE736C /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A38C787B2AE6DF6500CE736C /* FirebaseAnalyticsSwift */; };
@@ -45,7 +42,6 @@
 		A3B99B732AD63057000822EE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B722AD63057000822EE /* GoogleSignInSwift */; };
 		A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4564C2B09584F000678E6 /* FormTags.swift */; };
 		A3EAE9272AE85D880079481D /* Errand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9262AE85D880079481D /* Errand.swift */; };
-		A3EAE92C2AE861860079481D /* ErrandRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE92B2AE861860079481D /* ErrandRepository.swift */; };
 		A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE92D2AE862510079481D /* MarketplaceView.swift */; };
 		A3EAE9312AE862D70079481D /* ErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9302AE862D70079481D /* ErrandView.swift */; };
 		A3EAE9332AE863F00079481D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A3EAE9322AE863F00079481D /* FirebaseAnalytics */; };
@@ -78,7 +74,6 @@
 		A3EAE96D2AE881160079481D /* ErrandOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE96C2AE881160079481D /* ErrandOwner.swift */; };
 		A3EAE96F2AE8832E0079481D /* ErrandDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */; };
 		A3EAE9712AE885E60079481D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9702AE885E60079481D /* User.swift */; };
-		A3EAE97B2AE8889C0079481D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE97A2AE8889C0079481D /* UserRepository.swift */; };
 		A3EAE97D2AE889580079481D /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE97C2AE889580079481D /* UserProfileView.swift */; };
 		A3FF43612AD6E04600E1DDA6 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */; };
 		A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */; };
@@ -90,7 +85,6 @@
 /* Begin PBXFileReference section */
 		15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsPickUpView.swift; sourceTree = "<group>"; };
 		15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsProfileView.swift; sourceTree = "<group>"; };
-		1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsViewModel.swift; sourceTree = "<group>"; };
 		1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTimeFormatViewModel.swift; sourceTree = "<group>"; };
 		15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRunner.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
@@ -100,11 +94,9 @@
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
-		A33FBBE82AF9B59100CE9FE8 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrandTabs.swift; sourceTree = "<group>"; };
 		A35EF8E82AF943DF00E23558 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewModel.swift; sourceTree = "<group>"; };
-		A3679F082AF7211700A3C2DA /* ErrandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandViewModel.swift; sourceTree = "<group>"; };
+		A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandsViewModel.swift; sourceTree = "<group>"; };
 		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A3A0327A2AF1C9920037548C /* UserProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoView.swift; sourceTree = "<group>"; };
 		A3A0327C2AF1C9A20037548C /* UserProfileErrandsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileErrandsView.swift; sourceTree = "<group>"; };
@@ -116,13 +108,11 @@
 		A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3C4564C2B09584F000678E6 /* FormTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTags.swift; sourceTree = "<group>"; };
 		A3EAE9262AE85D880079481D /* Errand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errand.swift; sourceTree = "<group>"; };
-		A3EAE92B2AE861860079481D /* ErrandRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRepository.swift; sourceTree = "<group>"; };
 		A3EAE92D2AE862510079481D /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
 		A3EAE9302AE862D70079481D /* ErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandView.swift; sourceTree = "<group>"; };
 		A3EAE96C2AE881160079481D /* ErrandOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandOwner.swift; sourceTree = "<group>"; };
 		A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsView.swift; sourceTree = "<group>"; };
 		A3EAE9702AE885E60079481D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A3EAE97A2AE8889C0079481D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		A3EAE97C2AE889580079481D /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		A3FF435F2AD67BDB00E1DDA6 /* -7443-sprint3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-7443-sprint3-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -256,7 +246,6 @@
 		A3B99B602AD62B0B000822EE /* 67443-sprint3 */ = {
 			isa = PBXGroup;
 			children = (
-				A3EAE92A2AE861650079481D /* DataRepositories */,
 				A3EAE9252AE85D7C0079481D /* Models */,
 				A3FF436B2AD6E31300E1DDA6 /* Views */,
 				A3FF436A2AD6E2F800E1DDA6 /* ViewModels */,
@@ -289,15 +278,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A3EAE92A2AE861650079481D /* DataRepositories */ = {
-			isa = PBXGroup;
-			children = (
-				A3EAE92B2AE861860079481D /* ErrandRepository.swift */,
-				A3EAE97A2AE8889C0079481D /* UserRepository.swift */,
-			);
-			path = DataRepositories;
-			sourceTree = "<group>";
-		};
 		A3FF43682AD6E29E00E1DDA6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,12 +291,9 @@
 			isa = PBXGroup;
 			children = (
 				A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */,
-				A3679F062AF71D9800A3C2DA /* MarketplaceViewModel.swift */,
-				A3679F082AF7211700A3C2DA /* ErrandViewModel.swift */,
-				1554F9FD2AFB321200A13D85 /* ErrandDetailsViewModel.swift */,
+				A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */,
 				1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */,
 				A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */,
-				A33FBBE82AF9B59100CE9FE8 /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -452,21 +429,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A30F99D42AFCD312001A5455 /* EditUserProfileView.swift in Sources */,
-				A33FBBE92AF9B59100CE9FE8 /* UserViewModel.swift in Sources */,
 				A3FF43612AD6E04600E1DDA6 /* AuthenticationViewModel.swift in Sources */,
 				15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */,
 				6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */,
 				A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */,
-				A3EAE92C2AE861860079481D /* ErrandRepository.swift in Sources */,
 				6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */,
-				1554F9FE2AFB321200A13D85 /* ErrandDetailsViewModel.swift in Sources */,
 				A35EF8E92AF943DF00E23558 /* WelcomeView.swift in Sources */,
-				A3679F092AF7211700A3C2DA /* ErrandViewModel.swift in Sources */,
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
 				1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */,
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
-				A3679F072AF71D9800A3C2DA /* MarketplaceViewModel.swift in Sources */,
+				A3679F072AF71D9800A3C2DA /* ErrandsViewModel.swift in Sources */,
 				A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */,
 				A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */,
 				A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */,
@@ -481,7 +454,6 @@
 				A3EAE9312AE862D70079481D /* ErrandView.swift in Sources */,
 				A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */,
 				A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */,
-				A3EAE97B2AE8889C0079481D /* UserRepository.swift in Sources */,
 				A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */,
 				A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */,
 				A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */,

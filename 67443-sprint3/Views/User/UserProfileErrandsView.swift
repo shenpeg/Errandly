@@ -6,7 +6,7 @@ struct UserProfileErrandsView: View {
   var user: User
   var isCurUser: Bool
   
-  let tabs = ["Posted Errands", "Picked Up Errands"]
+  let tabs: [String] = ["Posted Errands", "Picked Up Errands"]
   @State var selectedTab: String = "Posted Errands"
   
   var body: some View {

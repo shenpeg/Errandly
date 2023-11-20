@@ -8,16 +8,16 @@
 import SwiftUI
 import CoreLocation
 import GoogleSignIn
-//import GoogleSignIn
 
 struct ErrandView: View {
   let errand: Errand
   let isCurUser: Bool
   var user: User
   
-  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
-  @ObservedObject var usersViewModel = UsersViewModel()
+  @EnvironmentObject var usersViewModel: UsersViewModel
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @StateObject var locTimeViewModel = LocationTimeFormatViewModel()
+  
   @State private var isAppeared: Bool = false
   @State private var isDeleteAlertPresented = false
   
@@ -46,7 +46,7 @@ struct ErrandView: View {
 //              .font(.system(size: 20))
 //          }
           
-          if (isCurUser && user.uid == GIDSignIn.sharedInstance.currentUser?.userID && errand.status == "new") {
+          if (isCurUser && errand.status == "new") {
             Image(systemName: "trash")
               .foregroundColor(.black)
               .font(.system(size: 15))
@@ -76,7 +76,7 @@ struct ErrandView: View {
         .padding(.bottom, 3)
         
         HStack {
-          if (isCurUser && user.uid == GIDSignIn.sharedInstance.currentUser?.userID) {
+          if (isCurUser) {
             Text("your post")
           }
           else {
@@ -146,14 +146,15 @@ struct ErrandView: View {
   }
   
   func deleteErrand() {
-    if (!marketplaceViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
+    // only delete 'new' errands so don't need to check/remove runner
+//    if (!errandsViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
 //      if (errand.runner != nil) {
 //        let runner = usersViewModel.getUser(errand.runner!.id)!
 //        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
 //      }
-      let owner = usersViewModel.getUser(errand.owner.id)!
-      usersViewModel.destroyPostedErrand(owner: owner, errand: errand)
-      marketplaceViewModel.destroy(errand)
-    }
+    let owner = usersViewModel.getUser(userId: errand.owner.id)!
+    usersViewModel.deletePostedErrand(owner: owner, errand: errand)
+    errandsViewModel.delete(errand)
+//    }
   }
 }

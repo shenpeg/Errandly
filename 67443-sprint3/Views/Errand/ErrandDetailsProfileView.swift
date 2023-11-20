@@ -10,13 +10,13 @@ import SwiftUI
 import CoreLocation
 
 struct ErrandDetailsProfileView: View {
-  @ObservedObject var usersViewModel: UsersViewModel = UsersViewModel()
+  @EnvironmentObject var usersViewModel: UsersViewModel
   var errand: Errand
+  // change???
   @StateObject private var viewModel = LocationTimeFormatViewModel()
 
-
   var body: some View {
-    let errandOwnerUser = usersViewModel.getUser(errand.owner.id)
+    let errandOwnerUser = usersViewModel.getUser(userId: errand.owner.id)
 
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
@@ -31,7 +31,7 @@ struct ErrandDetailsProfileView: View {
       VStack(alignment: .leading){
           if (errandOwnerUser != nil) {
             NavigationLink(destination:
-                            UserProfileView(user: errandOwnerUser, isCurUser: false)
+                            UserProfileView(user: errandOwnerUser!, isCurUser: false)
             ) {
               Text("\(errand.owner.first_name) \(errand.owner.last_name)")
                 .font(.headline)

@@ -10,39 +10,39 @@ import SwiftUI
 import UIKit
 
 struct SortSheet: View {
-  @State var filteredErrands: [ErrandViewModel]
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @Environment(\.dismiss) var dismiss
-  @ObservedObject var marketplaceViewModel = MarketplaceViewModel()
-  var user: User
+  
+  @Binding var searchField: String
+  @Binding var selectedTags: String // : [String] = []
 
     var body: some View {
+      let errands = errandsViewModel.errands
+      
       VStack {
         Text("Sort Errands By:")
           .font(.title2)
           .padding()
         Divider()
         Button {
-          filteredErrands = filteredErrands.sorted(by: {$0.errand.datePosted > $1.errand.datePosted} )
+          errandsViewModel.errands = errands.sorted(by: {$0.datePosted > $1.datePosted} )
+          errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
         } label: {
           Text("Recent")
         }.padding()
         Button {
-          filteredErrands = filteredErrands.sorted(by: {$0.errand.dateDue < $1.errand.dateDue} )
+          errandsViewModel.errands = errands.sorted(by: {$0.dateDue < $1.dateDue} )
+          errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
         } label: {
           Text("Due Date")
         }.padding()
         Button {
-          filteredErrands = filteredErrands.sorted(by: {$0.errand.pay > $1.errand.pay} )
+          errandsViewModel.errands = errands.sorted(by: {$0.pay > $1.pay} )
+          errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
         } label: {
           Text("Compensation")
         }.padding()
       }
-//      .presentationDetents([.height(300)])
-      List {
-        ForEach(filteredErrands) { errandVM in
-          ErrandView(errand: errandVM.errand, isCurUser: false, user: user)
-            .padding(.bottom, 10)
-        }
-      }
+      .presentationDetents([.height(300)])
     }
 }

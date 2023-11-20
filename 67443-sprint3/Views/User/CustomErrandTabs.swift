@@ -48,9 +48,9 @@ extension RoundedRectangle {
 }
 
 struct AnyShape: Shape {
-    private var path: (CGRect) -> Path
+    private var path: @Sendable (CGRect) -> Path
 
-    init(_ path: @escaping (CGRect) -> Path) {
+    init(_ path: @escaping @Sendable (CGRect) -> Path) {
         self.path = path
     }
 

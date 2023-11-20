@@ -14,32 +14,44 @@ let tags: [String] = ["on-campus", "off-campus", "house/dorm", "food/drink", "cl
 
 struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
-  @ObservedObject var usersViewModel: UsersViewModel = UsersViewModel()
-
+  @StateObject var usersViewModel: UsersViewModel = UsersViewModel()
+  @StateObject var errandsViewModel: ErrandsViewModel = ErrandsViewModel()
+  @State private var tabSelection = 1
+  
+  init() {
+    UITabBar.appearance().backgroundColor = .white
+    UITabBar.appearance().barTintColor = .white
+  }
+  
   var body: some View {
-    let curUser = usersViewModel.getUserByUid(uid: GIDSignIn.sharedInstance.currentUser?.userID)
+    return TabView(selection: $tabSelection) {
+      if (usersViewModel.getCurUser() != nil) {
+        let curUser = usersViewModel.getCurUser()
 
-    return TabView {
-      if (curUser != nil) {
         MarketplaceView(user: curUser!)
           .tabItem {
             Image(systemName: "house").padding(.bottom, 10)
             Text("Marketplace")
           }
+          .tag(1)
         
-        PostErrandView(user: curUser!, isCurUser: true)
+        PostErrandView(user: curUser!, tabSelection: $tabSelection)
           .tabItem {
             Image(systemName: "plus.app").padding(.bottom, 10)
             Text("Post Errand")
           }
+          .tag(2)
         
-        UserProfileView(user: curUser, isCurUser: true)
+        UserProfileView(user: curUser!, isCurUser: true)
           .environmentObject(authViewModel)
           .tabItem {
             Image(systemName: "person").padding(.bottom, 10)
             Text("Profile")
           }
+          .tag(3)
       }
     }
+    .environmentObject(usersViewModel)
+    .environmentObject(errandsViewModel)
   }
 }
