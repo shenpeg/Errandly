@@ -1,17 +1,15 @@
-//
-//  ErrandDetailsPickUpView.swift
-//  67443-sprint3
-//
-//  Created by /peggy on 11/1/23.
-//
-
 import SwiftUI
 
 struct ErrandDetailsPickUpView: View {
   var errand: Errand
   var user: User
+  
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @EnvironmentObject var usersViewModel: UsersViewModel
+  @EnvironmentObject var tabUtil: TabUtil
+  @Binding var marketplacePath: NavigationPath
+  @Binding var profilePath: NavigationPath
+  
   @State private var isPickUpAlertPresented = false
   @State private var isCompletionAlertPresented = false
 
@@ -31,8 +29,11 @@ struct ErrandDetailsPickUpView: View {
         
         Spacer()
         
-        if (errand.status == "new") {
-          if (errand.owner.id == user.id) {
+        // note: instead of doing errand.status, 
+        // .getErrand() will get the most up to date version of errand,
+        // which will force the page to reload when the status gets updated
+        if (errandsViewModel.getErrand(errand.id!).status == "new") {
+          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
             Text("Can't pick up own errand!")
               .font(.headline)
               .foregroundColor(darkBlue)
@@ -58,13 +59,19 @@ struct ErrandDetailsPickUpView: View {
                   errandsViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "in progress")
                   usersViewModel.addErrandToUser(userId: user.id!, errandId: errand.id!, type: "picked_up_errands")
                   errandsViewModel.addUserAsRunner(user: user, errand: errand)
+                  // redirect to user profile
+                  tabUtil.tabSelection = 3
+                  tabUtil.profileTabSelection = "Picked Up Errands"
+                  marketplacePath = NavigationPath()
+                  profilePath = NavigationPath()
                 },
                 secondaryButton: .cancel(Text("Cancel"))
               )
             }
           }
-        } else if (errand.status == "in progress") {
-            if (errand.owner.id == user.id) {
+        }
+        else if (errandsViewModel.getErrand(errand.id!).status == "in progress") {
+          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
               Button(action: {
                   isCompletionAlertPresented = true
               }) {
@@ -80,8 +87,12 @@ struct ErrandDetailsPickUpView: View {
                       Alert(
                           title: Text("Mark this errand as complete?"),
                           primaryButton: .default(Text("Yes, it's completed!")) {
-                              // Change status to completed
+                            // Change status to completed
                             errandsViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "completed")
+                            // redirect to user profile
+                            tabUtil.tabSelection = 3
+                            tabUtil.profileTabSelection = "Posted Errands"
+                            profilePath = NavigationPath()
                           },
                           secondaryButton: .cancel(Text("No, Cancel"))
                       )
@@ -92,8 +103,8 @@ struct ErrandDetailsPickUpView: View {
                    .foregroundColor(darkBlue)
                    .italic()
             }
-        } else if (errand.status == "completed") {
-            // technically completed ones should only show up in profile not marketplace?
+        }
+        else if (errandsViewModel.getErrand(errand.id!).status == "completed") {
             Text("Completed")
                 .font(.headline)
                 .foregroundColor(darkBlue)

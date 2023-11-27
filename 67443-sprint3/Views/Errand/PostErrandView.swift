@@ -15,10 +15,11 @@ struct PostErrandView: View {
   // variables
   
   var user: User
-  @Binding var tabSelection: Int
   
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
+  @EnvironmentObject var tabUtil: TabUtil
+  @Binding var profilePath: NavigationPath
   
   @State private var title = ""
   @State private var description =  ""
@@ -167,9 +168,14 @@ struct PostErrandView: View {
                 // - AttributeGraph: cycle detected through attribute
                 // - Modifying state during view update, this will cause undefined behavior.
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                
                 await addErrand()
                 clearFields()
-                self.tabSelection = 1
+                
+                // redirect to user profile
+                tabUtil.tabSelection = 3
+                tabUtil.profileTabSelection = "Posted Errands"
+                profilePath = NavigationPath()
               }
             }
             .foregroundColor(.white)

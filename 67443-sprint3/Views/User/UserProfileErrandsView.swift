@@ -4,30 +4,30 @@ import SwiftUI
 
 struct UserProfileErrandsView: View {
   var user: User
-  var isCurUser: Bool
   
+  @EnvironmentObject var tabUtil: TabUtil
+
   let tabs: [String] = ["Posted Errands", "Picked Up Errands"]
-  @State var selectedTab: String = "Posted Errands"
   
   var body: some View {
     
     VStack (alignment: .leading) {
-      CustomErrandTabs(tabs, selection: selectedTab) { tab in
+      CustomErrandTabs(tabs, selection: tabUtil.profileTabSelection) { tab in
         Text(tab)
           .font(.title3)
-          .foregroundColor(selectedTab == tab ? darkGray : .white)
+          .foregroundColor(tabUtil.profileTabSelection == tab ? darkGray : .white)
           .padding(.vertical, 8)
           .padding(.horizontal, 8)
           .frame(maxWidth: .infinity)
           .onTapGesture {
             withAnimation(.easeInOut(duration: 0.150)) {
-              selectedTab = tab
+              tabUtil.profileTabSelection = tab
             }
           }
       }
       .background(darkBlue)
       
-      UserProfileErrandsListView(user: user, isCurUser: isCurUser, isPostedErrands: (selectedTab == "Posted Errands"))
+      UserProfileErrandsListView(user: user)
     }
     
   }

@@ -9,8 +9,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-struct Errand: Identifiable, Codable {
-  
+struct Errand: Identifiable, Codable, Hashable {
   @DocumentID var id: String?
   var dateDue: Date
   var datePosted: Date

@@ -10,9 +10,9 @@ import SwiftUI
 import CoreLocation
 
 struct ErrandDetailsProfileView: View {
-  @EnvironmentObject var usersViewModel: UsersViewModel
   var errand: Errand
-  // change???
+  
+  @EnvironmentObject var usersViewModel: UsersViewModel
   @StateObject private var viewModel = LocationTimeFormatViewModel()
 
   var body: some View {
@@ -28,11 +28,9 @@ struct ErrandDetailsProfileView: View {
           UserProfileImageView(pfp: errand.owner.pfp, size: 32)
       }
     
-      VStack(alignment: .leading){
+      VStack(alignment: .leading) {
           if (errandOwnerUser != nil) {
-            NavigationLink(destination:
-                            UserProfileView(user: errandOwnerUser!, isCurUser: false)
-            ) {
+            NavigationLink(value: errand.owner) {
               Text("\(errand.owner.first_name) \(errand.owner.last_name)")
                 .font(.headline)
             }
@@ -44,7 +42,7 @@ struct ErrandDetailsProfileView: View {
               .foregroundColor(.primary)
           }
           
-          HStack{
+          HStack {
             if (viewModel.locationName != "") {
                 Text(viewModel.locationName)
                     .font(.footnote)

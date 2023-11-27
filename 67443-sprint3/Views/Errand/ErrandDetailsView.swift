@@ -10,6 +10,10 @@ import SwiftUI
 struct ErrandDetailsView: View {
   var errand: Errand
   var user: User
+  
+  @EnvironmentObject var errandsViewModel: ErrandsViewModel
+  @Binding var marketplacePath: NavigationPath
+  @Binding var profilePath: NavigationPath
 
     var body: some View {
         let dateFormat = DateFormatter()
@@ -19,7 +23,7 @@ struct ErrandDetailsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Text(errand.status)
+                        Text(errandsViewModel.getErrand(errand.id!).status)
                             .font(.headline)
                             .foregroundColor(darkBlue)
                             .italic()
@@ -40,7 +44,7 @@ struct ErrandDetailsView: View {
                       }
                     }
 
-                    ErrandDetailsProfileView(errand: errand)
+                  ErrandDetailsProfileView(errand: errand)
                     
                     // Horizontal separator line
                     Rectangle()
@@ -64,7 +68,7 @@ struct ErrandDetailsView: View {
                 .padding(20)
             }
           
-          ErrandDetailsPickUpView(errand: errand, user: user)
+          ErrandDetailsPickUpView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
         }
     }
   

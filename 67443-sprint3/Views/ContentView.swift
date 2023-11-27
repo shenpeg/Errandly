@@ -16,33 +16,35 @@ struct ContentView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @StateObject var usersViewModel: UsersViewModel = UsersViewModel()
   @StateObject var errandsViewModel: ErrandsViewModel = ErrandsViewModel()
-  @State private var tabSelection = 1
-  
+  @StateObject var tabUtil: TabUtil = TabUtil()
+  @State private var marketplacePath = NavigationPath()
+  @State private var profilePath = NavigationPath()
+
   init() {
     UITabBar.appearance().backgroundColor = .white
     UITabBar.appearance().barTintColor = .white
   }
   
   var body: some View {
-    return TabView(selection: $tabSelection) {
+    return TabView(selection: tabSelection()) {
       if (usersViewModel.getCurUser() != nil) {
         let curUser = usersViewModel.getCurUser()
 
-        MarketplaceView(user: curUser!)
+        MarketplaceView(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath)
           .tabItem {
             Image(systemName: "house").padding(.bottom, 10)
             Text("Marketplace")
           }
           .tag(1)
         
-        PostErrandView(user: curUser!, tabSelection: $tabSelection)
+        PostErrandView(user: curUser!, profilePath: $profilePath)
           .tabItem {
             Image(systemName: "plus.app").padding(.bottom, 10)
             Text("Post Errand")
           }
           .tag(2)
         
-        UserProfileView(user: curUser!, isCurUser: true)
+        UserProfileViewNavigationStack(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath)
           .environmentObject(authViewModel)
           .tabItem {
             Image(systemName: "person").padding(.bottom, 10)
@@ -53,5 +55,23 @@ struct ContentView: View {
     }
     .environmentObject(usersViewModel)
     .environmentObject(errandsViewModel)
+    .environmentObject(tabUtil)
+  }
+  
+  private func tabSelection() -> Binding<Int> {
+    Binding {
+      tabUtil.tabSelection
+    }
+    set: { tappedTab in
+      if tappedTab == tabUtil.tabSelection {
+        if (tappedTab == 1) {
+          marketplacePath = NavigationPath()
+        }
+        else if (tappedTab == 3) {
+          profilePath = NavigationPath()
+        }
+      }
+      tabUtil.tabSelection = tappedTab
+    }
   }
 }

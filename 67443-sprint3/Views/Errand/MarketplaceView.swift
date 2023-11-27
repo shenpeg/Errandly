@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct MarketplaceView: View {
+  var user: User
+  
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
+  @EnvironmentObject var usersViewModel: UsersViewModel
+  @EnvironmentObject var authViewModel: AuthenticationViewModel
+  @EnvironmentObject var tabUtil: TabUtil
+  @Binding var marketplacePath: NavigationPath
+  @Binding var profilePath: NavigationPath
+  
   @State private var searchField = ""
   @State private var selectedTags = "" // : [String] = []
   @State private var tagIsClicked: Bool = false
-  
   @State private var showingSheet = false
-  var user: User
   
   var body: some View {
     let searchFieldBinding = Binding<String>(get: {
@@ -24,7 +30,7 @@ struct MarketplaceView: View {
       errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
     })
     
-    return NavigationStack {
+     return NavigationStack(path: $marketplacePath) {
       HStack {
         Spacer()
         Button {
@@ -76,13 +82,24 @@ struct MarketplaceView: View {
       }
       List {
         ForEach(errandsViewModel.filteredErrands) { errand in
-          ErrandView(errand: errand, isCurUser: false, user: user)
+          ErrandView(errand: errand, user: user)
             .padding(.bottom, 10)
         }
       }
       .navigationBarTitle("Marketplace", displayMode: .inline)
       .listStyle(.plain)
       .searchable(text: searchFieldBinding)
+      .navigationDestination(for: Errand.self) { errand in
+        ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
+      }
+      .navigationDestination(for: ErrandOwner.self) { errandOwner in
+        let errandOwnerUser = usersViewModel.getUser(userId: errandOwner.id)
+        UserProfileView(user: errandOwnerUser!)
+      }
+      .navigationDestination(for: User.self) { user in
+        EditUserProfileView(user: user)
+         .environmentObject(authViewModel)
+      }
     }
     .accentColor(.black)
     .sheet(isPresented: $showingSheet) {

@@ -5,14 +5,13 @@ struct UserProfileInfoView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @EnvironmentObject var usersViewModel: UsersViewModel
   var user: User
-  var isCurUser: Bool
   
   var body: some View {
     ZStack (alignment: .topLeading) {
       darkBlue
           .ignoresSafeArea()
       
-      if (isCurUser) {
+      if (usersViewModel.getCurUser()!.id == user.id) {
         HStack {
           Spacer()
           Button(action: signOut)
@@ -46,11 +45,8 @@ struct UserProfileInfoView: View {
               Text("\(user.first_name) \(user.last_name)")
                 .font(.title)
               
-              if (isCurUser) {
-                NavigationLink(destination:
-                    EditUserProfileView(user: user)
-                     .environmentObject(authViewModel)
-                ) {
+              if (usersViewModel.getCurUser()!.id == user.id) {
+                NavigationLink(value: user) {
                   Image(systemName: "pencil")
                     .foregroundColor(Color.white)
                     .font(.system(size: 20))

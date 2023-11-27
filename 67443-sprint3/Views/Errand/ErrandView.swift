@@ -11,7 +11,6 @@ import GoogleSignIn
 
 struct ErrandView: View {
   let errand: Errand
-  let isCurUser: Bool
   var user: User
   
   @EnvironmentObject var usersViewModel: UsersViewModel
@@ -27,11 +26,7 @@ struct ErrandView: View {
     let timeDifference = locTimeViewModel.calculateTimeDifference(from: errand.datePosted)
     
     return ZStack {
-      NavigationLink(destination:
-        ErrandDetailsView(errand: errand, user: user)
-      ) {
-        EmptyView()
-      }
+      NavigationLink("", value: errand)
       .opacity(0.0)
       
       VStack(alignment: .leading, spacing: 0, content: {
@@ -39,14 +34,14 @@ struct ErrandView: View {
           Text(errand.name)
             .font(.title2)
           
-//          if (isCurUser) {
+//          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
 //            // still need to get edit errand working
 //            Image(systemName: "pencil")
 //              .foregroundColor(.black)
 //              .font(.system(size: 20))
 //          }
           
-          if (isCurUser && errand.status == "new") {
+          if (usersViewModel.getCurUser()!.id == errand.owner.id && errand.status == "new") {
             Image(systemName: "trash")
               .foregroundColor(.black)
               .font(.system(size: 15))
@@ -76,7 +71,7 @@ struct ErrandView: View {
         .padding(.bottom, 3)
         
         HStack {
-          if (isCurUser) {
+          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
             Text("your post")
           }
           else {

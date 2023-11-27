@@ -2,23 +2,23 @@ import SwiftUI
 
 struct UserProfileErrandsListView: View {
   var user: User
-  var isCurUser: Bool
-  var isPostedErrands: Bool
+  
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
+  @EnvironmentObject var tabUtil: TabUtil
 
   var body: some View {
     List {
-      if isPostedErrands {
-        postedErrandsSection(user: user, isCurUser: isCurUser)
+      if (tabUtil.profileTabSelection == "Posted Errands") {
+        postedErrandsSection(user: user)
       } else {
-        pickedUpErrandsSection(user: user, isCurUser: isCurUser)
+        pickedUpErrandsSection(user: user)
       }
     }
     .listStyle(.plain)
   }
   
   // UserProfileErrandsListView
-  private func postedErrandsSection(user: User, isCurUser: Bool) -> some View {
+  private func postedErrandsSection(user: User) -> some View {
     let postedErrands = errandsViewModel.getErrandsByStatus(user.posted_errands)
     
     return Group {
@@ -31,7 +31,6 @@ struct UserProfileErrandsListView: View {
         if (!postedErrands["new"]!.isEmpty) {
           AnyView(PostedErrandList(
             user: user,
-            isCurUser: isCurUser,
             postedErrands: postedErrands["new"]!,
             isCompleted: false,
             header: "Waiting for Runners"
@@ -40,7 +39,6 @@ struct UserProfileErrandsListView: View {
         if (!postedErrands["in progress"]!.isEmpty) {
           AnyView(PostedErrandList(
             user: user,
-            isCurUser: isCurUser,
             postedErrands: postedErrands["in progress"]!,
             isCompleted: false,
             header: "In Progress"
@@ -49,7 +47,6 @@ struct UserProfileErrandsListView: View {
         if (!postedErrands["completed"]!.isEmpty) {
           AnyView(PostedErrandList(
             user: user,
-            isCurUser: isCurUser,
             postedErrands: postedErrands["completed"]!,
             isCompleted: true,
             header: "Completed"
@@ -60,7 +57,7 @@ struct UserProfileErrandsListView: View {
   }
 
   // UserProfileErrandsListView
-  private func pickedUpErrandsSection(user: User, isCurUser: Bool) -> some View {
+  private func pickedUpErrandsSection(user: User) -> some View {
     let pickedUpErrands = errandsViewModel.getErrandsByStatus(user.picked_up_errands)
 
     return Group {
@@ -71,7 +68,6 @@ struct UserProfileErrandsListView: View {
         if (!pickedUpErrands["in progress"]!.isEmpty) {
           AnyView(PickedUpErrandList(
             user: user,
-            isCurUser: isCurUser,
             pickedUpErrands: pickedUpErrands["in progress"]!,
             isCompleted: false,
             header: "In Progress"
@@ -80,7 +76,6 @@ struct UserProfileErrandsListView: View {
         if (pickedUpErrands["completed"]!.isEmpty) {
           AnyView(PickedUpErrandList(
             user: user,
-            isCurUser: isCurUser,
             pickedUpErrands: pickedUpErrands["completed"]!,
             isCompleted: true,
             header: "Completed"
@@ -94,11 +89,10 @@ struct UserProfileErrandsListView: View {
 
 struct PostedErrandList: View {
   var user: User
-  var isCurUser: Bool
   var postedErrands: [Errand]
   var isCompleted: Bool
   var header: String
-
+  
   var body: some View {
     return Section(header: HeaderStyle(header: header)
       .font(.title3)
@@ -107,12 +101,12 @@ struct PostedErrandList: View {
     ) {
       ForEach(postedErrands.sorted(by: {$0.datePosted > $1.datePosted})) { errand in
         if (isCompleted) {
-          ErrandView(errand: errand, isCurUser: isCurUser, user: user)
+          ErrandView(errand: errand, user: user)
             .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
             .padding(.bottom, 10)
         }
          else {
-           ErrandView(errand: errand, isCurUser: isCurUser, user: user)
+           ErrandView(errand: errand, user: user)
             .padding(.bottom, 10)
         }
       }
@@ -122,11 +116,10 @@ struct PostedErrandList: View {
 
 struct PickedUpErrandList: View {
   var user: User
-  var isCurUser: Bool
   var pickedUpErrands: [Errand]
   var isCompleted: Bool
   var header: String
-
+  
   var body: some View {
     Section(header: HeaderStyle(header: header)
       .font(.title3)
@@ -135,11 +128,11 @@ struct PickedUpErrandList: View {
     ) {
       ForEach(pickedUpErrands.sorted(by: {$0.datePosted > $1.datePosted})) { errand in
         if (isCompleted) {
-          ErrandView(errand: errand, isCurUser: isCurUser, user: user)
+          ErrandView(errand: errand, user: user)
             .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
             .padding(.bottom, 10)
         } else {
-          ErrandView(errand: errand, isCurUser: isCurUser, user: user)
+          ErrandView(errand: errand, user: user)
             .padding(.bottom, 10)
         }
       }
