@@ -103,24 +103,18 @@ class ErrandsViewModel: ObservableObject {
   }
   
   func filterErrands(searchText: String, selectedTags: String) {
-    self.filteredErrands = self.errands.filter { errand in return
-      if (!searchText.isEmpty && selectedTags != "") {
-        errand.status == "new" &&
-        errand.name.lowercased().contains(searchText.lowercased()) &&
-        errand.tags.contains(selectedTags)
+      self.filteredErrands = self.errands.filter { errand in
+          if (!searchText.isEmpty && selectedTags != "") {
+              return errand.name.lowercased().contains(searchText.lowercased()) &&
+                  errand.tags.contains(selectedTags)
+          } else if (!searchText.isEmpty) {
+              return errand.name.lowercased().contains(searchText.lowercased())
+          } else if (selectedTags != "") {
+              return errand.tags.contains(selectedTags)
+          } else {
+              return true
+          }
       }
-      else if (!searchText.isEmpty) {
-        errand.status == "new" &&
-        errand.name.lowercased().contains(searchText.lowercased())
-      }
-      else if (selectedTags != "") {
-        errand.status == "new" &&
-        errand.tags.contains(selectedTags)
-      }
-      else {
-        errand.status == "new"
-      }
-    }
   }
   
   func updateUser(user: User, userId: String, postedErrandsIds: [String], pickedUpErrandsIds: [String]) {
