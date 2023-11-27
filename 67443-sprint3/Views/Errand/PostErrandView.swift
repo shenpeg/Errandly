@@ -1,10 +1,3 @@
-//
-//  PostErrandView.swift
-//  67443-sprint3
-//
-//  Created by cd on 11/1/23.
-//
-
 import Combine
 import Foundation
 import FirebaseFirestore
@@ -46,7 +39,6 @@ struct PostErrandView: View {
   private func isValidErrand() -> Bool {
     if title.isEmpty { return false}
     if description.isEmpty { return false}
-    if pay > 10000.00 && pay <= 0.0 { return false }
     if selectedTags.count > 5 { return false }
     //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
     let calendar = Calendar.current
@@ -125,39 +117,46 @@ struct PostErrandView: View {
 //            .listRowSeparator(.hidden)
 
         VStack(alignment: .leading) {
-          Text("Compensation?")
-          HStack{
-            Button(action: {payBool = true}) {
-              Text(" ")
+            Text("Compensation?")
+            HStack{
+                Button(action: {payBool = true}) {
+                    Text(" ")
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .frame(width: 20, height: 20)
+                .background(payBool ? darkBlue : Color.white)
+                .cornerRadius(100)
+                .foregroundColor(Color.black)
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 100)
+                    .stroke(darkBlue, lineWidth: 2)
+                    .scaleEffect(0.5))
+                Text("Yes     ")
+                
+                // Show the TextField only if payBool is true
+                if payBool {
+                    TextField("How much?", text: $payString)
+                        .padding(5)
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
+                        .keyboardType(.decimalPad)
+                }
             }
-            .frame(width: 20, height: 20)
-            .background(payBool ? darkBlue : Color.white)
-            .cornerRadius(100)
-            .foregroundColor(Color.black)
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 100)
-              .stroke(darkBlue, lineWidth: 2)
-              .scaleEffect(0.5))
-            Text("Yes     ")
-            TextField("How much?", text: $payString)
-              .padding(5)
-              .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
-              .keyboardType(.decimalPad)
-          }
-          HStack{
-            Button(action: {payString = "0"; payBool = false}) {
-              Text(" ")
+            
+            HStack{
+                Button(action: {payString = "0"; payBool = false}) {
+                    Text(" ")
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .frame(width: 20, height: 20)
+                .background(payBool ? Color.white : darkBlue)
+                .cornerRadius(100)
+                .foregroundColor(darkBlue)
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 100)
+                    .stroke(darkBlue, lineWidth: 2)
+                    .scaleEffect(0.5))
+                Text("No      ")
             }
-            .frame(width: 20, height: 20)
-            .background(payBool ? Color.white : darkBlue)
-            .cornerRadius(100)
-            .foregroundColor(darkBlue)
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 100)
-              .stroke(darkBlue, lineWidth: 2)
-              .scaleEffect(0.5))
-            Text("No      ")
-          }
         }.listRowSeparator(.hidden)
         
         Section {
