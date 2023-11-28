@@ -19,6 +19,7 @@ struct ContentView: View {
   @StateObject var tabUtil: TabUtil = TabUtil()
   @State private var marketplacePath = NavigationPath()
   @State private var profilePath = NavigationPath()
+  @State private var isOnboardingPresented = true
 
   init() {
     UITabBar.appearance().backgroundColor = .white
@@ -56,6 +57,10 @@ struct ContentView: View {
     .environmentObject(usersViewModel)
     .environmentObject(errandsViewModel)
     .environmentObject(tabUtil)
+    .overlay(
+        isOnboardingPresented ? TutorialView(isOnboardingPresented: $isOnboardingPresented)
+                               .transition(.opacity) : nil
+    )
   }
   
   private func tabSelection() -> Binding<Int> {

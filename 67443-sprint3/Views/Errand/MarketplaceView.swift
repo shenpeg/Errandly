@@ -21,6 +21,7 @@ struct MarketplaceView: View {
   @State private var selectedTags = "" // : [String] = []
   @State private var tagIsClicked: Bool = false
   @State private var showingSheet = false
+  @State private var isOnboardingPresented = false
   
   var body: some View {
     let searchFieldBinding = Binding<String>(get: {
@@ -78,7 +79,23 @@ struct MarketplaceView: View {
             }
           }
         }
+        
         Spacer()
+        // tutorial button
+        Button(action: {
+            isOnboardingPresented.toggle()
+        }) {
+            Image(systemName: "info.circle")
+                .foregroundColor(.blue)
+                .font(.system(size: 24))
+                .padding()
+                .background(Circle().fill(Color.white))
+                .shadow(radius: 2)
+        }
+        .sheet(isPresented: $isOnboardingPresented) {
+            TutorialView(isOnboardingPresented: $isOnboardingPresented)
+        }
+        // ^ modify tutorial button
       }
       List {
         ForEach(errandsViewModel.filteredErrands) { errand in
