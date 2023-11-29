@@ -22,6 +22,9 @@ struct ErrandDetailsProfileView: View {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
     let timeDifference = timeViewModel.calculateTimeDifference(from: errand.datePosted)
+    func message() {
+      MessagesService().sendMessage("\(errand.owner.phone_number)")
+    }
     
     return HStack {
       
@@ -53,6 +56,12 @@ struct ErrandDetailsProfileView: View {
           Text(timeViewModel.formatTimeDifference(timeDifference))
             .font(.footnote)
             .foregroundColor(.secondary)
+        }
+        Spacer()
+        Button(action: message) {
+            Image(systemName: "message")
+              .foregroundColor(Color.black)
+              .font(.system(size: 20))
         }
       }
     }
