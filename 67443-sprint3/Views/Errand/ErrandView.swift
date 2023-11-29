@@ -15,31 +15,31 @@ struct ErrandView: View {
   
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
-  @StateObject var locTimeViewModel = LocationTimeFormatViewModel()
+  @EnvironmentObject var locViewModel: LocationViewModel
+  @StateObject var timeViewModel = TimeFormatViewModel()
   
-  @State private var isAppeared: Bool = false
   @State private var isDeleteAlertPresented = false
   
-  var body: some View {    
+  var body: some View {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
-    let timeDifference = locTimeViewModel.calculateTimeDifference(from: errand.datePosted)
+    let timeDifference = timeViewModel.calculateTimeDifference(from: errand.datePosted)
     
     return ZStack {
       NavigationLink("", value: errand)
-      .opacity(0.0)
+        .opacity(0.0)
       
       VStack(alignment: .leading, spacing: 0, content: {
         HStack(alignment: .top) {
           Text(errand.name)
             .font(.title2)
           
-//          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
-//            // still need to get edit errand working
-//            Image(systemName: "pencil")
-//              .foregroundColor(.black)
-//              .font(.system(size: 20))
-//          }
+          //          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
+          //            // still need to get edit errand working
+          //            Image(systemName: "pencil")
+          //              .foregroundColor(.black)
+          //              .font(.system(size: 20))
+          //          }
           
           if (usersViewModel.getCurUser()!.id == errand.owner.id && errand.status == "new") {
             Image(systemName: "trash")
@@ -78,11 +78,11 @@ struct ErrandView: View {
             Text("\(errand.owner.first_name) \(errand.owner.last_name.first!)." as String)
           }
           Text("|")
-          if (locTimeViewModel.locationName != "") {
-            Text(locTimeViewModel.locationName)
+          if (locViewModel.authorized()) {
+            Text(locViewModel.distanceFromErrand(geoPoint: errand.location))
             Text("|")
           }
-          Text(locTimeViewModel.formatTimeDifference(timeDifference))
+          Text(timeViewModel.formatTimeDifference(timeDifference))
         }
         .font(.footnote)
         .padding(.bottom, 10)
@@ -121,23 +121,14 @@ struct ErrandView: View {
       
     }
     .listRowBackground(
-       RoundedRectangle(cornerRadius: 20)
-         .stroke(darkBlue, lineWidth: 1)
-         .background(RoundedRectangle(cornerRadius: 20).fill(.white))
-         .offset(y: -5)
-         .padding(.vertical, 10)
-         .padding(.horizontal, 20)
+      RoundedRectangle(cornerRadius: 20)
+        .stroke(darkBlue, lineWidth: 1)
+        .background(RoundedRectangle(cornerRadius: 20).fill(.white))
+        .offset(y: -5)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 20)
     )
     .listRowSeparator(.hidden)
-    .onAppear {
-      if (!isAppeared) {
-        isAppeared = true
-        locTimeViewModel.getLocationName(for: CLLocation(latitude: errand.location.latitude, longitude: errand.location.longitude))
-      }
-    }
-    .onDisappear() {
-      isAppeared = false
-    }
   }
   
   func deleteErrand() {

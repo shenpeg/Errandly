@@ -13,50 +13,48 @@ struct ErrandDetailsProfileView: View {
   var errand: Errand
   
   @EnvironmentObject var usersViewModel: UsersViewModel
-  @StateObject private var viewModel = LocationTimeFormatViewModel()
-
+  @EnvironmentObject var locViewModel: LocationViewModel
+  @StateObject private var timeViewModel = TimeFormatViewModel()
+  
   var body: some View {
     let errandOwnerUser = usersViewModel.getUser(userId: errand.owner.id)
-
+    
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
-    let timeDifference = viewModel.calculateTimeDifference(from: errand.datePosted)
-
+    let timeDifference = timeViewModel.calculateTimeDifference(from: errand.datePosted)
+    
     return HStack {
       
       VStack{
-          UserProfileImageView(pfp: errand.owner.pfp, size: 32)
+        UserProfileImageView(pfp: errand.owner.pfp, size: 32)
       }
-    
+      
       VStack(alignment: .leading) {
-          if (errandOwnerUser != nil) {
-            NavigationLink(value: errand.owner) {
-              Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-                .font(.headline)
-            }
-            .accentColor(.black)
-          }
-          else {
+        if (errandOwnerUser != nil) {
+          NavigationLink(value: errand.owner) {
             Text("\(errand.owner.first_name) \(errand.owner.last_name)")
               .font(.headline)
-              .foregroundColor(.primary)
           }
-          
-          HStack {
-            if (viewModel.locationName != "") {
-                Text(viewModel.locationName)
-                    .font(.footnote)
-                      .foregroundColor(.secondary)
-                Text("|").font(.footnote).foregroundColor(.secondary)
-            }
-            Text(viewModel.formatTimeDifference(timeDifference))
-                .font(.footnote)
-                .foregroundColor(.secondary)
+          .accentColor(.black)
+        }
+        else {
+          Text("\(errand.owner.first_name) \(errand.owner.last_name)")
+            .font(.headline)
+            .foregroundColor(.primary)
+        }
+        
+        HStack {
+          if (locViewModel.authorized()) {
+            Text(locViewModel.distanceFromErrand(geoPoint: errand.location))
+              .font(.footnote)
+              .foregroundColor(.secondary)
+            Text("|").font(.footnote).foregroundColor(.secondary)
           }
+          Text(timeViewModel.formatTimeDifference(timeDifference))
+            .font(.footnote)
+            .foregroundColor(.secondary)
         }
       }
-      .onAppear {
-        viewModel.getLocationName(for: CLLocation(latitude: errand.location.latitude, longitude: errand.location.longitude))
-      }
+    }
   }
 }

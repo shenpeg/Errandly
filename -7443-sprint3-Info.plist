@@ -23,8 +23,6 @@
 	</array>
 	<key>GIDClientID</key>
 	<string>411291759513-v4t38dvn2spiurjhs2nlh6j1qrjvb73d.apps.googleusercontent.com</string>
-	<key>NSLocationDefaultAccuracyReduced</key>
-	<false/>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
@@ -34,5 +32,15 @@
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<false/>
+	<key>NSLocationUsageDescription</key>
+	<string>We&apos;ll use this to help you find errands around you.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We&apos;ll use this to help you find errands around you.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We&apos;ll use this to help you find errands around you.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We&apos;ll use this to help you find errands around you.</string>
 </dict>
 </plist>
