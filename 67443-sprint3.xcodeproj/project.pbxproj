@@ -105,6 +105,7 @@
 		A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrandTabs.swift; sourceTree = "<group>"; };
+		A3563F342B18FFD800F916CB /* 67443-sprint3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "67443-sprint3.entitlements"; sourceTree = "<group>"; };
 		A35EF8E82AF943DF00E23558 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandsViewModel.swift; sourceTree = "<group>"; };
 		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 		A3B99B602AD62B0B000822EE /* 67443-sprint3 */ = {
 			isa = PBXGroup;
 			children = (
+				A3563F342B18FFD800F916CB /* 67443-sprint3.entitlements */,
 				A3EAE9252AE85D7C0079481D /* Models */,
 				A3FF436B2AD6E31300E1DDA6 /* Views */,
 				A3FF436A2AD6E2F800E1DDA6 /* ViewModels */,
@@ -608,17 +610,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "67443-sprint3/67443-sprint3.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"67443-sprint3/Preview Content\"";
-				DEVELOPMENT_TEAM = 95RHN9PF89;
+				DEVELOPMENT_TEAM = XG2W4ASLZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-7443-sprint3-Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location always and when in use description.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Location always description.";
-				INFOPLIST_KEY_NSLocationUsageDescription = "Location description.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location when in use description.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We'll use this to help you find errands around you.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We'll use this to help you find errands around you.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We'll use this to help you find errands around you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We'll use this to help you find errands around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -629,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "team04.-7443-sprint3";
+				PRODUCT_BUNDLE_IDENTIFIER = errandly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -642,17 +645,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "67443-sprint3/67443-sprint3.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"67443-sprint3/Preview Content\"";
-				DEVELOPMENT_TEAM = 95RHN9PF89;
+				DEVELOPMENT_TEAM = XG2W4ASLZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-7443-sprint3-Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location always and when in use description.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Location always description.";
-				INFOPLIST_KEY_NSLocationUsageDescription = "Location description.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location when in use description.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We'll use this to help you find errands around you.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We'll use this to help you find errands around you.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We'll use this to help you find errands around you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We'll use this to help you find errands around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -663,7 +667,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "team04.-7443-sprint3";
+				PRODUCT_BUNDLE_IDENTIFIER = errandly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
