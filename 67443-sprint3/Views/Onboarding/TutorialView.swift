@@ -78,7 +78,6 @@ struct TutorialView: View {
                                         .foregroundColor(darkBlue)
                                 }
                             }
-
                             Spacer()
                         }
                         .background(Color.clear)
@@ -123,8 +122,10 @@ struct TutorialView: View {
         switch currentStep {
         case 1, 6:
             return 40
-        case 2, 3, 4:
+        case 2, 4:
             return 350
+        case 3:
+          return 300
         case 5:
             return -240
         default:
@@ -136,11 +137,9 @@ struct TutorialView: View {
         // Left and right padding for each step (the text and buttons)
         switch currentStep {
         case 2:
-            return 20
-        case 4:
-            return -20
-        case 5:
-            return -40
+            return 80
+        case 4, 5:
+            return -80
         default:
             return 0
         }
@@ -166,8 +165,10 @@ struct TutorialView: View {
         switch currentStep {
         case 1, 6:
             return CGSize(width: 300, height: 300)
-        case 2, 3:
+        case 2:
             return CGSize(width: 400, height: 400)
+        case 3:
+            return CGSize(width: 450, height: 450)
         case 4, 5:
           return CGSize(width: 350, height: 350)
         default:

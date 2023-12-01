@@ -59,11 +59,17 @@ struct ContentView: View {
     .environmentObject(errandsViewModel)
     .environmentObject(tabUtil)
     .environmentObject(locationViewModel)
+    .onAppear {
+        if UserDefaults.standard.bool(forKey: "hasSeenTutorial") == false {
+            isOnboardingPresented = true
+            UserDefaults.standard.set(true, forKey: "hasSeenTutorial")
+        }
+    }
     .overlay(
         isOnboardingPresented ? TutorialView(isOnboardingPresented: $isOnboardingPresented)
                                .transition(.opacity) : nil
     )
-  }
+}
   
   private func tabSelection() -> Binding<Int> {
     Binding {
