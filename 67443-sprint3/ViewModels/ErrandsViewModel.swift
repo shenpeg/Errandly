@@ -105,14 +105,17 @@ class ErrandsViewModel: ObservableObject {
   func filterErrands(searchText: String, selectedTags: String) {
       self.filteredErrands = self.errands.filter { errand in
           if (!searchText.isEmpty && selectedTags != "") {
-              return errand.name.lowercased().contains(searchText.lowercased()) &&
+              return errand.status == "new" &&
+                  errand.name.lowercased().contains(searchText.lowercased()) &&
                   errand.tags.contains(selectedTags)
           } else if (!searchText.isEmpty) {
-              return errand.name.lowercased().contains(searchText.lowercased())
+              return errand.status == "new" &&
+                    errand.name.lowercased().contains(searchText.lowercased())
           } else if (selectedTags != "") {
-              return errand.tags.contains(selectedTags)
+              return errand.status == "new" &&
+                    errand.tags.contains(selectedTags)
           } else {
-              return true
+              return errand.status == "new"
           }
       }
   }

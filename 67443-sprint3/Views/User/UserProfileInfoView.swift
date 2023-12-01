@@ -5,8 +5,12 @@ struct UserProfileInfoView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @EnvironmentObject var usersViewModel: UsersViewModel
   var user: User
+  func message() {
+    MessagesService().sendMessage("\(user.phone_number)")
+  }
   
   var body: some View {
+    
     ZStack (alignment: .topLeading) {
       darkBlue
           .ignoresSafeArea()
@@ -51,6 +55,12 @@ struct UserProfileInfoView: View {
                     .foregroundColor(Color.white)
                     .font(.system(size: 20))
                 }
+              }
+              
+              Button(action: message) {
+                  Image(systemName: "message")
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 20))
               }
             }
             .padding(.bottom, 5)

@@ -9,16 +9,19 @@
 /* Begin PBXBuildFile section */
 		15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */; };
 		15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */; };
-		1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */; };
+		1554FA002AFB6A6200A13D85 /* TimeFormatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FF2AFB6A6200A13D85 /* TimeFormatViewModel.swift */; };
 		156932FD2B152C270049B461 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156932FC2B152C270049B461 /* TutorialView.swift */; };
 		15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
 		6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC74B432AFE694C0060F4A1 /* Tag.swift */; };
 		8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEFF852AFD714A0094C83F /* SortSheet.swift */; };
+		8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */; };
 		A30F99D42AFCD312001A5455 /* EditUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F99D32AFCD312001A5455 /* EditUserProfileView.swift */; };
 		A32A051F2B14154800710CFF /* TabUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A051E2B14154800710CFF /* TabUtil.swift */; };
 		A32A05232B143CFE00710CFF /* UserProfileViewNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A05222B143CFE00710CFF /* UserProfileViewNavigationStack.swift */; };
 		A33726072AE5B00300D4A698 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33726062AE5B00300D4A698 /* Settings.bundle */; };
+		A339943D2B176059003C2989 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339943C2B176059003C2989 /* LocationViewModel.swift */; };
+		A339943F2B1760CD003C2989 /* LocationPermissionIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */; };
 		A33FBBE52AF9910A00CE9FE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */; };
 		A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */; };
 		A33FBBEB2AFC1D0F00CE9FE8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A33FBBEA2AFC1D0F00CE9FE8 /* FirebaseAnalytics */; };
@@ -88,16 +91,19 @@
 /* Begin PBXFileReference section */
 		15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsPickUpView.swift; sourceTree = "<group>"; };
 		15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandDetailsProfileView.swift; sourceTree = "<group>"; };
-		1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTimeFormatViewModel.swift; sourceTree = "<group>"; };
+		1554F9FF2AFB6A6200A13D85 /* TimeFormatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatViewModel.swift; sourceTree = "<group>"; };
 		156932FC2B152C270049B461 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRunner.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
 		6EC74B432AFE694C0060F4A1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8ADEFF852AFD714A0094C83F /* SortSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSheet.swift; sourceTree = "<group>"; };
+		8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesServices.swift; sourceTree = "<group>"; };
 		A30F99D32AFCD312001A5455 /* EditUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileView.swift; sourceTree = "<group>"; };
 		A32A051E2B14154800710CFF /* TabUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabUtil.swift; sourceTree = "<group>"; };
 		A32A05222B143CFE00710CFF /* UserProfileViewNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewNavigationStack.swift; sourceTree = "<group>"; };
 		A33726062AE5B00300D4A698 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A339943C2B176059003C2989 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionIconView.swift; sourceTree = "<group>"; };
 		A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		A34E8B032AF2160400A5D2D8 /* CustomErrandTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrandTabs.swift; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 				6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */,
 				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
 				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
+				A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -292,6 +299,7 @@
 			children = (
 				A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */,
 				A3FF43722AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift */,
+				8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -301,8 +309,9 @@
 			children = (
 				A3FF43602AD6E04600E1DDA6 /* AuthenticationViewModel.swift */,
 				A3679F062AF71D9800A3C2DA /* ErrandsViewModel.swift */,
-				1554F9FF2AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift */,
+				1554F9FF2AFB6A6200A13D85 /* TimeFormatViewModel.swift */,
 				A33FBBE62AF9B52D00CE9FE8 /* UsersViewModel.swift */,
+				A339943C2B176059003C2989 /* LocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -446,17 +455,19 @@
 				A35EF8E92AF943DF00E23558 /* WelcomeView.swift in Sources */,
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
-				1554FA002AFB6A6200A13D85 /* LocationTimeFormatViewModel.swift in Sources */,
+				1554FA002AFB6A6200A13D85 /* TimeFormatViewModel.swift in Sources */,
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
 				A3679F072AF71D9800A3C2DA /* ErrandsViewModel.swift in Sources */,
 				A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */,
 				A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */,
 				A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */,
 				A32A051F2B14154800710CFF /* TabUtil.swift in Sources */,
+				A339943D2B176059003C2989 /* LocationViewModel.swift in Sources */,
 				A32A05232B143CFE00710CFF /* UserProfileViewNavigationStack.swift in Sources */,
 				A3EAE96D2AE881160079481D /* ErrandOwner.swift in Sources */,
 				A3EAE9712AE885E60079481D /* User.swift in Sources */,
 				8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */,
+				8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */,
 				A3EAE97D2AE889580079481D /* UserProfileView.swift in Sources */,
 				A3FF43732AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift in Sources */,
 				A3A0327D2AF1C9A20037548C /* UserProfileErrandsView.swift in Sources */,
@@ -464,6 +475,7 @@
 				A3EAE96F2AE8832E0079481D /* ErrandDetailsView.swift in Sources */,
 				A3EAE9312AE862D70079481D /* ErrandView.swift in Sources */,
 				A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */,
+				A339943F2B1760CD003C2989 /* LocationPermissionIconView.swift in Sources */,
 				A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */,
 				A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */,
 				156932FD2B152C270049B461 /* TutorialView.swift in Sources */,

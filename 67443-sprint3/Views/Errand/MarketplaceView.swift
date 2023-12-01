@@ -1,10 +1,3 @@
-//
-//  ErrandListView.swift
-//  67443-sprint3
-//
-//  Created by Julia Graham on 10/24/23.
-//
-
 import SwiftUI
 
 struct MarketplaceView: View {
@@ -14,6 +7,7 @@ struct MarketplaceView: View {
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @EnvironmentObject var tabUtil: TabUtil
+  @EnvironmentObject var locViewModel: LocationViewModel
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
   
@@ -104,6 +98,11 @@ struct MarketplaceView: View {
         }
       }
       .navigationBarTitle("Marketplace", displayMode: .inline)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          LocationPermissionIconView()
+        }
+      }
       .listStyle(.plain)
       .searchable(text: searchFieldBinding)
       .navigationDestination(for: Errand.self) { errand in

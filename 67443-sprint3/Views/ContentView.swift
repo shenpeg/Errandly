@@ -17,6 +17,7 @@ struct ContentView: View {
   @StateObject var usersViewModel: UsersViewModel = UsersViewModel()
   @StateObject var errandsViewModel: ErrandsViewModel = ErrandsViewModel()
   @StateObject var tabUtil: TabUtil = TabUtil()
+  @StateObject var locationViewModel: LocationViewModel = LocationViewModel()
   @State private var marketplacePath = NavigationPath()
   @State private var profilePath = NavigationPath()
   @State private var isOnboardingPresented = true
@@ -57,6 +58,7 @@ struct ContentView: View {
     .environmentObject(usersViewModel)
     .environmentObject(errandsViewModel)
     .environmentObject(tabUtil)
+    .environmentObject(locationViewModel)
     .overlay(
         isOnboardingPresented ? TutorialView(isOnboardingPresented: $isOnboardingPresented)
                                .transition(.opacity) : nil
