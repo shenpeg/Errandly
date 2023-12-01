@@ -11,89 +11,115 @@ struct TutorialView: View {
     @State private var currentStep = 1
 
     var body: some View {
-        ZStack {
-            // Semi-transparent black background
-            Color.black.opacity(0.2)
-                .edgesIgnoringSafeArea(.all)
+      ZStack {
+        // Semi-transparent black background
+        Color.black.opacity(0.2)
+          .edgesIgnoringSafeArea(.all)
 
-            // Your SVG image for the current step
-            Image("Tutorial\(currentStep)")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: imageSizeForStep().width, height: imageSizeForStep().height)
-                .padding(.top, topPaddingForImage())
-                .overlay(
-                    // Text and buttons overlay
-                    VStack {
-                        Spacer()
+        Image("Tutorial\(currentStep)")
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .frame(width: imageSizeForStep().width, height: imageSizeForStep().height)
+          .padding(.top, topPaddingForImage())
+          .overlay(
+            // Text and buttons overlay
+            VStack {
+              Spacer()
 
-                        VStack {
-                            Spacer()
+              VStack {
+                Spacer()
+                  if currentStep == 1 {
+                      Text("Welcome to Errandly!")
+                        .font(.headline.italic())
+                        .foregroundColor(darkBlue)
+                        .padding(.bottom, 3)
+                  
+                      Text("Let's begin with a tour!")
+                        .font(.subheadline.italic())
+                        .foregroundColor(darkBlue)
+                        .padding(.bottom, 3)
+                  } else {
+                      Text(stepText())
+                        .font(.headline.italic())
+                        .foregroundColor(darkBlue)
+                        .padding(.bottom, 3)
+                        .frame(maxWidth: 200, alignment: .center)
+                  }
 
-                            if currentStep == 1 {
-                                Text("Welcome to Errandly!")
-                                    .font(.headline.italic())
-                                    .foregroundColor(darkBlue)
-                                    .padding(.bottom, 3)
-
-                                Text("Let's begin with a tour!")
-                                    .font(.subheadline.italic())
-                                    .foregroundColor(darkBlue)
-                                    .padding(.bottom, 3)
-                            } else {
-                                Text(stepText())
-                                    .font(.headline.italic())
-                                    .foregroundColor(darkBlue)
-                                    .padding(.bottom, 3)
-                                    .frame(maxWidth: 200, alignment: .center)
-                            }
-
-                            HStack {
-                                Button(action: {
-                                    // Handle button action (e.g., move to the next tutorial step)
-                                    if currentStep < totalSteps {
-                                        currentStep += 1
-                                    } else {
-                                        isOnboardingPresented = false
-                                    }
-                                }) {
-                                    Text("Next")
-                                        .padding(.horizontal, 25)
-                                        .padding(.vertical, 8)
-                                        .padding(.bottom, 5)
-                                        .background(darkBlue)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(40)
-                                }
-                                .padding()
-
-                                Button(action: {
-                                    // Handle skip button action
-                                    isOnboardingPresented = false
-                                    // Add navigation logic to Marketplace view if needed
-                                }) {
-                                    Text("Skip")
-                                        .font(.system(size: 16).italic())
-                                        .underline(true, color: darkBlue)
-                                        .foregroundColor(darkBlue)
-                                }
-                            }
-                            Spacer()
+                VStack {
+                    if currentStep == 6 {
+                        Button(action: {
+                            // Handle "Let's go!" button action
+                            isOnboardingPresented = false
+                        }) {
+                            Text("Let's go!")
+                                .padding(.horizontal, 25)
+                                .padding(.vertical, 8)
+                                .padding(.bottom, 5)
+                                .background(darkBlue)
+                                .foregroundColor(.white)
+                                .cornerRadius(40)
                         }
-                        .background(Color.clear)
-                        .padding(.top, topPaddingForStep())
-                    }
-                )
-        }
-        .onTapGesture {
-            // Handle tap on the overlay (e.g., move to the next tutorial step)
-            if currentStep < totalSteps {
-                currentStep += 1
-            } else {
-                isOnboardingPresented = false
-            }
-        }
-    }
+                        .padding()
+
+                        Button(action: {
+                            // Handle "Replay tutorial" button action
+                            currentStep = 1
+                        }) {
+                            Text("Replay tutorial")
+                                .font(.system(size: 16).italic())
+                                .underline(true, color: darkBlue)
+                                .foregroundColor(darkBlue)
+                        }
+                        .padding(.top, -8)
+                      } else {
+                         Button(action: {
+                             // Handle "Next" button action (e.g., move to the next tutorial step)
+                             if currentStep < totalSteps {
+                                 currentStep += 1
+                             } else {
+                                 isOnboardingPresented = false
+                             }
+                         }) {
+                             Text("Next")
+                                 .padding(.horizontal, 25)
+                                 .padding(.vertical, 8)
+                                 .padding(.bottom, 1)
+                                 .background(darkBlue)
+                                 .foregroundColor(.white)
+                                 .cornerRadius(40)
+                         }
+                         .padding()
+
+                         Button(action: {
+                             // Handle "Skip" button action
+                             isOnboardingPresented = false
+                             // Add navigation logic to Marketplace view if needed
+                         }) {
+                             Text("Skip")
+                                 .font(.system(size: 16).italic())
+                                 .underline(true, color: darkBlue)
+                                 .foregroundColor(darkBlue)
+                         }
+                         .padding(.top, -8)
+                     }
+                  }
+                  Spacer()
+                }
+                .background(Color.clear)
+                .padding(paddingForStep())
+              }
+          )
+      }
+      .onTapGesture {
+          // Handle tap on the overlay (e.g., move to the next tutorial step)
+          if currentStep < totalSteps {
+              currentStep += 1
+          } else {
+              isOnboardingPresented = false
+          }
+      }
+  }
   
     // CUSTOMIZATIONS FOR EACH TUTORIAL STEP
 
@@ -107,7 +133,7 @@ struct TutorialView: View {
         case 3:
             return "You can also post an errand of your own for others to help you with"
         case 4:
-            return "Your profile and posting history can be viewed here!"
+            return "Your posting history is saved in your profile"
         case 5:
             return "Rewatch the tutorial anytime!"
         case 6:
@@ -117,21 +143,32 @@ struct TutorialView: View {
         }
     }
 
-    func topPaddingForStep() -> CGFloat {
-        // Top padding for each step (the text and buttons)
-        switch currentStep {
-        case 1, 6:
-            return 40
-        case 2, 4:
-            return 350
-        case 3:
-          return 300
-        case 5:
-            return -240
-        default:
-            return 0
-        }
-    }
+  func paddingForStep() -> EdgeInsets {
+      // location of text and buttons for each step
+      var topPadding: CGFloat = 0
+      var leadingPadding: CGFloat = 0
+      var trailingPadding: CGFloat = 0
+
+      switch currentStep {
+      case 1, 6:
+          topPadding = 40
+      case 2:
+          topPadding = 345
+          leadingPadding = 55
+      case 4:
+          topPadding = 350
+          trailingPadding = 75
+      case 3:
+          topPadding = 300
+      case 5:
+          topPadding = -210
+          trailingPadding = 80
+      default:
+          break
+      }
+
+      return EdgeInsets(top: topPadding, leading: leadingPadding, bottom: 0, trailing: trailingPadding)
+  }
   
     func horizontalPaddingForStep() -> CGFloat {
         // Left and right padding for each step (the text and buttons)
