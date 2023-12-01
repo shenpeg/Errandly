@@ -51,19 +51,22 @@ struct UserProfileInfoView: View {
               
               if (usersViewModel.getCurUser()!.id == user.id) {
                 NavigationLink(value: user) {
-                  Image(systemName: "pencil")
+                  Image(systemName: "square.and.pencil")
                     .foregroundColor(Color.white)
                     .font(.system(size: 20))
                 }
               }
               
-              Button(action: message) {
-                  Image(systemName: "message")
-                    .foregroundColor(Color.white)
-                    .font(.system(size: 20))
+              if (usersViewModel.getCurUser()!.id != user.id) {
+                  Button(action: message) {
+                Image(systemName: "envelope")
+                  .foregroundColor(Color.white)
+                  .font(.system(size: 20))
               }
             }
+            }
             .padding(.bottom, 5)
+              
              
             if (user.school_year != "") {
               Text("\(user.school_year)")

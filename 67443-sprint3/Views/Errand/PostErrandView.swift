@@ -22,6 +22,7 @@ struct PostErrandView: View {
   @State private var pay = 0.0
   @State private var payBool = true
   @State private var payString = ""
+  @State private var errorMsg = ""
   
   //functions
     private func clearFields(){
@@ -37,14 +38,26 @@ struct PostErrandView: View {
     }
   
   private func isValidErrand() -> Bool {
-    if title.isEmpty { return false}
-    if description.isEmpty { return false}
-    if selectedTags.count > 5 { return false }
+    if title.isEmpty {
+      errorMsg = "Please enter a title for your errand!"
+      return false
+    }
+    if description.isEmpty {
+      errorMsg = "Please write some details on what you need help with"
+      return false
+    }
+    if (payBool == true && pay < 1) {
+      errorMsg = "If you choose to offer compensation, please enter an amt over $1.00"
+      return false
+    }
     //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
     let calendar = Calendar.current
     let today = Date()
     let result = calendar.compare(dateDue, to: today, toGranularity: .day)
-    if result == .orderedAscending { return false }
+    if result == .orderedAscending {
+      errorMsg = "You can only enter a due date that's in the future!"
+      return false
+    }
     return true
   }
 
@@ -74,7 +87,7 @@ struct PostErrandView: View {
     )
     
     let postedErrand = await errandsViewModel.create(newErrand)
-    if (postedErrand.id != nil) {
+    if (isValidErrand() && postedErrand.id != nil) {
       usersViewModel.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
     }
   }
@@ -160,7 +173,7 @@ struct PostErrandView: View {
         }.listRowSeparator(.hidden)
         
         Section {
-          if isValidErrand() {
+//          if isValidErrand() {
             Button("Post") {
               Task {
                 // necessary to avoid the following errors, as this will resign the text fields:
@@ -168,20 +181,25 @@ struct PostErrandView: View {
                 // - Modifying state during view update, this will cause undefined behavior.
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 
-                await addErrand()
-                clearFields()
-                
-                // redirect to user profile
-                tabUtil.tabSelection = 3
-                tabUtil.profileTabSelection = "Posted Errands"
-                profilePath = NavigationPath()
+                if isValidErrand() {
+                  await addErrand()
+                  clearFields()
+                  
+                  // redirect to user profile
+                  tabUtil.tabSelection = 3
+                  tabUtil.profileTabSelection = "Posted Errands"
+                  profilePath = NavigationPath()
+                }
+                else { //pop up with error message!
+                  
+                }
               }
             }
             .foregroundColor(.white)
             .font(.headline)
             .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
             .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
-          }
+//          }
         } //end of button section
         
       } //end of form
