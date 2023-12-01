@@ -54,11 +54,12 @@ struct SelectTag: View {
 
   var body: some View {
     Button(action: {
-      if formTags.contains(tag) {
-        formTags.removeAll(where: { $0 == tag })
+      if formTags.count < 3 && !formTags.contains(tag) {
+        formTags.append(tag)
+        print("---------------appending--------")
       }
       else {
-        formTags.append(tag)
+        formTags.removeAll(where: { $0 == tag })
       }
     } ) {
       Text(self.tag)
