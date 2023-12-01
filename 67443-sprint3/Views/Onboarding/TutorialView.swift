@@ -119,21 +119,35 @@ struct TutorialView: View {
     }
 
     func topPaddingForStep() -> CGFloat {
-        // Define the top padding for each step based on the current step
+        // Top padding for each step (the text and buttons)
         switch currentStep {
         case 1, 6:
             return 40
         case 2, 3, 4:
             return 350
         case 5:
-            return -250
+            return -240
+        default:
+            return 0
+        }
+    }
+  
+    func horizontalPaddingForStep() -> CGFloat {
+        // Left and right padding for each step (the text and buttons)
+        switch currentStep {
+        case 2:
+            return 20
+        case 4:
+            return -20
+        case 5:
+            return -40
         default:
             return 0
         }
     }
   
     func topPaddingForImage() -> CGFloat {
-        // Define the top padding for the image based on the current step
+        // Top padding for the image
         switch currentStep {
         case 1, 6:
             return 0
