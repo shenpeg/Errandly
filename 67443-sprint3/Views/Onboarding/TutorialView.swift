@@ -161,7 +161,7 @@ struct TutorialView: View {
       case 3:
           topPadding = 300
       case 5:
-          topPadding = -210
+          topPadding = -350
           trailingPadding = 80
       default:
           break
@@ -192,7 +192,7 @@ struct TutorialView: View {
         case 3:
             return 250
         case 5:
-            return -200
+            return -350
         default:
             return 0
         }
