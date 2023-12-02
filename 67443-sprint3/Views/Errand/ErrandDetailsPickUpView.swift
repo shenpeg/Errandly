@@ -22,6 +22,12 @@ struct ErrandDetailsPickUpView: View {
         .frame(height: 1)
         .foregroundColor(black)
       
+      if (errandsViewModel.getErrand(errand.id!).status == "in progress" &&
+          usersViewModel.getCurUser()!.id == errand.owner.id) {
+        PaymentButton(action: {})
+          .padding()
+      }
+      
       HStack {
         Text(payFormat)
           .font(.system(size: 22))
