@@ -23,6 +23,7 @@ struct PostErrandView: View {
   @State private var payBool = true
   @State private var payString = ""
   @State private var errorMsg = ""
+  @State private var showErrorAlert = false
   
   //functions
     private func clearFields(){
@@ -38,6 +39,7 @@ struct PostErrandView: View {
     }
   
   private func isValidErrand() -> Bool {
+    
     if title.isEmpty {
       errorMsg = "Please enter a title for your errand!"
       return false
@@ -46,8 +48,8 @@ struct PostErrandView: View {
       errorMsg = "Please write some details on what you need help with"
       return false
     }
-    if (payBool == true && pay < 1) {
-      errorMsg = "If you choose to offer compensation, please enter an amt over $1.00"
+    if (payBool == true && pay < 1.00) {
+      errorMsg = "If you choose to offer compensation, please enter an amount over $1.00"
       return false
     }
     //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
@@ -132,7 +134,7 @@ struct PostErrandView: View {
         VStack(alignment: .leading) {
             Text("Compensation?")
             HStack{
-                Button(action: {payBool = true}) {
+              Button(action: {payString = "1"; payBool = true}) {
                     Text(" ")
                 }
                 .buttonStyle(BorderlessButtonStyle())
@@ -173,42 +175,53 @@ struct PostErrandView: View {
         }.listRowSeparator(.hidden)
         
         Section {
-//          if isValidErrand() {
-            Button("Post") {
+          Button("Post") {
+            
+            payStringToDouble()
+            
+            print("_____hitting post succeeded_____")
+            if isValidErrand() {
+              print("----------is a valid errand--------")
               Task {
+                
                 // necessary to avoid the following errors, as this will resign the text fields:
                 // - AttributeGraph: cycle detected through attribute
                 // - Modifying state during view update, this will cause undefined behavior.
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 
-                if isValidErrand() {
-                  await addErrand()
-                  clearFields()
-                  
-                  // redirect to user profile
-                  tabUtil.tabSelection = 3
-                  tabUtil.profileTabSelection = "Posted Errands"
-                  profilePath = NavigationPath()
-                }
-                else { //pop up with error message!
-                  
-                }
+                await addErrand()
+                clearFields()
+                
+                // redirect to user profile
+                tabUtil.tabSelection = 3
+                tabUtil.profileTabSelection = "Posted Errands"
+                profilePath = NavigationPath()
               }
             }
-            .foregroundColor(.white)
-            .font(.headline)
-            .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
-            .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
-//          }
-        } //end of button section
-        
-      } //end of form
+            else {
+              print("=========entered else, noot valid errand============")
+              showErrorAlert = true
+            }
+          } //button
+          .foregroundColor(.white)
+          .font(.headline)
+          .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+          .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+          .alert(isPresented: $showErrorAlert) {
+            Alert(
+              title: Text(errorMsg),
+              dismissButton: .cancel(Text("OK")) {
+              }
+            )
+          }
+
+        } //section
+      } //form
       .background(Color.white)
       .accentColor(darkBlue)
       .scrollContentBackground(.hidden)
       .gesture(DragGesture().onChanged({ _ in
-                          UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-      }))
+                          UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)}))
   
     } //end vstack
     .listRowSeparator(.hidden)
