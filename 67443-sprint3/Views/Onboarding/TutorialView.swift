@@ -42,7 +42,7 @@ struct TutorialView: View {
                       Text(stepText())
                         .font(.headline.italic())
                         .foregroundColor(darkBlue)
-                        .padding(.bottom, 3)
+                        .padding(.bottom, 2)
                         .frame(maxWidth: 200, alignment: .center)
                   }
 
@@ -54,8 +54,8 @@ struct TutorialView: View {
                         }) {
                             Text("Let's go!")
                                 .padding(.horizontal, 25)
-                                .padding(.vertical, 8)
-                                .padding(.bottom, 5)
+                                .padding(.vertical, 6)
+                                .padding(.bottom, 4)
                                 .background(darkBlue)
                                 .foregroundColor(.white)
                                 .cornerRadius(40)
@@ -129,13 +129,13 @@ struct TutorialView: View {
         case 1:
             return "Welcome to Errandly!"
         case 2:
-            return "Here is where you can browse errands posted by others"
+            return "Here is where you browse errands posted by others"
         case 3:
-            return "You can also post an errand of your own for others to help you with"
+            return "You can post an errand of your own for others to help you with"
         case 4:
-            return "Your posting history is saved in your profile"
+            return "Your posting history & info is saved in your profile, which you can edit there"
         case 5:
-            return "Rewatch the tutorial anytime!"
+            return "Rewatch the tutorial anytime up here!"
         case 6:
             return "You're ready to go :)"
         default:
@@ -190,7 +190,7 @@ struct TutorialView: View {
         case 2, 4:
             return 350
         case 3:
-            return 250
+            return 230
         case 5:
             return -350
         default:
