@@ -20,6 +20,7 @@ struct ContentView: View {
   @StateObject var locationViewModel: LocationViewModel = LocationViewModel()
   @State private var marketplacePath = NavigationPath()
   @State private var profilePath = NavigationPath()
+  @State private var isOnboardingPresented = true
 
   init() {
     UITabBar.appearance().backgroundColor = .white
@@ -58,7 +59,17 @@ struct ContentView: View {
     .environmentObject(errandsViewModel)
     .environmentObject(tabUtil)
     .environmentObject(locationViewModel)
-  }
+    .onAppear {
+        if UserDefaults.standard.bool(forKey: "hasSeenTutorial") == false {
+            isOnboardingPresented = true
+            UserDefaults.standard.set(true, forKey: "hasSeenTutorial")
+        }
+    }
+    .overlay(
+        isOnboardingPresented ? TutorialView(isOnboardingPresented: $isOnboardingPresented)
+                               .transition(.opacity) : nil
+    )
+}
   
   private func tabSelection() -> Binding<Int> {
     Binding {
