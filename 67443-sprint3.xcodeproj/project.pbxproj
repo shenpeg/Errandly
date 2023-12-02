@@ -39,6 +39,7 @@
 		A38C78802AE6DF6500CE736C /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = A38C787F2AE6DF6500CE736C /* FirebaseAppCheck */; };
 		A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A0327A2AF1C9920037548C /* UserProfileInfoView.swift */; };
 		A3A0327D2AF1C9A20037548C /* UserProfileErrandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A0327C2AF1C9A20037548C /* UserProfileErrandsView.swift */; };
+		A3A1B15E2B1BE0DE00BD0EB5 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B15D2B1BE0DE00BD0EB5 /* PaymentButton.swift */; };
 		A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AFEADD2AF784000052377A /* UserProfileErrandsListView.swift */; };
 		A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */; };
 		A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B632AD62B0B000822EE /* ContentView.swift */; };
@@ -113,6 +114,7 @@
 		A382489A2AE80B3400EFF0D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A3A0327A2AF1C9920037548C /* UserProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoView.swift; sourceTree = "<group>"; };
 		A3A0327C2AF1C9A20037548C /* UserProfileErrandsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileErrandsView.swift; sourceTree = "<group>"; };
+		A3A1B15D2B1BE0DE00BD0EB5 /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		A3AFEADD2AF784000052377A /* UserProfileErrandsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileErrandsListView.swift; sourceTree = "<group>"; };
 		A3B99B5E2AD62B0B000822EE /* 67443-sprint3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "67443-sprint3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3App.swift; sourceTree = "<group>"; };
@@ -243,6 +245,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		A3A1B15C2B1BE0C800BD0EB5 /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				A3A1B15D2B1BE0DE00BD0EB5 /* PaymentButton.swift */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
 		A3B99B552AD62B0B000822EE = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +335,7 @@
 				A38B51FD2AF016EF00D3B8E5 /* Onboarding */,
 				A38B51FC2AF016E900D3B8E5 /* User */,
 				A38B51FA2AF016D400D3B8E5 /* Errand */,
+				A3A1B15C2B1BE0C800BD0EB5 /* Pay */,
 				8ADEFF852AFD714A0094C83F /* SortSheet.swift */,
 				A3C4564C2B09584F000678E6 /* FormTags.swift */,
 			);
@@ -467,6 +478,7 @@
 				A339943D2B176059003C2989 /* LocationViewModel.swift in Sources */,
 				A32A05232B143CFE00710CFF /* UserProfileViewNavigationStack.swift in Sources */,
 				A3EAE96D2AE881160079481D /* ErrandOwner.swift in Sources */,
+				A3A1B15E2B1BE0DE00BD0EB5 /* PaymentButton.swift in Sources */,
 				A3EAE9712AE885E60079481D /* User.swift in Sources */,
 				8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */,
 				8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */,
