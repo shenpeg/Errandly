@@ -10,6 +10,7 @@ struct MarketplaceView: View {
   @EnvironmentObject var locViewModel: LocationViewModel
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
+  @Binding var formPath: NavigationPath
   
   @State private var searchField = ""
   @State private var selectedTags = "" // : [String] = []
@@ -89,7 +90,7 @@ struct MarketplaceView: View {
       .listStyle(.plain)
       .searchable(text: searchFieldBinding)
       .navigationDestination(for: Errand.self) { errand in
-        ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
+        ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath, formPath: $formPath)
       }
       .navigationDestination(for: ErrandOwner.self) { errandOwner in
         let errandOwnerUser = usersViewModel.getUser(userId: errandOwner.id)

@@ -12,6 +12,7 @@
 		1554FA002AFB6A6200A13D85 /* TimeFormatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554F9FF2AFB6A6200A13D85 /* TimeFormatViewModel.swift */; };
 		15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
+		6E96F9722B1C04F7006BF365 /* EditErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9712B1C04F7006BF365 /* EditErrandView.swift */; };
 		6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC74B432AFE694C0060F4A1 /* Tag.swift */; };
 		8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEFF852AFD714A0094C83F /* SortSheet.swift */; };
 		8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */; };
@@ -93,6 +94,7 @@
 		1554F9FF2AFB6A6200A13D85 /* TimeFormatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatViewModel.swift; sourceTree = "<group>"; };
 		15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRunner.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
+		6E96F9712B1C04F7006BF365 /* EditErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditErrandView.swift; sourceTree = "<group>"; };
 		6EC74B432AFE694C0060F4A1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8ADEFF852AFD714A0094C83F /* SortSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSheet.swift; sourceTree = "<group>"; };
 		8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesServices.swift; sourceTree = "<group>"; };
@@ -204,13 +206,13 @@
 		A38B51FA2AF016D400D3B8E5 /* Errand */ = {
 			isa = PBXGroup;
 			children = (
-				A3EAE9302AE862D70079481D /* ErrandView.swift */,
 				A3EAE92D2AE862510079481D /* MarketplaceView.swift */,
 				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
 				6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */,
 				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
 				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
 				A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */,
+				6E96F9712B1C04F7006BF365 /* EditErrandView.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -321,6 +323,7 @@
 				A38B51FC2AF016E900D3B8E5 /* User */,
 				A38B51FA2AF016D400D3B8E5 /* Errand */,
 				8ADEFF852AFD714A0094C83F /* SortSheet.swift */,
+				A3EAE9302AE862D70079481D /* ErrandView.swift */,
 				A3C4564C2B09584F000678E6 /* FormTags.swift */,
 			);
 			path = Views;
@@ -476,6 +479,7 @@
 				A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */,
 				A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */,
 				A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */,
+				6E96F9722B1C04F7006BF365 /* EditErrandView.swift in Sources */,
 				A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */,
 				15358D222AF2C1E900B26976 /* ErrandDetailsPickUpView.swift in Sources */,
 			);

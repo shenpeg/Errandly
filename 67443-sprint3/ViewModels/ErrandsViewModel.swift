@@ -51,6 +51,16 @@ class ErrandsViewModel: ObservableObject {
     }
   }
   
+  func update(_ errand: Errand, updatedErrand: Errand) {
+    guard let errandId = errand.id else { return }
+    do {
+      try store.collection(path).document(errandId).setData(from: updatedErrand)
+    }
+    catch {
+      fatalError("Unable to update user: \(error.localizedDescription).")
+    }
+  }
+
   func getErrand(_ id: String) -> Errand {
     if let errand = errands.first(where: {$0.id == id}) {
       return errand

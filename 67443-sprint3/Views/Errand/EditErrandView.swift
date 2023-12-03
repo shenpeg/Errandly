@@ -1,35 +1,64 @@
+//
+//  EditPostedErrandView.swift
+//  67443-sprint3
+//
+//  Created by cd on 12/2/23.
+//
+
 import Combine
 import Foundation
 import FirebaseFirestore
 import SwiftUI
 
-struct PostErrandView: View {
+struct EditErrandView: View {
   
   // variables
-  
   var user: User
+  var errand: Errand
+  @Binding var profilePath: NavigationPath
   
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @EnvironmentObject var tabUtil: TabUtil
-  @Binding var profilePath: NavigationPath
   
-  @State private var title = ""
-  @State private var description =  ""
-  @State private var selectedTags: [String] = []
-  @State private var dateDue = Date()
+  
+  @State private var title: String
+  @State private var description: String
+  @State private var selectedTags: [String]
+  @State private var dateDue: Date = Date()
   @State private var location = GeoPoint(latitude: 40.443336, longitude: -79.944023) //pittsburgh
-  @State private var pay = 0.0
-  @State private var payBool = true
-  @State private var payString = ""
-  @State private var errorMsg = ""
-  @State private var showErrorAlert = false
+  @State private var pay: Double
+  @State private var payBool: Bool = true
+  
+  @State private var payString: String
+  @State private var errorMsg: String
+  @State private var showErrorAlert: Bool
+  
+  
+  
+  init (user: User, errand: Errand, profilePath: Binding<NavigationPath>) {
+    self.errand = errand
+    self._title = State(wrappedValue: errand.name)
+    self._description = State(wrappedValue: errand.description)
+    self._selectedTags = State(wrappedValue: errand.tags)
+    self._dateDue = State(wrappedValue: errand.dateDue)
+    self._location = State(wrappedValue: errand.location)
+    self._pay = State(wrappedValue: errand.pay)
+    self._payBool = State(wrappedValue: false)
+    self._payString = State(wrappedValue: "")
+    self._errorMsg = State(wrappedValue: "")
+    self._showErrorAlert = State(wrappedValue: false)
+    
+    self.user = user
+    self._profilePath = profilePath
+  }
   
   //functions
     private func clearFields(){
       title = ""
       description = ""
       dateDue = Date()
+      //location = GeoPoint() stays in pgh for now
       payBool = true
       payString = ""
       pay = 0.0
@@ -68,41 +97,41 @@ struct PostErrandView: View {
     }
   }
   
-  private func addErrand() async {
-    //currently hardcoded: location
+  private func updateErrand() {
     
-    payStringToDouble()
     let errandOwner = ErrandOwner(id: user.id!, first_name: user.first_name, last_name: user.last_name, pfp: user.pfp, phone_number: user.phone_number)
     
-    let newErrand = Errand(
-      dateDue: dateDue,
-      datePosted: Date(),
-      description: description,
-      location: location,
-      name: title,
-      owner: errandOwner,
-      runner: nil,
-      pay: pay,
-      status: "new",
-      tags: selectedTags
-    )
-    
-    let postedErrand = await errandsViewModel.create(newErrand)
-    if (isValidErrand() && postedErrand.id != nil) {
-      usersViewModel.addErrandToUser(userId: user.id!, errandId: postedErrand.id!, type: "posted_errands")
+    if isValidErrand() {
+      let updatedErrand = Errand(
+        dateDue: dateDue,
+        datePosted: Date(),
+        description: description,
+        location: GeoPoint(latitude: 40.443336, longitude: -79.944023),
+        name: title,
+        owner: errandOwner,
+        runner: nil,
+        pay: pay,
+        status: "new",
+        tags: selectedTags
+      )
+      
+      errandsViewModel.update(errand, updatedErrand: updatedErrand)
     }
+    
   }
+  
+  
   
   var body: some View {
     VStack(alignment: .leading) {
       Form {
-        TextField("Errand Title", text: $title)
+        TextField(title, text: $title)
           .font(.system(size: 38))
           .underline(true)
           .foregroundColor(darkBlue)
           .listRowSeparator(.hidden)
         
-        TextField("What do you need help with?", text: $description, axis: .vertical)
+        TextField(description, text: $description, axis: .vertical)
           .lineLimit(10, reservesSpace: true)
           .background(Color.white)
           .padding(5)
@@ -170,21 +199,18 @@ struct PostErrandView: View {
         }.listRowSeparator(.hidden)
         
         Section {
-          Button("Post") {
+          Button("Save edits") {
             
             payStringToDouble()
-            
-            print("_____hitting post succeeded_____")
+           
             if isValidErrand() {
-              print("----------is a valid errand--------")
               Task {
-                
                 // necessary to avoid the following errors, as this will resign the text fields:
                 // - AttributeGraph: cycle detected through attribute
                 // - Modifying state during view update, this will cause undefined behavior.
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 
-                await addErrand()
+                updateErrand()
                 clearFields()
                 
                 // redirect to user profile

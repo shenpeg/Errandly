@@ -20,6 +20,7 @@ struct ContentView: View {
   @StateObject var locationViewModel: LocationViewModel = LocationViewModel()
   @State private var marketplacePath = NavigationPath()
   @State private var profilePath = NavigationPath()
+  @State private var formPath = NavigationPath()
 
   init() {
     UITabBar.appearance().backgroundColor = .white
@@ -31,7 +32,7 @@ struct ContentView: View {
       if (usersViewModel.getCurUser() != nil) {
         let curUser = usersViewModel.getCurUser()
 
-        MarketplaceView(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath)
+        MarketplaceView(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath, formPath: $formPath)
           .tabItem {
             Image(systemName: "house").padding(.bottom, 10)
             Text("Marketplace")
@@ -45,7 +46,7 @@ struct ContentView: View {
           }
           .tag(2)
         
-        UserProfileViewNavigationStack(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath)
+        UserProfileViewNavigationStack(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath, formPath: $formPath)
           .environmentObject(authViewModel)
           .tabItem {
             Image(systemName: "person").padding(.bottom, 10)

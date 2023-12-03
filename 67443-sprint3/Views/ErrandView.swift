@@ -17,13 +17,16 @@ struct ErrandView: View {
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @EnvironmentObject var locViewModel: LocationViewModel
   @StateObject var timeViewModel = TimeFormatViewModel()
+  @State private var profilePath = NavigationPath()
   
   @State private var isDeleteAlertPresented = false
+  
   
   var body: some View {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
     let timeDifference = timeViewModel.calculateTimeDifference(from: errand.datePosted)
+    let curUser = usersViewModel.getCurUser()
     
     return ZStack {
       NavigationLink("", value: errand)
@@ -41,7 +44,15 @@ struct ErrandView: View {
           //              .font(.system(size: 20))
           //          }
           
-          if (usersViewModel.getCurUser()!.id == errand.owner.id && errand.status == "new") {
+          if (curUser!.id == errand.owner.id && errand.status == "new") {
+            NavigationLink(value: String(errand.id ?? "")) {
+              Image(systemName: "square.and.pencil")
+                .foregroundColor(Color.black)
+                .font(.system(size: 15))
+                .padding(.top, 3)
+            }
+            
+            
             Image(systemName: "trash")
               .foregroundColor(.black)
               .font(.system(size: 15))
@@ -57,7 +68,7 @@ struct ErrandView: View {
                   },
                   secondaryButton: .cancel(Text("No, cancel"))
                 )
-              }
+              } //end of alert
           }
           Spacer()
           
