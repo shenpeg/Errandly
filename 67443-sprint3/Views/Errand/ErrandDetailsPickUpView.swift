@@ -71,7 +71,7 @@ struct ErrandDetailsPickUpView: View {
             }
           }
         }
-        else if (errandsViewModel.getErrand(errand.id!).status == "in progress") {
+        else if (errand.pay > 0 && errandsViewModel.getErrand(errand.id!).status == "in progress") {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
             if (errandsViewModel.getErrand(errand.id!).status == "in progress - owner paid") {
               Text("You paid \(errand.runner!.first_name)")
@@ -93,7 +93,7 @@ struct ErrandDetailsPickUpView: View {
               .italic()
           }
         }
-        else if (errandsViewModel.getErrand(errand.id!).status == "in progress - owner paid") {
+        else if (errand.pay > 0 && errandsViewModel.getErrand(errand.id!).status == "in progress - owner paid") {
           if ( usersViewModel.getCurUser()!.id == errand.runner!.id) {
             if (errandsViewModel.getErrand(errand.id!).status == "in progress - runner got paid") {
               Text("\(errand.owner.first_name) has paid you!")
@@ -115,7 +115,7 @@ struct ErrandDetailsPickUpView: View {
               .italic()
           }
         }
-        else if (errandsViewModel.getErrand(errand.id!).status == "in progress - runner got paid") {
+        else if (errand.pay == 0 || errandsViewModel.getErrand(errand.id!).status == "in progress - runner got paid") {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
               Button(action: {
                   isCompletionAlertPresented = true
