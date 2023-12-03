@@ -104,11 +104,11 @@ struct EditErrandView: View {
     if isValidErrand() {
       let updatedErrand = Errand(
         dateDue: dateDue,
-        datePosted: Date(),
+        datePosted: errand.datePosted,
         description: description,
         location: GeoPoint(latitude: 40.443336, longitude: -79.944023),
         name: title,
-        owner: errandOwner,
+        owner: errand.owner,
         runner: nil,
         pay: pay,
         status: "new",
@@ -220,7 +220,6 @@ struct EditErrandView: View {
               }
             }
             else {
-              print("=========entered else, noot valid errand============")
               showErrorAlert = true
             }
           } //button
