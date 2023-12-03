@@ -31,7 +31,7 @@ extension PaymentButton {
   }
   
   class Coordinator: NSObject {
-      var action: () -> Void
+    var action: () -> Void
     var button = PKPaymentButton(paymentButtonType: .plain, paymentButtonStyle: .automatic)
       
     init(action: @escaping () -> Void) {
@@ -40,7 +40,7 @@ extension PaymentButton {
       button.addTarget(self, action: #selector(callback(_:)), for: .touchUpInside)
     }
       
-      @objc
+    @objc
     func callback(_ sender: Any) {
       action()
     }
