@@ -9,8 +9,6 @@ class PaymentTransferHandler: NSObject {
   var disbursementCompletionHandler: PaymentCompletionHandler?
   
   static let supportedNetworks: [PKPaymentNetwork] = [
-    .amex,
-    .discover,
     .masterCard,
     .visa
   ]
@@ -23,7 +21,7 @@ class PaymentTransferHandler: NSObject {
       amount: NSDecimalNumber(value: errand.pay)
     )
     let fundsSent = PKDisbursementSummaryItem(
-      label: "\(errand.owner.first_name) \(errand.owner.last_name)",
+      label: "\(errand.owner.first_name)",
       amount: NSDecimalNumber(value: errand.pay)
     )
     

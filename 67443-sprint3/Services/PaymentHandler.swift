@@ -11,8 +11,6 @@ class PaymentHandler: NSObject {
   var completionHandler: PaymentCompletionHandler?
   
   static let supportedNetworks: [PKPaymentNetwork] = [
-    .amex,
-    .discover,
     .masterCard,
     .visa
   ]
@@ -20,7 +18,7 @@ class PaymentHandler: NSObject {
   func startPayment(errand: Errand, completion: @escaping PaymentCompletionHandler) {
     completionHandler = completion
     let paymentSummaryItem = PKPaymentSummaryItem(
-      label: "\(errand.runner!.first_name) \(errand.runner!.last_name)",
+      label: "\(errand.runner!.first_name)",
       amount: NSDecimalNumber(value: errand.pay),
       type: .final
     )

@@ -37,6 +37,7 @@ extension PaymentButton {
     init(action: @escaping () -> Void) {
       self.action = action
       super.init()
+      button.cornerRadius = 40
       button.addTarget(self, action: #selector(callback(_:)), for: .touchUpInside)
     }
       

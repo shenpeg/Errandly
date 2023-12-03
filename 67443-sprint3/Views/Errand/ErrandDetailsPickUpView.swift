@@ -23,30 +23,6 @@ struct ErrandDetailsPickUpView: View {
         .frame(height: 1)
         .foregroundColor(darkBlue)
       
-      if (errandsViewModel.getErrand(errand.id!).status == "in progress" &&
-          usersViewModel.getCurUser()!.id == errand.owner.id) {
-        if (payViewModel.paymentSucess) {
-          Text("Thanks for paying \(errand.runner!.first_name) \(errand.runner!.last_name)!")
-        }
-        else {
-          PaymentButton(action: payViewModel.pay)
-            .padding(.horizontal, 10)
-        }
-      }
-      
-      // note: need to check that the owner has actually paid first!
-      if (errandsViewModel.getErrand(errand.id!).status == "in progress" &&
-          usersViewModel.getCurUser()!.id == errand.runner!.id) {
-        if (payViewModel.paymentTransferSucess) {
-          Text("\(errand.owner.first_name) \(errand.owner.last_name) has paid you!")
-        }
-        else {
-          Text("Use Transfer Funds with Apple Pay to get your payment")
-          PaymentButton(action: payViewModel.payTransfer)
-            .padding(.horizontal, 10)
-        }
-      }
-      
       HStack {
         Text(payFormat)
           .font(.headline)
@@ -97,6 +73,50 @@ struct ErrandDetailsPickUpView: View {
         }
         else if (errandsViewModel.getErrand(errand.id!).status == "in progress") {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
+            if (errandsViewModel.getErrand(errand.id!).status == "in progress - owner paid") {
+              Text("You paid \(errand.runner!.first_name)")
+            }
+            else {
+              HStack {
+                Text("          ")
+                Text("Pay \(errand.runner!.first_name)")
+                  .font(.headline)
+                  .foregroundColor(darkBlue)
+                  .italic()
+                PaymentButton(action: payViewModel.pay)
+              }
+            }
+          } else {
+            Text("Waiting for \(errand.owner.first_name) to pay you")
+              .font(.headline)
+              .foregroundColor(darkBlue)
+              .italic()
+          }
+        }
+        else if (errandsViewModel.getErrand(errand.id!).status == "in progress - owner paid") {
+          if ( usersViewModel.getCurUser()!.id == errand.runner!.id) {
+            if (errandsViewModel.getErrand(errand.id!).status == "in progress - runner got paid") {
+              Text("\(errand.owner.first_name) has paid you!")
+            }
+            else {
+              HStack {
+                Text("          ")
+                Text("Get your payment")
+                  .font(.headline)
+                  .foregroundColor(darkBlue)
+                  .italic()
+                PaymentButton(action: payViewModel.payTransfer)
+              }
+            }
+          } else {
+            Text("Waiting for \(errand.runner!.first_name) to claim their payment")
+              .font(.headline)
+              .foregroundColor(darkBlue)
+              .italic()
+          }
+        }
+        else if (errandsViewModel.getErrand(errand.id!).status == "in progress - runner got paid") {
+          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
               Button(action: {
                   isCompletionAlertPresented = true
               }) {
@@ -123,7 +143,7 @@ struct ErrandDetailsPickUpView: View {
                       )
                   }
             } else {
-               Text("In progress")
+               Text("Waiting for \(errand.owner.first_name) to mark completed")
                    .font(.headline)
                    .foregroundColor(darkBlue)
                    .italic()

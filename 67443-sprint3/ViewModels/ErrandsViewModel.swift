@@ -64,7 +64,12 @@ class ErrandsViewModel: ObservableObject {
     var errandsByStatus: [String: [Errand]] = ["new": [], "in progress": [], "completed": []]
     ids.forEach {id in
       if let errand = errands.first(where: {$0.id == id}) {
-        errandsByStatus[errand.status]!.append(errand)
+        if (errand.status.contains("in progress")) {
+          errandsByStatus["in progress"]!.append(errand)
+        }
+        else {
+          errandsByStatus[errand.status]!.append(errand)
+        }
       }
     }
     return errandsByStatus

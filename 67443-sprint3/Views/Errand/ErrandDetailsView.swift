@@ -23,11 +23,20 @@ struct ErrandDetailsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
+                      if (errandsViewModel.getErrand(errand.id!).status.contains("in progress")) {
+                        Text("in progress")
+                          .font(.headline)
+                          .foregroundColor(darkBlue)
+                          .italic()
+                          .bold()
+                      }
+                      else {
                         Text(errandsViewModel.getErrand(errand.id!).status)
-                            .font(.headline)
-                            .foregroundColor(darkBlue)
-                            .italic()
-                            .bold()
+                          .font(.headline)
+                          .foregroundColor(darkBlue)
+                          .italic()
+                          .bold()
+                      }
                     }
                     Text(errand.name)
                         .font(.largeTitle)
@@ -68,7 +77,7 @@ struct ErrandDetailsView: View {
                 .padding(20)
             }
           
-          ErrandDetailsPickUpView(errand: errand, user: user, payViewModel: PayViewModel(errand: errand), marketplacePath: $marketplacePath, profilePath: $profilePath)
+          ErrandDetailsPickUpView(errand: errand, user: user, payViewModel: PayViewModel(errandsViewModel: errandsViewModel, errand: errand), marketplacePath: $marketplacePath, profilePath: $profilePath)
         }
     }
   
