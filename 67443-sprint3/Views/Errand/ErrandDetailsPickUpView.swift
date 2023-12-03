@@ -30,7 +30,20 @@ struct ErrandDetailsPickUpView: View {
         }
         else {
           PaymentButton(action: payViewModel.pay)
-            .padding()
+            .padding(.horizontal, 10)
+        }
+      }
+      
+      // note: need to check that the owner has actually paid first!
+      if (errandsViewModel.getErrand(errand.id!).status == "in progress" &&
+          usersViewModel.getCurUser()!.id == errand.runner!.id) {
+        if (payViewModel.paymentTransferSucess) {
+          Text("\(errand.owner.first_name) \(errand.owner.last_name) has paid you!")
+        }
+        else {
+          Text("Use Transfer Funds with Apple Pay to get your payment")
+          PaymentButton(action: payViewModel.payTransfer)
+            .padding(.horizontal, 10)
         }
       }
       
