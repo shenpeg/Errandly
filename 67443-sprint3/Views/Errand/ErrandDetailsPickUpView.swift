@@ -7,6 +7,7 @@ struct ErrandDetailsPickUpView: View {
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var tabUtil: TabUtil
+  @StateObject var payViewModel: PayViewModel
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
   
@@ -24,8 +25,13 @@ struct ErrandDetailsPickUpView: View {
       
       if (errandsViewModel.getErrand(errand.id!).status == "in progress" &&
           usersViewModel.getCurUser()!.id == errand.owner.id) {
-        PaymentButton(action: {})
-          .padding()
+        if (payViewModel.paymentSucess) {
+          Text("Thanks for paying \(errand.runner!.first_name) \(errand.runner!.last_name)!")
+        }
+        else {
+          PaymentButton(action: payViewModel.pay)
+            .padding()
+        }
       }
       
       HStack {
