@@ -48,6 +48,7 @@
 		A3A1B15E2B1BE0DE00BD0EB5 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B15D2B1BE0DE00BD0EB5 /* PaymentButton.swift */; };
 		A3A1B1602B1BE6B900BD0EB5 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B15F2B1BE6B900BD0EB5 /* PaymentHandler.swift */; };
 		A3A1B1622B1C17D300BD0EB5 /* PayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B1612B1C17D200BD0EB5 /* PayViewModel.swift */; };
+		A3A1B1642B1C386900BD0EB5 /* PaymentTransferHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B1632B1C386900BD0EB5 /* PaymentTransferHandler.swift */; };
 		A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AFEADD2AF784000052377A /* UserProfileErrandsListView.swift */; };
 		A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */; };
 		A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B99B632AD62B0B000822EE /* ContentView.swift */; };
@@ -146,6 +147,7 @@
 		A3A1B15D2B1BE0DE00BD0EB5 /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		A3A1B15F2B1BE6B900BD0EB5 /* PaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
 		A3A1B1612B1C17D200BD0EB5 /* PayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewModel.swift; sourceTree = "<group>"; };
+		A3A1B1632B1C386900BD0EB5 /* PaymentTransferHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTransferHandler.swift; sourceTree = "<group>"; };
 		A3AFEADD2AF784000052377A /* UserProfileErrandsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileErrandsListView.swift; sourceTree = "<group>"; };
 		A3B99B5E2AD62B0B000822EE /* 67443-sprint3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "67443-sprint3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3App.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */,
 				8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */,
 				A3A1B15F2B1BE6B900BD0EB5 /* PaymentHandler.swift */,
+				A3A1B1632B1C386900BD0EB5 /* PaymentTransferHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				A3EAE9712AE885E60079481D /* User.swift in Sources */,
 				8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */,
 				8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */,
+				A3A1B1642B1C386900BD0EB5 /* PaymentTransferHandler.swift in Sources */,
 				A3EAE97D2AE889580079481D /* UserProfileView.swift in Sources */,
 				A3D646A12B25479400CC4CB2 /* LocationSearchView.swift in Sources */,
 				A3A1B1622B1C17D300BD0EB5 /* PayViewModel.swift in Sources */,
@@ -832,7 +836,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -868,7 +872,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

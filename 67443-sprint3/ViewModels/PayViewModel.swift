@@ -3,7 +3,9 @@ import Foundation
 class PayViewModel: ObservableObject {
   private var errand: Errand
   private let paymentHandler = PaymentHandler()
+  private let paymentTransferHandler = PaymentTransferHandler()
   @Published private(set) var paymentSucess = false
+  @Published private(set) var paymentTransferSucess = false
   
   init(errand: Errand, paymentSucess: Bool = false) {
     self.errand = errand
@@ -15,4 +17,11 @@ class PayViewModel: ObservableObject {
       self.paymentSucess = success
     }
   }
+  
+  func payTransfer() {
+    paymentTransferHandler.startTransfer(errand: errand) { success in
+      self.paymentTransferSucess = success
+    }
+  }
+  
 }
