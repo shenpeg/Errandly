@@ -1,4 +1,4 @@
-// tutorial: https://www.youtube.com/watch?v=1kRqM7F3AIQ
+// tutorial: https://developer.apple.com/videos/play/wwdc2023/10114/?time=681
 
 import Foundation
 import PassKit
