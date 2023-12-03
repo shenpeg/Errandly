@@ -156,7 +156,7 @@ struct ErrandDetailsView: View {
                 .padding(20)
             }
           
-          ErrandDetailsPickUpView(errand: errand, user: user, payViewModel: PayViewModel(errand: errand), marketplacePath: $marketplacePath, profilePath: $profilePath)
+          ErrandDetailsPickUpView(errand: errand, user: user, payViewModel: PayViewModel(errandsViewModel: errandsViewModel, errand: errand), marketplacePath: $marketplacePath, profilePath: $profilePath)
         }
     }
   

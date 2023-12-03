@@ -267,6 +267,7 @@
 				6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */,
 				A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */,
 				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
+				A3A1B15D2B1BE0DE00BD0EB5 /* PaymentButton.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -294,14 +295,6 @@
 				156932FC2B152C270049B461 /* TutorialView.swift */,
 			);
 			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		A3A1B15C2B1BE0C800BD0EB5 /* Pay */ = {
-			isa = PBXGroup;
-			children = (
-				A3A1B15D2B1BE0DE00BD0EB5 /* PaymentButton.swift */,
-			);
-			path = Pay;
 			sourceTree = "<group>";
 		};
 		A3B99B552AD62B0B000822EE = {
@@ -402,7 +395,6 @@
 				A38B51FD2AF016EF00D3B8E5 /* Onboarding */,
 				A38B51FC2AF016E900D3B8E5 /* User */,
 				A38B51FA2AF016D400D3B8E5 /* Errand */,
-				A3A1B15C2B1BE0C800BD0EB5 /* Pay */,
 				8ADEFF852AFD714A0094C83F /* SortSheet.swift */,
 				6E7F6ADD2B2588630040EA8A /* TagView.swift */,
 			);
