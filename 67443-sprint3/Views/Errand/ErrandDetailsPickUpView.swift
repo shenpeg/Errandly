@@ -79,16 +79,19 @@ struct ErrandDetailsPickUpView: View {
         }
         else if (errand.pay > 0 && errandsViewModel.getErrand(errand.id!).status == "in progress") {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
-            if (errandsViewModel.getErrand(errand.id!).status == "in progress - owner paid") {
+            if (errandsViewModel.getErrand(errand.id!).status == "in progress paid") {
               Text("You paid \(errand.runner!.first_name)")
             }
             else {
               HStack {
-                Text("          ")
+                // can't change size of apple pay button
+                // so this empty text "pushes it" to become smaller
+                Text("                 ")
                 Text("Pay \(errand.runner!.first_name)")
                   .font(.headline)
                   .foregroundColor(darkBlue)
                   .italic()
+                  .padding(.trailing, 5)
                 PaymentButton(action: payViewModel.pay)
               }
             }
@@ -99,18 +102,19 @@ struct ErrandDetailsPickUpView: View {
               .italic()
           }
         }
-        else if (errand.pay > 0 && errandsViewModel.getErrand(errand.id!).status == "in progress - owner paid") {
+        else if (errand.pay > 0 && errandsViewModel.getErrand(errand.id!).status == "in progress paid") {
           if ( usersViewModel.getCurUser()!.id == errand.runner!.id) {
-            if (errandsViewModel.getErrand(errand.id!).status == "in progress - runner got paid") {
+            if (errandsViewModel.getErrand(errand.id!).status == "completed") {
               Text("\(errand.owner.first_name) has paid you!")
             }
             else {
               HStack {
-                Text("          ")
-                Text("Get your payment")
+                Text("                     ")
+                Text("Accept payment")
                   .font(.headline)
                   .foregroundColor(darkBlue)
                   .italic()
+                  .padding(.trailing, 5)
                 PaymentButton(action: payViewModel.payTransfer)
               }
             }
@@ -121,7 +125,7 @@ struct ErrandDetailsPickUpView: View {
               .italic()
           }
         }
-        else if (errand.pay == 0 || errandsViewModel.getErrand(errand.id!).status == "in progress - runner got paid") {
+        else if (errand.pay == 0 && errandsViewModel.getErrand(errand.id!).status == "in progress") {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
               Button(action: {
                   isCompletionAlertPresented = true
