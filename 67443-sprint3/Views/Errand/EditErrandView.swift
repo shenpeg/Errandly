@@ -99,8 +99,6 @@ struct EditErrandView: View {
   
   private func updateErrand() {
     
-    let errandOwner = ErrandOwner(id: user.id!, first_name: user.first_name, last_name: user.last_name, pfp: user.pfp, phone_number: user.phone_number)
-    
     if isValidErrand() {
       let updatedErrand = Errand(
         dateDue: dateDue,
@@ -113,11 +111,9 @@ struct EditErrandView: View {
         pay: pay,
         status: "new",
         tags: selectedTags
-      )
-      
+        )
       errandsViewModel.update(errand, updatedErrand: updatedErrand)
     }
-    
   }
   
   

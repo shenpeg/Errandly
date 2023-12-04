@@ -19,14 +19,11 @@ struct ErrandView: View {
   @StateObject var timeViewModel = TimeFormatViewModel()
   @State private var profilePath = NavigationPath()
   
-  @State private var isDeleteAlertPresented = false
-  
   
   var body: some View {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
     let timeDifference = timeViewModel.calculateTimeDifference(from: errand.datePosted)
-    let curUser = usersViewModel.getCurUser()
     
     return ZStack {
       NavigationLink("", value: errand)
@@ -37,39 +34,6 @@ struct ErrandView: View {
           Text(errand.name)
             .font(.title2)
           
-          //          if (usersViewModel.getCurUser()!.id == errand.owner.id) {
-          //            // still need to get edit errand working
-          //            Image(systemName: "pencil")
-          //              .foregroundColor(.black)
-          //              .font(.system(size: 20))
-          //          }
-          
-          if (curUser!.id == errand.owner.id && errand.status == "new") {
-            NavigationLink(value: String(errand.id ?? "")) {
-              Image(systemName: "square.and.pencil")
-                .foregroundColor(Color.black)
-                .font(.system(size: 15))
-                .padding(.top, 3)
-            }
-            
-            
-            Image(systemName: "trash")
-              .foregroundColor(.black)
-              .font(.system(size: 15))
-              .padding(.top, 3)
-              .onTapGesture {
-                isDeleteAlertPresented = true
-              }
-              .alert(isPresented: $isDeleteAlertPresented) {
-                Alert(
-                  title: Text("Delete this errand permanently?"),
-                  primaryButton: .default(Text("Yes, delete this errand")) {
-                    self.deleteErrand()
-                  },
-                  secondaryButton: .cancel(Text("No, cancel"))
-                )
-              } //end of alert
-          }
           Spacer()
           
           VStack(alignment: .trailing) {
@@ -142,16 +106,4 @@ struct ErrandView: View {
     .listRowSeparator(.hidden)
   }
   
-  func deleteErrand() {
-    // only delete 'new' errands so don't need to check/remove runner
-//    if (!errandsViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
-//      if (errand.runner != nil) {
-//        let runner = usersViewModel.getUser(errand.runner!.id)!
-//        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
-//      }
-    let owner = usersViewModel.getUser(userId: errand.owner.id)!
-    usersViewModel.deletePostedErrand(owner: owner, errand: errand)
-    errandsViewModel.delete(errand)
-//    }
-  }
 }

@@ -184,6 +184,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E96F9732B1E8271006BF365 /* ErrandDetails */ = {
+			isa = PBXGroup;
+			children = (
+				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
+				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
+				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
+			);
+			path = ErrandDetails;
+			sourceTree = "<group>";
+		};
 		A38B51F62AF015F100D3B8E5 /* Errand */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,11 +216,9 @@
 		A38B51FA2AF016D400D3B8E5 /* Errand */ = {
 			isa = PBXGroup;
 			children = (
+				6E96F9732B1E8271006BF365 /* ErrandDetails */,
 				A3EAE92D2AE862510079481D /* MarketplaceView.swift */,
-				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
 				6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */,
-				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
-				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
 				A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */,
 				6E96F9712B1C04F7006BF365 /* EditErrandView.swift */,
 			);

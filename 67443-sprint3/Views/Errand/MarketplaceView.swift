@@ -18,6 +18,7 @@ struct MarketplaceView: View {
   @State private var showingSheet = false
   
   var body: some View {
+    
     let searchFieldBinding = Binding<String>(get: {
       self.searchField
     }, set: {

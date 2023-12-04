@@ -171,14 +171,10 @@ struct PostErrandView: View {
         
         Section {
           Button("Post") {
-            
             payStringToDouble()
             
-            print("_____hitting post succeeded_____")
             if isValidErrand() {
-              print("----------is a valid errand--------")
               Task {
-                
                 // necessary to avoid the following errors, as this will resign the text fields:
                 // - AttributeGraph: cycle detected through attribute
                 // - Modifying state during view update, this will cause undefined behavior.
@@ -194,13 +190,12 @@ struct PostErrandView: View {
               }
             }
             else {
-              print("=========entered else, noot valid errand============")
               showErrorAlert = true
             }
           } //button
           .foregroundColor(.white)
           .font(.headline)
-          .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+          .padding(.init(top: 5, leading: 20, bottom: 7, trailing: 20))
           .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
           .alert(isPresented: $showErrorAlert) {
             Alert(

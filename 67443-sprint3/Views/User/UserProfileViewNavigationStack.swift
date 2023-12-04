@@ -29,11 +29,6 @@ struct UserProfileViewNavigationStack: View {
       }
       .navigationDestination(for: String.self) { id in
         let errand = errandsViewModel.getErrand(id)
-//        PostErrandView(
-//          user: user,
-//          profilePath: $profilePath
-//        )
-        
         EditErrandView(
           user: user,
           errand: errand,

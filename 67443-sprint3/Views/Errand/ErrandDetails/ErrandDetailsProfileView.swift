@@ -34,11 +34,21 @@ struct ErrandDetailsProfileView: View {
       
       VStack(alignment: .leading) {
         if (errandOwnerUser != nil) {
-          NavigationLink(value: errand.owner) {
-            Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-              .font(.headline)
+          HStack() {
+            NavigationLink(value: errand.owner) {
+              Text("\(errand.owner.first_name) \(errand.owner.last_name)")
+                .font(.headline)
+            }
+            .accentColor(.black)
+            
+            Spacer()
+            Button(action: message) {
+              Image(systemName: "envelope")
+                .foregroundColor(Color.black)
+                .font(.system(size: 20))
+            }
+            Text("   ")
           }
-          .accentColor(.black)
         }
         else {
           Text("\(errand.owner.first_name) \(errand.owner.last_name)")
@@ -56,12 +66,6 @@ struct ErrandDetailsProfileView: View {
           Text(timeViewModel.formatTimeDifference(timeDifference))
             .font(.footnote)
             .foregroundColor(.secondary)
-        }
-        Spacer()
-        Button(action: message) {
-            Image(systemName: "message")
-              .foregroundColor(Color.black)
-              .font(.system(size: 20))
         }
       }
     }
