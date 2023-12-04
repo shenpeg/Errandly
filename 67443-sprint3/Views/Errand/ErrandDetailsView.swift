@@ -14,6 +14,7 @@ struct ErrandDetailsView: View {
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var tabUtil: TabUtil
+
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
   
@@ -29,7 +30,14 @@ struct ErrandDetailsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                      if (errandsViewModel.getErrand(errand.id!).status.contains("in progress")) {
+                      if (errandsViewModel.getErrand(errand.id!).status.contains("in progress") && (usersViewModel.getCurUser()!.id == errand.owner.id)) {
+                        Text("in progress by \(errand.runner!.first_name) \(errand.runner!.last_name)")
+                          .font(.headline)
+                          .foregroundColor(darkBlue)
+                          .italic()
+                          .bold()
+                      }
+                      else if (errandsViewModel.getErrand(errand.id!).status.contains("in progress")) {
                         Text("in progress")
                           .font(.headline)
                           .foregroundColor(darkBlue)
