@@ -18,7 +18,7 @@ class PayViewModel: ObservableObject {
     paymentHandler.startPayment(errand: errand) { success in
       self.paymentSucess = success
       if success {
-        self.errandsViewModel.updateErrandStatus(errandID: self.errand.id!, newStatus: "in progress - owner paid")
+        self.errandsViewModel.updateErrandStatus(errandID: self.errand.id!, newStatus: "in progress paid")
       }
     }
   }
@@ -27,7 +27,7 @@ class PayViewModel: ObservableObject {
     paymentTransferHandler.startTransfer(errand: errand) { success in
       self.paymentTransferSucess = success
       if success {
-        self.errandsViewModel.updateErrandStatus(errandID: self.errand.id!, newStatus: "in progress - runner got paid")
+        self.errandsViewModel.updateErrandStatus(errandID: self.errand.id!, newStatus: "completed")
       }
     }
   }
