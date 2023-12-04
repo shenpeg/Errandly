@@ -37,7 +37,7 @@ struct ErrandDetailsView: View {
                           .italic()
                           .bold()
                       }
-                      if (errandsViewModel.getErrand(errand.id!).status.contains("completed") && (usersViewModel.getCurUser()!.id == errand.owner.id)) {
+                      else if ((errandsViewModel.getErrand(errand.id!).status == "completed") && (usersViewModel.getCurUser()!.id == errand.owner.id)) {
                         Text("completed by \(errand.runner!.first_name) \(errand.runner!.last_name)")
                           .font(.headline)
                           .foregroundColor(darkBlue)
