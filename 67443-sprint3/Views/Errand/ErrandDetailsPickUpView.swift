@@ -89,15 +89,21 @@ struct ErrandDetailsPickUpView: View {
                 PaymentButton(action: payViewModel.pay)
               }
             }
-          } else {
+          } else if (usersViewModel.getCurUser()!.id == errand.runner!.id) {
             Text("Waiting for \(errand.owner.first_name) to pay you")
+              .font(.headline)
+              .foregroundColor(darkBlue)
+              .italic()
+          }
+          else {
+            Text("in progress")
               .font(.headline)
               .foregroundColor(darkBlue)
               .italic()
           }
         }
         else if (errand.pay > 0 && errandsViewModel.getErrand(errand.id!).status == "in progress paid") {
-          if ( usersViewModel.getCurUser()!.id == errand.runner!.id) {
+          if (usersViewModel.getCurUser()!.id == errand.runner!.id) {
             if (errandsViewModel.getErrand(errand.id!).status == "completed") {
               Text("\(errand.owner.first_name) has paid you!")
             }
@@ -112,8 +118,14 @@ struct ErrandDetailsPickUpView: View {
                 PaymentButton(action: payViewModel.payTransfer)
               }
             }
-          } else {
+          } else if (usersViewModel.getCurUser()!.id == errand.runner!.id) {
             Text("Waiting for \(errand.runner!.first_name) to claim their payment")
+              .font(.headline)
+              .foregroundColor(darkBlue)
+              .italic()
+          }
+          else {
+            Text("in progress")
               .font(.headline)
               .foregroundColor(darkBlue)
               .italic()
@@ -146,8 +158,15 @@ struct ErrandDetailsPickUpView: View {
                           secondaryButton: .cancel(Text("No, Cancel"))
                       )
                   }
-            } else {
-               Text("Waiting for \(errand.owner.first_name) to mark completed")
+            }
+          else if (usersViewModel.getCurUser()!.id == errand.runner!.id) {
+             Text("Waiting for \(errand.owner.first_name) to mark completed")
+                 .font(.headline)
+                 .foregroundColor(darkBlue)
+                 .italic()
+          }
+          else {
+               Text("in progress")
                    .font(.headline)
                    .foregroundColor(darkBlue)
                    .italic()
