@@ -55,7 +55,7 @@ struct ErrandDetailsView: View {
                           Image(systemName: "square.and.pencil")
                             .foregroundColor(Color.black)
                             .font(.system(size: 20))
-                            .padding(.top, 5)
+                            .padding(5)
                         }
                         .navigationBarHidden(true)
                         .background(Color.clear)
@@ -64,7 +64,7 @@ struct ErrandDetailsView: View {
                         Image(systemName: "trash")
                           .foregroundColor(.black)
                           .font(.system(size: 20))
-                          .padding(.top, 5)
+                          .padding(5)
                           .onTapGesture {
                             isDeleteAlertPresented = true
                           }
@@ -88,7 +88,7 @@ struct ErrandDetailsView: View {
                   
                     Text(errand.name)
                         .font(.largeTitle)
-                        .fontWeight(.bold)
+//                        .fontWeight(.bold)
                         .foregroundColor(.primary)
                   
                     HStack() {
@@ -102,6 +102,7 @@ struct ErrandDetailsView: View {
                     }
 
                   ErrandDetailsProfileView(errand: errand)
+                    .padding(.init(top: 5, leading: 0, bottom: 8, trailing: 0))
                     
                     // Horizontal separator line
                     Rectangle()

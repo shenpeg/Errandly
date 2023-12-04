@@ -151,6 +151,7 @@ struct PostErrandView: View {
                         .keyboardType(.decimalPad)
                 }
             }
+            .padding(1)
             
             HStack{
                 Button(action: {payString = "0"; payBool = false}) {
@@ -167,6 +168,7 @@ struct PostErrandView: View {
                     .scaleEffect(0.5))
                 Text("No      ")
             }
+            .padding(1)
         }.listRowSeparator(.hidden)
         
         Section {

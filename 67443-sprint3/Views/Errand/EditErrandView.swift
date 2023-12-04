@@ -230,7 +230,7 @@ struct EditErrandView: View {
               }
             )
           }
-
+          
         } //section
       } //form
       .background(Color.white)

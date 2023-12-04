@@ -29,7 +29,7 @@ struct ErrandDetailsProfileView: View {
     return HStack {
       
       VStack{
-        UserProfileImageView(pfp: errand.owner.pfp, size: 32)
+        UserProfileImageView(pfp: errand.owner.pfp, size: 36)
       }
       
       VStack(alignment: .leading) {
@@ -52,22 +52,21 @@ struct ErrandDetailsProfileView: View {
         }
         else {
           Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-            .font(.headline)
+            .font(.system(size: 15))
             .foregroundColor(.primary)
         }
         
+        Text(" ") //just adding space between, padding looks off no matter how I tried it
+          .font(.system(size: 2))
+        
         HStack {
           if (locViewModel.authorized()) {
-            Text(locViewModel.distanceFromErrand(geoPoint: errand.location))
-              .font(.footnote)
+            Text("\(locViewModel.distanceFromErrand(geoPoint: errand.location)) | \(timeViewModel.formatTimeDifference(timeDifference))")
+              .font(.system(size: 15))
               .foregroundColor(.secondary)
-            Text("|").font(.footnote).foregroundColor(.secondary)
           }
-          Text(timeViewModel.formatTimeDifference(timeDifference))
-            .font(.footnote)
-            .foregroundColor(.secondary)
         }
       }
-    }
+    } // end of returned HStack
   }
 }
