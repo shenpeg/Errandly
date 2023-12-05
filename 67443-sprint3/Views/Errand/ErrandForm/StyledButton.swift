@@ -8,7 +8,7 @@ import Combine
 import Foundation
 import SwiftUI
 
-struct StyledButton: View {
+struct FormButton: View {
     let title: String
     let action: () -> Void
 

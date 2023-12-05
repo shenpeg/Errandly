@@ -200,6 +200,18 @@
 			path = ErrandDetails;
 			sourceTree = "<group>";
 		};
+		6E96F97A2B1EEA73006BF365 /* ErrandForm */ = {
+			isa = PBXGroup;
+			children = (
+				6E96F9782B1ECB09006BF365 /* FormFunctions.swift */,
+				6E96F9762B1EC5A6006BF365 /* StyledButton.swift */,
+				6E96F9712B1C04F7006BF365 /* EditErrandView.swift */,
+				6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */,
+				6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */,
+			);
+			path = ErrandForm;
+			sourceTree = "<group>";
+		};
 		A38B51F62AF015F100D3B8E5 /* Errand */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,12 +234,10 @@
 		A38B51FA2AF016D400D3B8E5 /* Errand */ = {
 			isa = PBXGroup;
 			children = (
+				6E96F97A2B1EEA73006BF365 /* ErrandForm */,
 				6E96F9732B1E8271006BF365 /* ErrandDetails */,
 				A3EAE92D2AE862510079481D /* MarketplaceView.swift */,
 				A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */,
-				6E96F9712B1C04F7006BF365 /* EditErrandView.swift */,
-				6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */,
-				6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -338,10 +348,8 @@
 				A38B51FC2AF016E900D3B8E5 /* User */,
 				A38B51FA2AF016D400D3B8E5 /* Errand */,
 				8ADEFF852AFD714A0094C83F /* SortSheet.swift */,
-				6E96F9762B1EC5A6006BF365 /* StyledButton.swift */,
 				A3EAE9302AE862D70079481D /* ErrandView.swift */,
 				A3C4564C2B09584F000678E6 /* FormTags.swift */,
-				6E96F9782B1ECB09006BF365 /* FormFunctions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

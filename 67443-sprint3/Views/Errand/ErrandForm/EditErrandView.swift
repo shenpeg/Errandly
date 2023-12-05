@@ -101,7 +101,7 @@ struct EditErrandView: View {
         
         HStack() {
           //button 1
-          StyledButton(title: "Save edits") {
+          FormButton(title: "Save edits") {
             
             
             if payBool == false {
@@ -151,7 +151,7 @@ struct EditErrandView: View {
           }
           
           //delete errand
-          StyledButton (title: "Delete errand") {
+          FormButton (title: "Delete errand") {
             isDeleteAlertPresented = true
           }
           .alert(isPresented: $isDeleteAlertPresented) {
