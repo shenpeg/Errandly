@@ -21,19 +21,6 @@ struct ErrandDetailsView: View {
   @State private var isDeleteAlertPresented = false
 
   
-  func deleteErrand() {
-    // only delete 'new' errands so don't need to check/remove runner
-//    if (!errandsViewModel.errandViewModels.isEmpty && !usersViewModel.userViewModels.isEmpty) {
-//      if (errand.runner != nil) {
-//        let runner = usersViewModel.getUser(errand.runner!.id)!
-//        usersViewModel.destroyPickedUpErrand(runner: runner, errand: errand)
-//      }
-    let owner = usersViewModel.getUser(userId: errand.owner.id)!
-    usersViewModel.deletePostedErrand(owner: owner, errand: errand)
-    errandsViewModel.delete(errand)
-//    }
-  }
-  
     var body: some View {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "MM/dd/YY"
@@ -42,7 +29,7 @@ struct ErrandDetailsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Text(errandsViewModel.getErrand(errand.id ?? "").status)
+                        Text(errandsViewModel.getErrand(errand.id!).status)
                             .font(.headline)
                             .foregroundColor(darkBlue)
                             .italic()
@@ -51,39 +38,14 @@ struct ErrandDetailsView: View {
                       Spacer()
                       
                       if (user.id == errand.owner.id && errand.status == "new") {
-                        NavigationLink(value: String(errand.id!)) {
+                        NavigationLink(destination: EditErrandView(user: user, errand: errand, profilePath: $profilePath)) {
                           Image(systemName: "square.and.pencil")
                             .foregroundColor(Color.black)
                             .font(.system(size: 20))
                             .padding(5)
                         }
                         .navigationBarHidden(true)
-                        .background(Color.clear)
-                        
-                        
-                        Image(systemName: "trash")
-                          .foregroundColor(.black)
-                          .font(.system(size: 20))
-                          .padding(5)
-                          .onTapGesture {
-                            isDeleteAlertPresented = true
-                          }
-                          .alert(isPresented: $isDeleteAlertPresented) {
-                            Alert(
-                              title: Text("Delete this errand permanently?"),
-                              primaryButton: .default(Text("Yes, delete this errand")) {
-                                self.deleteErrand()
-                                tabUtil.tabSelection = 3
-                                tabUtil.profileTabSelection = "Posted Errands"
-                                marketplacePath = NavigationPath()
-                                profilePath = NavigationPath()
-                              },
-                              secondaryButton: .cancel(Text("No, cancel"))
-                            )
-                          } //end of alert
                       }
-                      
-                      
                     }
                   
                     Text(errand.name)
