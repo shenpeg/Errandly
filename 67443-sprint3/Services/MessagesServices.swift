@@ -10,7 +10,7 @@ import SwiftUI
 
 class MessagesService {
   func sendMessage(_ phoneNumber: String) {
-    let sms: String = "sms:+1\(phoneNumber)&body=Example message body"
+    let sms: String = "sms:+1\(phoneNumber)&body=Hello, I am interested in picking up your errand!"
     let strURL:String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     UIApplication.shared.open(URL.init(string: strURL)!, options: [:], completionHandler: nil)
   }
