@@ -63,12 +63,6 @@ struct ErrandDetailsProfileView: View {
             .font(.footnote)
             .foregroundColor(.secondary)
         }
-        Spacer()
-        Button(action: message) {
-            Image(systemName: "message")
-              .foregroundColor(Color.black)
-              .font(.system(size: 20))
-        }
       }
     }
   }
