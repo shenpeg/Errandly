@@ -11,6 +11,7 @@ import CoreLocation
 
 struct ErrandDetailsProfileView: View {
   var errand: Errand
+  var user: User
   
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var locViewModel: LocationViewModel
@@ -33,19 +34,25 @@ struct ErrandDetailsProfileView: View {
       }
       
       VStack(alignment: .leading) {
-        if (errandOwnerUser != nil) {
-          HStack() {
+        HStack {
+          if (errandOwnerUser != nil) {
             NavigationLink(value: errand.owner) {
+              UserProfileImageView(pfp: errand.owner.pfp, size: 32)
               Text("\(errand.owner.first_name) \(errand.owner.last_name)")
                 .font(.headline)
             }
             .accentColor(.black)
-            
-            Spacer()
+          }
+          else {
+            Text("\(errand.owner.first_name) \(errand.owner.last_name)")
+              .font(.headline)
+              .foregroundColor(.primary)
+          }
+          if (errand.owner.id != user.id) {
             Button(action: message) {
-              Image(systemName: "envelope")
-                .foregroundColor(Color.black)
-                .font(.system(size: 20))
+                Image(systemName: "message")
+                  .foregroundColor(Color.black)
+                  .font(.system(size: 20))
             }
             Text("   ")
           }
@@ -65,6 +72,9 @@ struct ErrandDetailsProfileView: View {
               .font(.system(size: 15))
               .foregroundColor(.secondary)
           }
+          Text(timeViewModel.formatTimeDifference(timeDifference))
+            .font(.footnote)
+            .foregroundColor(.secondary)
         }
       }
     } // end of returned HStack
