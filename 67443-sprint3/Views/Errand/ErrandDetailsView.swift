@@ -68,7 +68,7 @@ struct ErrandDetailsView: View {
                       }
                     }
 
-                  ErrandDetailsProfileView(errand: errand)
+                  ErrandDetailsProfileView(errand: errand, user: user)
                     
                     // Horizontal separator line
                     Rectangle()
