@@ -38,7 +38,7 @@ struct ErrandDetailsView: View {
                       Spacer()
                       
                       if (user.id == errand.owner.id && errand.status == "new") {
-                        NavigationLink(destination: EditErrandView(user: user, errand: errand, profilePath: $profilePath)) {
+                        NavigationLink(destination: EditErrandView(user: user, errand: errand, profilePath: $profilePath, marketplacePath: $marketplacePath)) {
                           Image(systemName: "square.and.pencil")
                             .foregroundColor(Color.black)
                             .font(.system(size: 20))

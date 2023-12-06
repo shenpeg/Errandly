@@ -16,6 +16,8 @@ struct EditErrandView: View {
   var user: User
   var errand: Errand
   @Binding var profilePath: NavigationPath
+  @Binding var marketplacePath: NavigationPath
+
   
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
@@ -35,9 +37,15 @@ struct EditErrandView: View {
   
   @State private var isDeleteAlertPresented = false
   
-  init (user: User, errand: Errand, profilePath: Binding<NavigationPath>) {
+  init (
+    user: User,
+    errand: Errand,
+    profilePath: Binding<NavigationPath>,
+    marketplacePath: Binding<NavigationPath>
+  ){
     self.user = user
     self._profilePath = profilePath
+    self._marketplacePath = marketplacePath
     
     self.errand = errand
     self._title = State(wrappedValue: errand.name)
@@ -161,7 +169,7 @@ struct EditErrandView: View {
                 self.deleteErrand()
                 tabUtil.tabSelection = 3
                 tabUtil.profileTabSelection = "Posted Errands"
-//                marketplacePath = NavigationPath()
+                marketplacePath = NavigationPath()
                 profilePath = NavigationPath()
               },
               secondaryButton: .cancel(Text("No, cancel"))

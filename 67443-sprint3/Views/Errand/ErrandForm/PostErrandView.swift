@@ -63,7 +63,7 @@ struct PostErrandView: View {
         )
         
         Section {
-          StyledButton(title: "Post") {
+          FormButton(title: "Post") {
             
             if payBool == false {
               payString = "0.00"
