@@ -108,7 +108,20 @@ struct MarketplaceView: View {
             .sheet(isPresented: $showingSheet) {
                 SortSheet(searchField: $searchField, selectedTags: $selectedTags)
             }
-            
+            .overlay(
+                Group {
+                    if errandsViewModel.errands.isEmpty {
+                        // Display an error message when errands are not available
+                        Text("Failed to retrieve errands. Please try again.")
+                            .foregroundColor(.black)
+                            .font(.headline)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(10)
+                    }
+                }
+            )
+          
             // Overlay the TutorialView directly on top
             if isOnboardingPresented {
                 TutorialView(isOnboardingPresented: $isOnboardingPresented)
