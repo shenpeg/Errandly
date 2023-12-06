@@ -10,14 +10,14 @@ struct UserProfileViewNavigationStack: View {
   @EnvironmentObject var tabUtil: TabUtil
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
-  @Binding var formPath: NavigationPath
+//  @Binding var formPath: NavigationPath
     
   var body: some View {
      return NavigationStack(path: $profilePath) {
        UserProfileView(user: user)
 
       .navigationDestination(for: Errand.self) { errand in
-        ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath, formPath: $formPath)
+        ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
       }
       .navigationDestination(for: ErrandOwner.self) { errandOwner in
         let errandOwnerUser = usersViewModel.getUser(userId: errandOwner.id)

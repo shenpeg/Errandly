@@ -16,7 +16,6 @@ struct ErrandDetailsView: View {
   @EnvironmentObject var tabUtil: TabUtil
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
-  @Binding var formPath: NavigationPath
   
   @State private var isDeleteAlertPresented = false
 
@@ -63,7 +62,7 @@ struct ErrandDetailsView: View {
                       }
                     }
 
-                  ErrandDetailsProfileView(errand: errand)
+                  ErrandDetailsProfileView(errand: errand, user: user)
                     .padding(.init(top: 5, leading: 0, bottom: 8, trailing: 0))
                     
                     // Horizontal separator line

@@ -67,7 +67,6 @@ struct UserProfileInfoView: View {
                 }
               }
             }
-            }
             .padding(.bottom, 5)
             
             if (user.school_year != "") {
@@ -84,9 +83,7 @@ struct UserProfileInfoView: View {
                 .padding(.top, 5)
             }
           }
-          
           Spacer()
-          
         }
         .padding(.bottom, 10)
         

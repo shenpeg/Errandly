@@ -33,7 +33,7 @@ struct ContentView: View {
       if (usersViewModel.getCurUser() != nil) {
         let curUser = usersViewModel.getCurUser()
 
-        MarketplaceView(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath, formPath: $formPath)
+        MarketplaceView(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath)
           .tabItem {
             Image(systemName: "house").padding(.bottom, 10)
             Text("Marketplace")
@@ -47,7 +47,7 @@ struct ContentView: View {
           }
           .tag(2)
         
-        UserProfileViewNavigationStack(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath, formPath: $formPath)
+        UserProfileViewNavigationStack(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath) // , formPath: $formPath
           .environmentObject(authViewModel)
           .tabItem {
             Image(systemName: "person").padding(.bottom, 10)
