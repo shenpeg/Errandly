@@ -24,6 +24,3 @@ TBD.
 ## Contributions
 Designed and coded by Esther Bae, Clarice Du, Julia Graham, Peggy Shen.
 Made for CMU's 67-443 Mobile Application Development.
-
-## Notes
-View the README in the 67443-sprint3 folder for more information on this repository's branches. 
