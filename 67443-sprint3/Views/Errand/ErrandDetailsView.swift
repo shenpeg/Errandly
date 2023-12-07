@@ -12,9 +12,14 @@ struct ErrandDetailsView: View {
   var user: User
   
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
+  @EnvironmentObject var usersViewModel: UsersViewModel
+  @EnvironmentObject var tabUtil: TabUtil
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
+  
+  @State private var isDeleteAlertPresented = false
 
+  
     var body: some View {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "MM/dd/YY"
@@ -28,10 +33,22 @@ struct ErrandDetailsView: View {
                             .foregroundColor(darkBlue)
                             .italic()
                             .bold()
+                      
+                      Spacer()
+                      
+                      if (usersViewModel.getCurUser()!.id == errand.owner.id && errand.status == "new") {
+                        NavigationLink(value: errand.id) {
+                          Image(systemName: "square.and.pencil")
+                            .foregroundColor(Color.black)
+                            .font(.system(size: 20))
+                            .padding(5)
+                        }
+                      }
                     }
+                  
                     Text(errand.name)
                         .font(.largeTitle)
-                        .fontWeight(.bold)
+//                        .fontWeight(.bold)
                         .foregroundColor(.primary)
                   
                     HStack() {
@@ -45,6 +62,7 @@ struct ErrandDetailsView: View {
                     }
 
                   ErrandDetailsProfileView(errand: errand, user: user)
+                    .padding(.init(top: 5, leading: 0, bottom: 8, trailing: 0))
                     
                     // Horizontal separator line
                     Rectangle()
