@@ -13,10 +13,10 @@ import SwiftUI
 struct EditErrandView: View {
   
   // variables
-  var user: User
   var errand: Errand
-  @Binding var profilePath: NavigationPath
+  var user: User
   @Binding var marketplacePath: NavigationPath
+  @Binding var profilePath: NavigationPath
 
   
   @EnvironmentObject var usersViewModel: UsersViewModel
@@ -38,16 +38,16 @@ struct EditErrandView: View {
   @State private var isDeleteAlertPresented = false
   
   init (
-    user: User,
     errand: Errand,
-    profilePath: Binding<NavigationPath>,
-    marketplacePath: Binding<NavigationPath>
+    user: User,
+    marketplacePath: Binding<NavigationPath>,
+    profilePath: Binding<NavigationPath>
   ){
-    self.user = user
-    self._profilePath = profilePath
-    self._marketplacePath = marketplacePath
-    
     self.errand = errand
+    self.user = user
+    self._marketplacePath = marketplacePath
+    self._profilePath = profilePath
+    
     self._title = State(wrappedValue: errand.name)
     self._description = State(wrappedValue: errand.description)
     self._selectedTags = State(wrappedValue: errand.tags)

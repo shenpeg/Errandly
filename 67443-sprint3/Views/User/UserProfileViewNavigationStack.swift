@@ -26,14 +26,10 @@ struct UserProfileViewNavigationStack: View {
         EditUserProfileView(user: user)
          .environmentObject(authViewModel)
       }
-//      .navigationDestination(for: String.self) { id in
-//        let errand = errandsViewModel.getErrand(id)
-//        EditErrandView(
-//          user: user,
-//          errand: errand,
-//          profilePath: $profilePath
-//        )
-//      }
+      .navigationDestination(for: String.self) { id in
+        let errand = errandsViewModel.getErrand(id)
+        EditErrandView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
+      }
     }
     .accentColor(.black)
   }

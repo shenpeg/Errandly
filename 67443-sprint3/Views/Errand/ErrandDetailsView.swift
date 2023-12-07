@@ -36,14 +36,13 @@ struct ErrandDetailsView: View {
                       
                       Spacer()
                       
-                      if (user.id == errand.owner.id && errand.status == "new") {
-                        NavigationLink(destination: EditErrandView(user: user, errand: errand, profilePath: $profilePath, marketplacePath: $marketplacePath)) {
+                      if (usersViewModel.getCurUser()!.id == errand.owner.id && errand.status == "new") {
+                        NavigationLink(value: errand.id) {
                           Image(systemName: "square.and.pencil")
                             .foregroundColor(Color.black)
                             .font(.system(size: 20))
                             .padding(5)
                         }
-                        .navigationBarHidden(true)
                       }
                     }
                   
