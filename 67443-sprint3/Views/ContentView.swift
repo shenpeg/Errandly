@@ -20,7 +20,6 @@ struct ContentView: View {
   @StateObject var locationViewModel: LocationViewModel = LocationViewModel()
   @State private var marketplacePath = NavigationPath()
   @State private var profilePath = NavigationPath()
-  @State private var formPath = NavigationPath()
   @State private var isOnboardingPresented = true
 
   init() {
@@ -47,7 +46,7 @@ struct ContentView: View {
           }
           .tag(2)
         
-        UserProfileViewNavigationStack(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath) // , formPath: $formPath
+        UserProfileViewNavigationStack(user: curUser!, marketplacePath: $marketplacePath, profilePath: $profilePath)
           .environmentObject(authViewModel)
           .tabItem {
             Image(systemName: "person").padding(.bottom, 10)

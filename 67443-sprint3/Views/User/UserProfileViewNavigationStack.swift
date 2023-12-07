@@ -10,7 +10,6 @@ struct UserProfileViewNavigationStack: View {
   @EnvironmentObject var tabUtil: TabUtil
   @Binding var marketplacePath: NavigationPath
   @Binding var profilePath: NavigationPath
-//  @Binding var formPath: NavigationPath
     
   var body: some View {
      return NavigationStack(path: $profilePath) {
