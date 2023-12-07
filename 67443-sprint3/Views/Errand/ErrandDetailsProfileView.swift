@@ -57,11 +57,6 @@ struct ErrandDetailsProfileView: View {
               }
               Text("   ")
             }
-            else {
-              Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-                .font(.system(size: 15))
-                .foregroundColor(.primary)
-            }
           }
           
           Text(" ") //just adding space between, padding looks off no matter how I tried it
