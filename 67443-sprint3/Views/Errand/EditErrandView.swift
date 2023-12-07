@@ -141,8 +141,10 @@ struct EditErrandView: View {
                 formFuncts.clearFields()
                 
                 // redirect to user profile
+                // and reset both the marketplace + profile paths
                 tabUtil.tabSelection = 3
                 tabUtil.profileTabSelection = "Posted Errands"
+                marketplacePath = NavigationPath()
                 profilePath = NavigationPath()
               }
             }
