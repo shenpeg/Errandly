@@ -83,7 +83,6 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
         completion(nil)
         return
       }
-//      completion(foundAddress.thoroughfare)
       completion(foundAddress.name)
     }
   }

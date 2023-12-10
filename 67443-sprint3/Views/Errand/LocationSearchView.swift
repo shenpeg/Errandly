@@ -6,7 +6,6 @@ import FirebaseFirestore
 
 struct LocationSearchView: View {
   @EnvironmentObject var locationViewModel: LocationViewModel
-  @FocusState private var isFocusedTextField: Bool
   @Binding var geoPoint: GeoPoint
   @Binding var locationString: String
   
@@ -15,7 +14,6 @@ struct LocationSearchView: View {
       .padding(5)
       .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
       .autocorrectionDisabled()
-      .focused($isFocusedTextField)
       .onReceive(
         locationViewModel.$searchableText.debounce(
           for: .seconds(0.5),
@@ -25,7 +23,6 @@ struct LocationSearchView: View {
         locationViewModel.searchAddress($0)
       }
       .onAppear {
-        isFocusedTextField = true
         if (!(geoPoint.latitude == 0 && geoPoint.longitude == 0)) {
           locationViewModel.getAddress(geoPoint: geoPoint) { foundAddress in
             if (foundAddress != nil) {
