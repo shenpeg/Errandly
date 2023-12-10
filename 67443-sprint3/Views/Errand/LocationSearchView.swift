@@ -3,46 +3,38 @@
  import SwiftUI
  import MapKit
 
- struct LocationSearchView: View {
-   @EnvironmentObject var locationViewModel: LocationViewModel
-   @FocusState private var isFocusedTextField: Bool
-
-   var body: some View {
-     
-     TextField("", text: $locationViewModel.searchableText)
-       .padding()
-       .autocorrectionDisabled()
-       .focused($isFocusedTextField)
-       .font(.title)
-       .onReceive(
+struct LocationSearchView: View {
+  @EnvironmentObject var locationViewModel: LocationViewModel
+  @FocusState private var isFocusedTextField: Bool
+  
+  var body: some View {
+    TextField("", text: $locationViewModel.searchableText)
+      .padding(5)
+      .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
+      .autocorrectionDisabled()
+      .focused($isFocusedTextField)
+      .onReceive(
         locationViewModel.$searchableText.debounce(
           for: .seconds(1),
           scheduler: DispatchQueue.main
         )
-       ) {
-         locationViewModel.searchAddress($0)
-       }
-       .background(Color.init(uiColor: .systemBackground))
-       .overlay {
-         LocationSearchClearButton(text: $locationViewModel.searchableText)
-           .padding(.trailing)
-           .padding(.top, 8)
-       }
-       .onAppear {
-         isFocusedTextField = true
-       }
-     
-     List(self.locationViewModel.results) { address in
-       VStack(alignment: .leading) {
-         Text(address.title)
-         Text(address.subtitle)
-           .font(.caption)
-       }
-       .listRowBackground(backgroundColor)
-     }
-     .listStyle(.plain)
-     .scrollContentBackground(.hidden)
-   }
-
-   var backgroundColor: Color = Color.init(uiColor: .systemGray6)
- }
+      ) {
+        locationViewModel.searchAddress($0)
+      }
+      .onAppear {
+        isFocusedTextField = true
+      }
+    
+    List(self.locationViewModel.results) { address in
+      VStack(alignment: .leading) {
+        Text(address.title)
+        Text(address.subtitle)
+          .font(.caption)
+      }
+    }
+    .listStyle(.plain)
+    .scrollContentBackground(.hidden)
+    .frame(height: 150)
+  }
+  
+}

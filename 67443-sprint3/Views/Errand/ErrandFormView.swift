@@ -58,9 +58,6 @@ struct ErrandFormView: View {
             VStack(alignment: .leading) {
               Text("Location:")
               LocationSearchView()
-              // TextField("", text: $location.latitude)
-                .padding(5)
-                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
             }
             .listRowSeparator(.hidden)
 
