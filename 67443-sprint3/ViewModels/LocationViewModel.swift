@@ -62,12 +62,9 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
   }
   
   func getCoords(location: Location, completion: @escaping (_ huh: GeoPoint?)-> Void) {
-    print("get coords func")
     let addressString = location.subtitle.contains(location.title)
-    ? location.subtitle : location.title + ", " + location.subtitle
-    
+      ? location.subtitle : location.title + ", " + location.subtitle
     let geocoder = CLGeocoder()
-    print(geocoder)
     
     geocoder.geocodeAddressString(addressString) { (placemarks, error) in
       guard let placemarks = placemarks,
