@@ -18,7 +18,8 @@ struct PostErrandView: View {
   @State private var description =  ""
   @State private var selectedTags: [String] = []
   @State private var dateDue = Date()
-  @State private var location = GeoPoint(latitude: 40.443336, longitude: -79.944023) //pittsburgh
+  @State private var location = GeoPoint(latitude: 0, longitude: 0)
+  @State private var locationString = ""
   @State private var pay = 0.0
   @State private var payBool = true
   @State private var payString = ""
@@ -54,12 +55,14 @@ struct PostErrandView: View {
       Form {
         ErrandFormView(
           title: $title,
-            description: $description,
-            selectedTags: $selectedTags,
-            dateDue: $dateDue,
-            pay: $pay,
-            payBool: $payBool,
-            payString: $payString
+          description: $description,
+          selectedTags: $selectedTags,
+          dateDue: $dateDue,
+          location: $location,
+          locationString: $locationString,
+          pay: $pay,
+          payBool: $payBool,
+          payString: $payString
         )
         
         Section {
@@ -72,6 +75,8 @@ struct PostErrandView: View {
                               title: $title,
                               description: $description,
                               dateDue: $dateDue,
+                              location: $location,
+                              locationString: $locationString,
                               pay: $pay,
                               payBool: $payBool,
                               payString: $payString,

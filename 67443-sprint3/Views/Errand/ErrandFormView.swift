@@ -8,6 +8,8 @@ struct ErrandFormView: View {
     @Binding var description: String
     @Binding var selectedTags: [String]
     @Binding var dateDue: Date
+    @Binding var location: GeoPoint
+    @Binding var locationString: String
     @Binding var pay: Double
     @Binding var payBool: Bool
     @Binding var payString: String
@@ -55,13 +57,11 @@ struct ErrandFormView: View {
             }
             .listRowSeparator(.hidden)
 
-          //            VStack(alignment: .leading) {
-          //              Text("Location:")
-          //              TextField("", text: $location)
-          //                .padding(5)
-          //                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
-          //            }
-          //            .listRowSeparator(.hidden)
+            VStack(alignment: .leading) {
+              Text("Location:")
+              LocationSearchView(geoPoint: $location, locationString: $locationString)
+            }
+            .listRowSeparator(.hidden)
 
             VStack(alignment: .leading) {
                 Text("Compensation?")

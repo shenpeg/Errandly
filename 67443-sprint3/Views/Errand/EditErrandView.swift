@@ -28,7 +28,8 @@ struct EditErrandView: View {
   @State private var description: String
   @State private var selectedTags: [String]
   @State private var dateDue: Date = Date()
-  @State private var location = GeoPoint(latitude: 40.443336, longitude: -79.944023) //pittsburgh
+  @State private var location = GeoPoint(latitude: 0, longitude: 0)
+  @State private var locationString: String = ""
   @State private var pay: Double
   @State private var payBool: Bool
   @State private var payString: String
@@ -53,6 +54,7 @@ struct EditErrandView: View {
     self._selectedTags = State(wrappedValue: errand.tags)
     self._dateDue = State(wrappedValue: errand.dateDue)
     self._location = State(wrappedValue: errand.location)
+    self._locationString = State(wrappedValue: "")
     self._pay = State(wrappedValue: errand.pay)
     self._errorMsg = State(wrappedValue: "")
     self._showErrorAlert = State(wrappedValue: false)
@@ -102,6 +104,8 @@ struct EditErrandView: View {
             description: $description,
             selectedTags: $selectedTags,
             dateDue: $dateDue,
+            location: $location,
+            locationString: $locationString,
             pay: $pay,
             payBool: $payBool,
             payString: $payString
@@ -120,6 +124,8 @@ struct EditErrandView: View {
                               title: $title,
                               description: $description,
                               dateDue: $dateDue,
+                              location: $location,
+                              locationString: $locationString,
                               pay: $pay,
                               payBool: $payBool,
                               payString: $payString,
