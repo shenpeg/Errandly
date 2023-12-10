@@ -18,23 +18,23 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
     completer.delegate = self
     return completer
   }()
-
+  
   override init() {
     super.init()
     locationManager.delegate=self
     locationManager.desiredAccuracy=kCLLocationAccuracyBest
     locationManager.startUpdatingLocation()
   }
-
+  
   // current location
   func requestLocationPermission()  {
     locationManager.requestWhenInUseAuthorization()
   }
-
+  
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     authorizationStatus = manager.authorizationStatus
   }
-
+  
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else {return}
     cordinates = location.coordinate
@@ -60,8 +60,25 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
     guard searchableText.isEmpty == false else { return }
     localSearchCompleter.queryFragment = searchableText
   }
-
- }
+  
+  func getCoords(location: Location, completion: @escaping (_ huh: GeoPoint?)-> Void) {
+    print("get coords func")
+    let addressString = location.subtitle.contains(location.title)
+    ? location.subtitle : location.title + ", " + location.subtitle
+    
+    let geocoder = CLGeocoder()
+    print(geocoder)
+    
+    geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+      guard let placemarks = placemarks,
+      let foundCoord = placemarks.first?.location?.coordinate else {
+        completion(nil)
+        return
+      }
+      completion(GeoPoint(latitude: foundCoord.latitude, longitude: foundCoord.longitude))
+    }
+  }
+}
 
 // location search
 extension LocationViewModel: MKLocalSearchCompleterDelegate {

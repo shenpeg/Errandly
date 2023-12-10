@@ -2,11 +2,13 @@
  //
  import SwiftUI
  import MapKit
+import FirebaseFirestore
 
 struct LocationSearchView: View {
   @EnvironmentObject var locationViewModel: LocationViewModel
   @FocusState private var isFocusedTextField: Bool
-  @State var location: String
+  @State var geoPoint: GeoPoint
+  @State var locationString: String
   
   var body: some View {
     TextField("", text: $locationViewModel.searchableText)
@@ -26,15 +28,21 @@ struct LocationSearchView: View {
         isFocusedTextField = true
       }
     
-    if (!locationViewModel.searchableText.isEmpty && !(locationViewModel.searchableText == location)) {
-      List(locationViewModel.results) { address in
+    if (!locationViewModel.searchableText.isEmpty && !(locationViewModel.searchableText == locationString)) {
+      List(locationViewModel.results) { location in
         Button {
-          locationViewModel.searchableText = address.title
-          location = locationViewModel.searchableText
+          locationViewModel.searchableText = location.title
+          locationString = locationViewModel.searchableText
+          locationViewModel.getCoords(location: location) { foundGeoPoint in
+            if (foundGeoPoint != nil) {
+              geoPoint = foundGeoPoint!
+            }
+          }
+          
         } label: {
           VStack(alignment: .leading) {
-            Text(address.title)
-            Text(address.subtitle)
+            Text(location.title)
+            Text(location.subtitle)
               .font(.caption)
           }
         }
@@ -49,3 +57,40 @@ struct LocationSearchView: View {
   }
   
 }
+
+
+//await MainActor.run {
+//  if (response.mapItems.first != nil) {
+//    return GeoPoint(
+//      latitude: response.mapItems.first!.placemark.coordinate.latitude,
+//      longitude: response.mapItems.first!.placemark.coordinate.longitude
+//    )
+//  }
+//  else {
+//    return nil
+//  }
+//}
+
+//      await MainActor.run {
+//        return GeoPoint(
+//          latitude: response.mapItems.first!.placemark.coordinate.latitude,
+//          longitude: response.mapItems.first!.placemark.coordinate.longitude
+//        )
+//        response.mapItems.forEach{mapItem in
+//          print("-----------")
+//          print(mapItem.placemark.coordinate.longitude)
+//          print(mapItem.placemark.coordinate.latitude)
+//        }
+//        response.mapItems.forEach{mapItem in
+//          print("-----------")
+//          print(mapItem.placemark.coordinate.longitude)
+//          print(mapItem.placemark.coordinate.latitude)
+//        }
+//        self.annotationItems = response.mapItems.map {
+//          AnnotationItem(
+//            latitude: $0.placemark.coordinate.latitude,
+//            longitude: $0.placemark.coordinate.longitude
+//          )
+//        }
+//      }
+//    }
