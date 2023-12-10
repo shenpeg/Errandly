@@ -55,7 +55,6 @@ struct PostErrandView: View {
     
     
     
-    
 //    VStack(alignment: .leading) {
 //      Form {
 //        ErrandFormView(
