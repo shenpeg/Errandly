@@ -26,10 +26,15 @@ struct LocationSearchView: View {
       }
     
     List(self.locationViewModel.results) { address in
-      VStack(alignment: .leading) {
-        Text(address.title)
-        Text(address.subtitle)
-          .font(.caption)
+      Button {
+        print("clickedddddd")
+        locationViewModel.searchableText = address.title
+      } label: {
+        VStack(alignment: .leading) {
+          Text(address.title)
+          Text(address.subtitle)
+            .font(.caption)
+        }
       }
     }
     .listStyle(.plain)
