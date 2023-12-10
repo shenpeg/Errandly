@@ -74,7 +74,7 @@ struct TutorialView: View {
                         .padding(.top, -8)
                       } else {
                          Button(action: {
-                             // Handle "Next" button action (e.g., move to the next tutorial step)
+                             // Handle "Next" button action (move to the next tutorial step)
                              if currentStep < totalSteps {
                                  currentStep += 1
                              } else {
@@ -112,7 +112,7 @@ struct TutorialView: View {
           )
       }
       .onTapGesture {
-          // Handle tap on the overlay (e.g., move to the next tutorial step)
+          // Handle tap on the overlay (move to the next tutorial step)
           if currentStep < totalSteps {
               currentStep += 1
           } else {
@@ -124,7 +124,7 @@ struct TutorialView: View {
     // CUSTOMIZATIONS FOR EACH TUTORIAL STEP
 
     func stepText() -> String {
-        // Define the text for each step based on the current step
+        // Define the text for each step
         switch currentStep {
         case 1:
             return "Welcome to Errandly!"

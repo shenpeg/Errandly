@@ -51,11 +51,14 @@ struct UserProfileInfoView: View {
               
               if (usersViewModel.getCurUser()!.id == user.id) {
                 NavigationLink(value: user) {
-                  Image(systemName: "pencil")
+                  Image(systemName: "square.and.pencil")
                     .foregroundColor(Color.white)
                     .font(.system(size: 20))
                 }
+                .navigationBarHidden(true)
+                .background(Color.clear)
               }
+              
               if (usersViewModel.getCurUser()!.id != user.id) {
                 Button(action: message) {
                     Image(systemName: "message")
@@ -80,9 +83,7 @@ struct UserProfileInfoView: View {
                 .padding(.top, 5)
             }
           }
-          
           Spacer()
-          
         }
         .padding(.bottom, 10)
         

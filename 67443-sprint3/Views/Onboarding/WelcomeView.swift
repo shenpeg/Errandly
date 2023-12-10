@@ -9,17 +9,17 @@ struct WelcomeView: View {
     case .signedIn:
       ContentView()
         .environmentObject(authViewModel)
-    
+      
     case .signedOutBtn:
       SignInView(information: "Sign back in with your college email address.")
         .environmentObject(authViewModel)
-    
+      
     case .signedOut:
       switch showSignInView {
       case true:
-          SignInView(information: "Sign in with your college email address to get started.")
-            .environmentObject(authViewModel)
-      
+        SignInView(information: "Sign in with your college email address to get started.")
+          .environmentObject(authViewModel)
+        
       case false:
         ZStack() {
           LinearGradient(
