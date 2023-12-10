@@ -89,6 +89,7 @@ struct MarketplaceView: View {
             }
             .background(backgroundGray)
             .navigationBarTitle("Errandly Marketplace", displayMode: .inline)
+            
 //            .font(Font.custom("Quicksand-VariableFont_wght", size: 30).weight(.bold))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
