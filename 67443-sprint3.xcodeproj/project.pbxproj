@@ -51,6 +51,9 @@
 		A3B99B712AD63057000822EE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B702AD63057000822EE /* GoogleSignIn */; };
 		A3B99B732AD63057000822EE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B722AD63057000822EE /* GoogleSignInSwift */; };
 		A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4564C2B09584F000678E6 /* FormTags.swift */; };
+		A3D646A12B25479400CC4CB2 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */; };
+		A3D646A32B25486500CC4CB2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D646A22B25486500CC4CB2 /* Location.swift */; };
+		A3D646A52B25497000CC4CB2 /* LocationSearchClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D646A42B25497000CC4CB2 /* LocationSearchClearButton.swift */; };
 		A3EAE9272AE85D880079481D /* Errand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9262AE85D880079481D /* Errand.swift */; };
 		A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE92D2AE862510079481D /* MarketplaceView.swift */; };
 		A3EAE9312AE862D70079481D /* ErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9302AE862D70079481D /* ErrandView.swift */; };
@@ -127,6 +130,9 @@
 		A3B99B652AD62B0D000822EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3C4564C2B09584F000678E6 /* FormTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTags.swift; sourceTree = "<group>"; };
+		A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
+		A3D646A22B25486500CC4CB2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A3D646A42B25497000CC4CB2 /* LocationSearchClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchClearButton.swift; sourceTree = "<group>"; };
 		A3EAE9262AE85D880079481D /* Errand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errand.swift; sourceTree = "<group>"; };
 		A3EAE92D2AE862510079481D /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
 		A3EAE9302AE862D70079481D /* ErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandView.swift; sourceTree = "<group>"; };
@@ -225,6 +231,8 @@
 				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
 				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
 				A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */,
+				A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */,
+				A3D646A42B25497000CC4CB2 /* LocationSearchClearButton.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 				A38B51F82AF0162400D3B8E5 /* User */,
 				A38B51F62AF015F100D3B8E5 /* Errand */,
 				A32A051E2B14154800710CFF /* TabUtil.swift */,
+				A3D646A22B25486500CC4CB2 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -469,6 +478,7 @@
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
 				1554FA002AFB6A6200A13D85 /* TimeFormatViewModel.swift in Sources */,
+				A3D646A52B25497000CC4CB2 /* LocationSearchClearButton.swift in Sources */,
 				A3A0327B2AF1C9920037548C /* UserProfileInfoView.swift in Sources */,
 				A3679F072AF71D9800A3C2DA /* ErrandsViewModel.swift in Sources */,
 				A33FBBE72AF9B52D00CE9FE8 /* UsersViewModel.swift in Sources */,
@@ -483,6 +493,7 @@
 				8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */,
 				8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */,
 				A3EAE97D2AE889580079481D /* UserProfileView.swift in Sources */,
+				A3D646A12B25479400CC4CB2 /* LocationSearchView.swift in Sources */,
 				A3FF43732AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift in Sources */,
 				A3A0327D2AF1C9A20037548C /* UserProfileErrandsView.swift in Sources */,
 				A3FF43712AD6E3A500E1DDA6 /* UserProfileImageView.swift in Sources */,
@@ -491,6 +502,7 @@
 				A3EAE92E2AE862510079481D /* MarketplaceView.swift in Sources */,
 				A339943F2B1760CD003C2989 /* LocationPermissionIconView.swift in Sources */,
 				A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */,
+				A3D646A32B25486500CC4CB2 /* Location.swift in Sources */,
 				6E96F9752B1EB9F4006BF365 /* ErrandFormView.swift in Sources */,
 				A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */,
 				156932FD2B152C270049B461 /* TutorialView.swift in Sources */,

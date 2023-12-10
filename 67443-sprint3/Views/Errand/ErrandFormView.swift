@@ -62,6 +62,10 @@ struct ErrandFormView: View {
           //                .background(RoundedRectangle(cornerRadius: 0).stroke(darkBlue, lineWidth: 1))
           //            }
           //            .listRowSeparator(.hidden)
+          
+//            VStack {
+//              LocationSearchView()
+//            }
 
             VStack(alignment: .leading) {
                 Text("Compensation?")

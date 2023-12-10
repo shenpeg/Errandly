@@ -50,74 +50,80 @@ struct PostErrandView: View {
   }
   
   var body: some View {
-    VStack(alignment: .leading) {
-      Form {
-        ErrandFormView(
-          title: $title,
-            description: $description,
-            selectedTags: $selectedTags,
-            dateDue: $dateDue,
-            pay: $pay,
-            payBool: $payBool,
-            payString: $payString
-        )
-        
-        Section {
-          FormButton(title: "Post") {
-            
-            if payBool == false {
-              payString = "0.00"
-            }
-            let formFuncts = FormFunctions(
-                              title: $title,
-                              description: $description,
-                              dateDue: $dateDue,
-                              pay: $pay,
-                              payBool: $payBool,
-                              payString: $payString,
-                              selectedTags: $selectedTags,
-                              errorMsg: $errorMsg
-                            )
-            
-            //string to Double
-            formFuncts.payStringToPay()
-            
-            if formFuncts.isValidErrand() {
-              Task {
-                // necessary to avoid the following errors, as this will resign the text fields:
-                // - AttributeGraph: cycle detected through attribute
-                // - Modifying state during view update, this will cause undefined behavior.
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                
-                await addErrand()
-                formFuncts.clearFields()
-                
-                // redirect to user profile
-                tabUtil.tabSelection = 3
-                tabUtil.profileTabSelection = "Posted Errands"
-                profilePath = NavigationPath()
-              }
-            }
-            else {
-              showErrorAlert = true
-            }
-          } //button
-          .alert(isPresented: $showErrorAlert) {
-            Alert(
-              title: Text(errorMsg),
-              dismissButton: .cancel(Text("OK")) {
-              }
-            )
-          }
-
-        } //section
-      } //form
-      .background(Color.white)
-      .accentColor(darkBlue)
-      .scrollContentBackground(.hidden)
-      .gesture(DragGesture().onChanged({ _ in
-                          UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)}))
-    } //end vstack
-    .listRowSeparator(.hidden)
+    LocationSearchView()
+    
+    
+    
+    
+    
+//    VStack(alignment: .leading) {
+//      Form {
+//        ErrandFormView(
+//          title: $title,
+//            description: $description,
+//            selectedTags: $selectedTags,
+//            dateDue: $dateDue,
+//            pay: $pay,
+//            payBool: $payBool,
+//            payString: $payString
+//        )
+//        
+//        Section {
+//          FormButton(title: "Post") {
+//            
+//            if payBool == false {
+//              payString = "0.00"
+//            }
+//            let formFuncts = FormFunctions(
+//                              title: $title,
+//                              description: $description,
+//                              dateDue: $dateDue,
+//                              pay: $pay,
+//                              payBool: $payBool,
+//                              payString: $payString,
+//                              selectedTags: $selectedTags,
+//                              errorMsg: $errorMsg
+//                            )
+//            
+//            //string to Double
+//            formFuncts.payStringToPay()
+//            
+//            if formFuncts.isValidErrand() {
+//              Task {
+//                // necessary to avoid the following errors, as this will resign the text fields:
+//                // - AttributeGraph: cycle detected through attribute
+//                // - Modifying state during view update, this will cause undefined behavior.
+//                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//                
+//                await addErrand()
+//                formFuncts.clearFields()
+//                
+//                // redirect to user profile
+//                tabUtil.tabSelection = 3
+//                tabUtil.profileTabSelection = "Posted Errands"
+//                profilePath = NavigationPath()
+//              }
+//            }
+//            else {
+//              showErrorAlert = true
+//            }
+//          } //button
+//          .alert(isPresented: $showErrorAlert) {
+//            Alert(
+//              title: Text(errorMsg),
+//              dismissButton: .cancel(Text("OK")) {
+//              }
+//            )
+//          }
+//
+//        } //section
+//      } //form
+//      .background(Color.white)
+//      .accentColor(darkBlue)
+//      .scrollContentBackground(.hidden)
+//      .gesture(DragGesture().onChanged({ _ in
+//                          UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)}))
+//    } //end vstack
+//    .listRowSeparator(.hidden)
   } //end of body
 } //end of struct PostErrandView

@@ -1,11 +1,23 @@
 import SwiftUI
 import FirebaseFirestore
 import CoreLocation
+import MapKit
 
 class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
+  // current location
   @Published var authorizationStatus : CLAuthorizationStatus = .notDetermined
   private let locationManager = CLLocationManager()
   @Published var cordinates : CLLocationCoordinate2D?
+  
+  // location search
+  @Published private(set) var results: Array<Location> = []
+  @Published var searchableText = ""
+  
+  private lazy var localSearchCompleter: MKLocalSearchCompleter = {
+    let completer = MKLocalSearchCompleter()
+    completer.delegate = self
+    return completer
+  }()
 
   override init() {
     super.init()
@@ -14,6 +26,7 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
     locationManager.startUpdatingLocation()
   }
 
+  // current location
   func requestLocationPermission()  {
     locationManager.requestWhenInUseAuthorization()
   }
@@ -41,5 +54,26 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
     let distance = userCoord.distance(from: errandCoord) * 0.000621371 // convert meters to miles
     return "\(String(format: "%.1f", distance)) mi. away"
   }
+  
+  // location search
+  func searchAddress(_ searchableText: String) {
+    guard searchableText.isEmpty == false else { return }
+    localSearchCompleter.queryFragment = searchableText
+  }
 
  }
+
+// location search
+extension LocationViewModel: MKLocalSearchCompleterDelegate {
+  func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+    Task { @MainActor in
+      results = completer.results.map {
+        Location(title: $0.title, subtitle: $0.subtitle)
+      }
+    }
+  }
+  
+  func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+    print(error)
+  }
+}
