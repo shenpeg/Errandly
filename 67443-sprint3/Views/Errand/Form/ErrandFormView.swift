@@ -16,8 +16,7 @@ struct ErrandFormView: View {
         Section {
           if title == "" {
             TextField("Errand Title", text: $title)
-              .font(Font.custom("Quicksand-Bold", size: 30).weight(.bold))
-//              .font(.system(size: 38))
+              .font(.system(size: 38))
               .underline(true)
               .foregroundColor(black)
               .listRowSeparator(.hidden)
@@ -35,7 +34,7 @@ struct ErrandFormView: View {
                 .lineLimit(10, reservesSpace: true)
                 .background(Color.white)
                 .padding(5)
-                .background(RoundedRectangle(cornerRadius: 3).stroke(black, lineWidth: 1))
+                .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
                 .listRowSeparator(.hidden)
           }
           else {
@@ -43,7 +42,7 @@ struct ErrandFormView: View {
               .lineLimit(10, reservesSpace: true)
               .background(Color.white)
               .padding(5)
-              .background(RoundedRectangle(cornerRadius: 3).stroke(black, lineWidth: 1))
+              .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
               .listRowSeparator(.hidden)
           }
             
@@ -73,26 +72,27 @@ struct ErrandFormView: View {
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .frame(width: 20, height: 20)
-                    .background(payBool ? black : Color.white)
+                    .background(payBool ? darkBlue : Color.white)
                     .cornerRadius(100)
                     .foregroundColor(Color.black)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 100)
                         .stroke(black, lineWidth: 2)
-                        .scaleEffect(0.5))
+                        .scaleEffect(0.5)
+                        )
                     Text("Yes     ")
 
                     if payBool {
                       if payString == "" {
                         TextField("How much?", text: $payString)
                           .padding(5)
-                          .background(RoundedRectangle(cornerRadius: 8).stroke(black, lineWidth: 1))
+                          .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
                           .keyboardType(.decimalPad)
                       }
                       else {
                         TextField(payString, text: $payString)
                           .padding(5)
-                          .background(RoundedRectangle(cornerRadius: 8).stroke(black, lineWidth: 1))
+                          .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
                           .keyboardType(.decimalPad)
                       }
                     }
@@ -104,7 +104,7 @@ struct ErrandFormView: View {
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .frame(width: 20, height: 20)
-                    .background(payBool ? Color.white : black)
+                    .background(payBool ? Color.white : darkBlue)
                     .cornerRadius(100)
                     .foregroundColor(black)
                     .padding()

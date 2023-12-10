@@ -56,7 +56,7 @@ struct ErrandDetailsView: View {
                         Text(tag)
                           .font(.callout)
                           .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                          .foregroundColor(darkBlue)
+                          .foregroundColor(black)
                           .background(Capsule().fill(lightGray))
                       }
                     }
@@ -66,8 +66,8 @@ struct ErrandDetailsView: View {
                     
                     // Horizontal separator line
                     Rectangle()
-                      .frame(height: 1)
-                      .foregroundColor(darkBlue)
+                    .frame(height: 1)
+                      .foregroundColor(black)
                   
                     HStack {
                       Text(errand.description)
@@ -75,8 +75,8 @@ struct ErrandDetailsView: View {
                     
                     // Horizontal separator line
                     Rectangle()
-                      .frame(height: 1)
-                      .foregroundColor(darkBlue)
+                    .frame(height: 1)
+                      .foregroundColor(black)
                   
                     HStack {
                         Text("Date Due:")

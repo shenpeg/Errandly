@@ -23,6 +23,7 @@ struct ErrandView: View {
   var body: some View {
     let dateFormat = DateFormatter()
     dateFormat.dateFormat = "MM/dd/YY"
+    
     let timeDifference = timeViewModel.calculateTimeDifference(from: errand.datePosted)
     
     return ZStack {
@@ -32,7 +33,7 @@ struct ErrandView: View {
       VStack(alignment: .leading, spacing: 0, content: {
         HStack(alignment: .top) {
           Text(errand.name)
-            .font(.title2)
+            .font(.system(size: 25))
           
           Spacer()
           
@@ -40,10 +41,9 @@ struct ErrandView: View {
             Text("due by")
             Text("\(dateFormat.string(from: errand.dateDue))")
           }
-          .font(.footnote)
-          
+          .font(.system(size: 14))
         }
-        .padding(.bottom, 3)
+//        .padding(.bottom, 1)
         
         HStack {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
@@ -59,36 +59,38 @@ struct ErrandView: View {
           }
           Text(timeViewModel.formatTimeDifference(timeDifference))
         }
-        .font(.footnote)
+        .font(.system(size: 14))
         .padding(.bottom, 10)
         
         HStack() {
           ForEach(errand.tags, id: \.self) {tag in
-            Text(tag)
-              .font(.footnote)
-              .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-              .foregroundColor(darkBlue)
-              .background(Capsule().fill(lightGray))
+            TagView(tag: tag, viewOnly: true, isSelected: nil)
           }
         }
         .padding(.bottom, 3)
         
-        Spacer()
-        Divider()
-          .overlay(darkBlue)
-          .opacity(1)
+        Rectangle()
+          .frame(height: 30)
+          .foregroundColor(white)
+          .padding(.horizontal, -10)
+        Rectangle()
+          .frame(height: 0.8)
+          .foregroundColor(black)
+          .padding(.horizontal, -20)
         
         HStack() {
           Text("$\(String(format: "%.2f", errand.pay)) ")
+            .font(.system(size: 22))
           Spacer()
           Text("view details")
-            .font(.headline)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 3)
+            .font(.system(size: 18))
+            .fontWeight(.bold)
+            .padding(.init(top: 4, leading: 15, bottom: 5, trailing: 15))
             .foregroundColor(.white)
             .background(Capsule().fill(darkBlue))
         }
         .padding(.top, 10)
+        .padding(.bottom, 0)
         
       })
       .padding(.vertical, 10)
@@ -96,11 +98,12 @@ struct ErrandView: View {
       
     }
     .listRowBackground(
-      RoundedRectangle(cornerRadius: 20)
-        .stroke(darkBlue, lineWidth: 1)
-        .background(RoundedRectangle(cornerRadius: 20).fill(.white))
-        .offset(y: -5)
-        .padding(.vertical, 10)
+      RoundedRectangle(cornerRadius: 10)
+        .stroke(black, lineWidth: 0.8)
+        .background(RoundedRectangle(cornerRadius: 10).fill(.white))
+//        .offset(y: 5)
+        .padding(.top, 10)
+        .padding(.bottom, 16)
         .padding(.horizontal, 20)
     )
     .listRowSeparator(.hidden)

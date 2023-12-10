@@ -12,8 +12,15 @@ struct UserProfileInfoView: View {
   var body: some View {
     
     ZStack (alignment: .topLeading) {
-      darkBlue
-          .ignoresSafeArea()
+//      darkBlue
+      
+      LinearGradient(
+        gradient: Gradient(
+          colors: [darkerMint, darkBlue]),
+        startPoint: .top,
+        endPoint: .bottom
+      )
+      .ignoresSafeArea()
       
       if (usersViewModel.getCurUser()!.id == user.id) {
         HStack {
@@ -23,7 +30,7 @@ struct UserProfileInfoView: View {
             VStack (spacing: 0) {
               Image(systemName: "rectangle.portrait.and.arrow.forward")
                 .foregroundColor(Color.white)
-                .font(.system(size: 15))
+                .font(.system(size: 16))
               Text("Sign out")
                 .foregroundColor(Color.white)
                 .font(.caption)
@@ -94,10 +101,9 @@ struct UserProfileInfoView: View {
             
             ForEach(user.can_help_with, id: \.self) {tag in
               Text(tag)
-                .font(.caption)
-                .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-                .foregroundColor(darkGray)
-                .background(Capsule().fill(mint))
+                .font(.system(size: 14))
+                .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
+                .foregroundColor(black)                .background(Capsule().fill(mint))
             }
           }
         }

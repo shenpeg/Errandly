@@ -7,11 +7,13 @@ let black = Color.black
 let white = Color.white
 let darkBlue = Color(red: 0.09, green: 0.34, blue: 0.95)
 let mint = Color(red: 0.84, green: 0.99, blue: 0.96)
+let darkerMint = Color(red: 0.506, green: 0.698, blue: 0.953)
 let lightPurple = Color(red: 0.91, green: 0.60, blue: 0.98)
 let darkGray = Color(red: 0.25, green: 0.25, blue: 0.25)
 let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
-
-
+let backgroundGray = Color(red: 0.945, green: 0.945, blue: 0.945)
+//Color(red: 0.965, green: 0.961, blue: 0.937)
+// Color(red: 0.949, green: 0.965, blue: 0.937)
 
 // tags
 let tags: [String] = [
@@ -84,6 +86,7 @@ struct ContentView: View {
         isOnboardingPresented ? TutorialView(isOnboardingPresented: $isOnboardingPresented)
                                .transition(.opacity) : nil
     )
+    .accentColor(darkBlue)
 }
   
   private func tabSelection() -> Binding<Int> {

@@ -13,6 +13,7 @@ struct UserProfileView: View {
       
       UserProfileErrandsView(user: user)
     }
+    .background(backgroundGray)
   }
 }
 

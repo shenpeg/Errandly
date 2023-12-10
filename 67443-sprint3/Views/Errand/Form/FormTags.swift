@@ -5,8 +5,6 @@ struct FormTags: View {
   @Binding var formTags: [String]
   
   var body: some View {
-    
-    // refactor?
     HStack {
       ForEach(0..<3) { col in
         let tag = tags[col]
@@ -54,10 +52,7 @@ struct FormTags: View {
       }
     }
     .padding(.bottom, 10)
-
-    
   }
-  
 }
 
 struct SelectTag: View {
@@ -74,15 +69,7 @@ struct SelectTag: View {
         formTags.removeAll(where: { $0 == tag })
       }
     } ) {
-      Text(self.tag)
-        .font(.footnote)
-        .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-        .foregroundColor(black)
-        .background(Capsule().fill(self.isSelected ? mint : white))
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.black, lineWidth: 1)
-      )
+      TagView(tag: self.tag, viewOnly: false, isSelected: self.isSelected)
     }
     // https://www.hackingwithswift.com/forums/swiftui/tap-button-in-hstack-activates-all-button-actions-ios-14-swiftui-2/2952
     // why does work though??

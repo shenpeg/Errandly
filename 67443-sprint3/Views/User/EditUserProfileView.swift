@@ -50,7 +50,7 @@ struct EditUserProfileView: View {
               .padding(.bottom, 5)
             TextField("###-###-####", text: $phoneNumber)
               .padding(5)
-              .overlay(RoundedRectangle(cornerRadius: 10).stroke(darkBlue, lineWidth: 1))
+              .overlay(RoundedRectangle(cornerRadius: 3).stroke(darkBlue, lineWidth: 1))
           }
           .listRowSeparator(.hidden)
           
@@ -64,18 +64,12 @@ struct EditUserProfileView: View {
           
           if self.isValidUser() {
             HStack {
-              Spacer()
-              Button("Save") {
+              FormButton(title: "Save") {
                 editUser()
                 clearFields()
                 dismiss()
               }
-              .foregroundColor(.white)
-              .padding(.horizontal, 20)
-              .padding(.vertical, 8)
-              .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
               
-              Spacer()
             }
           }
         }

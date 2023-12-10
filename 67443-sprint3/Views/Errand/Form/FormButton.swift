@@ -15,9 +15,10 @@ struct FormButton: View {
     var body: some View {
         Button(title, action: action)
             .buttonStyle(BorderlessButtonStyle())
-            .foregroundColor(.white)
-            .font(.headline)
-            .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
+            .foregroundColor(white)
+            .font(.system(size: 18))
+            .fontWeight(.bold)
+            .padding(.init(top: 4, leading: 15, bottom: 5, trailing: 15))
             .background(RoundedRectangle(cornerRadius: 20)
               .fill(darkBlue))
     }

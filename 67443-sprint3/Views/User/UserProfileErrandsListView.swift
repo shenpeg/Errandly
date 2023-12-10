@@ -15,6 +15,7 @@ struct UserProfileErrandsListView: View {
       }
     }
     .listStyle(.plain)
+    .background(Color(red: 0.945, green: 0.945, blue: 0.945))
   }
   
   // UserProfileErrandsListView
@@ -124,12 +125,12 @@ struct PickedUpErrandList: View {
     Section(header: HeaderStyle(header: header)
       .font(.title3)
       .italic()
-      .foregroundColor(darkGray)
+      .foregroundColor(black)
     ) {
       ForEach(pickedUpErrands.sorted(by: {$0.datePosted > $1.datePosted})) { errand in
         if (isCompleted) {
           ErrandView(errand: errand, user: user)
-            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
+            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(black.opacity(0.2)))
             .padding(.bottom, 10)
         } else {
           ErrandView(errand: errand, user: user)
