@@ -28,11 +28,20 @@ struct ErrandDetailsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
+                      if (errandsViewModel.getErrand(errand.id!).status.contains("in progress")) {
+                        Text("in progress")
+                          .font(.headline)
+                          .foregroundColor(darkBlue)
+                          .italic()
+                          .bold()
+                      }
+                      else {
                         Text(errandsViewModel.getErrand(errand.id!).status)
-                            .font(.headline)
-                            .foregroundColor(darkBlue)
-                            .italic()
-                            .bold()
+                          .font(.headline)
+                          .foregroundColor(darkBlue)
+                          .italic()
+                          .bold()
+                      }
                       
                       Spacer()
                       

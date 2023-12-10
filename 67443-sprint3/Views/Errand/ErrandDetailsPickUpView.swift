@@ -75,7 +75,7 @@ struct ErrandDetailsPickUpView: View {
             }
           }
         }
-        else if (errandsViewModel.getErrand(errand.id!).status == "in progress") {
+        else if (errandsViewModel.getErrand(errand.id!).status.contains("in progress")) {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
               Button(action: {
                   isCompletionAlertPresented = true
