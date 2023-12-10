@@ -57,7 +57,7 @@ struct ErrandFormView: View {
 
             VStack(alignment: .leading) {
               Text("Location:")
-              LocationSearchView()
+              LocationSearchView(location: "")
             }
             .listRowSeparator(.hidden)
 

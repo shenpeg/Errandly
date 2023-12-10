@@ -6,6 +6,7 @@
 struct LocationSearchView: View {
   @EnvironmentObject var locationViewModel: LocationViewModel
   @FocusState private var isFocusedTextField: Bool
+  @State var location: String
   
   var body: some View {
     TextField("", text: $locationViewModel.searchableText)
@@ -15,7 +16,7 @@ struct LocationSearchView: View {
       .focused($isFocusedTextField)
       .onReceive(
         locationViewModel.$searchableText.debounce(
-          for: .seconds(1),
+          for: .seconds(0.5),
           scheduler: DispatchQueue.main
         )
       ) {
@@ -25,21 +26,26 @@ struct LocationSearchView: View {
         isFocusedTextField = true
       }
     
-    List(self.locationViewModel.results) { address in
-      Button {
-        print("clickedddddd")
-        locationViewModel.searchableText = address.title
-      } label: {
-        VStack(alignment: .leading) {
-          Text(address.title)
-          Text(address.subtitle)
-            .font(.caption)
+    if (!locationViewModel.searchableText.isEmpty && !(locationViewModel.searchableText == location)) {
+      List(locationViewModel.results) { address in
+        Button {
+          locationViewModel.searchableText = address.title
+          location = locationViewModel.searchableText
+        } label: {
+          VStack(alignment: .leading) {
+            Text(address.title)
+            Text(address.subtitle)
+              .font(.caption)
+          }
         }
       }
+      .listStyle(.plain)
+      .scrollContentBackground(.hidden)
+      .frame(height: 150)
     }
-    .listStyle(.plain)
-    .scrollContentBackground(.hidden)
-    .frame(height: 150)
+    else {
+      EmptyView()
+    }
   }
   
 }
