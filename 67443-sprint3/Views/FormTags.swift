@@ -20,7 +20,7 @@ struct FormTags: View {
     .padding(.bottom, 10)
     
     HStack {
-      ForEach(3..<7) { col in
+      ForEach(3..<6) { col in
         let tag = tags[col]
         SelectTag(
           formTags: $formTags,
@@ -32,7 +32,7 @@ struct FormTags: View {
     .padding(.bottom, 10)
     
     HStack {
-      ForEach(7..<10) { col in
+      ForEach(6..<9) { col in
         let tag = tags[col]
         SelectTag(
           formTags: $formTags,
@@ -42,6 +42,19 @@ struct FormTags: View {
       }
     }
     .padding(.bottom, 10)
+    
+    HStack {
+      ForEach(9..<11) { col in
+        let tag = tags[col]
+        SelectTag(
+          formTags: $formTags,
+          tag: tag,
+          isSelected: formTags.contains(tag)
+        )
+      }
+    }
+    .padding(.bottom, 10)
+
     
   }
   
@@ -56,7 +69,6 @@ struct SelectTag: View {
     Button(action: {
       if formTags.count < 3 && !formTags.contains(tag) {
         formTags.append(tag)
-        print("---------------appending--------")
       }
       else {
         formTags.removeAll(where: { $0 == tag })
@@ -65,12 +77,17 @@ struct SelectTag: View {
       Text(self.tag)
         .font(.footnote)
         .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
-        .foregroundColor(darkBlue)
-        .background(Capsule().fill(self.isSelected ? mint : lightGray))
+        .foregroundColor(black)
+        .background(Capsule().fill(self.isSelected ? mint : white))
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.black, lineWidth: 1)
+      )
     }
     // https://www.hackingwithswift.com/forums/swiftui/tap-button-in-hstack-activates-all-button-actions-ios-14-swiftui-2/2952
     // why does work though??
       .buttonStyle(BorderlessButtonStyle())
+      
   }
 }
 

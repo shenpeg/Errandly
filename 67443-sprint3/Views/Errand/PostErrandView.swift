@@ -113,7 +113,7 @@ struct PostErrandView: View {
         } //section
       } //form
       .background(Color.white)
-      .accentColor(darkBlue)
+      .accentColor(black)
       .scrollContentBackground(.hidden)
       .gesture(DragGesture().onChanged({ _ in
                           UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)}))

@@ -16,16 +16,17 @@ struct ErrandFormView: View {
         Section {
           if title == "" {
             TextField("Errand Title", text: $title)
-              .font(.system(size: 38))
+              .font(Font.custom("Quicksand-Bold", size: 30).weight(.bold))
+//              .font(.system(size: 38))
               .underline(true)
-              .foregroundColor(darkBlue)
+              .foregroundColor(black)
               .listRowSeparator(.hidden)
           }
           else {
             TextField(title, text: $title)
               .font(.system(size: 38))
               .underline(true)
-              .foregroundColor(darkBlue)
+              .foregroundColor(black)
               .listRowSeparator(.hidden)
           }
           
@@ -34,7 +35,7 @@ struct ErrandFormView: View {
                 .lineLimit(10, reservesSpace: true)
                 .background(Color.white)
                 .padding(5)
-                .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
+                .background(RoundedRectangle(cornerRadius: 3).stroke(black, lineWidth: 1))
                 .listRowSeparator(.hidden)
           }
           else {
@@ -42,7 +43,7 @@ struct ErrandFormView: View {
               .lineLimit(10, reservesSpace: true)
               .background(Color.white)
               .padding(5)
-              .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
+              .background(RoundedRectangle(cornerRadius: 3).stroke(black, lineWidth: 1))
               .listRowSeparator(.hidden)
           }
             
@@ -67,17 +68,17 @@ struct ErrandFormView: View {
                 Text("Compensation?")
               
                 HStack {
-                    Button(action: { payBool = true }) { //payString = "1";
+                    Button(action: { payBool = true }) {
                         Text(" ")
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .frame(width: 20, height: 20)
-                    .background(payBool ? darkBlue : Color.white)
+                    .background(payBool ? black : Color.white)
                     .cornerRadius(100)
                     .foregroundColor(Color.black)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 100)
-                        .stroke(darkBlue, lineWidth: 2)
+                        .stroke(black, lineWidth: 2)
                         .scaleEffect(0.5))
                     Text("Yes     ")
 
@@ -85,13 +86,13 @@ struct ErrandFormView: View {
                       if payString == "" {
                         TextField("How much?", text: $payString)
                           .padding(5)
-                          .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
+                          .background(RoundedRectangle(cornerRadius: 8).stroke(black, lineWidth: 1))
                           .keyboardType(.decimalPad)
                       }
                       else {
                         TextField(payString, text: $payString)
                           .padding(5)
-                          .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
+                          .background(RoundedRectangle(cornerRadius: 8).stroke(black, lineWidth: 1))
                           .keyboardType(.decimalPad)
                       }
                     }
@@ -103,12 +104,12 @@ struct ErrandFormView: View {
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .frame(width: 20, height: 20)
-                    .background(payBool ? Color.white : darkBlue)
+                    .background(payBool ? Color.white : black)
                     .cornerRadius(100)
-                    .foregroundColor(darkBlue)
+                    .foregroundColor(black)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 100)
-                        .stroke(darkBlue, lineWidth: 2)
+                        .stroke(black, lineWidth: 2)
                         .scaleEffect(0.5))
                     Text("No      ")
                 }

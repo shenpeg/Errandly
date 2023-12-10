@@ -74,6 +74,7 @@ struct EditUserProfileView: View {
               .padding(.horizontal, 20)
               .padding(.vertical, 8)
               .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+              
               Spacer()
             }
           }

@@ -74,7 +74,8 @@ struct MarketplaceView: View {
                             .padding(.bottom, 10)
                     }
                 }
-                .navigationBarTitle("Marketplace", displayMode: .inline)
+                .navigationBarTitle("Errandly.", displayMode: .inline)
+                .font(Font.custom("Quicksand-VariableFont_wght", size: 30).weight(.bold))
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         LocationPermissionIconView()

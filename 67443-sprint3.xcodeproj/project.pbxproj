@@ -13,6 +13,9 @@
 		156932FD2B152C270049B461 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156932FC2B152C270049B461 /* TutorialView.swift */; };
 		15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
+		6E4BAD1D2B24F16E0057BEA9 /* Quicksand in Resources */ = {isa = PBXBuildFile; fileRef = 6E4BAD1C2B24F16D0057BEA9 /* Quicksand */; };
+		6E7F6AD92B24FD6E0040EA8A /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F6AD82B24FD6D0040EA8A /* Quicksand-VariableFont_wght.ttf */; };
+		6E7F6ADB2B24FE870040EA8A /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F6ADA2B24FE870040EA8A /* Quicksand-Bold.ttf */; };
 		6E96F9722B1C04F7006BF365 /* EditErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9712B1C04F7006BF365 /* EditErrandView.swift */; };
 		6E96F9752B1EB9F4006BF365 /* ErrandFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */; };
 		6E96F9772B1EC5A6006BF365 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9762B1EC5A6006BF365 /* FormButton.swift */; };
@@ -99,6 +102,9 @@
 		156932FC2B152C270049B461 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRunner.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
+		6E4BAD1C2B24F16D0057BEA9 /* Quicksand */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Quicksand; path = ../../../../Downloads/Quicksand; sourceTree = "<group>"; };
+		6E7F6AD82B24FD6D0040EA8A /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		6E7F6ADA2B24FE870040EA8A /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		6E96F9712B1C04F7006BF365 /* EditErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditErrandView.swift; sourceTree = "<group>"; };
 		6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandFormView.swift; sourceTree = "<group>"; };
 		6E96F9762B1EC5A6006BF365 /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
@@ -273,6 +279,9 @@
 		A3B99B602AD62B0B000822EE /* 67443-sprint3 */ = {
 			isa = PBXGroup;
 			children = (
+				6E7F6AD82B24FD6D0040EA8A /* Quicksand-VariableFont_wght.ttf */,
+				6E7F6ADA2B24FE870040EA8A /* Quicksand-Bold.ttf */,
+				6E4BAD1C2B24F16D0057BEA9 /* Quicksand */,
 				A3EAE9252AE85D7C0079481D /* Models */,
 				A3FF436B2AD6E31300E1DDA6 /* Views */,
 				A3FF436A2AD6E2F800E1DDA6 /* ViewModels */,
@@ -444,6 +453,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E7F6ADB2B24FE870040EA8A /* Quicksand-Bold.ttf in Resources */,
+				6E4BAD1D2B24F16E0057BEA9 /* Quicksand in Resources */,
+				6E7F6AD92B24FD6E0040EA8A /* Quicksand-VariableFont_wght.ttf in Resources */,
 				A3B99B692AD62B0D000822EE /* Preview Assets.xcassets in Resources */,
 				A33FBBE52AF9910A00CE9FE8 /* GoogleService-Info.plist in Resources */,
 				A33726072AE5B00300D4A698 /* Settings.bundle in Resources */,

@@ -18,6 +18,7 @@ struct FormButton: View {
             .foregroundColor(.white)
             .font(.headline)
             .padding(.init(top: 5, leading: 20, bottom: 8, trailing: 20))
-            .background(RoundedRectangle(cornerRadius: 20).fill(darkBlue))
+            .background(RoundedRectangle(cornerRadius: 20)
+              .fill(darkBlue))
     }
 }
