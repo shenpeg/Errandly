@@ -13,6 +13,7 @@ struct FormFunctions {
   @Binding var description: String
   @Binding var dateDue: Date
   @Binding var location: GeoPoint
+  @Binding var locationString: String
   @Binding var pay: Double
   @Binding var payBool: Bool
   @Binding var payString: String
@@ -24,6 +25,7 @@ struct FormFunctions {
     description = ""
     dateDue = Date()
     location = GeoPoint(latitude: 40.443336, longitude: -79.944023)
+    locationString = ""
     payBool = true
     payString = ""
     pay = 0.0
@@ -44,6 +46,11 @@ struct FormFunctions {
     }
     if description.isEmpty {
       errorMsg = "Please write some details on what you need help with"
+      return false
+    }
+    
+    if ((location.latitude == 0 && location.longitude == 0) || locationString.isEmpty) {
+      errorMsg = "Please enter a location"
       return false
     }
 

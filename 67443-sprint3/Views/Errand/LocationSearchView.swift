@@ -8,10 +8,10 @@ struct LocationSearchView: View {
   @EnvironmentObject var locationViewModel: LocationViewModel
   @FocusState private var isFocusedTextField: Bool
   @Binding var geoPoint: GeoPoint
-  @State var locationString: String
+  @Binding var locationString: String
   
   var body: some View {
-    TextField("", text: $locationViewModel.searchableText)
+    TextField(locationViewModel.searchableText, text: $locationViewModel.searchableText)
       .padding(5)
       .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
       .autocorrectionDisabled()
@@ -26,24 +26,38 @@ struct LocationSearchView: View {
       }
       .onAppear {
         isFocusedTextField = true
+        if (!(geoPoint.latitude == 0 && geoPoint.longitude == 0)) {
+          locationViewModel.getAddress(geoPoint: geoPoint) { foundAddress in
+            if (foundAddress != nil) {
+              locationString = foundAddress!
+              locationViewModel.searchableText = locationString
+            }
+          }
+        }
+        else {
+          locationString = ""
+          locationViewModel.searchableText = locationString
+        }
       }
     
     if (!locationViewModel.searchableText.isEmpty && !(locationViewModel.searchableText == locationString)) {
       List(locationViewModel.results) { location in
-        Button {
-          locationViewModel.searchableText = location.title
-          locationString = locationViewModel.searchableText
-          locationViewModel.getCoords(location: location) { foundGeoPoint in
-            if (foundGeoPoint != nil) {
-              geoPoint = foundGeoPoint!
+        if (location.subtitle != "Search Nearby") {
+          Button {
+            locationViewModel.searchableText = location.title
+            locationString = locationViewModel.searchableText
+            locationViewModel.getCoords(location: location) { foundGeoPoint in
+              if (foundGeoPoint != nil) {
+                geoPoint = foundGeoPoint!
+              }
             }
-          }
-          
-        } label: {
-          VStack(alignment: .leading) {
-            Text(location.title)
-            Text(location.subtitle)
-              .font(.caption)
+            
+          } label: {
+            VStack(alignment: .leading) {
+              Text(location.title)
+              Text(location.subtitle)
+                .font(.caption)
+            }
           }
         }
       }

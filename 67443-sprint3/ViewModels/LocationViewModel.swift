@@ -61,20 +61,33 @@ class LocationViewModel:NSObject, ObservableObject, CLLocationManagerDelegate {
     localSearchCompleter.queryFragment = searchableText
   }
   
-  func getCoords(location: Location, completion: @escaping (_ huh: GeoPoint?)-> Void) {
+  func getCoords(location: Location, completion: @escaping (_ geoPoint: GeoPoint?)-> Void) {
     let addressString = location.subtitle.contains(location.title)
       ? location.subtitle : location.title + ", " + location.subtitle
     let geocoder = CLGeocoder()
     
     geocoder.geocodeAddressString(addressString) { (placemarks, error) in
-      guard let placemarks = placemarks,
-      let foundCoord = placemarks.first?.location?.coordinate else {
+      guard let placemarks = placemarks, let foundCoord = placemarks.first?.location?.coordinate else {
         completion(nil)
         return
       }
       completion(GeoPoint(latitude: foundCoord.latitude, longitude: foundCoord.longitude))
     }
   }
+  
+  func getAddress(geoPoint: GeoPoint, completion: @escaping (_ address: String?)-> Void) {
+    let geocoder = CLGeocoder()
+    
+    geocoder.reverseGeocodeLocation(CLLocation.init(latitude: geoPoint.latitude, longitude: geoPoint.longitude)) { (places, error) in
+      guard let places = places, let foundAddress = places.first else {
+        completion(nil)
+        return
+      }
+//      completion(foundAddress.thoroughfare)
+      completion(foundAddress.name)
+    }
+  }
+  
 }
 
 // location search
