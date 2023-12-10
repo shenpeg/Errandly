@@ -8,6 +8,7 @@ struct ErrandFormView: View {
     @Binding var description: String
     @Binding var selectedTags: [String]
     @Binding var dateDue: Date
+    @Binding var location: GeoPoint
     @Binding var pay: Double
     @Binding var payBool: Bool
     @Binding var payString: String
@@ -57,7 +58,7 @@ struct ErrandFormView: View {
 
             VStack(alignment: .leading) {
               Text("Location:")
-              LocationSearchView(geoPoint: GeoPoint(latitude: 0, longitude: 0), locationString: "")
+              LocationSearchView(geoPoint: $location, locationString: "")
             }
             .listRowSeparator(.hidden)
 

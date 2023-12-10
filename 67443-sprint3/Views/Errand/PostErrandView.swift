@@ -54,12 +54,13 @@ struct PostErrandView: View {
       Form {
         ErrandFormView(
           title: $title,
-            description: $description,
-            selectedTags: $selectedTags,
-            dateDue: $dateDue,
-            pay: $pay,
-            payBool: $payBool,
-            payString: $payString
+          description: $description,
+          selectedTags: $selectedTags,
+          dateDue: $dateDue,
+          location: $location,
+          pay: $pay,
+          payBool: $payBool,
+          payString: $payString
         )
         
         Section {
@@ -72,6 +73,7 @@ struct PostErrandView: View {
                               title: $title,
                               description: $description,
                               dateDue: $dateDue,
+                              location: $location,
                               pay: $pay,
                               payBool: $payBool,
                               payString: $payString,

@@ -102,6 +102,7 @@ struct EditErrandView: View {
             description: $description,
             selectedTags: $selectedTags,
             dateDue: $dateDue,
+            location: $location,
             pay: $pay,
             payBool: $payBool,
             payString: $payString
@@ -120,6 +121,7 @@ struct EditErrandView: View {
                               title: $title,
                               description: $description,
                               dateDue: $dateDue,
+                              location: $location,
                               pay: $pay,
                               payBool: $payBool,
                               payString: $payString,

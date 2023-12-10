@@ -7,7 +7,7 @@ import FirebaseFirestore
 struct LocationSearchView: View {
   @EnvironmentObject var locationViewModel: LocationViewModel
   @FocusState private var isFocusedTextField: Bool
-  @State var geoPoint: GeoPoint
+  @Binding var geoPoint: GeoPoint
   @State var locationString: String
   
   var body: some View {
@@ -57,40 +57,3 @@ struct LocationSearchView: View {
   }
   
 }
-
-
-//await MainActor.run {
-//  if (response.mapItems.first != nil) {
-//    return GeoPoint(
-//      latitude: response.mapItems.first!.placemark.coordinate.latitude,
-//      longitude: response.mapItems.first!.placemark.coordinate.longitude
-//    )
-//  }
-//  else {
-//    return nil
-//  }
-//}
-
-//      await MainActor.run {
-//        return GeoPoint(
-//          latitude: response.mapItems.first!.placemark.coordinate.latitude,
-//          longitude: response.mapItems.first!.placemark.coordinate.longitude
-//        )
-//        response.mapItems.forEach{mapItem in
-//          print("-----------")
-//          print(mapItem.placemark.coordinate.longitude)
-//          print(mapItem.placemark.coordinate.latitude)
-//        }
-//        response.mapItems.forEach{mapItem in
-//          print("-----------")
-//          print(mapItem.placemark.coordinate.longitude)
-//          print(mapItem.placemark.coordinate.latitude)
-//        }
-//        self.annotationItems = response.mapItems.map {
-//          AnnotationItem(
-//            latitude: $0.placemark.coordinate.latitude,
-//            longitude: $0.placemark.coordinate.longitude
-//          )
-//        }
-//      }
-//    }

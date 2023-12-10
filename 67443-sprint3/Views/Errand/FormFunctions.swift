@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct FormFunctions {
   @Binding var title: String
   @Binding var description: String
   @Binding var dateDue: Date
+  @Binding var location: GeoPoint
   @Binding var pay: Double
   @Binding var payBool: Bool
   @Binding var payString: String
@@ -21,7 +23,7 @@ struct FormFunctions {
     title = ""
     description = ""
     dateDue = Date()
-    //location = GeoPoint() stays in pgh for now
+    location = GeoPoint(latitude: 40.443336, longitude: -79.944023)
     payBool = true
     payString = ""
     pay = 0.0
