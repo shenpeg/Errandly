@@ -140,16 +140,20 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testMarketplace() throws {
-    
+    // how to get data?
   }
   
-  func testSort() throws {
-    let sort = app.buttons["sort by"]
-    XCTAssert(sort.exists)
-    // mock data
+  func testErrandDetail() throws {
+    // check user name
   }
 
-  
+  func testMessage() throws {
+    // how to direct to another page?
+    let msg = app.buttons["message"]
+    XCTAssert(msg.exists)
+    msg.tap()
+  }
+
   func testLaunchPerformance() throws {
       if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
           // This measures how long it takes to launch your application.
