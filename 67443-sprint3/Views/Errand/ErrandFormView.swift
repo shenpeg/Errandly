@@ -38,6 +38,7 @@ struct ErrandFormView: View {
                 .padding(5)
                 .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
                 .listRowSeparator(.hidden)
+                .accessibilityIdentifier("helpText")
           }
           else {
             TextField(description, text: $description, axis: .vertical)
