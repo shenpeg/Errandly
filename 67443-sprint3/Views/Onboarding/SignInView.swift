@@ -23,6 +23,7 @@ struct SignInView: View {
           .padding(.bottom, 20)
         
         GoogleSignInButton(viewModel: vm, action: authViewModel.signIn)
+          .accessibilityIdentifier("loginButton")
       }
       .padding(.all, 30)
       

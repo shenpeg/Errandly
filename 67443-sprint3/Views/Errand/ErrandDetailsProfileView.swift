@@ -57,6 +57,7 @@ struct ErrandDetailsProfileView: View {
               }
               Text("   ")
             }
+            .accessibilityIdentifier("message")
           }
           
           Text(" ") //just adding space between, padding looks off no matter how I tried it

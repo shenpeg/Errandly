@@ -62,7 +62,7 @@ struct MarketplaceView: View {
                                         .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                                         .foregroundColor(darkBlue)
                                         .background(Capsule().fill(lightGray))
-                                }
+                                } .accessibilityIdentifier("tag")
                             }
                         }
                     }

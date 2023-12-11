@@ -36,7 +36,7 @@ struct ContentView: View {
           .tabItem {
             Image(systemName: "house").padding(.bottom, 10)
             Text("Marketplace")
-          }
+          } 
           .tag(1)
         
         PostErrandView(user: curUser!, profilePath: $profilePath)
