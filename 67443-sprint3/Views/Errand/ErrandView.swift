@@ -91,11 +91,22 @@ struct ErrandView: View {
           Text("$\(String(format: "%.2f", errand.pay)) ")
             .font(.system(size: 22))
           Spacer()
-          Text("view details")
-            .font(.system(size: 18).bold())
-            .padding(.init(top: 4, leading: 15, bottom: 5, trailing: 15))
-            .foregroundColor(.white)
-            .background(Capsule().fill(darkBlue))
+          
+          
+          if grayOut {
+            Text("view details")
+              .font(.system(size: 18).bold())
+              .padding(.init(top: 4, leading: 15, bottom: 5, trailing: 15))
+              .foregroundColor(.white)
+              .background(Capsule().fill(Color(red: 0.09, green: 0.34, blue: 0.35)))
+          }
+          else {
+              Text("view details")
+              .font(.system(size: 18).bold())
+              .padding(.init(top: 4, leading: 15, bottom: 5, trailing: 15))
+              .foregroundColor(.white)
+              .background(Capsule().fill(darkBlue))
+            }
         }
         .padding(.top, 10)
         .padding(.bottom, 0)
