@@ -51,6 +51,16 @@ class ErrandsViewModel: ObservableObject {
     }
   }
   
+  func update(_ errand: Errand, updatedErrand: Errand) {
+    guard let errandId = errand.id else { return }
+    do {
+      try store.collection(path).document(errandId).setData(from: updatedErrand)
+    }
+    catch {
+      fatalError("Unable to update user: \(error.localizedDescription).")
+    }
+  }
+
   func getErrand(_ id: String) -> Errand {
     if let errand = errands.first(where: {$0.id == id}) {
       return errand
@@ -64,7 +74,12 @@ class ErrandsViewModel: ObservableObject {
     var errandsByStatus: [String: [Errand]] = ["new": [], "in progress": [], "completed": []]
     ids.forEach {id in
       if let errand = errands.first(where: {$0.id == id}) {
-        errandsByStatus[errand.status]!.append(errand)
+        if (errand.status.contains("in progress")) {
+          errandsByStatus["in progress"]!.append(errand)
+        }
+        else {
+          errandsByStatus[errand.status]!.append(errand)
+        }
       }
     }
     return errandsByStatus

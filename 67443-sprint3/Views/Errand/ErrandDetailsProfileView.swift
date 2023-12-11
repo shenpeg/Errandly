@@ -28,42 +28,52 @@ struct ErrandDetailsProfileView: View {
     }
     
     return HStack {
+      
+      VStack{
+        UserProfileImageView(pfp: errand.owner.pfp, size: 36)
+      }
+      
       VStack(alignment: .leading) {
-        HStack {
-          if (errandOwnerUser != nil) {
-            NavigationLink(value: errand.owner) {
-              UserProfileImageView(pfp: errand.owner.pfp, size: 32)
+          HStack {
+            if (errandOwnerUser != nil) {
+              
+              NavigationLink(value: errand.owner) {
+                //              UserProfileImageView(pfp: errand.owner.pfp, size: 32)
+                Text("\(errand.owner.first_name) \(errand.owner.last_name)")
+                  .font(.headline)
+              }
+              .accentColor(.black)
+            }
+            else {
               Text("\(errand.owner.first_name) \(errand.owner.last_name)")
                 .font(.headline)
+                .foregroundColor(.primary)
             }
-            .accentColor(.black)
-          }
-          else {
-            Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-              .font(.headline)
-              .foregroundColor(.primary)
-          }
-          if (errand.owner.id != user.id) {
-            Button(action: message) {
+            if (errand.owner.id != user.id) {
+              Button(action: message) {
                 Image(systemName: "message")
                   .foregroundColor(Color.black)
                   .font(.system(size: 20))
+              }
+              Text("   ")
             }
           }
-        }
-        
-        HStack {
-          if (locViewModel.authorized()) {
-            Text(locViewModel.distanceFromErrand(geoPoint: errand.location))
-              .font(.footnote)
-              .foregroundColor(.secondary)
-            Text("|").font(.footnote).foregroundColor(.secondary)
+          
+          Text(" ") //just adding space between, padding looks off no matter how I tried it
+            .font(.system(size: 2))
+          
+          HStack {
+            if (locViewModel.authorized()) {
+              Text("\(locViewModel.distanceFromErrand(geoPoint: errand.location)) | \(timeViewModel.formatTimeDifference(timeDifference))")
+                .font(.system(size: 15))
+                .foregroundColor(.secondary)
+            }
+            //          Text(timeViewModel.formatTimeDifference(timeDifference))
+            //            .font(.footnote)
+            //            .foregroundColor(.secondary)
           }
-          Text(timeViewModel.formatTimeDifference(timeDifference))
-            .font(.footnote)
-            .foregroundColor(.secondary)
-        }
+//        }
       }
-    }
+    } // end of returned HStack
   }
 }
