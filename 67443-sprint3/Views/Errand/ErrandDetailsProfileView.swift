@@ -30,7 +30,7 @@ struct ErrandDetailsProfileView: View {
     return HStack {
       
       NavigationLink(value: errand.owner) {
-        UserProfileImageView(pfp: errand.owner.pfp, size: 36)
+        UserProfileImageView(pfp: errand.owner.pfp, size: 42)
       }
       
       VStack(alignment: .leading) {
@@ -39,20 +39,20 @@ struct ErrandDetailsProfileView: View {
               
               NavigationLink(value: errand.owner) {
                 Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-                  .font(.headline)
+                  .font(.system(size: 20))
               }
               .accentColor(.black)
             }
             else {
               Text("\(errand.owner.first_name) \(errand.owner.last_name)")
-                .font(.headline)
+                .font(.system(size: 20))
                 .foregroundColor(.primary)
             }
             if (errand.owner.id != user.id) {
               Button(action: message) {
                 Image(systemName: "message")
                   .foregroundColor(Color.black)
-                  .font(.system(size: 20))
+                  .font(.system(size: 23))
               }
               Text("   ")
             }
@@ -64,11 +64,11 @@ struct ErrandDetailsProfileView: View {
           HStack {
             if (locViewModel.authorized()) {
               Text("\(locViewModel.distanceFromErrand(geoPoint: errand.location)) | \(timeViewModel.formatTimeDifference(timeDifference))")
-                .font(.system(size: 15))
+                .font(.system(size: 16))
                 .foregroundColor(.secondary)
             }
           }
       }
-    } // end of returned HStack
+    }
   }
 }

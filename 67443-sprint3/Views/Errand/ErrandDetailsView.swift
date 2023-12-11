@@ -63,7 +63,7 @@ struct ErrandDetailsView: View {
                     HStack() {
                       ForEach(errand.tags, id: \.self) {tag in
                         Text(tag)
-                          .font(.callout)
+                          .font(.system(size: 14))
                           .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
                           .foregroundColor(black)
                           .background(Capsule().fill(lightGray))
@@ -80,6 +80,7 @@ struct ErrandDetailsView: View {
                   
                     HStack {
                       Text(errand.description)
+                        .font(.system(size: 20))
                     }
                     
                     // Horizontal separator line
@@ -88,8 +89,8 @@ struct ErrandDetailsView: View {
                       .foregroundColor(black)
                   
                     HStack {
-                        Text("Date Due:")
-                        Text(dateFormat.string(from: errand.dateDue))
+                        Text("Date Due: \(dateFormat.string(from: errand.dateDue))")
+                        .font(.system(size: 20))
                     }
                 }
                 .padding(20)

@@ -83,8 +83,8 @@ struct MarketplaceView: View {
             
             List {              
                 ForEach(errandsViewModel.filteredErrands) { errand in
-                    ErrandView(errand: errand, user: user)
-                        .padding(.bottom, 10)
+                  ErrandView(errand: errand, user: user, grayOut: false)
+                    .padding(.bottom, 10)
                 }
             }
             .background(backgroundGray)

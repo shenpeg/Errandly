@@ -12,6 +12,7 @@ import GoogleSignIn
 struct ErrandView: View {
   let errand: Errand
   var user: User
+  var grayOut: Bool
   
   @EnvironmentObject var usersViewModel: UsersViewModel
   @EnvironmentObject var errandsViewModel: ErrandsViewModel
@@ -43,7 +44,6 @@ struct ErrandView: View {
           }
           .font(.system(size: 14))
         }
-//        .padding(.bottom, 1)
         
         HStack {
           if (usersViewModel.getCurUser()!.id == errand.owner.id) {
@@ -64,14 +64,23 @@ struct ErrandView: View {
         
         HStack() {
           ForEach(errand.tags, id: \.self) {tag in
-            TagView(tag: tag, viewOnly: true, isSelected: nil)
+            if grayOut {
+              Text(tag)
+                .font(.system(size: 14))
+                .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
+                .foregroundColor(black)
+                .background(Capsule().fill(Color(red: 0.73, green: 0.73, blue: 0.73)))
+            }
+            else {
+              TagView(tag: tag, viewOnly: true, isSelected: nil)
+            }
           }
         }
         .padding(.bottom, 3)
         
         Rectangle()
           .frame(height: 30)
-          .foregroundColor(white)
+          .foregroundColor(grayOut ? grayOutGray : white)
           .padding(.horizontal, -10)
         Rectangle()
           .frame(height: 0.8)
@@ -83,8 +92,7 @@ struct ErrandView: View {
             .font(.system(size: 22))
           Spacer()
           Text("view details")
-            .font(.system(size: 18))
-            .fontWeight(.bold)
+            .font(.system(size: 18).bold())
             .padding(.init(top: 4, leading: 15, bottom: 5, trailing: 15))
             .foregroundColor(.white)
             .background(Capsule().fill(darkBlue))
@@ -100,13 +108,11 @@ struct ErrandView: View {
     .listRowBackground(
       RoundedRectangle(cornerRadius: 10)
         .stroke(black, lineWidth: 0.8)
-        .background(RoundedRectangle(cornerRadius: 10).fill(.white))
+        .background(RoundedRectangle(cornerRadius: 10).fill(grayOut ? grayOutGray : white))
 //        .offset(y: 5)
-        .padding(.top, 10)
-        .padding(.bottom, 16)
-        .padding(.horizontal, 20)
+        .padding(.init(top: 10, leading: 20, bottom: 16, trailing: 20))
+
     )
     .listRowSeparator(.hidden)
   }
-  
 }

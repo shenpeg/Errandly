@@ -10,8 +10,9 @@ let mint = Color(red: 0.84, green: 0.99, blue: 0.96)
 let darkerMint = Color(red: 0.506, green: 0.698, blue: 0.953)
 let lightPurple = Color(red: 0.91, green: 0.60, blue: 0.98)
 let darkGray = Color(red: 0.25, green: 0.25, blue: 0.25)
-let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95)
+let lightGray = Color(red: 0.93, green: 0.93, blue: 0.95) //view tag background
 let backgroundGray = Color(red: 0.945, green: 0.945, blue: 0.945)
+let grayOutGray = Color(red: 0.83, green: 0.83, blue: 0.83) //completed errand cards background
 //Color(red: 0.965, green: 0.961, blue: 0.937)
 // Color(red: 0.949, green: 0.965, blue: 0.937)
 

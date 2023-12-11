@@ -82,12 +82,16 @@ struct ErrandDetailsPickUpView: View {
                   isCompletionAlertPresented = true
               }) {
                     Text("Mark completed")
-                      .font(.headline)
+                      .font(.system(size: 18).bold())
                       .foregroundColor(darkBlue)
-                      .padding(.vertical, 8)
-                      .padding(.horizontal, 16)
+                      .padding(.init(top: 5, leading: 20, bottom: 7, trailing: 20))
                       .background(mint)
-                      .cornerRadius(40)
+                      .cornerRadius(20)
+                      .overlay(
+                          RoundedRectangle(cornerRadius: 20)
+                            .stroke(darkBlue, lineWidth: 1)
+                      )
+
                   }
                   .alert(isPresented: $isCompletionAlertPresented) {
                       Alert(

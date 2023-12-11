@@ -12,8 +12,6 @@ struct UserProfileInfoView: View {
   var body: some View {
     
     ZStack (alignment: .topLeading) {
-//      darkBlue
-      
       LinearGradient(
         gradient: Gradient(
           colors: [darkerMint, darkBlue]),
@@ -78,7 +76,7 @@ struct UserProfileInfoView: View {
             
             if (user.school_year != "") {
               Text("\(user.school_year)")
-                .font(.callout)
+                .font(.system(size: 16))
                 .padding(.horizontal, 8)
                 .padding(.vertical, 3)
                 .foregroundColor(darkBlue)
@@ -86,7 +84,7 @@ struct UserProfileInfoView: View {
             }
             if (user.bio != "") {
               Text("\(user.bio)")
-                .font(.callout)
+                .font(.system(size: 16))
                 .padding(.top, 5)
             }
           }
@@ -95,24 +93,26 @@ struct UserProfileInfoView: View {
         .padding(.bottom, 10)
         
         if (user.can_help_with.count != 0) {
-          HStack() {
-            Text("CAN HELP WITH: ")
-              .font(.callout)
+          VStack(alignment: .leading) {
+            Text("I CAN HELP WITH: ")
+              .font(.system(size: 18).italic())
+              .padding(.bottom, -1)
             
-            ForEach(user.can_help_with, id: \.self) {tag in
-              Text(tag)
-                .font(.system(size: 14))
-                .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
-                .foregroundColor(black)                .background(Capsule().fill(mint))
+            HStack {
+              ForEach(user.can_help_with, id: \.self) {tag in
+                Text(tag)
+                  .font(.system(size: 14))
+                  .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
+                  .foregroundColor(black)
+                  .background(Capsule().fill(mint))
+              }
             }
           }
         }
-        
       }
       .padding(30)
       .foregroundColor(.white)
     }
-    
     .fixedSize(horizontal: false, vertical: true)
   }
   

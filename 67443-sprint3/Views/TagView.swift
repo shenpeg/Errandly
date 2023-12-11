@@ -18,7 +18,6 @@ struct TagView: View {
     if viewOnly == true {
       // only presenting, not clickable
       Text(tag)
-//        .font(.footnote)
         .font(.system(size: 14))
         .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
         .foregroundColor(black)
@@ -27,7 +26,6 @@ struct TagView: View {
     else {
       
       Text(tag)
-//        .font(.footnote)
         .font(.system(size: 14))
         .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
         .foregroundColor(black)
