@@ -100,27 +100,13 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testErrandDetail() throws {
-    let skip = app.buttons["Skip"]
-    XCTAssert(skip.exists)
-    skip.tap()
-    
     // navigate to errandDetailsView
-    // let view = app.buttons["view details"]
-//    XCTAssert(view.exists)
-//    view.tap()
-//
-//    let date = app.staticTexts["Date Due:"]
-//    XCTAssert(date.exists)
-//
-//    let pick = app.buttons["Pick up errrand"]
-//    XCTAssert(pick.exists)
-//    pick.tap()
-//
-//    let yes = app.staticTexts["Yes, I'm sure"]
-//    XCTAssert(yes.exists)
-//    yes.tap()
-//
-//    XCTAssert(app.staticTexts["Picked Up Errands"].exists)
+    let view = app.buttons["view details"]
+    XCTAssert(view.exists)
+    view.tap()
+    
+    let date = app.staticTexts["Date Due:"]
+    XCTAssert(date.exists)
   }
 
   func testMessage() throws {
@@ -129,61 +115,10 @@ final class _7443_sprint3UITests: XCTestCase {
     skip.tap()
     
     // navigate to errandDetailsView
-    // let view = app.buttons["view details"]
-    // XCTAssert(view.exists)
-    // view.tap()
+    let view = app.buttons["view details"]
+    XCTAssert(view.exists)
+    view.tap()
     
-    // let msg = app.buttons["message"]
-    // XCTAssert(msg.exists)
-    // msg.tap()
-  }
-  
-  func testPost() throws {
-    let post = app.staticTexts["Post Errand"]
-    XCTAssert(post.exists)
-    post.tap()
-    
-    app.textFields["Errand Title"].tap()
-    app.textFields["Errand Title"].typeText("Testing UITests")
-    app.keyboards.buttons["Return"].tap()
-    
-    // post button should not be available until everything has been filled out
-    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-    
-    app.textFields["What do you need help with?"].tap()
-    app.textFields["What do you need help with?"].typeText("how to write swiftui tests")
-    app.keyboards.buttons["Return"].tap()
-    
-    // post button should not be available until everything has been filled out
-    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-    
-    let postButton = app.buttons["Post"]
-    XCTAssert(postButton.exists)
-    postButton.tap()
-  }
-  
-  func testProfile() throws {
-    let skip = app.buttons["Skip"]
-    XCTAssert(skip.exists)
-    skip.tap()
-    
-    let profile = app.buttons["Profile"]
-    XCTAssert(profile.exists)
-    profile.tap()
-    
-    XCTAssert(app.buttons["Sign out"].exists)
-  }
-  
-  func testErrandDetail() throws {
-    // how to navigate to another view
-  }
-
-  func testMessage() throws {
-    let skip = app.buttons["Skip"]
-    XCTAssert(skip.exists)
-    skip.tap()
-    
-    // how to direct to another page?
     let msg = app.buttons["message"]
     XCTAssert(msg.exists)
     msg.tap()
