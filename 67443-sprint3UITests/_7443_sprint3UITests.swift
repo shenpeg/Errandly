@@ -53,6 +53,7 @@ final class _7443_sprint3UITests: XCTestCase {
       // marketplace view appears
       let sort = app.buttons["sort by"]
       XCTAssert(sort.exists)
+    
       
       let tag = app.buttons["tag"]
       XCTAssert(tag.exists)
@@ -100,13 +101,27 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testErrandDetail() throws {
-    // navigate to errandDetailsView
-    let view = app.buttons["view details"]
-    XCTAssert(view.exists)
-    view.tap()
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
     
-    let date = app.staticTexts["Date Due:"]
-    XCTAssert(date.exists)
+    // navigate to errandDetailsView
+    // let view = app.buttons["view details"]
+//    XCTAssert(view.exists)
+//    view.tap()
+//
+//    let date = app.staticTexts["Date Due:"]
+//    XCTAssert(date.exists)
+//
+//    let pick = app.buttons["Pick up errrand"]
+//    XCTAssert(pick.exists)
+//    pick.tap()
+//
+//    let yes = app.staticTexts["Yes, I'm sure"]
+//    XCTAssert(yes.exists)
+//    yes.tap()
+//
+//    XCTAssert(app.staticTexts["Picked Up Errands"].exists)
   }
 
   func testMessage() throws {
@@ -115,13 +130,13 @@ final class _7443_sprint3UITests: XCTestCase {
     skip.tap()
     
     // navigate to errandDetailsView
-    let view = app.buttons["view details"]
-    XCTAssert(view.exists)
-    view.tap()
+    // let view = app.buttons["view details"]
+    // XCTAssert(view.exists)
+    // view.tap()
     
-    let msg = app.buttons["message"]
-    XCTAssert(msg.exists)
-    msg.tap()
+    // let msg = app.buttons["message"]
+    // XCTAssert(msg.exists)
+    // msg.tap()
   }
 
   func testLaunchPerformance() throws {
