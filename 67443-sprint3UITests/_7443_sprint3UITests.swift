@@ -163,6 +163,10 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testProfile() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
     let profile = app.buttons["Profile"]
     XCTAssert(profile.exists)
     profile.tap()
@@ -175,6 +179,10 @@ final class _7443_sprint3UITests: XCTestCase {
   }
 
   func testMessage() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
     // how to direct to another page?
     let msg = app.buttons["message"]
     XCTAssert(msg.exists)
