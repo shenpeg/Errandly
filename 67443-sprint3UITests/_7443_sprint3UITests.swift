@@ -53,7 +53,6 @@ final class _7443_sprint3UITests: XCTestCase {
       // marketplace view appears
       let sort = app.buttons["sort by"]
       XCTAssert(sort.exists)
-    
       
       let tag = app.buttons["tag"]
       XCTAssert(tag.exists)
