@@ -29,7 +29,7 @@ struct ErrandDetailsProfileView: View {
     
     return HStack {
       
-      VStack{
+      NavigationLink(value: errand.owner) {
         UserProfileImageView(pfp: errand.owner.pfp, size: 36)
       }
       
@@ -38,7 +38,6 @@ struct ErrandDetailsProfileView: View {
             if (errandOwnerUser != nil) {
               
               NavigationLink(value: errand.owner) {
-                //              UserProfileImageView(pfp: errand.owner.pfp, size: 32)
                 Text("\(errand.owner.first_name) \(errand.owner.last_name)")
                   .font(.headline)
               }
@@ -68,11 +67,7 @@ struct ErrandDetailsProfileView: View {
                 .font(.system(size: 15))
                 .foregroundColor(.secondary)
             }
-            //          Text(timeViewModel.formatTimeDifference(timeDifference))
-            //            .font(.footnote)
-            //            .foregroundColor(.secondary)
           }
-//        }
       }
     } // end of returned HStack
   }
