@@ -11,6 +11,9 @@ Because using Apple pay requires a developer account (which not all members of t
 
 Also note that when running the app on an actual phone, the only way to simulate the payment flow with fake credit cards is if the phone is logged into a Sandbox iCloud account. However, transfering money to the errand runner is not possible with a Sandbox account (as money transfers don't work with fake credit cards).
 
+### Testing
+We focused mainly on testing our views and user interactive flows throughout the app. We struggled with testing the login functionality because we could not figure out how to create and authenticate Google OAuth login mock data. However, once you log in, most of the tests will work. Another issue we ran into was figuring out how to test and imitate navigating throughout the app. 
+
 ## Features
 1. Errand Management: Post your errands and receive help from reliable errand runners within your college community.
 2. Errand Finder: Easily sort errands by distance and time, and filter errands with thematic tags. 
