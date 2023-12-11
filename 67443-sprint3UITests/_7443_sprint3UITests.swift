@@ -139,12 +139,40 @@ final class _7443_sprint3UITests: XCTestCase {
     // msg.tap()
   }
   
-  func testMarketplace() throws {
-    // how to get data?
+  func testPost() throws {
+    let post = app.staticTexts["Post Errand"]
+    XCTAssert(post.exists)
+    post.tap()
+    
+    app.textFields["Errand Title"].tap()
+    app.textFields["Errand Title"].typeText("Testing UITests")
+    app.keyboards.buttons["Return"].tap()
+    
+    // post button should not be available until everything has been filled out
+    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
+    
+    app.textFields["What do you need help with?"].tap()
+    app.textFields["What do you need help with?"].typeText("how to write swiftui tests")
+    app.keyboards.buttons["Return"].tap()
+    
+    // post button should not be available until everything has been filled out
+    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
+    
+    let postButton = app.buttons["Post"]
+    XCTAssert(postButton.exists)
+    postButton.tap()
+  }
+  
+  func testProfile() throws {
+    let profile = app.buttons["Profile"]
+    XCTAssert(profile.exists)
+    profile.tap()
+    
+    XCTAssert(app.buttons["Sign out"].exists)
   }
   
   func testErrandDetail() throws {
-    // check user name
+    // how to navigate to another view
   }
 
   func testMessage() throws {
