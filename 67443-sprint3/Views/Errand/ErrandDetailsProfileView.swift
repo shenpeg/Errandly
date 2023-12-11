@@ -54,6 +54,7 @@ struct ErrandDetailsProfileView: View {
                   .foregroundColor(Color.black)
                   .font(.system(size: 23))
               }
+              .accessibilityIdentifier("message")
               Text("   ")
             }
           }
