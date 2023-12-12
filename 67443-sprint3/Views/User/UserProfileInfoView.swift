@@ -55,6 +55,7 @@ struct UserProfileInfoView: View {
                     .foregroundColor(Color.white)
                     .font(.system(size: 20))
                 }
+                .accessibilityIdentifier("edit profile")
                 .navigationBarHidden(true)
                 .background(Color.clear)
               }
