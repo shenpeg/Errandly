@@ -111,6 +111,27 @@ final class _7443_sprint3UITests: XCTestCase {
     compensation.tap()
   }
   
+  func testTags() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    let onCampus = app.buttons["on-campus"]
+    XCTAssert(onCampus.exists)
+    onCampus.tap()
+    // tap again
+    onCampus.tap()
+    
+    let offCampus = app.buttons["off-campus"]
+    XCTAssert(offCampus.exists)
+    offCampus.tap()
+    
+    // tag that requires scrolling
+    let car = app.buttons["car"]
+    XCTAssert(car.exists)
+    car.tap()
+  }
+  
   func testErrandDetail() throws {
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
