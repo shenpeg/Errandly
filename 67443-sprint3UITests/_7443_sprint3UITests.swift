@@ -88,6 +88,20 @@ final class _7443_sprint3UITests: XCTestCase {
     }
   }
   
+  func testTutorialReplay() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    let tutorial = app.buttons["tutorial replay button"]
+    XCTAssert(tutorial.exists)
+    tutorial.tap()
+    
+    let skipAgain = app.buttons["Skip"]
+    XCTAssert(skipAgain.exists)
+    skipAgain.tap()
+  }
+  
   // marketplace tab
   
   func testSort() throws {

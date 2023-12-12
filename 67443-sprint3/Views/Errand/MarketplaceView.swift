@@ -88,6 +88,7 @@ struct MarketplaceView: View {
                                 .foregroundColor(darkBlue)
                                 .font(.system(size: 16))
                         }
+                        .accessibilityIdentifier("tutorial replay button")
                     }
                 }
                 .listStyle(.plain)
