@@ -52,6 +52,7 @@ struct ErrandDetailsView: View {
                             .font(.system(size: 20))
                             .padding(5)
                         }
+                        .accessibilityIdentifier("edit errand")
                       }
                     }
                   
