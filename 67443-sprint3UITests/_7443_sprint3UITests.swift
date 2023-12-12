@@ -207,6 +207,24 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(app.buttons["Sign out"].exists)
   }
   
+  func testProfileTabs() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    let profile = app.buttons["Profile"]
+    XCTAssert(profile.exists)
+    profile.tap()
+    
+    let pickedUpTab = app.staticTexts["Picked Up Errands"]
+    XCTAssert(pickedUpTab.exists)
+    pickedUpTab.tap()
+    
+    let postedTab = app.staticTexts["Posted Errands"]
+    XCTAssert(postedTab.exists)
+    postedTab.tap()
+  }
+  
   
   func testLaunchPerformance() throws {
     if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
