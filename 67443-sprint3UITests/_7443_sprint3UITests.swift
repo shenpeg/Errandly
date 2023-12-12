@@ -9,22 +9,22 @@ import XCTest
 
 final class _7443_sprint3UITests: XCTestCase {
   let app = XCUIApplication()
-
+  
   override func setUpWithError() throws {
     // Put setup code here. This method is called before the invocation of each test method in the class.
-
+    
     // In UI tests it is usually best to stop immediately when a failure occurs.
     continueAfterFailure = false
     app.launch()
-
+    
     // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     XCUIDevice.shared.orientation = UIDeviceOrientation.portrait;
   }
-
+  
   override func tearDownWithError() throws {
-      // Put teardown code here. This method is called after the invocation of each test method in the class.
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
-
+  
   func testWelcome() throws {
     let welcome = app.staticTexts["Welcome!"]
     // Use XCTAssert and related functions to verify your tests produce welcome page
@@ -53,7 +53,7 @@ final class _7443_sprint3UITests: XCTestCase {
       // marketplace view appears
       let sort = app.buttons["sort by"]
       XCTAssert(sort.exists)
-    
+      
       
       let tag = app.buttons["tag"]
       XCTAssert(tag.exists)
@@ -107,45 +107,46 @@ final class _7443_sprint3UITests: XCTestCase {
     
     // navigate to errandDetailsView
     // let view = app.buttons["view details"]
-//    XCTAssert(view.exists)
-//    view.tap()
-//
-//    let date = app.staticTexts["Date Due:"]
-//    XCTAssert(date.exists)
-//
-//    let pick = app.buttons["Pick up errrand"]
-//    XCTAssert(pick.exists)
-//    pick.tap()
-//
-//    let yes = app.staticTexts["Yes, I'm sure"]
-//    XCTAssert(yes.exists)
-//    yes.tap()
-//
-//    XCTAssert(app.staticTexts["Picked Up Errands"].exists)
+    //    XCTAssert(view.exists)
+    //    view.tap()
+    //
+    //    let date = app.staticTexts["Date Due:"]
+    //    XCTAssert(date.exists)
+    //
+    //    let pick = app.buttons["Pick up errrand"]
+    //    XCTAssert(pick.exists)
+    //    pick.tap()
+    //
+    //    let yes = app.staticTexts["Yes, I'm sure"]
+    //    XCTAssert(yes.exists)
+    //    yes.tap()
+    //
+    //    XCTAssert(app.staticTexts["Picked Up Errands"].exists)
   }
-
+  
   func testMessage() throws {
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
     
     // navigate to errandDetailsView
-    // let view = app.buttons["view details"]
-    // XCTAssert(view.exists)
-    // view.tap()
+    let view = app.otherElements.buttons["view details"]
+    XCTAssert(view.exists)
+    let firstErrand = view.firstMatch
+    firstErrand.tap()
     
-    // let msg = app.buttons["message"]
-    // XCTAssert(msg.exists)
-    // msg.tap()
+    let msg = app.buttons["message"]
+    XCTAssert(msg.exists)
+    msg.tap()
   }
-
+  
   
   func testLaunchPerformance() throws {
-      if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-          // This measures how long it takes to launch your application.
-          measure(metrics: [XCTApplicationLaunchMetric()]) {
-              XCUIApplication().launch()
-          }
+    if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+      // This measures how long it takes to launch your application.
+      measure(metrics: [XCTApplicationLaunchMetric()]) {
+        XCUIApplication().launch()
       }
+    }
   }
 }
