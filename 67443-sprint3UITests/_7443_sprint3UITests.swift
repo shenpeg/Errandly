@@ -183,6 +183,35 @@ final class _7443_sprint3UITests: XCTestCase {
     editErrand.tap()
   }
   
+  func testErrandDeleteCancel() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    while (!app.staticTexts["your post"].exists) {
+      app.swipeUp()
+    }
+    
+    let yourErrands = app.staticTexts["your post"]
+    XCTAssert(yourErrands.exists)
+    let yourFirstErrand = yourErrands.firstMatch
+    yourFirstErrand.tap()
+    
+    let editErrand = app.otherElements.buttons["edit errand"]
+    XCTAssert(editErrand.exists)
+    editErrand.tap()
+    
+    let delete = app.buttons["Delete errand"]
+    XCTAssert(delete.exists)
+    delete.tap()
+    
+    let deleteAlert = app.alerts["Delete this errand permanently?"]
+    XCTAssert(deleteAlert.exists)
+    let cancel = deleteAlert.buttons["No, cancel"]
+    XCTAssert(cancel.exists)
+    cancel.tap()
+  }
+  
   // post errand tab
   
   func testPost() throws {
