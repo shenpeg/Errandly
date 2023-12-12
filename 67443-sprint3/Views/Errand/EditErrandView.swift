@@ -113,12 +113,10 @@ struct EditErrandView: View {
         
         HStack() {
           //button 1
-          FormButton(title: "Save edits") {
-            
-            
+          FormButton(title: "save edits") {
             if payBool == false {
-              payString = "0.00"
-            }
+            payString = "0.00"
+          }
             
             let formFuncts = FormFunctions(
                               title: $title,
@@ -166,9 +164,14 @@ struct EditErrandView: View {
             )
           }
           
-          //delete errand
-          FormButton (title: "Delete errand") {
-            isDeleteAlertPresented = true
+    
+          Button(action: {
+              isDeleteAlertPresented = true
+          }) {
+            Text("delete errand")
+              .font(.system(size: 16).italic())
+              .underline(true, color: darkBlue)
+              .foregroundColor(darkBlue)
           }
           .alert(isPresented: $isDeleteAlertPresented) {
             Alert(

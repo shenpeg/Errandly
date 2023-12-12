@@ -12,7 +12,7 @@ struct LocationSearchView: View {
   var body: some View {
     TextField(locationViewModel.searchableText, text: $locationViewModel.searchableText)
       .padding(5)
-      .background(RoundedRectangle(cornerRadius: 8).stroke(darkBlue, lineWidth: 1))
+      .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
       .autocorrectionDisabled()
       .onReceive(
         locationViewModel.$searchableText.debounce(

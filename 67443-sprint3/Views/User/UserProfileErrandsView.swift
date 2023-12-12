@@ -15,7 +15,7 @@ struct UserProfileErrandsView: View {
       CustomErrandTabs(tabs, selection: tabUtil.profileTabSelection) { tab in
         Text(tab)
           .font(.title3)
-          .foregroundColor(tabUtil.profileTabSelection == tab ? darkGray : .white)
+          .foregroundColor(tabUtil.profileTabSelection == tab ? black : .white)
           .padding(.vertical, 8)
           .padding(.horizontal, 8)
           .frame(maxWidth: .infinity)

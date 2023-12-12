@@ -20,7 +20,7 @@ public struct CustomErrandTabs<Data, Content>: View where Data: Hashable, Conten
           HStack(spacing: 0) {
               ForEach(sources, id: \.self) { item in
                   itemBuilder(item)
-                      .background(item == selection ? .white : darkBlue)
+                      .background(item == selection ? backgroundGray : darkBlue)
               }
           }
           .clipShape(
@@ -30,7 +30,7 @@ public struct CustomErrandTabs<Data, Content>: View where Data: Hashable, Conten
           .overlay(
               RoundedRectangle(cornerRadius: 15)
                   .corners([.topLeft, .topRight], radius: 15)
-                  .stroke(Color.white, lineWidth: 2)
+                  .stroke(backgroundGray, lineWidth: 1)
           )
       }
   }

@@ -24,7 +24,7 @@ struct WelcomeView: View {
         ZStack() {
           LinearGradient(
             gradient: Gradient(
-              colors: [darkBlue, lightPurple]),
+              colors: [lightPurple, darkerMint]),
             startPoint: .topLeading,
             endPoint: .bottomTrailing
           )
@@ -48,7 +48,7 @@ struct WelcomeView: View {
                 action: {self.showSignInView = true}, label: {
                   Text("Continue")
                     .font(.title3)
-                    .foregroundColor(darkBlue)
+                    .foregroundColor(black)
                     .frame(maxWidth: .infinity)
                 })
               .padding(.vertical, 10)
