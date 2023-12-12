@@ -129,7 +129,6 @@
 		A3FF43632AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */; };
 		A3FF436F2AD6E37D00E1DDA6 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF436E2AD6E37D00E1DDA6 /* SignInView.swift */; };
 		A3FF43712AD6E3A500E1DDA6 /* UserProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43702AD6E3A500E1DDA6 /* UserProfileImageView.swift */; };
-		A3FF43732AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43722AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,7 +195,6 @@
 		A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInAuthenticator.swift; sourceTree = "<group>"; };
 		A3FF436E2AD6E37D00E1DDA6 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A3FF43702AD6E3A500E1DDA6 /* UserProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileImageView.swift; sourceTree = "<group>"; };
-		A3FF43722AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				A3FF43622AD6E0B500E1DDA6 /* GoogleSignInAuthenticator.swift */,
-				A3FF43722AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift */,
 				8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */,
 			);
 			path = Services;
@@ -677,7 +674,6 @@
 				8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */,
 				A3EAE97D2AE889580079481D /* UserProfileView.swift in Sources */,
 				A3D646A12B25479400CC4CB2 /* LocationSearchView.swift in Sources */,
-				A3FF43732AD6E3EA00E1DDA6 /* UserProfileImageLoader.swift in Sources */,
 				A3A0327D2AF1C9A20037548C /* UserProfileErrandsView.swift in Sources */,
 				A3FF43712AD6E3A500E1DDA6 /* UserProfileImageView.swift in Sources */,
 				A3EAE96F2AE8832E0079481D /* ErrandDetailsView.swift in Sources */,
