@@ -133,6 +133,16 @@ final class _7443_sprint3UITests: XCTestCase {
     car.tap()
   }
   
+  func testLocation() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    let location = app.buttons["location button"]
+    XCTAssert(location.exists)
+    location.tap()
+  }
+  
   func testErrandDetail() throws {
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
