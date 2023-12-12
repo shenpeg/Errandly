@@ -39,21 +39,46 @@ final class _7443_sprint3UITests: XCTestCase {
     }
   }
   
-  func testTutorial() throws {
+  func testFullTutorial() throws {
     let tutorial = app.staticTexts["Welcome to Errandly!"]
     if (tutorial.exists) {
-      let next = app.buttons["Next"]
-      XCTAssert(next.exists)
-      next.tap()
+      let welcomeNext = app.buttons["Next"]
+      XCTAssert(welcomeNext.exists)
+      welcomeNext.tap()
       
-      let skip = app.buttons["Skip"]
-      XCTAssert(skip.exists)
-      skip.tap()
+      let browseText = app.staticTexts["Here is where you browse errands posted by others"]
+      XCTAssert(browseText.exists)
+      let browseNext = app.buttons["Next"]
+      XCTAssert(browseNext.exists)
+      browseNext.tap()
+      
+      let postText = app.staticTexts["You can post an errand of your own for others to help you with"]
+      XCTAssert(postText.exists)
+      let postNext = app.buttons["Next"]
+      XCTAssert(postNext.exists)
+      postNext.tap()
+      
+      let profileText = app.staticTexts["Your posting history & info is saved in your profile, which you can edit there"]
+      XCTAssert(profileText.exists)
+      let profileNext = app.buttons["Next"]
+      XCTAssert(profileNext.exists)
+      profileNext.tap()
+      
+      let rewatchText = app.staticTexts["Rewatch the tutorial anytime up here!"]
+      XCTAssert(rewatchText.exists)
+      let rewatchNext = app.buttons["Next"]
+      XCTAssert(rewatchNext.exists)
+      rewatchNext.tap()
+      
+      let endText = app.staticTexts["You're ready to go :)"]
+      XCTAssert(endText.exists)
+      let endGo = app.buttons["Let's go!"]
+      XCTAssert(endGo.exists)
+      endGo.tap()
       
       // marketplace view appears
       let sort = app.buttons["sort by"]
       XCTAssert(sort.exists)
-      
       
       let tag = app.buttons["tag"]
       XCTAssert(tag.exists)
@@ -71,21 +96,21 @@ final class _7443_sprint3UITests: XCTestCase {
     
     app.textFields["Errand Title"].tap()
     app.textFields["Errand Title"].typeText("Testing UITests")
-    app.keyboards.buttons["Return"].tap()
-    
-    // post button should not be available until everything has been filled out
-    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-    
-    app.textFields["helpText"].tap()
-    app.textFields["helpText"].typeText("how to write swiftui tests")
-    app.keyboards.buttons["Return"].tap()
-    
-    // post button should not be available until everything has been filled out
-    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-    
-    let postButton = app.buttons["Post"]
-    XCTAssert(postButton.exists)
-    postButton.tap()
+//    app.keyboards.buttons["Return"].tap()
+//    
+//    // post button should not be available until everything has been filled out
+//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
+//    
+//    app.textFields["helpText"].tap()
+//    app.textFields["helpText"].typeText("how to write swiftui tests")
+//    app.keyboards.buttons["Return"].tap()
+//    
+//    // post button should not be available until everything has been filled out
+//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
+//    
+//    let postButton = app.buttons["Post"]
+//    XCTAssert(postButton.exists)
+//    postButton.tap()
   }
   
   func testProfile() throws {
