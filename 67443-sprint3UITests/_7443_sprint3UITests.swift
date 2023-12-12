@@ -14,6 +14,7 @@ final class _7443_sprint3UITests: XCTestCase {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     // In UI tests it is usually best to stop immediately when a failure occurs.
+    executionTimeAllowance = 60
     continueAfterFailure = false
     app.launch()
     
@@ -161,6 +162,25 @@ final class _7443_sprint3UITests: XCTestCase {
     let msg = app.buttons["message"]
     XCTAssert(msg.exists)
     msg.tap()
+  }
+  
+  func testErrandEdit() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    while (!app.staticTexts["your post"].exists) {
+      app.swipeUp()
+    }
+    
+    let yourErrands = app.staticTexts["your post"]
+    XCTAssert(yourErrands.exists)
+    let yourFirstErrand = yourErrands.firstMatch
+    yourFirstErrand.tap()
+    
+    let editErrand = app.otherElements.buttons["edit errand"]
+    XCTAssert(editErrand.exists)
+    editErrand.tap()
   }
   
   // post errand tab
