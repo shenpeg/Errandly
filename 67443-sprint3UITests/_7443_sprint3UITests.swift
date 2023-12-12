@@ -25,6 +25,8 @@ final class _7443_sprint3UITests: XCTestCase {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
   
+  // welcome + tutorial
+  
   func testWelcome() throws {
     let welcome = app.staticTexts["Welcome!"]
     // Use XCTAssert and related functions to verify your tests produce welcome page
@@ -85,45 +87,7 @@ final class _7443_sprint3UITests: XCTestCase {
     }
   }
   
-  func testPost() throws {
-    let skip = app.buttons["Skip"]
-    XCTAssert(skip.exists)
-    skip.tap()
-    
-    let post = app.buttons["Post Errand"]
-    XCTAssert(post.exists)
-    post.tap()
-    
-    app.textFields["Errand Title"].tap()
-    app.textFields["Errand Title"].typeText("Testing UITests")
-//    app.keyboards.buttons["Return"].tap()
-//    
-//    // post button should not be available until everything has been filled out
-//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-//    
-//    app.textFields["helpText"].tap()
-//    app.textFields["helpText"].typeText("how to write swiftui tests")
-//    app.keyboards.buttons["Return"].tap()
-//    
-//    // post button should not be available until everything has been filled out
-//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-//    
-//    let postButton = app.buttons["Post"]
-//    XCTAssert(postButton.exists)
-//    postButton.tap()
-  }
-  
-  func testProfile() throws {
-    let skip = app.buttons["Skip"]
-    XCTAssert(skip.exists)
-    skip.tap()
-    
-    let profile = app.buttons["Profile"]
-    XCTAssert(profile.exists)
-    profile.tap()
-    
-    XCTAssert(app.buttons["Sign out"].exists)
-  }
+  // marketplace tab
   
   func testErrandDetail() throws {
     let skip = app.buttons["Skip"]
@@ -131,22 +95,13 @@ final class _7443_sprint3UITests: XCTestCase {
     skip.tap()
     
     // navigate to errandDetailsView
-    // let view = app.buttons["view details"]
-    //    XCTAssert(view.exists)
-    //    view.tap()
-    //
-    //    let date = app.staticTexts["Date Due:"]
-    //    XCTAssert(date.exists)
-    //
-    //    let pick = app.buttons["Pick up errrand"]
-    //    XCTAssert(pick.exists)
-    //    pick.tap()
-    //
-    //    let yes = app.staticTexts["Yes, I'm sure"]
-    //    XCTAssert(yes.exists)
-    //    yes.tap()
-    //
-    //    XCTAssert(app.staticTexts["Picked Up Errands"].exists)
+    let view = app.otherElements.buttons["view details"]
+    XCTAssert(view.exists)
+    let firstErrand = view.firstMatch
+    firstErrand.tap()
+    
+    let date = app.staticTexts["Date Due:"]
+    XCTAssert(date.exists)
   }
   
   func testMessage() throws {
@@ -163,6 +118,50 @@ final class _7443_sprint3UITests: XCTestCase {
     let msg = app.buttons["message"]
     XCTAssert(msg.exists)
     msg.tap()
+  }
+  
+  // post errand tab
+  
+  func testPost() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    let post = app.buttons["Post Errand"]
+    XCTAssert(post.exists)
+    post.tap()
+    
+    app.textFields["Errand Title"].tap()
+    app.textFields["Errand Title"].typeText("Testing UITests")
+//    app.keyboards.buttons["Return"].tap()
+//
+//    // post button should not be available until everything has been filled out
+//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
+//
+//    app.textFields["helpText"].tap()
+//    app.textFields["helpText"].typeText("how to write swiftui tests")
+//    app.keyboards.buttons["Return"].tap()
+//
+//    // post button should not be available until everything has been filled out
+//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
+//
+//    let postButton = app.buttons["Post"]
+//    XCTAssert(postButton.exists)
+//    postButton.tap()
+  }
+  
+  // profile tab
+  
+  func testProfile() throws {
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    let profile = app.buttons["Profile"]
+    XCTAssert(profile.exists)
+    profile.tap()
+    
+    XCTAssert(app.buttons["Sign out"].exists)
   }
   
   
