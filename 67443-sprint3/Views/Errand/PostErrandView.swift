@@ -113,6 +113,7 @@ struct PostErrandView: View {
               }
             )
           }
+          .accessibilityIdentifier("Post")
 
         } //section
       } //form

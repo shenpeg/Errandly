@@ -5,6 +5,11 @@
 //  Created by Ohnyoo Esther Bae on 12/7/23.
 //
 
+// note for deubugging:
+// print(app.debugDescription)
+// OR
+// print(app.______.debugDescription)
+
 import XCTest
 
 final class _7443_sprint3UITests: XCTestCase {
@@ -243,27 +248,43 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(skip.exists)
     skip.tap()
     
-    let post = app.buttons["Post Errand"]
+    let postTab = app.buttons["Post Errand"]
+    XCTAssert(postTab.exists)
+    postTab.tap()
+    
+    app.swipeUp()
+    let post = app.buttons["Post"]
     XCTAssert(post.exists)
     post.tap()
     
-    app.textFields["Errand Title"].tap()
-    app.textFields["Errand Title"].typeText("Testing UITests")
-//    app.keyboards.buttons["Return"].tap()
-//
-//    // post button should not be available until everything has been filled out
-//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-//
-//    app.textFields["helpText"].tap()
-//    app.textFields["helpText"].typeText("how to write swiftui tests")
-//    app.keyboards.buttons["Return"].tap()
-//
-//    // post button should not be available until everything has been filled out
-//    // XCTAssertFalse(postButton.waitForExistence(timeout: 0.5))
-//
-//    let postButton = app.buttons["Post"]
-//    XCTAssert(postButton.exists)
-//    postButton.tap()
+    let titlePostError = app.alerts["Please enter a title for your errand!"]
+    XCTAssert(titlePostError.exists)
+    let dismiss = titlePostError.buttons["OK"]
+    XCTAssert(dismiss.exists)
+    dismiss.tap()
+    
+    // errand title
+    app.swipeDown()
+    let titleInput = app.textFields["Errand Title"]
+    XCTAssert(titleInput.exists)
+    titleInput.tap()
+    titleInput.typeText("UITests")
+    
+    app.swipeUp()
+    XCTAssert(post.exists)
+    post.tap()
+    
+    let detailsPostError = app.alerts["Please write some details on what you need help with"]
+    XCTAssert(detailsPostError.exists)
+    XCTAssert(dismiss.exists)
+    dismiss.tap()
+
+    // errand details
+    app.swipeDown()
+    let detailsInput = app.textViews["What do you need help with?"]
+    XCTAssert(detailsInput.exists)
+    detailsInput.tap()
+    detailsInput.typeText("how to write swiftui tests")
   }
   
   // profile tab
