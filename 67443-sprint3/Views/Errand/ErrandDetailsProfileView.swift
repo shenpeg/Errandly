@@ -54,19 +54,10 @@ struct ErrandDetailsProfileView: View {
                 Image(systemName: "message")
                   .foregroundColor(Color.black)
                   .font(.system(size: 20))
-<<<<<<< HEAD
-<<<<<<< HEAD
               }
               .accessibilityIdentifier("message")
               Text("   ")
             }
-=======
-            } .accessibilityIdentifier("message")
->>>>>>> 7128374 (add message tests)
-=======
-            }
-            .accessibilityIdentifier("message")
->>>>>>> e21a7ab (added marketplace and post errand tests)
           }
           
           Text(" ") //just adding space between, padding looks off no matter how I tried it
