@@ -520,10 +520,6 @@ final class _7443_sprint3UITests: XCTestCase {
     save.tap()
     sleep(2)
     
-    print("~~~~~~~~")
-    print(firstName)
-    print("~~~~~~~~")
-    
     let updatedName = app.staticTexts["\(firstName)TEST \(lastName)"]
     XCTAssert(updatedName.exists)
     
