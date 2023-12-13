@@ -103,6 +103,7 @@ struct ErrandFormView: View {
                         .padding(5)
                         .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
                         .keyboardType(.decimalPad)
+                        .accessibilityIdentifier("pay input")
                     }
                     else {
                       TextField(payString, text: $payString)

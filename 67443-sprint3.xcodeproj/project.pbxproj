@@ -18,7 +18,6 @@
 		6E96F9752B1EB9F4006BF365 /* ErrandFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */; };
 		6E96F9772B1EC5A6006BF365 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9762B1EC5A6006BF365 /* FormButton.swift */; };
 		6E96F9792B1ECB09006BF365 /* FormFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9782B1ECB09006BF365 /* FormFunctions.swift */; };
-		6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC74B432AFE694C0060F4A1 /* Tag.swift */; };
 		8A3C5BE22B222C2300A5AF7D /* _7443_sprint3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */; };
 		8A3C5BE42B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */; };
 		8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEFF852AFD714A0094C83F /* SortSheet.swift */; };
@@ -119,7 +118,6 @@
 		6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandFormView.swift; sourceTree = "<group>"; };
 		6E96F9762B1EC5A6006BF365 /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		6E96F9782B1ECB09006BF365 /* FormFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFunctions.swift; sourceTree = "<group>"; };
-		6EC74B432AFE694C0060F4A1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A3C5BDF2B222C2300A5AF7D /* 67443-sprint3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "67443-sprint3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITests.swift; sourceTree = "<group>"; };
 		8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -632,7 +630,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cmu.-7443-sprint3UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -651,7 +649,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cmu.-7443-sprint3UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

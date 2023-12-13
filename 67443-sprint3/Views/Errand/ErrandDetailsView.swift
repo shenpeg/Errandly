@@ -90,7 +90,10 @@ struct ErrandDetailsView: View {
                       .foregroundColor(black)
                   
                     HStack {
-                        Text("Date Due: \(dateFormat.string(from: errand.dateDue))")
+//                        Text("Date Due: \(dateFormat.string(from: errand.dateDue))")
+                        Text("Date Due: ")
+                        .font(.system(size: 20))
+                        Text(dateFormat.string(from: errand.dateDue))
                         .font(.system(size: 20))
                     }
                 }
