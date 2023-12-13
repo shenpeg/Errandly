@@ -18,6 +18,12 @@ struct MarketplaceView: View {
     @State private var isOnboardingPresented = false
     
     var body: some View {
+      let searchFieldBinding = Binding<String>(get: {
+            self.searchField
+      }, set: {
+        self.searchField = $0
+        errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+      })
       ZStack {
         
         NavigationStack(path: $marketplacePath) {
@@ -107,7 +113,7 @@ struct MarketplaceView: View {
                 }
             }
             .listStyle(.plain)
-            .searchable(text: $searchField)
+            .searchable(text: searchFieldBinding)
             .navigationDestination(for: Errand.self) { errand in
                 ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
             }
