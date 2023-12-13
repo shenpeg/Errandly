@@ -118,11 +118,6 @@ class ErrandsViewModel: ObservableObject {
   }
   
   func filterErrands(searchText: String, selectedTags: String) {
-      print("~~~~~~")
-    print(filteredErrands)
-    print(filteredErrands.count)
-    print("-----")
-    
     self.filteredErrands = self.errands.filter { errand in
           if (!searchText.isEmpty && selectedTags != "") {
               return errand.status == "new" &&
@@ -138,11 +133,6 @@ class ErrandsViewModel: ObservableObject {
               return errand.status == "new"
           }
       }
-    
-    print("~~~~~~")
-  print(filteredErrands)
-  print(filteredErrands.count)
-  print("-----")
   }
   
   func updateUser(user: User, userId: String, postedErrandsIds: [String], pickedUpErrandsIds: [String]) {
