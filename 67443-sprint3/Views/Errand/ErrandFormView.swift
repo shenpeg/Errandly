@@ -61,6 +61,7 @@ struct ErrandFormView: View {
           }
             
             DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
+            .accessibilityIdentifier("date needed by")
 
             VStack(alignment: .leading, spacing: 0) {
                 Text("Tags (select up to three):")

@@ -165,6 +165,7 @@ struct EditErrandView: View {
               }
             )
           }
+          .accessibilityIdentifier("Save edits")
           
           //delete errand
           FormButton (title: "Delete errand") {
