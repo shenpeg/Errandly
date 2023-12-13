@@ -34,7 +34,7 @@ struct MarketplaceView: View {
             } label: {
                 Text("sort by")
                     .font(.footnote)
-                    .padding(.init(top: 4, leading: 7, bottom: 4, trailing: 7))
+                    .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
                     .foregroundColor(black)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
@@ -52,7 +52,7 @@ struct MarketplaceView: View {
                   } label: {
                     Text(selectedTags)
                       .font(.footnote)
-                      .padding(.init(top: 4, leading: 7, bottom: 4, trailing: 7))
+                      .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
                       .foregroundColor(black)
                       .background(Capsule().fill(mint))
                       .overlay(
@@ -73,7 +73,7 @@ struct MarketplaceView: View {
                       } label: {
                           Text(tag)
                             .font(.footnote)
-                            .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+                            .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
                             .foregroundColor(black)
                             .background(Capsule().fill(white))
                             .overlay(
