@@ -63,7 +63,7 @@ struct FormFunctions {
       // checking if pay has more than two decimal places, code from chatgpt
       let payDecimals = String(pay).components(separatedBy: ".")
       if payDecimals.count == 2 && payDecimals[1].count > 2 {
-        errorMsg = "Please enter a valid amount with only up to two decimal places for compensation."
+        errorMsg = "Please enter a valid amount with only up to two decimal places for compensation"
         return false
       }
     }

@@ -19,7 +19,7 @@ final class _7443_sprint3UITests: XCTestCase {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     // In UI tests it is usually best to stop immediately when a failure occurs.
-    executionTimeAllowance = 60
+    executionTimeAllowance = 120
     continueAfterFailure = false
     app.launch()
     
@@ -230,6 +230,7 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(editErrand.exists)
     editErrand.tap()
     
+    app.swipeUp()
     let delete = app.buttons["Delete errand"]
     XCTAssert(delete.exists)
     delete.tap()
@@ -243,7 +244,8 @@ final class _7443_sprint3UITests: XCTestCase {
   
   // post errand tab
   
-  func testPost() throws {
+  func testPostEditDelete() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -259,9 +261,9 @@ final class _7443_sprint3UITests: XCTestCase {
     
     let titlePostError = app.alerts["Please enter a title for your errand!"]
     XCTAssert(titlePostError.exists)
-    let dismiss = titlePostError.buttons["OK"]
-    XCTAssert(dismiss.exists)
-    dismiss.tap()
+    let titlePostDismiss = titlePostError.buttons["OK"]
+    XCTAssert(titlePostDismiss.exists)
+    titlePostDismiss.tap()
     
     // errand title
     app.swipeDown()
@@ -276,8 +278,9 @@ final class _7443_sprint3UITests: XCTestCase {
     
     let detailsPostError = app.alerts["Please write some details on what you need help with"]
     XCTAssert(detailsPostError.exists)
-    XCTAssert(dismiss.exists)
-    dismiss.tap()
+    let detailsPostDismiss = detailsPostError.buttons["OK"]
+    XCTAssert(detailsPostDismiss.exists)
+    detailsPostDismiss.tap()
 
     // errand details
     app.swipeDown()
@@ -285,6 +288,135 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(detailsInput.exists)
     detailsInput.tap()
     detailsInput.typeText("how to write swiftui tests")
+    
+    app.swipeUp()
+    XCTAssert(post.exists)
+    post.tap()
+    
+    let locationPostError = app.alerts["Please enter a location"]
+    XCTAssert(locationPostError.exists)
+    let locationPostDismiss = locationPostError.buttons["OK"]
+    XCTAssert(locationPostDismiss.exists)
+    locationPostDismiss.tap()
+    
+    // errand tags
+    let onCampus = app.buttons["on-campus"]
+    XCTAssert(onCampus.exists)
+    onCampus.tap()
+    
+    let car = app.buttons["car"]
+    XCTAssert(car.exists)
+    car.tap()
+    
+    // errand location
+    let locationInput = app.textFields["location search"]
+    XCTAssert(locationInput.exists)
+    locationInput.tap()
+    locationInput.typeText("Carnegie Mellon University")
+    sleep(1)
+    // dismiss keyboard (necessary to select the result)
+    if app.keys.element(boundBy: 0).exists {
+        app.typeText("\n")
+    }
+    
+    let results = app.buttons["location result"]
+    XCTAssert(results.exists)
+    let firstResult = results.firstMatch
+    firstResult.tap()
+    sleep(1)
+    
+    // errand compensation
+    var payInput = app.textFields["How much?"]
+    XCTAssert(payInput.exists)
+    payInput.tap()
+    payInput.typeText("0.01")
+    sleep(1)
+    
+    XCTAssert(post.exists)
+    post.tap()
+    sleep(1)
+
+    let payAmountError = app.alerts["If you choose to pay the runner, please enter an amount over $1.00"]
+    XCTAssert(payAmountError.exists)
+    let payAmountDismiss = payAmountError.buttons["OK"]
+    XCTAssert(payAmountDismiss.exists)
+    payAmountDismiss.tap()
+    
+    payInput = app.textFields["0.01"]
+    XCTAssert(payInput.exists)
+    payInput.tap()
+    //\u{8} for deletion
+    // https://stackoverflow.com/questions/40380176/how-to-clear-value-in-textfield-using-xcode-ui-tests
+    payInput.typeText("\u{8}\u{8}\u{8}\u{8}1.123")
+    sleep(1)
+    
+    XCTAssert(post.exists)
+    post.tap()
+    sleep(1)
+
+    let payFormatError = app.alerts["Please enter a valid amount with only up to two decimal places for compensation"]
+    XCTAssert(payFormatError.exists)
+    let payFormatDismiss = payFormatError.buttons["OK"]
+    XCTAssert(payFormatDismiss.exists)
+    payFormatDismiss.tap()
+    
+    payInput = app.textFields["1.123"]
+    XCTAssert(payInput.exists)
+    payInput.tap()
+    payInput.typeText("\u{8}")
+    sleep(1)
+    
+    // post errand and check if exists
+    
+    XCTAssert(post.exists)
+    post.tap()
+    sleep(2)
+        
+    let postedErrand = app.staticTexts["UITests"]
+    XCTAssert(postedErrand.exists)
+    
+    // edit the posted errand
+    
+    postedErrand.tap()
+    var editErrand = app.otherElements.buttons["edit errand"]
+    XCTAssert(editErrand.exists)
+    editErrand.tap()
+    
+    let editTitle = app.textFields["UITests"]
+    XCTAssert(editTitle.exists)
+    editTitle.tap()
+    editTitle.typeText("\u{8}")
+    
+    app.swipeUp()
+    let edit = app.buttons["Save edits"]
+    XCTAssert(edit.exists)
+    edit.tap()
+    sleep(2)
+    
+    let editedErrand = app.staticTexts["UITest"]
+    XCTAssert(editedErrand.exists)
+    
+    // delete the posted errand
+    
+    editedErrand.tap()
+    editErrand = app.otherElements.buttons["edit errand"]
+    XCTAssert(editErrand.exists)
+    editErrand.tap()
+    
+    app.swipeUp()
+    let delete = app.buttons["Delete errand"]
+    XCTAssert(delete.exists)
+    delete.tap()
+    
+    let deleteAlert = app.alerts["Delete this errand permanently?"]
+    XCTAssert(deleteAlert.exists)
+    let confirm = deleteAlert.buttons["Yes, delete this errand"]
+    XCTAssert(confirm.exists)
+    confirm.tap()
+    sleep(2)
+    
+    let deletedErrand = app.staticTexts["UITest"]
+    XCTAssert(!deletedErrand.exists)
   }
   
   // profile tab

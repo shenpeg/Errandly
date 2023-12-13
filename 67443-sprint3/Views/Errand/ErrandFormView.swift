@@ -76,6 +76,7 @@ struct ErrandFormView: View {
           .listRowSeparator(.hidden)
 
           DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
+            .accessibilityIdentifier("date needed by")
           
           VStack(alignment: .leading) {
               Text("Compensation?")
