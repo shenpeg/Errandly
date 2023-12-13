@@ -34,6 +34,7 @@ final class _7443_sprint3UITests: XCTestCase {
   // welcome + tutorial
   
   func testWelcome() throws {
+    sleep(1)
     let welcome = app.staticTexts["Welcome!"]
     // Use XCTAssert and related functions to verify your tests produce welcome page
     if (welcome.exists) {
@@ -48,6 +49,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testFullTutorial() throws {
+    sleep(1)
     let tutorial = app.staticTexts["Welcome to Errandly!"]
     if (tutorial.exists) {
       let welcomeNext = app.buttons["Next"]
@@ -94,6 +96,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testTutorialReplay() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -110,6 +113,7 @@ final class _7443_sprint3UITests: XCTestCase {
   // marketplace tab
   
   func testSort() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -132,6 +136,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testTags() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -153,6 +158,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testLocation() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -163,6 +169,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testErrandDetail() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -178,6 +185,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testMessage() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -194,6 +202,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testErrandEdit() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -213,6 +222,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testErrandDeleteCancel() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -422,6 +432,7 @@ final class _7443_sprint3UITests: XCTestCase {
   // profile tab
   
   func testProfile() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -434,6 +445,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testProfileTabs() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -452,6 +464,7 @@ final class _7443_sprint3UITests: XCTestCase {
   }
   
   func testProfileEdit() throws {
+    sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
@@ -460,9 +473,51 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(profile.exists)
     profile.tap()
     
+    let name = (app.staticTexts["user profile name"].label).components(separatedBy: " ")
+    let firstName = name[0]
+    let lastName = name[1]
+    
     let edit = app.otherElements.buttons["edit profile"]
     XCTAssert(edit.exists)
     edit.tap()
+    
+    let textInputs = app.textFields["form text section"]
+    XCTAssert(textInputs.exists)
+    let firstNameInput = textInputs.firstMatch
+    XCTAssert(firstNameInput.exists)
+    firstNameInput.tap()
+    firstNameInput.typeText("TEST")
+    
+    let save = app.otherElements.buttons["Save"]
+    XCTAssert(save.exists)
+    save.tap()
+    sleep(2)
+    
+    print("~~~~~~~~")
+    print(firstName)
+    print("~~~~~~~~")
+    
+    let updatedName = app.staticTexts["\(firstName)TEST \(lastName)"]
+    XCTAssert(updatedName.exists)
+    
+    // change back to original
+    
+    XCTAssert(edit.exists)
+    edit.tap()
+    
+    XCTAssert(textInputs.exists)
+    let firstNameEdit = textInputs.firstMatch
+    XCTAssert(firstNameEdit.exists)
+    firstNameEdit.tap()
+    firstNameEdit.typeText("\u{8}\u{8}\u{8}\u{8}")
+    
+    XCTAssert(save.exists)
+    save.tap()
+    sleep(2)
+    
+    let originalName = app.staticTexts["\(firstName) \(lastName)"]
+    XCTAssert(originalName.exists)
+    
   }
   
   
