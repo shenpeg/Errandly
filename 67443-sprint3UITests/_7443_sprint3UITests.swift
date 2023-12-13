@@ -10,6 +10,10 @@
 // OR
 // print(app.______.debugDescription)
 
+// test requirements:
+// successfully logged into the app
+// has posted at least errand
+
 import XCTest
 
 final class _7443_sprint3UITests: XCTestCase {
