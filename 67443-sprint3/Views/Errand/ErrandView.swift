@@ -98,7 +98,7 @@ struct ErrandView: View {
               .font(.system(size: 18).bold())
               .padding(.init(top: 4, leading: 15, bottom: 5, trailing: 15))
               .foregroundColor(.white)
-              .background(Capsule().fill(Color(red: 0.09, green: 0.34, blue: 0.35)))
+              .background(Capsule().fill(Color(red: 0.177, green: 0.309, blue: 0.749)))
           }
           else {
               Text("view details")
