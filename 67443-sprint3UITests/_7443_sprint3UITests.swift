@@ -195,14 +195,20 @@ final class _7443_sprint3UITests: XCTestCase {
     skip.tap()
     
     // navigate to errandDetailsView
-    let view = app.otherElements.buttons["view details"]
-    XCTAssert(view.exists)
-    let firstErrand = view.firstMatch
-    firstErrand.tap()
+    let errands = app.otherElements.buttons.matching(identifier: "view details")
     
-    let msg = app.buttons["message"]
-    XCTAssert(msg.exists)
-    msg.tap()
+    for i in 0...errands.count {
+      let errand = errands.element(boundBy: i)
+      if (!errand.staticTexts["your post"].exists) {
+        // not your post
+        errand.tap()
+        let msg = app.buttons["message"]
+        XCTAssert(msg.exists)
+        msg.tap()
+        break
+      }
+    }
+
   }
   
   func testErrandEdit() throws {
