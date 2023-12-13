@@ -71,7 +71,6 @@ struct UserProfileInfoView: View {
                     .foregroundColor(Color.white)
                     .font(.system(size: 20))
                 }
-                .navigationBarHidden(true)
                 .background(Color.clear)
               }
               
