@@ -18,12 +18,9 @@
 		6E96F9752B1EB9F4006BF365 /* ErrandFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */; };
 		6E96F9772B1EC5A6006BF365 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9762B1EC5A6006BF365 /* FormButton.swift */; };
 		6E96F9792B1ECB09006BF365 /* FormFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9782B1ECB09006BF365 /* FormFunctions.swift */; };
-<<<<<<< HEAD
-=======
 		6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC74B432AFE694C0060F4A1 /* Tag.swift */; };
 		8A3C5BE22B222C2300A5AF7D /* _7443_sprint3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */; };
 		8A3C5BE42B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */; };
->>>>>>> main
 		8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEFF852AFD714A0094C83F /* SortSheet.swift */; };
 		8AE9CD922B151B8E0051F2CB /* MessagesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */; };
 		A30F99D42AFCD312001A5455 /* EditUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F99D32AFCD312001A5455 /* EditUserProfileView.swift */; };
@@ -122,13 +119,10 @@
 		6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandFormView.swift; sourceTree = "<group>"; };
 		6E96F9762B1EC5A6006BF365 /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		6E96F9782B1ECB09006BF365 /* FormFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFunctions.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		6EC74B432AFE694C0060F4A1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A3C5BDF2B222C2300A5AF7D /* 67443-sprint3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "67443-sprint3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITests.swift; sourceTree = "<group>"; };
 		8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITestsLaunchTests.swift; sourceTree = "<group>"; };
->>>>>>> main
 		8ADEFF852AFD714A0094C83F /* SortSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSheet.swift; sourceTree = "<group>"; };
 		8AE9CD912B151B8E0051F2CB /* MessagesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesServices.swift; sourceTree = "<group>"; };
 		A30F99D32AFCD312001A5455 /* EditUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileView.swift; sourceTree = "<group>"; };
