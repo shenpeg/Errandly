@@ -211,7 +211,7 @@ final class _7443_sprint3UITests: XCTestCase {
 
   }
   
-  func testErrandEdit() throws {
+  func testErrandEditView() throws {
     sleep(1)
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
@@ -402,13 +402,30 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(editErrand.exists)
     editErrand.tap()
     
-    let editTitle = app.textFields["UITests"]
-    XCTAssert(editTitle.exists)
-    editTitle.tap()
-    editTitle.typeText("\u{8}")
+    
+    let editTitleEmpty = app.textFields["UITests"]
+    XCTAssert(editTitleEmpty.exists)
+    editTitleEmpty.tap()
+    editTitleEmpty.typeText("\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}")
     
     app.swipeUp()
     let edit = app.buttons["Save edits"]
+    XCTAssert(edit.exists)
+    edit.tap()
+    sleep(1)
+    
+    let titleSaveError = app.alerts["Please enter a title for your errand!"]
+    XCTAssert(titleSaveError.exists)
+    let titleSaveDismiss = titleSaveError.buttons["OK"]
+    XCTAssert(titleSaveDismiss.exists)
+    titleSaveDismiss.tap()
+    
+    let editTitle = app.textFields["Errand Title"]
+    XCTAssert(editTitle.exists)
+    editTitle.tap()
+    editTitle.typeText("UITest")
+    
+    app.swipeUp()
     XCTAssert(edit.exists)
     edit.tap()
     sleep(2)
