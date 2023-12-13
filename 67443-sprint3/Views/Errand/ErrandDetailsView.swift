@@ -80,7 +80,7 @@ struct ErrandDetailsView: View {
                   
                     HStack {
                       Text(errand.description)
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                     }
                     
                     // Horizontal separator line
@@ -90,7 +90,7 @@ struct ErrandDetailsView: View {
                   
                     HStack {
                         Text("Date Due: \(dateFormat.string(from: errand.dateDue))")
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                     }
                 }
                 .padding(20)
