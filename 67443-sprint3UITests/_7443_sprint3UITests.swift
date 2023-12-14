@@ -480,6 +480,28 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(app.buttons["Sign out"].exists)
   }
   
+  func testProfileSignOutCancel() throws {
+    sleep(1)
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    sleep(1)
+    
+    let profile = app.buttons["Profile"]
+    XCTAssert(profile.exists)
+    profile.tap()
+    
+    XCTAssert(app.buttons["Sign out"].exists)
+    app.buttons["Sign out"].tap()
+    
+    let signOut = app.alerts["Are you sure you want to sign out?"]
+    XCTAssert(signOut.exists)
+    let cancel = signOut.buttons["Cancel"]
+    XCTAssert(cancel.exists)
+    cancel.tap()
+    sleep(1)
+  }
+  
   func testProfileTabs() throws {
     sleep(1)
     let skip = app.buttons["Skip"]
