@@ -94,7 +94,7 @@ struct MarketplaceView: View {
                 }
             }
             .background(backgroundGray)
-            .navigationBarTitle("Errandly Marketplace", displayMode: .inline)
+            .navigationBarTitle("Errandly", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     LocationPermissionIconView()

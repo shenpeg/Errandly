@@ -44,7 +44,7 @@ struct ContentView: View {
     UITabBar.appearance().backgroundColor = .white
     UITabBar.appearance().barTintColor = .white
     // for Errandly Marketplace header in MarketplaceView
-    UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Quicksand-Bold", size: 20)!]
+    UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Quicksand-Bold", size: 20)!, .foregroundColor: UIColor(red: 0.09, green: 0.34, blue: 0.95, alpha: 1)]
   }
   
   var body: some View {
