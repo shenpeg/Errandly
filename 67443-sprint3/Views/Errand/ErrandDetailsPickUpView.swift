@@ -124,7 +124,7 @@ struct ErrandDetailsPickUpView: View {
                 PaymentButton(action: payViewModel.payTransfer)
               }
             }
-          } else if (usersViewModel.getCurUser()!.id == errand.runner!.id) {
+          } else if (usersViewModel.getCurUser()!.id == errand.owner.id) {
             Text("Waiting for \(errand.runner!.first_name) to claim their payment")
               .font(.headline)
               .foregroundColor(darkBlue)
