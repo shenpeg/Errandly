@@ -12,7 +12,6 @@
 
 // test requirements:
 // successfully logged into the app
-// has posted at least errand
 
 import XCTest
 
@@ -211,57 +210,6 @@ final class _7443_sprint3UITests: XCTestCase {
 
   }
   
-  func testErrandEditView() throws {
-    sleep(1)
-    let skip = app.buttons["Skip"]
-    XCTAssert(skip.exists)
-    skip.tap()
-    
-    while (!app.staticTexts["your post"].exists) {
-      app.swipeUp()
-    }
-    
-    let yourErrands = app.staticTexts["your post"]
-    XCTAssert(yourErrands.exists)
-    let yourFirstErrand = yourErrands.firstMatch
-    yourFirstErrand.tap()
-    
-    let editErrand = app.otherElements.buttons["edit errand"]
-    XCTAssert(editErrand.exists)
-    editErrand.tap()
-  }
-  
-  func testErrandDeleteCancel() throws {
-    sleep(1)
-    let skip = app.buttons["Skip"]
-    XCTAssert(skip.exists)
-    skip.tap()
-    
-    while (!app.staticTexts["your post"].exists) {
-      app.swipeUp()
-    }
-    
-    let yourErrands = app.staticTexts["your post"]
-    XCTAssert(yourErrands.exists)
-    let yourFirstErrand = yourErrands.firstMatch
-    yourFirstErrand.tap()
-    
-    let editErrand = app.otherElements.buttons["edit errand"]
-    XCTAssert(editErrand.exists)
-    editErrand.tap()
-    
-    app.swipeUp()
-    let delete = app.buttons["delete errand"]
-    XCTAssert(delete.exists)
-    delete.tap()
-    
-    let deleteAlert = app.alerts["Delete this errand permanently?"]
-    XCTAssert(deleteAlert.exists)
-    let cancel = deleteAlert.buttons["No, cancel"]
-    XCTAssert(cancel.exists)
-    cancel.tap()
-  }
-  
   // post errand tab
   
   func testPostEditDelete() throws {
@@ -452,7 +400,18 @@ final class _7443_sprint3UITests: XCTestCase {
     editErrand.tap()
     
     app.swipeUp()
-    let delete = app.buttons["Delete errand"]
+    let deleteAttempt = app.buttons["delete errand"]
+    XCTAssert(deleteAttempt.exists)
+    deleteAttempt.tap()
+    
+    let deleteAttemptAlert = app.alerts["Delete this errand permanently?"]
+    XCTAssert(deleteAttemptAlert.exists)
+    let cancel = deleteAttemptAlert.buttons["No, cancel"]
+    XCTAssert(cancel.exists)
+    cancel.tap()
+        
+    app.swipeUp()
+    let delete = app.buttons["delete errand"]
     XCTAssert(delete.exists)
     delete.tap()
     sleep(1)
