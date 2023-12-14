@@ -53,9 +53,9 @@
 		A3B99B712AD63057000822EE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B702AD63057000822EE /* GoogleSignIn */; };
 		A3B99B732AD63057000822EE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B722AD63057000822EE /* GoogleSignInSwift */; };
 		A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4564C2B09584F000678E6 /* FormTags.swift */; };
+		A3D4FF362B26B0CD00FE2C6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */; };
 		A3D4FF392B2AE1B000FE2C6B /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3D4FF382B2AE1B000FE2C6B /* Quicksand-Bold.ttf */; };
 		A3D4FF3B2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3D4FF3A2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf */; };
-		A3D4FF362B26B0CD00FE2C6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */; };
 		A3D646A12B25479400CC4CB2 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */; };
 		A3D646A32B25486500CC4CB2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D646A22B25486500CC4CB2 /* Location.swift */; };
 		A3EAE9272AE85D880079481D /* Errand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9262AE85D880079481D /* Errand.swift */; };
@@ -146,9 +146,9 @@
 		A3B99B652AD62B0D000822EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3C4564C2B09584F000678E6 /* FormTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTags.swift; sourceTree = "<group>"; };
-		A3D4FF382B2AE1B000FE2C6B /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Bold.ttf"; path = "../../../../../Downloads/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
-		A3D4FF3A2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-VariableFont_wght.ttf"; path = "../../../../../Downloads/Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A3D4FF372B26C41D00FE2C6B /* 67443-sprint3.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "67443-sprint3.xctestplan"; sourceTree = "<group>"; };
+		A3D4FF382B2AE1B000FE2C6B /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Bold.ttf"; path = "../Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		A3D4FF3A2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-VariableFont_wght.ttf"; path = "../Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		A3D646A22B25486500CC4CB2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A3EAE9262AE85D880079481D /* Errand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errand.swift; sourceTree = "<group>"; };
