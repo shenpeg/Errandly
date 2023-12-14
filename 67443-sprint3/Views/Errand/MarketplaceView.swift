@@ -18,6 +18,12 @@ struct MarketplaceView: View {
     @State private var isOnboardingPresented = false
     
     var body: some View {
+      let searchFieldBinding = Binding<String>(get: {
+            self.searchField
+      }, set: {
+        self.searchField = $0
+        errandsViewModel.filterErrands(searchText: self.searchField, selectedTags: self.selectedTags)
+      })
       ZStack {
         
         NavigationStack(path: $marketplacePath) {
@@ -28,7 +34,7 @@ struct MarketplaceView: View {
             } label: {
                 Text("sort by")
                     .font(.footnote)
-                    .padding(.init(top: 4, leading: 7, bottom: 4, trailing: 7))
+                    .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
                     .foregroundColor(black)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
@@ -46,7 +52,7 @@ struct MarketplaceView: View {
                   } label: {
                     Text(selectedTags)
                       .font(.footnote)
-                      .padding(.init(top: 4, leading: 7, bottom: 4, trailing: 7))
+                      .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
                       .foregroundColor(black)
                       .background(Capsule().fill(mint))
                       .overlay(
@@ -67,7 +73,7 @@ struct MarketplaceView: View {
                       } label: {
                           Text(tag)
                             .font(.footnote)
-                            .padding(.init(top: 2, leading: 6, bottom: 3, trailing: 6))
+                            .padding(.init(top: 2, leading: 7, bottom: 3, trailing: 7))
                             .foregroundColor(black)
                             .background(Capsule().fill(white))
                             .overlay(
@@ -89,8 +95,6 @@ struct MarketplaceView: View {
             }
             .background(backgroundGray)
             .navigationBarTitle("Errandly Marketplace", displayMode: .inline)
-            
-//            .font(Font.custom("Quicksand-VariableFont_wght", size: 30).weight(.bold))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     LocationPermissionIconView()
@@ -107,7 +111,7 @@ struct MarketplaceView: View {
                 }
             }
             .listStyle(.plain)
-            .searchable(text: $searchField)
+            .searchable(text: searchFieldBinding, placement: .navigationBarDrawer(displayMode: .always))
             .navigationDestination(for: Errand.self) { errand in
                 ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
             }

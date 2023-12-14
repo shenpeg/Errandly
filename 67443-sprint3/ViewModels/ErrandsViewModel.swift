@@ -117,8 +117,15 @@ class ErrandsViewModel: ObservableObject {
     }
   }
   
+  func removeRunnerFromErrand(errandId: String) {
+    let errandRef = store.collection(path).document(errandId)
+    errandRef.updateData([
+      "runner": FieldValue.delete()
+    ])
+  }
+  
   func filterErrands(searchText: String, selectedTags: String) {
-      self.filteredErrands = self.errands.filter { errand in
+    self.filteredErrands = self.errands.filter { errand in
           if (!searchText.isEmpty && selectedTags != "") {
               return errand.status == "new" &&
                   errand.name.lowercased().contains(searchText.lowercased()) &&

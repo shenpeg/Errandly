@@ -4,6 +4,8 @@ import GoogleSignIn
 struct UserProfileInfoView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @EnvironmentObject var usersViewModel: UsersViewModel
+  @State private var isSignOutPresented = false
+
   var user: User
   func message() {
     MessagesService().sendMessage("\(user.phone_number)")
@@ -23,7 +25,7 @@ struct UserProfileInfoView: View {
       if (usersViewModel.getCurUser()!.id == user.id) {
         HStack {
           Spacer()
-          Button(action: signOut)
+          Button(action: {isSignOutPresented = true})
           {
             VStack (spacing: 0) {
               Image(systemName: "rectangle.portrait.and.arrow.forward")
@@ -33,6 +35,15 @@ struct UserProfileInfoView: View {
                 .foregroundColor(Color.white)
                 .font(.caption)
             }
+          }
+          .alert(isPresented: $isSignOutPresented) {
+            Alert(
+              title: Text("Are you sure you want to sign out?"),
+              primaryButton: .default(Text("Yes, I'm sure")) {
+                signOut()
+              },
+              secondaryButton: .cancel(Text("Cancel"))
+            )
           }
         }
         .padding(.init(top: 60, leading: 0, bottom: 0, trailing: 20))
@@ -62,7 +73,6 @@ struct UserProfileInfoView: View {
                     .font(.system(size: 20))
                 }
                 .accessibilityIdentifier("edit profile")
-                .navigationBarHidden(true)
                 .background(Color.clear)
               }
               

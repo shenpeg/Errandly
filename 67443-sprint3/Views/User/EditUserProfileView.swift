@@ -155,7 +155,7 @@ struct FormTextSection: View {
         .padding(.bottom, 5)
       TextField(text, text: input)
         .padding(5)
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(darkBlue, lineWidth: 1))
+        .overlay(RoundedRectangle(cornerRadius: 3).stroke(darkBlue, lineWidth: 1))
         .accessibilityIdentifier("form text section")
     }
     .listRowSeparator(.hidden)

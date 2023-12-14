@@ -18,6 +18,7 @@ struct ErrandDetailsView: View {
   @Binding var profilePath: NavigationPath
   
   @State private var isDeleteAlertPresented = false
+  @State private var isRemoveRunnerPresented = false
 
   
     var body: some View {
@@ -45,7 +46,7 @@ struct ErrandDetailsView: View {
                       
                       Spacer()
                       
-                      if (usersViewModel.getCurUser()!.id == errand.owner.id && errand.status == "new") {
+                      if (usersViewModel.getCurUser()!.id == errand.owner.id && errandsViewModel.getErrand(errand.id!).status == "new") {
                         NavigationLink(value: errand.id) {
                           Image(systemName: "square.and.pencil")
                             .foregroundColor(Color.black)
@@ -54,6 +55,62 @@ struct ErrandDetailsView: View {
                         }
                         .accessibilityIdentifier("edit errand")
                       }
+                      
+                      else if (usersViewModel.getCurUser()!.id == errand.owner.id && errandsViewModel.getErrand(errand.id!).status == "in progress") {
+                        Button(action: {isRemoveRunnerPresented = true})
+                        {
+                          VStack (spacing: 0) {
+                            Image(systemName: "person.crop.circle.badge.xmark")
+                              .foregroundColor(Color.black)
+                              .font(.system(size: 20))
+                            Text("Remove\nrunner")
+                              .foregroundColor(Color.black)
+                              .font(.caption)
+                          }
+                        }
+                        .alert(isPresented: $isRemoveRunnerPresented) {
+                          Alert(
+                            title: Text("Are you sure you want to remove the runner?"),
+                            primaryButton: .default(Text("Yes, I'm sure")) {
+                              errandsViewModel.removeRunnerFromErrand(errandId: errand.id!)
+                              usersViewModel.deletePickedUpErrand(runner: usersViewModel.getUser(userId: errand.runner!.id)!, errand: errand)
+                              errandsViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "new")
+                            },
+                            secondaryButton: .cancel(Text("Cancel"))
+                          )
+                        }
+                      }
+                      
+                      else if ((errand.runner != nil && usersViewModel.getCurUser()!.id == errand.runner!.id)
+                        && errandsViewModel.getErrand(errand.id!).status == "in progress") {
+                        Button(action: {isRemoveRunnerPresented = true})
+                        {
+                          VStack (spacing: 0) {
+                            Image(systemName: "person.crop.circle.badge.xmark")
+                              .foregroundColor(Color.black)
+                              .font(.system(size: 20))
+                            Text("Drop\nerrand")
+                              .foregroundColor(Color.black)
+                              .font(.caption)
+                          }
+                        }
+                        .alert(isPresented: $isRemoveRunnerPresented) {
+                          Alert(
+                            title: Text("Are you sure you want to drop this errand?"),
+                            primaryButton: .default(Text("Yes, I'm sure")) {
+                              errandsViewModel.removeRunnerFromErrand(errandId: errand.id!)
+                              usersViewModel.deletePickedUpErrand(runner: usersViewModel.getCurUser()!, errand: errand)
+                              errandsViewModel.updateErrandStatus(errandID: errand.id!, newStatus: "new")
+                              tabUtil.tabSelection = 3
+                              tabUtil.profileTabSelection = "Picked Up Errands"
+                              marketplacePath = NavigationPath()
+                              profilePath = NavigationPath()
+                            },
+                            secondaryButton: .cancel(Text("Cancel"))
+                          )
+                        }
+                      }
+                      
                     }
                   
                     Text(errand.name)
@@ -81,7 +138,7 @@ struct ErrandDetailsView: View {
                   
                     HStack {
                       Text(errand.description)
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                     }
                     
                     // Horizontal separator line
@@ -90,11 +147,10 @@ struct ErrandDetailsView: View {
                       .foregroundColor(black)
                   
                     HStack {
-//                        Text("Date Due: \(dateFormat.string(from: errand.dateDue))")
                         Text("Date Due: ")
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                         Text(dateFormat.string(from: errand.dateDue))
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                     }
                 }
                 .padding(20)
