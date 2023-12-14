@@ -113,6 +113,43 @@ final class _7443_sprint3UITests: XCTestCase {
     skipAgain.tap()
   }
   
+  // tabs
+  
+  func testTabReset() throws {
+    sleep(1)
+    let skip = app.buttons["Skip"]
+    XCTAssert(skip.exists)
+    skip.tap()
+    
+    // marketplace tab
+    
+    let view = app.otherElements.buttons["view details"]
+    XCTAssert(view.exists)
+    let firstErrand = view.firstMatch
+    firstErrand.tap()
+    
+    let date = app.staticTexts["Date Due: "]
+    XCTAssert(date.exists)
+    
+    let marketplaceTab = app.buttons["Marketplace"]
+    XCTAssert(marketplaceTab.exists)
+    marketplaceTab.tap()
+    sleep(1)
+    marketplaceTab.tap()
+    let viewCheck = app.otherElements.buttons["view details"]
+    XCTAssert(viewCheck.exists)
+    
+    // profile tab
+    
+    let profileTab = app.buttons["Profile"]
+    XCTAssert(profileTab.exists)
+    profileTab.tap()
+    sleep(1)
+    profileTab.tap()
+
+    XCTAssert(app.buttons["Sign out"].exists)
+  }
+  
   // marketplace tab
   
   func testSort() throws {
