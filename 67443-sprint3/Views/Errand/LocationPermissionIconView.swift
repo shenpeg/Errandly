@@ -28,5 +28,6 @@ struct LocationPermissionIconView: View {
           .font(.system(size: 16))
       }
     }
+    .accessibilityIdentifier("location button")
   }
 }

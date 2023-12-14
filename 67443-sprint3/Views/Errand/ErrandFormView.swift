@@ -13,6 +13,10 @@ struct ErrandFormView: View {
     @Binding var pay: Double
     @Binding var payBool: Bool
     @Binding var payString: String
+  
+    // necessary for UI testing because for some reason,
+    // TextField with axis does not work otherwise
+    @FocusState private var errandDetailsIsFocused: Bool
 
     var body: some View {
         Section {
@@ -38,7 +42,10 @@ struct ErrandFormView: View {
                 .padding(5)
                 .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
                 .listRowSeparator(.hidden)
-                .accessibilityIdentifier("helpText")
+                .focused($errandDetailsIsFocused)
+                .onTapGesture {
+                  errandDetailsIsFocused = true
+                }
           }
           else {
             TextField(description, text: $description, axis: .vertical)
@@ -47,6 +54,10 @@ struct ErrandFormView: View {
               .padding(5)
               .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
               .listRowSeparator(.hidden)
+              .focused($errandDetailsIsFocused)
+              .onTapGesture {
+                errandDetailsIsFocused = true
+              }
           }
           
 //          DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
@@ -65,6 +76,7 @@ struct ErrandFormView: View {
           .listRowSeparator(.hidden)
 
           DatePicker("Date needed by:", selection: $dateDue, displayedComponents: .date)
+            .accessibilityIdentifier("date needed by")
           
           VStack(alignment: .leading) {
               Text("Compensation?")
@@ -91,6 +103,7 @@ struct ErrandFormView: View {
                         .padding(5)
                         .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
                         .keyboardType(.decimalPad)
+                        .accessibilityIdentifier("pay input")
                     }
                     else {
                       TextField(payString, text: $payString)

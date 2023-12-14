@@ -14,6 +14,7 @@ struct LocationSearchView: View {
       .padding(5)
       .background(RoundedRectangle(cornerRadius: 2).stroke(black, lineWidth: 1))
       .autocorrectionDisabled()
+      .accessibilityIdentifier("location search")
       .onReceive(
         locationViewModel.$searchableText.debounce(
           for: .seconds(0.5),
@@ -56,6 +57,7 @@ struct LocationSearchView: View {
                 .font(.caption)
             }
           }
+          .accessibilityIdentifier("location result")
         }
       }
       .listStyle(.plain)

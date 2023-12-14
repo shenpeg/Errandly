@@ -163,6 +163,7 @@ struct EditErrandView: View {
               }
             )
           }
+          .accessibilityIdentifier("Save edits")
           
     
           Button(action: {

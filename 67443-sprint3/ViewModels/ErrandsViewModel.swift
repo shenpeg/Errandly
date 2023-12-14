@@ -37,7 +37,7 @@ class ErrandsViewModel: ObservableObject {
     do {
       return try await store.collection(path).addDocument(from: errand).getDocument().data(as: Errand.self)
     } catch {
-      fatalError("Unable to add book: \(error.localizedDescription).")
+      fatalError("Unable to add errand: \(error).")
     }
   }
   

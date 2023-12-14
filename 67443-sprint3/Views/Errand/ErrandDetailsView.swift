@@ -53,6 +53,7 @@ struct ErrandDetailsView: View {
                             .font(.system(size: 20))
                             .padding(5)
                         }
+                        .accessibilityIdentifier("edit errand")
                       }
                       
                       else if (usersViewModel.getCurUser()!.id == errand.owner.id && errandsViewModel.getErrand(errand.id!).status == "in progress") {
@@ -146,7 +147,9 @@ struct ErrandDetailsView: View {
                       .foregroundColor(black)
                   
                     HStack {
-                        Text("Date Due: \(dateFormat.string(from: errand.dateDue))")
+                        Text("Date Due: ")
+                        .font(.system(size: 18))
+                        Text(dateFormat.string(from: errand.dateDue))
                         .font(.system(size: 18))
                     }
                 }

@@ -30,6 +30,7 @@ struct ErrandView: View {
     return ZStack {
       NavigationLink("", value: errand)
         .opacity(0.0)
+        .accessibilityIdentifier("view details")
       
       VStack(alignment: .leading, spacing: 0, content: {
         HStack(alignment: .top) {

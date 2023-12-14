@@ -64,6 +64,7 @@ struct UserProfileInfoView: View {
             HStack() {
               Text("\(user.first_name) \(user.last_name)")
                 .font(.title)
+                .accessibilityIdentifier("user profile name")
               
               if (usersViewModel.getCurUser()!.id == user.id) {
                 NavigationLink(value: user) {
@@ -71,6 +72,7 @@ struct UserProfileInfoView: View {
                     .foregroundColor(Color.white)
                     .font(.system(size: 20))
                 }
+                .accessibilityIdentifier("edit profile")
                 .background(Color.clear)
               }
               
