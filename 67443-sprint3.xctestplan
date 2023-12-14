@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "350E5D23-3AFF-4D20-82F6-C4F7BF9CA713",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:67443-sprint3.xcodeproj",
+        "identifier" : "8A3C5BDE2B222C2300A5AF7D",
+        "name" : "67443-sprint3UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

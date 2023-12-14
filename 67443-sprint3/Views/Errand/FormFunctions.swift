@@ -53,20 +53,6 @@ struct FormFunctions {
       errorMsg = "Please enter a location"
       return false
     }
-
-    if payBool {
-      if pay < 1.00 {
-        errorMsg = "If you choose to pay the runner, please enter an amount over $1.00"
-        return false
-      }
-      
-      // checking if pay has more than two decimal places, code from chatgpt
-      let payDecimals = String(pay).components(separatedBy: ".")
-      if payDecimals.count == 2 && payDecimals[1].count > 2 {
-        errorMsg = "Please enter a valid amount with only up to two decimal places for compensation."
-        return false
-      }
-    }
   
     //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
     let calendar = Calendar.current
@@ -76,6 +62,21 @@ struct FormFunctions {
       errorMsg = "You can only enter a due date that's in the future!"
       return false
     }
+    
+    if payBool {
+      if pay < 1.00 {
+        errorMsg = "If you choose to pay the runner, please enter an amount over $1.00"
+        return false
+      }
+      
+      // checking if pay has more than two decimal places, code from chatgpt
+      let payDecimals = String(pay).components(separatedBy: ".")
+      if payDecimals.count == 2 && payDecimals[1].count > 2 {
+        errorMsg = "Please enter a valid amount with only up to two decimal places for compensation"
+        return false
+      }
+    }
+    
     return true
   }
 }

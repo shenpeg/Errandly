@@ -74,7 +74,7 @@ struct MarketplaceView: View {
                                 RoundedRectangle(cornerRadius: 20)
                                   .stroke(Color.black, lineWidth: 1)
                             )
-                      }
+                      }.accessibilityIdentifier("tag")
                     }
                   }
                 }
@@ -95,7 +95,7 @@ struct MarketplaceView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     LocationPermissionIconView()
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isOnboardingPresented.toggle()
@@ -103,7 +103,7 @@ struct MarketplaceView: View {
                         Image(systemName: "info.circle")
                             .foregroundColor(darkBlue)
                             .font(.system(size: 16))
-                    }
+                    }.accessibilityIdentifier("tutorial replay button")
                 }
             }
             .listStyle(.plain)
