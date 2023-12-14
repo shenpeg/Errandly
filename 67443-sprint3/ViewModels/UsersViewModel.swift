@@ -109,4 +109,13 @@ class UsersViewModel: ObservableObject {
     ])
   }
   
+  func deletePickedUpErrand(runner: User, errand: Errand) {
+    guard let userId = runner.id else { return }
+    guard let errandId = errand.id else { return }
+    
+    store.collection(path).document(userId).updateData([
+      "picked_up_errands": FieldValue.arrayRemove([errandId])
+    ])
+  }
+  
 }
