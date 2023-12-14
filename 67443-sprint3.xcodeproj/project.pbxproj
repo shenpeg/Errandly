@@ -18,7 +18,6 @@
 		6E96F9752B1EB9F4006BF365 /* ErrandFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */; };
 		6E96F9772B1EC5A6006BF365 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9762B1EC5A6006BF365 /* FormButton.swift */; };
 		6E96F9792B1ECB09006BF365 /* FormFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9782B1ECB09006BF365 /* FormFunctions.swift */; };
-		6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC74B432AFE694C0060F4A1 /* Tag.swift */; };
 		8A3C5BE22B222C2300A5AF7D /* _7443_sprint3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */; };
 		8A3C5BE42B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */; };
 		8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEFF852AFD714A0094C83F /* SortSheet.swift */; };
@@ -54,6 +53,8 @@
 		A3B99B712AD63057000822EE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B702AD63057000822EE /* GoogleSignIn */; };
 		A3B99B732AD63057000822EE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3B99B722AD63057000822EE /* GoogleSignInSwift */; };
 		A3C4564D2B09584F000678E6 /* FormTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4564C2B09584F000678E6 /* FormTags.swift */; };
+		A3D4FF392B2AE1B000FE2C6B /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3D4FF382B2AE1B000FE2C6B /* Quicksand-Bold.ttf */; };
+		A3D4FF3B2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3D4FF3A2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf */; };
 		A3D646A12B25479400CC4CB2 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */; };
 		A3D646A32B25486500CC4CB2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D646A22B25486500CC4CB2 /* Location.swift */; };
 		A3EAE9272AE85D880079481D /* Errand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAE9262AE85D880079481D /* Errand.swift */; };
@@ -119,7 +120,6 @@
 		6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandFormView.swift; sourceTree = "<group>"; };
 		6E96F9762B1EC5A6006BF365 /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		6E96F9782B1ECB09006BF365 /* FormFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFunctions.swift; sourceTree = "<group>"; };
-		6EC74B432AFE694C0060F4A1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A3C5BDF2B222C2300A5AF7D /* 67443-sprint3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "67443-sprint3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITests.swift; sourceTree = "<group>"; };
 		8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -146,6 +146,8 @@
 		A3B99B652AD62B0D000822EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B99B682AD62B0D000822EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3C4564C2B09584F000678E6 /* FormTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTags.swift; sourceTree = "<group>"; };
+		A3D4FF382B2AE1B000FE2C6B /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Bold.ttf"; path = "../../../../../Downloads/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		A3D4FF3A2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-VariableFont_wght.ttf"; path = "../../../../../Downloads/Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		A3D646A22B25486500CC4CB2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A3EAE9262AE85D880079481D /* Errand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errand.swift; sourceTree = "<group>"; };
@@ -320,6 +322,8 @@
 				A3FF435F2AD67BDB00E1DDA6 /* -7443-sprint3-Info.plist */,
 				A33FBBE42AF9910A00CE9FE8 /* GoogleService-Info.plist */,
 				A3B99B612AD62B0B000822EE /* _7443_sprint3App.swift */,
+				A3D4FF382B2AE1B000FE2C6B /* Quicksand-Bold.ttf */,
+				A3D4FF3A2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf */,
 				A3B99B652AD62B0D000822EE /* Assets.xcassets */,
 				A3B99B672AD62B0D000822EE /* Preview Content */,
 				A33726062AE5B00300D4A698 /* Settings.bundle */,
@@ -516,9 +520,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B99B692AD62B0D000822EE /* Preview Assets.xcassets in Resources */,
+				A3D4FF3B2B2AE1B700FE2C6B /* Quicksand-VariableFont_wght.ttf in Resources */,
 				A33FBBE52AF9910A00CE9FE8 /* GoogleService-Info.plist in Resources */,
 				A33726072AE5B00300D4A698 /* Settings.bundle in Resources */,
 				A3B99B662AD62B0D000822EE /* Assets.xcassets in Resources */,
+				A3D4FF392B2AE1B000FE2C6B /* Quicksand-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

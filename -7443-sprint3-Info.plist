@@ -42,5 +42,10 @@
 	<string>We&apos;ll use this to help you find errands around you.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We&apos;ll use this to help you find errands around you.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Quicksand-VariableFont_wght.ttf</string>
+		<string>Quicksand-Bold.ttf</string>
+	</array>
 </dict>
 </plist>
