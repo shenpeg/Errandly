@@ -20,11 +20,11 @@ struct ErrandDetailsPickUpView: View {
       // Horizontal separator line
       Rectangle()
         .frame(height: 1)
-        .foregroundColor(darkBlue)
+        .foregroundColor(black)
       
       HStack {
         Text(payFormat)
-          .font(.system(size: 20))
+          .font(.system(size: 22))
           .foregroundColor(.black)
         
         Spacer()
@@ -51,11 +51,12 @@ struct ErrandDetailsPickUpView: View {
               isPickUpAlertPresented = true
             }) {
               Text("Pick up errand")
-                .font(.headline)
+                .font(.system(size: 18).bold())
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 20, bottom: 7, trailing: 20))
                 .background(darkBlue)
-                .cornerRadius(20)            }
+                .cornerRadius(20)
+            }
             .alert(isPresented: $isPickUpAlertPresented) {
               Alert(
                 title: Text("Are you sure you want to pick up this errand?"),
@@ -81,12 +82,16 @@ struct ErrandDetailsPickUpView: View {
                   isCompletionAlertPresented = true
               }) {
                     Text("Mark completed")
-                      .font(.headline)
+                      .font(.system(size: 18).bold())
                       .foregroundColor(darkBlue)
-                      .padding(.vertical, 8)
-                      .padding(.horizontal, 16)
+                      .padding(.init(top: 5, leading: 20, bottom: 7, trailing: 20))
                       .background(mint)
-                      .cornerRadius(40)
+                      .cornerRadius(20)
+                      .overlay(
+                          RoundedRectangle(cornerRadius: 20)
+                            .stroke(darkBlue, lineWidth: 1)
+                      )
+
                   }
                   .alert(isPresented: $isCompletionAlertPresented) {
                       Alert(
@@ -116,7 +121,7 @@ struct ErrandDetailsPickUpView: View {
                 .italic()
         }
     }
-    .padding(.init(top: 6, leading: 30, bottom: 6, trailing: 25))
+    .padding(.init(top: 4, leading: 30, bottom: 6, trailing: 25))
     .background(Color.white)
 }
 }

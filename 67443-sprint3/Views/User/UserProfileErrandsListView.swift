@@ -15,6 +15,7 @@ struct UserProfileErrandsListView: View {
       }
     }
     .listStyle(.plain)
+    .background(backgroundGray)
   }
   
   // UserProfileErrandsListView
@@ -84,7 +85,6 @@ struct UserProfileErrandsListView: View {
       }
     }
   }
-  
 }
 
 struct PostedErrandList: View {
@@ -94,19 +94,16 @@ struct PostedErrandList: View {
   var header: String
   
   var body: some View {
-    return Section(header: HeaderStyle(header: header)
-      .font(.title3)
-      .italic()
-      .foregroundColor(darkGray)
-    ) {
+    return Section(header: HeaderStyle(header: header)) {
       ForEach(postedErrands.sorted(by: {$0.datePosted > $1.datePosted})) { errand in
         if (isCompleted) {
-          ErrandView(errand: errand, user: user)
-            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
+          ErrandView(errand: errand, user: user, grayOut: true)
+//            .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(darkGray.opacity(0.2)))
             .padding(.bottom, 10)
+//            .overlay(RoundedRectangle(cornerRadius: 10).fill(black.opacity(0.1)))
         }
          else {
-           ErrandView(errand: errand, user: user)
+           ErrandView(errand: errand, user: user, grayOut: false)
             .padding(.bottom, 10)
         }
       }
@@ -128,11 +125,12 @@ struct PickedUpErrandList: View {
     ) {
       ForEach(pickedUpErrands.sorted(by: {$0.datePosted > $1.datePosted})) { errand in
         if (isCompleted) {
-          ErrandView(errand: errand, user: user)
-            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(darkGray.opacity(0.2)))
+          ErrandView(errand: errand, user: user, grayOut: true)
+//            .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(black.opacity(0.2)))
             .padding(.bottom, 10)
+//            .overlay(RoundedRectangle(cornerRadius: 10).fill(black.opacity(0.2)))
         } else {
-          ErrandView(errand: errand, user: user)
+          ErrandView(errand: errand, user: user, grayOut: false)
             .padding(.bottom, 10)
         }
       }
@@ -148,6 +146,7 @@ struct HeaderStyle: View {
       .font(.title3)
       .italic()
       .foregroundColor(darkGray)
+      .background(backgroundGray)
       .padding(.vertical, 5)
   }
 }

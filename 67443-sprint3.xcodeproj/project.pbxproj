@@ -13,11 +13,11 @@
 		156932FD2B152C270049B461 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156932FC2B152C270049B461 /* TutorialView.swift */; };
 		15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */; };
 		6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */; };
+		6E7F6ADE2B2588640040EA8A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F6ADD2B2588630040EA8A /* TagView.swift */; };
 		6E96F9722B1C04F7006BF365 /* EditErrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9712B1C04F7006BF365 /* EditErrandView.swift */; };
 		6E96F9752B1EB9F4006BF365 /* ErrandFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */; };
 		6E96F9772B1EC5A6006BF365 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9762B1EC5A6006BF365 /* FormButton.swift */; };
 		6E96F9792B1ECB09006BF365 /* FormFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96F9782B1ECB09006BF365 /* FormFunctions.swift */; };
-		6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC74B432AFE694C0060F4A1 /* Tag.swift */; };
 		8A3C5BE22B222C2300A5AF7D /* _7443_sprint3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */; };
 		8A3C5BE42B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */; };
 		8ADEFF862AFD714A0094C83F /* SortSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEFF852AFD714A0094C83F /* SortSheet.swift */; };
@@ -113,11 +113,11 @@
 		156932FC2B152C270049B461 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandRunner.swift; sourceTree = "<group>"; };
 		6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostErrandView.swift; sourceTree = "<group>"; };
+		6E7F6ADD2B2588630040EA8A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		6E96F9712B1C04F7006BF365 /* EditErrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditErrandView.swift; sourceTree = "<group>"; };
 		6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrandFormView.swift; sourceTree = "<group>"; };
 		6E96F9762B1EC5A6006BF365 /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		6E96F9782B1ECB09006BF365 /* FormFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFunctions.swift; sourceTree = "<group>"; };
-		6EC74B432AFE694C0060F4A1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A3C5BDF2B222C2300A5AF7D /* 67443-sprint3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "67443-sprint3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3C5BE12B222C2300A5AF7D /* _7443_sprint3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITests.swift; sourceTree = "<group>"; };
 		8A3C5BE32B222C2300A5AF7D /* _7443_sprint3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _7443_sprint3UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -226,7 +226,6 @@
 				A3EAE9262AE85D880079481D /* Errand.swift */,
 				A3EAE96C2AE881160079481D /* ErrandOwner.swift */,
 				15A9E42B2AFD3F9F00458C83 /* ErrandRunner.swift */,
-				6EC74B432AFE694C0060F4A1 /* Tag.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -244,16 +243,17 @@
 			children = (
 				A3EAE92D2AE862510079481D /* MarketplaceView.swift */,
 				A3EAE9302AE862D70079481D /* ErrandView.swift */,
-				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
-				6E96F9782B1ECB09006BF365 /* FormFunctions.swift */,
-				6E96F9762B1EC5A6006BF365 /* FormButton.swift */,
-				6E96F9712B1C04F7006BF365 /* EditErrandView.swift */,
-				6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */,
-				6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */,
+				A3C4564C2B09584F000678E6 /* FormTags.swift */,
 				15358D212AF2C1E900B26976 /* ErrandDetailsPickUpView.swift */,
 				A3EAE96E2AE8832E0079481D /* ErrandDetailsView.swift */,
 				A339943E2B1760CD003C2989 /* LocationPermissionIconView.swift */,
+				6E96F9762B1EC5A6006BF365 /* FormButton.swift */,
+				6E96F9712B1C04F7006BF365 /* EditErrandView.swift */,
+				6E96F9782B1ECB09006BF365 /* FormFunctions.swift */,
+				6E491F2B2AF2BEFE004F1860 /* PostErrandView.swift */,
+				6E96F9742B1EB9F4006BF365 /* ErrandFormView.swift */,
 				A3D646A02B25479400CC4CB2 /* LocationSearchView.swift */,
+				15358D232AF2CC1A00B26976 /* ErrandDetailsProfileView.swift */,
 			);
 			path = Errand;
 			sourceTree = "<group>";
@@ -376,7 +376,7 @@
 				A38B51FC2AF016E900D3B8E5 /* User */,
 				A38B51FA2AF016D400D3B8E5 /* Errand */,
 				8ADEFF852AFD714A0094C83F /* SortSheet.swift */,
-				A3C4564C2B09584F000678E6 /* FormTags.swift */,
+				6E7F6ADD2B2588630040EA8A /* TagView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -574,7 +574,6 @@
 				15A9E42C2AFD3F9F00458C83 /* ErrandRunner.swift in Sources */,
 				6E491F2C2AF2BEFE004F1860 /* PostErrandView.swift in Sources */,
 				A3B99B642AD62B0B000822EE /* ContentView.swift in Sources */,
-				6EC74B442AFE694C0060F4A1 /* Tag.swift in Sources */,
 				A35EF8E92AF943DF00E23558 /* WelcomeView.swift in Sources */,
 				A3EAE9272AE85D880079481D /* Errand.swift in Sources */,
 				15358D242AF2CC1A00B26976 /* ErrandDetailsProfileView.swift in Sources */,
@@ -603,6 +602,7 @@
 				A34E8B042AF2160400A5D2D8 /* CustomErrandTabs.swift in Sources */,
 				A3D646A32B25486500CC4CB2 /* Location.swift in Sources */,
 				6E96F9752B1EB9F4006BF365 /* ErrandFormView.swift in Sources */,
+				6E7F6ADE2B2588640040EA8A /* TagView.swift in Sources */,
 				A3AFEADE2AF784000052377A /* UserProfileErrandsListView.swift in Sources */,
 				156932FD2B152C270049B461 /* TutorialView.swift in Sources */,
 				A3B99B622AD62B0B000822EE /* _7443_sprint3App.swift in Sources */,
@@ -630,7 +630,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cmu.-7443-sprint3UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -649,7 +649,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cmu.-7443-sprint3UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

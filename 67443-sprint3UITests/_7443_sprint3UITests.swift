@@ -145,18 +145,18 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(skip.exists)
     skip.tap()
     
-    let onCampus = app.buttons["on-campus"]
+    let onCampus = app.buttons["📚 on-campus"]
     XCTAssert(onCampus.exists)
     onCampus.tap()
     // tap again
     onCampus.tap()
     
-    let offCampus = app.buttons["off-campus"]
+    let offCampus = app.buttons["🏙️ off-campus"]
     XCTAssert(offCampus.exists)
     offCampus.tap()
     
     // tag that requires scrolling
-    let car = app.buttons["car"]
+    let car = app.buttons["🚗 car"]
     XCTAssert(car.exists)
     car.tap()
   }
@@ -184,7 +184,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let firstErrand = view.firstMatch
     firstErrand.tap()
     
-    let date = app.staticTexts["Date Due:"]
+    let date = app.staticTexts["Date Due: "]
     XCTAssert(date.exists)
   }
   
@@ -251,7 +251,7 @@ final class _7443_sprint3UITests: XCTestCase {
     editErrand.tap()
     
     app.swipeUp()
-    let delete = app.buttons["Delete errand"]
+    let delete = app.buttons["delete errand"]
     XCTAssert(delete.exists)
     delete.tap()
     
@@ -269,6 +269,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
+    sleep(1)
     
     let postTab = app.buttons["Post Errand"]
     XCTAssert(postTab.exists)
@@ -290,7 +291,9 @@ final class _7443_sprint3UITests: XCTestCase {
     let titleInput = app.textFields["Errand Title"]
     XCTAssert(titleInput.exists)
     titleInput.tap()
-    titleInput.typeText("UITests")
+    sleep(1)
+    titleInput.typeText("Abc")
+    sleep(1)
     
     app.swipeUp()
     XCTAssert(post.exists)
@@ -307,8 +310,10 @@ final class _7443_sprint3UITests: XCTestCase {
     let detailsInput = app.textViews["What do you need help with?"]
     XCTAssert(detailsInput.exists)
     detailsInput.tap()
-    detailsInput.typeText("how to write swiftui tests")
-    
+    sleep(1)
+    detailsInput.typeText("xyz")
+    sleep(1)
+
     app.swipeUp()
     XCTAssert(post.exists)
     post.tap()
@@ -320,11 +325,11 @@ final class _7443_sprint3UITests: XCTestCase {
     locationPostDismiss.tap()
     
     // errand tags
-    let onCampus = app.buttons["on-campus"]
+    let onCampus = app.buttons["📚 on-campus"]
     XCTAssert(onCampus.exists)
     onCampus.tap()
     
-    let car = app.buttons["car"]
+    let car = app.buttons["🚗 car"]
     XCTAssert(car.exists)
     car.tap()
     
@@ -332,6 +337,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let locationInput = app.textFields["location search"]
     XCTAssert(locationInput.exists)
     locationInput.tap()
+    sleep(1)
     locationInput.typeText("Carnegie Mellon University")
     sleep(1)
     // dismiss keyboard (necessary to select the result)
@@ -346,10 +352,12 @@ final class _7443_sprint3UITests: XCTestCase {
     sleep(1)
     
     // errand compensation
-    var payInput = app.textFields["How much?"]
+    var payInput = app.textFields["pay input"]
     XCTAssert(payInput.exists)
     payInput.tap()
-    payInput.typeText("0.01")
+    sleep(1)
+//    payInput.typeText("0.01")
+    payInput.typeText("0")
     sleep(1)
     
     XCTAssert(post.exists)
@@ -362,12 +370,13 @@ final class _7443_sprint3UITests: XCTestCase {
     XCTAssert(payAmountDismiss.exists)
     payAmountDismiss.tap()
     
-    payInput = app.textFields["0.01"]
+    payInput = app.textFields["0"]
     XCTAssert(payInput.exists)
     payInput.tap()
+    sleep(1)
     //\u{8} for deletion
     // https://stackoverflow.com/questions/40380176/how-to-clear-value-in-textfield-using-xcode-ui-tests
-    payInput.typeText("\u{8}\u{8}\u{8}\u{8}1.123")
+    payInput.typeText("\u{8}1.123")
     sleep(1)
     
     XCTAssert(post.exists)
@@ -392,7 +401,7 @@ final class _7443_sprint3UITests: XCTestCase {
     post.tap()
     sleep(2)
         
-    let postedErrand = app.staticTexts["UITests"]
+    let postedErrand = app.staticTexts["Abc"]
     XCTAssert(postedErrand.exists)
     
     // edit the posted errand
@@ -403,10 +412,10 @@ final class _7443_sprint3UITests: XCTestCase {
     editErrand.tap()
     
     
-    let editTitleEmpty = app.textFields["UITests"]
+    let editTitleEmpty = app.textFields["Abc"]
     XCTAssert(editTitleEmpty.exists)
     editTitleEmpty.tap()
-    editTitleEmpty.typeText("\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}")
+    editTitleEmpty.typeText("\u{8}\u{8}\u{8}")
     
     app.swipeUp()
     let edit = app.buttons["Save edits"]
@@ -419,18 +428,20 @@ final class _7443_sprint3UITests: XCTestCase {
     let titleSaveDismiss = titleSaveError.buttons["OK"]
     XCTAssert(titleSaveDismiss.exists)
     titleSaveDismiss.tap()
+    sleep(1)
     
+    app.swipeDown()
     let editTitle = app.textFields["Errand Title"]
     XCTAssert(editTitle.exists)
     editTitle.tap()
-    editTitle.typeText("UITest")
+    editTitle.typeText("A")
     
     app.swipeUp()
     XCTAssert(edit.exists)
     edit.tap()
     sleep(2)
     
-    let editedErrand = app.staticTexts["UITest"]
+    let editedErrand = app.staticTexts["A"]
     XCTAssert(editedErrand.exists)
     
     // delete the posted errand
@@ -444,6 +455,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let delete = app.buttons["Delete errand"]
     XCTAssert(delete.exists)
     delete.tap()
+    sleep(1)
     
     let deleteAlert = app.alerts["Delete this errand permanently?"]
     XCTAssert(deleteAlert.exists)
@@ -452,7 +464,7 @@ final class _7443_sprint3UITests: XCTestCase {
     confirm.tap()
     sleep(2)
     
-    let deletedErrand = app.staticTexts["UITest"]
+    let deletedErrand = app.staticTexts["A"]
     XCTAssert(!deletedErrand.exists)
   }
   
@@ -463,6 +475,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
+    sleep(1)
     
     let profile = app.buttons["Profile"]
     XCTAssert(profile.exists)
@@ -476,6 +489,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
+    sleep(1)
     
     let profile = app.buttons["Profile"]
     XCTAssert(profile.exists)
@@ -495,6 +509,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let skip = app.buttons["Skip"]
     XCTAssert(skip.exists)
     skip.tap()
+    sleep(1)
     
     let profile = app.buttons["Profile"]
     XCTAssert(profile.exists)
@@ -513,14 +528,14 @@ final class _7443_sprint3UITests: XCTestCase {
     let firstNameInput = textInputs.firstMatch
     XCTAssert(firstNameInput.exists)
     firstNameInput.tap()
-    firstNameInput.typeText("TEST")
+    firstNameInput.typeText("!")
     
     let save = app.otherElements.buttons["Save"]
     XCTAssert(save.exists)
     save.tap()
     sleep(2)
     
-    let updatedName = app.staticTexts["\(firstName)TEST \(lastName)"]
+    let updatedName = app.staticTexts["\(firstName)! \(lastName)"]
     XCTAssert(updatedName.exists)
     
     // change back to original
@@ -532,7 +547,7 @@ final class _7443_sprint3UITests: XCTestCase {
     let firstNameEdit = textInputs.firstMatch
     XCTAssert(firstNameEdit.exists)
     firstNameEdit.tap()
-    firstNameEdit.typeText("\u{8}\u{8}\u{8}\u{8}")
+    firstNameEdit.typeText("\u{8}")
     
     XCTAssert(save.exists)
     save.tap()

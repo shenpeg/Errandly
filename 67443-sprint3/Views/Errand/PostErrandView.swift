@@ -5,8 +5,6 @@ import SwiftUI
 
 struct PostErrandView: View {
   
-  // variables
-  
   var user: User
   
   @EnvironmentObject var usersViewModel: UsersViewModel
@@ -29,7 +27,13 @@ struct PostErrandView: View {
   
   private func addErrand() async {
     //currently hardcoded: location
-    let errandOwner = ErrandOwner(id: user.id!, first_name: user.first_name, last_name: user.last_name, pfp: user.pfp, phone_number: user.phone_number)
+    let errandOwner = ErrandOwner(
+      id: user.id!,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      pfp: user.pfp,
+      phone_number: user.phone_number
+    )
     
     let newErrand = Errand(
       dateDue: dateDue,
@@ -66,7 +70,8 @@ struct PostErrandView: View {
         )
         
         Section {
-          FormButton(title: "Post") {
+          FormButton(title: "post") {
+            
             if payBool == false {
               payString = "0.00"
             }
@@ -118,7 +123,7 @@ struct PostErrandView: View {
         } //section
       } //form
       .background(Color.white)
-      .accentColor(darkBlue)
+      .accentColor(black)
       .scrollContentBackground(.hidden)
       .gesture(DragGesture().onChanged({ _ in
                           UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)}))

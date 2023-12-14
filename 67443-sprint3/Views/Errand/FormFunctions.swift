@@ -53,7 +53,16 @@ struct FormFunctions {
       errorMsg = "Please enter a location"
       return false
     }
-
+  
+    //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
+    let calendar = Calendar.current
+    let today = Date()
+    let result = calendar.compare(dateDue, to: today, toGranularity: .day)
+    if result == .orderedAscending {
+      errorMsg = "You can only enter a due date that's in the future!"
+      return false
+    }
+    
     if payBool {
       if pay < 1.00 {
         errorMsg = "If you choose to pay the runner, please enter an amount over $1.00"
@@ -67,15 +76,7 @@ struct FormFunctions {
         return false
       }
     }
-  
-    //checking date has not already passed, from: riptutorial.com/ios/example/4884/date-comparison
-    let calendar = Calendar.current
-    let today = Date()
-    let result = calendar.compare(dateDue, to: today, toGranularity: .day)
-    if result == .orderedAscending {
-      errorMsg = "You can only enter a due date that's in the future!"
-      return false
-    }
+    
     return true
   }
 }

@@ -10,7 +10,7 @@ struct SignInView: View {
     ZStack() {
       LinearGradient(
         gradient: Gradient(
-          colors: [darkBlue, lightPurple]),
+          colors: [lightPurple, darkerMint, darkBlue]),
         startPoint: .topLeading,
         endPoint: .bottomTrailing
       )
