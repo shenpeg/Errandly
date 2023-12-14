@@ -13,7 +13,7 @@ Errandly simplifies the lives of busy college students by providing a marketplac
 TBD.
 
 ## Fonts
-For some reason, XCode sometimes will not download the font files correctly when the repo is cloned. If that is the case (the font files will be highlighted red), then manually download Quicksand-Bold.ttf and Quicksand-VariableFont_wght.ttf and drag them into the project.
+For some reason, XCode sometimes will not download the font files correctly when the repo is cloned. If that is the case (the font files will be highlighted red), then manually Quicksand-Bold.ttf and Quicksand-VariableFont_wght.ttf, download Quicksand-Bold.ttf and Quicksand-VariableFont_wght.ttf from GitHub, and drag those files into the project.
 
 ## Location
 Since location does require Settings, **do not use an iPhone 15 Pro simulator**, as it is a known issue that opening Settings will cause it to crash. See ["The simulator may crash when opening Settings or Action Button settings on iPhone 15 Pro devices. (115388496)"](https://developer.apple.com/documentation/xcode-release-notes/xcode-15-release-notes#Known-Issues). To setup location on the simulator, first build the app. Then, once the simulator is running, click on XCode and then go to Debug > Simulate Location > [pick a location]. Then, go back to the simulator and click on the 'pin' icon within the app (upper left hand corner of the Marketplace). When doing so the first time, you will be prompted to allow the app to use your location. Clicking the icon again will redirect to the app's Settings page, where location preferences can be changed. This permissions flow (aka redirecting to Settings) is required by Apple.
