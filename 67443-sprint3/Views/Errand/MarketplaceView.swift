@@ -111,7 +111,7 @@ struct MarketplaceView: View {
                 }
             }
             .listStyle(.plain)
-            .searchable(text: searchFieldBinding)
+            .searchable(text: searchFieldBinding, placement: .navigationBarDrawer(displayMode: .always))
             .navigationDestination(for: Errand.self) { errand in
                 ErrandDetailsView(errand: errand, user: user, marketplacePath: $marketplacePath, profilePath: $profilePath)
             }
