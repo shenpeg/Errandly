@@ -1,7 +1,7 @@
 # Errandly: College Errand Marketplace App
 Errandly simplifies the lives of busy college students by providing a marketplace for students to post and fulfill errands. Whether you need someone to help you move into your dorm, petsit your cat over winter break, or help with any other task, Errandly connects you with trusted peers who are ready to assist.
 
-## Features
+### Features
 1. Errand Management: Post your errands and receive help from reliable errand runners within your college community.
 2. Errand Location: Allow the app to get your current location so that you can see which errands are close by.
 3. Errand Finder: Easily sort errands by due date and compensation, and filter errands with thematic tags.
@@ -9,16 +9,15 @@ Errandly simplifies the lives of busy college students by providing a marketplac
 5. Real-Time Communication: Message errand helpers or errand posters through their profile.
 6. Secure Transactions: Get paid for helpinig out fellow students, and securely handle payments with Apple Pay in the app.
 
-## Design and Programming Decisions
-TBD.
+## Notes on Design and Programming
 
-## Fonts
+### Fonts
 For some reason, XCode sometimes will not download the font files correctly when the repo is cloned. If that is the case (the font files will be highlighted red), then manually Quicksand-Bold.ttf and Quicksand-VariableFont_wght.ttf, download Quicksand-Bold.ttf and Quicksand-VariableFont_wght.ttf from GitHub, and drag those files into the project.
 
-## Location
+### Location
 Since location does require Settings, **do not use an iPhone 15 Pro simulator**, as it is a known issue that opening Settings will cause it to crash. See ["The simulator may crash when opening Settings or Action Button settings on iPhone 15 Pro devices. (115388496)"](https://developer.apple.com/documentation/xcode-release-notes/xcode-15-release-notes#Known-Issues). To setup location on the simulator, first build the app. Then, once the simulator is running, click on XCode and then go to Debug > Simulate Location > [pick a location]. Then, go back to the simulator and click on the 'pin' icon within the app (upper left hand corner of the Marketplace). When doing so the first time, you will be prompted to allow the app to use your location. Clicking the icon again will redirect to the app's Settings page, where location preferences can be changed. This permissions flow (aka redirecting to Settings) is required by Apple.
 
-## Pay
+### Pay
 Because using Apple pay requires a developer account (which not all members of the team have access to), payment functionality cannot be merged into main and is therefore on a seperate branch called 'pay'. Additionally, PKDisbursementRequest(), which is required for enabling the transfer of money from the app to the errand runner is only available in iOS 17. Do note that the 'pay' branch contains everything that is in 'main' along with the payment flow. More specifically, payment flow includes the "External payment system" and "Fully functional 'mark as completed' flow" features in the sprint 6 plan. The payment flow is as follows:
 
 1. A user chooses to pick up (and be a runner for) errand A. Let's assume errand A is a paid errand.
@@ -28,7 +27,7 @@ Because using Apple pay requires a developer account (which not all members of t
 
 Also note that when running the app on an actual phone, the only way to simulate the payment flow with fake credit cards is if the phone is logged into a Sandbox iCloud account. However, transfering money to the errand runner is not possible with a Sandbox account (as money transfers don't work with fake credit cards).
 
-## Testing
+### Testing
 We focused mainly on testing our views and user interactive flows throughout the app. In general, we struggled testing features that were based on the external technologies used. We struggled with testing the login functionality because we could not figure out how to create and authenticate Google OAuth login mock data. This also meant that we could only test with one logged in user, so we could not test anything related to picking up/completing an errand. We could also not figure out how to best test enabling/updating location preferences. Finally, we could not figure out the best way to test payment, especially since StoreKit Testing (one way to test payments) assumes that the items/subscriptions that can be purchased have a set price, which is not the case for our app (users can create many different errands with any price). These issues are the primary reason for the lines of the code that are not covered by our tests.
 
 Once you log in, all of the tests that were written should work. **Therefore, the tests should only be run AFTER building the app and logging in.** Do note that these UI tests are quite flacky and may fail unexpectedly. This seems to happen either because the app loaded too slowly or because the form .textType() function typed too fast and the text was not inputted correctly. For most tests, the test can simply be rerun and many tests will pass the second time. However, testPostEditDelete() and testProfileEdit() make changes to the database. More specifically, testPostEditDelete() tries to post a new errand called "ABC", then rename that errand to "A", then delete that errand. testProfileEdit() tries to add an "!" to the user's first name and then delete the "!". If either of these tests fail halfway (which can happen due to the flackiness of .textType()), it is possible that the test could not reset properly. If that happens, simply manually delete the posted errand named "ABC" or "A" or remove the "!" from the user's first name.
