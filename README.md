@@ -39,3 +39,8 @@ For more background regarding what we tried to test, for testing our view models
 ## Contributions
 Designed and coded by Esther Bae, Clarice Du, Julia Graham, Peggy Shen.
 Made for CMU's 67-443 Mobile Application Development.
+
+<!-- ![image](https://cdn.prod.website-files.com/645f5da821302df2d1234d43/658bfc23d3f78dca16e0d8ad_ErrandlyezGIF.gif) -->
+<p align="center">
+  <img src="https://cdn.prod.website-files.com/645f5da821302df2d1234d43/658bfc23d3f78dca16e0d8ad_ErrandlyezGIF.gif" width="350" alt="Errandly Project GIF" />
+</p>
